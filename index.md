@@ -1,37 +1,64 @@
-## Welcome to GitHub Pages
+# What
+Ascript is a faster performing scripting language than any the software author has used.
 
-You can use the [editor on GitHub](https://github.com/kyle-sallee/ascript/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Why
+To boot, to shutdown, software to install, software to update, software to remove and such administrator tasks ascript is intended.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# How
+Mounting, swapping, hot plug, cold plug, network configuration, maybe ever task needed at boot can be accomplished
+The Linux kernel when required to the C library the tasks are delegated.
 
-### Markdown
+# Regex
+Optional libraries such as pcre2 and Linux-PAM if installed then optional abilities become.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Docs
+About 200 awesome manual pages with examples included are provided.
 
-```markdown
-Syntax highlighted code block
+# Install
+bintuils, gcc, glibc, make, nm, sed are definitely executed.
+Setting DESTDIR and libdir are the only tricky aspects.
 
-# Header 1
-## Header 2
-### Header 3
+# Test Drive
+Ascript can be compiled LD_LIBRARY_PATH can be set to $PWD/lib and ascript/ascript to run scripts can be invoked.
 
-- Bulleted
-- List
+# Grammar
+A script's first line is something like
+\#!/bin/ascript
+or
+\#!ascript/ascript
+A line that begins with #, except the first, is a comment.
+At line start or after a comma and argot name if encountered as required is loaded and executed.
+Aft argot name by tab the argot parameters are separated.
+By non back slash prefixed line feed or comma
+an argot's parameter list terminates.
 
-1. Numbered
-2. List
+# Argot
+# Argot are ELF library encapsulated code fragments.  It's just a name for some computer code.
+# The ascript ELF libraries when loaded sans reload the argot can be invoked as many times as desired.
 
-**Bold** and _Italic_ and `Code` text
+# Argot parameters
+Back tick encapsulated text is text.  \n to line feed \0 to byte value 0 are translated,  Any unicode to UTF-8 is translated. 
+A space and a single byte to indicate type follow numeric constants like 1111 b for value 15 in binary.
+Anything else as a variable name is assumed.
 
-[Link](url) and ![Image](src)
-```
+# Speed
+With ascript almost any program when compared is like comparing a race horse and a SR-71 super sonic spy plane.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Cost
+The ascript software author is not demanding even a single cent for ascript use, and nobody else can either!
+Free means payment is not demanded.
 
-### Jekyll Themes
+# Compile duration
+About 10 seconds.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kyle-sallee/ascript/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+# Total size
+Less than 4 megabytes will be pulled.
 
-### Support or Contact
+# Why was ascript created?
+Following illness the author had to retrain hacking skills from 0.  Scripting languages bang, bang2 were created.  Finally, ascript was created.
+Ascript happened to become faster and smaller than anything the software author had previously tried.
+Apparently, by free software authors to quality and performance not much importance is accorded?
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+# Why share?
+I love free.  Let us make free food, free software, free operating systems, free living.
+For one's continued existence payment when required the person is obviously both a hostage and and a slave.
