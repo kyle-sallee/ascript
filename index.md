@@ -33,8 +33,8 @@ By non back slash prefixed line feed or comma
 an argot's parameter list terminates.
 
 # Argot
-# Argot are ELF library encapsulated code fragments.  It's just a name for some computer code.
-# The ascript ELF libraries when loaded sans reload the argot can be invoked as many times as desired.
+Argot are ELF library encapsulated code fragments.  It's just a name for some computer code.
+The ascript ELF libraries when loaded sans reload the argot can be invoked as many times as desired.
 
 # Argot parameters
 Back tick encapsulated text is text.  \n to line feed \0 to byte value 0 are translated,  Any unicode to UTF-8 is translated. 
