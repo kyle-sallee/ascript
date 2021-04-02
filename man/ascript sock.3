@@ -1,0 +1,207 @@
+.TH "ascript sock" 3
+.SH NAME
+.EX
+ascript sock
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	make  		task\fR
+sock dgram	*		AF_UNIX socket use var make.
+sock stream	*		AF_UNIX socket use var make.
+
+\fBargot	target	origin	task\fR
+sock bind	sock	pathname	A     107        byte or less
+			with    0  value byte
+			terminated pathname
+			assign.
+			The        pathname
+			is         created.
+
+sock listen 	sock	value	Become      passive.
+			By  the     value
+			the waiting connection amount
+			is  limited.
+
+sock accept	*	sock	From the     passive socket
+			for  inbound connections
+			the  named   socket var
+			make.
+
+sock connect	sock	pathname	To the socket
+			a  connection request.
+
+sock send	sock	var	To   the socket
+			the  var content
+			send.
+
+sock recv	var	sock	From the socket
+			the  var content
+			receive.
+.TE
+.ta T 8n
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBname	type	display\fR
+sockrecv	int8	denary
+socksend	int8	denary
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+When successful the following argot skip:
+sock bind; sock listen; sock connect; sock recv; sock send
+
+.SH SUCCESS METADATA
+.EX
+The argot sock accept when invoked in var metadata the errno is stored.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+dub
+err
+io
+sock
+
+name		S
+sock dgram
+scope
+origin		`/dev/log`
+sock connect
+go		'fail'
+ ...
+\fR
+.in
+
+.SH DATA SEND METHOD 0
+.EX
+sock dgram; sock connect; sock send
+
+.SH DATA SEND METHOD 1
+.EX
+sock stream; sock connect; sock send.
+
+.SH SOCK RECV METHOD 0
+.EX
+sock dgram; sock bind; sock recv.
+
+.SH SOCK RECV METHOD 1
+.EX
+sock stream; sock bind; sock listen; sock accept; sock recv.
+
+.SH dgram VERSES stream
+.EX
+For dgram  a connection is not required.
+For stream a connection is     required.
+
+.SH SOCKET NODE IS NOT TACITLY DELETED
+.EX
+A server socket afore creation the old socket node please unlink.
+
+.SH WHAT IS A FILESYSTEM SOCKET NODE?
+.EX
+By the file system when hosted a pipe and socket are similar.
+With socket discrete bidirectional communication is possible.
+
+.SH SOCKET ADVANTAGES
+.EX
+In  ancillary data dubs can be passed.
+For argot     sock
+the ancillary data support
+is  not       yet  implemented.
+
+.SH DGRAM IS GOOD
+.EX
+With network sockets type dgram
+the  transmission is not  reliable and
+the  order        is not  preserved.
+For  AF_SOCKET       the  above problems do not exist.
+
+.SH THE C LANGUAGE PERSPECTIVE
+.EX
+From the   C language  perspective
+for  network sockets
+for  local   sockets
+the  same    functions are invoked.
+
+.SH THE ascript LANGUAGE PERSPECTIVE
+.EX
+By argot ipv4 hosted argot
+by argot ipv6 hosted argot
+network  sockets are created.
+Filesystem hosted sockets and network sockets seem different.
+
+.SH LEAKAGE MITIGATION
+.EX
+A socket when made when acquired the O_CLOEXEC flag is set.
+
+.SH THE ARGOT sock recv
+.EX
+The argot sock recv when invoked the var data is appended.
+By  var   sockrecv  the  byte amount is provided.
+One       attempt   only      is made.
+The byte  amount    received  is equal or less available capacity.
+
+.SH THE ARGOT sock send
+.EX
+The argot  sock send    when invoked
+the entire var  content is   sent.
+By  var    socksend     the  sent byte amount is provided.
+One        attempt      only is   made.
+
+.SH VIEW
+.EX
+All    data when not sent
+by  a  view the  remaining data
+can be selected.
+
+.SH VALUE CAVEAT
+.EX
+Using text a value when sending   any type int  var suffices.
+Using text a value when receiving a   type byte var suffices.
+Using a sub var such as *.bin *.den *.dex *.fix *.oct
+the   value native endian integer value be acquired.
+
+.SH THE ARGOT io log CAVEAT
+.EX
+An io log enhanced socket probably does not work.
+
+.SH THE ARGOT io sip CAVEAT
+.EX
+An io sip enhanced socket probably does not work.
+
+.SH DATA TRANSFER PROBABILITY
+.EX
+With file system sockets flawless data transmission is expected.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2020; by Kyle Sallee; argot   sock was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript dub
+man 5 ascript
+man 7 ascript
+man 7 unix
+\fR

@@ -1,0 +1,214 @@
+.TH "ascript io" 3
+
+.SH NAME
+.EX
+ascript io
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lllll.
+\fBargot	host	make	type	use\fR
+io log	byte	*.log	int4	buffered output
+io map	byte	*.map	int4	mapped   I/O
+io sip	byte	*.sip	int4	buffered input
+io seek	dub	*.seek	int8	dub      offset get set.
+
+\fBargot	target	origin		use\fR
+io load 	byte	byte		From node   to   var copy.
+io load 	byte	dub		From dub    to   var copy.
+io recv 	byte	dub		From socket to   var copy.
+io save 	byte	byte		To   node   from var copy.
+io save 	dub	byte		To   node   from var copy.
+io seek end	dub			dub  offset          set.
+io send 	dub	byte		To   socket data     send.
+
+term no canon	dub			Terminal by byte input enable.
+term no echo	dub			Terminal          echo disable.
+
+\fBargot	direct			use\fR
+err now	var...			To dub 2   data send.
+out	var...			To var out data append.
+out now	var...			To dub 1   data send.
+.TE
+.TA
+.ta T 8n
+
+.SH SKIPPERS
+.EX
+.TS
+llll.
+\fBargot\fR
+io load
+io save
+io seek
+io seek end
+term no canon
+term no echo
+.TE
+.ta T 8n
+
+.SH HOSTED VAR
+.EX
+.TS
+llll.
+\fBname	type	dub	use\fR
+err	log enhanced type byte	2	error    message output
+out	log enhanced type byte	1	regular  message output
+sip	sip enhanced type byte	0	buffered data    input
+.TE
+.TA
+.ta T 8n
+
+.SH TYPE BYTE ADDITIONAL OPERATOR
+.EX
+.in -8
+.TS
+box;
+lll.
+not	!	Sans delay;  write now.
+add add	++	In   the     var   space       if  available
+		from the sip dub   some  bytes are read and
+		to   the     var   the   bytes are appended.
+.TE
+.in
+.ta T 8n
+
+.SH ERR EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+target origin	err	`Goodbye world again.\\n`,+,!
+\fR
+.in
+
+.SH ERR EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+err now			`Goodbye world.\\n`
+\fR
+.in
+
+.SH OUT EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+target origin	out	`Hello world again.\\n`,+,!
+\fR
+.in
+
+.SH OUT EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+out now			`Hello world.\\n`
+\fR
+.in
+
+.SH SIP EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+out now			`Which color is pretty? `
+out now			`I also like `	sip
+\fR
+.in
+
+.SH VAR sip
+.EX
+dub 0 is used not dupped.
+
+.SH VAR out
+.EX
+dub 1 is used not dupped.
+
+.SH VAR err
+.EX
+dub 2 is used not dupped.
+
+.SH DELAYED ERRORS
+.EX
+The buffer until read or until wrote an error does not become.
+
+.SH ERRNO
+.EX
+The     buffer when flushed and error   when encountered
+in  the buffer metadata     as  success the  errno value is stored.
+
+.SH PARAMETERS
+.EX
+The  argot out
+The  argot out now
+the  argot err now
+when invoked   from direct parameters
+the  data is   acquired.
+
+.SH origin target
+.EX
+The var err data to append target and origin are used.
+The var out data to append target and origin are used.
+
+.SH VAR sip
+.EX
+The  var sip  content when copied space when available
+from dub 0    content is   acquired.
+A    blocking delay   is   possible.
+
+.SH VAR sip CAVEAT
+.EX
+The   var sip    while type byte compat
+afore comparison to  a type byte var data copy is recommended.
+The                    type byte var then can  be compared.
+
+.SH ARGOT add add
+.EX
+For  type  byte var when sip enhanced
+the  argot add add  when     invoked
+more data           is       acquired.
+
+.SH ASSIGNMENT
+.EX
+With type io log
+with type io map
+with type io sip
+the  dub  value when assigned a dup is acquired and
+in   the  host  var  metadata       is stored   and
+and  the  errno are  stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript    was created.
+In 2017; by Kyle Sallee; argot   io was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript ansi
+man 3 ascript io load
+man 3 ascript io log
+man 3 ascript io map
+man 3 ascript io save
+man 3 ascript io sip
+man 5 ascript
+man 7 ascript
+\fR

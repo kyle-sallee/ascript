@@ -1,0 +1,260 @@
+.TH "ascript soft req" 3
+
+.SH NAME
+.EX
+ascript soft req
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lll.
+\fBargot	make	use\fR
+soft req	*       	pathname assignment.
+	*.must.optional	required and all      optional
+	*.must.selected	required and selected optionals.
+	*.ready.load	ready    for download software project.
+	*.ready.moil	ready    for compile  software project.
+	*.topic.list	topic sorted software project list.
+	*.want.optional	required by list generate.
+	*.want.selected	required by list generate.
+.TE
+.ta T 8n
+
+.SH OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	The value is assigned.
+.TE
+
+.SH TERSE
+.EX
+By  argot soft req
+software  requirement lists
+are loaded
+are parsed.
+
+.SH CLASSIFY: DOWNLOADED
+.EX
+Afore compilation required sources must be downloaded.
+
+.SH CLASSIFY: INSTALLED
+.EX
+In the file system the compiled linked software and data is installed.
+
+.SH CLASSIFY: REQUIRED
+.EX
+Required software must already be installed.
+
+.SH CLASSIFY: OPTIONAL
+.EX
+Afore compilation
+the   optional  software if  installed
+the   compiling software can link and use.
+
+.SH CLASSIFY: SELECTED
+.EX
+The optional software is installed and will be used.
+
+.SH FLAT LISTS
+.EX
+A   flat list when selected
+the required  software and inherited software
+are always    included.
+
+.SH *.must.selected
+.EX
+To  *.must.selected the value `ascript` if set
+for *.must.selected the       `ascript`
+directly  required
+selected  required and
+inherited required software projects are listed.
+
+.SH *.want.selected
+.EX
+To  *.want.selected the value `libX11` if set
+for *.want.selected the       `libX11` requiring
+software projects are listed.
+A huge list becomes.
+
+.SH *.must.optional
+.EX
+When assigned the optionally required software projects list.
+
+.SH *.want.optional
+.EX
+To  *.want.optional the value `libX11` if set
+for *.want.optional the       `libX11` optional
+software projects are listed.
+A huge list becomes.
+
+.SH SOFTWARE PROJECT NAMES
+.EX
+By line feed software project names are separated.
+
+.SH PREPARATION
+.EX
+For optional for required for selected one dir each is required.
+For the file name  a software project name  is expected.
+For the file content software project names are expected.
+
+.SH LOADING
+.EX
+By  origin the address
+for many byte value 0 terminated dir pathnames is expected.
+
+.SH DIR ORDER
+.EX
+required/; optional/; selected/; lite/; plan/load/; plan/moil/
+
+.SH DIR PATHNAME MAX
+.EX
+20 x
+
+.SH VERNACULAR
+.EX
+plan/load/  is downloading planned.
+plan/moil/  is compilation planned.
+
+.SH OTHER DIR PATHNAMES
+.EX
+The  plan/moil/ aft  dirs contain  blocker files.
+As a blocker    file a    software project name when discovered
+from plan/moil/ the       software project is   not  selected.
+
+.SH VAR soft req  WITH ARGOT equal
+.EX
+The pathnames are         acquired and
+a   progeny   process is  created.
+By  progeny   process
+the dir       content is  acquired and
+the indexes           are generated.
+
+.SH VAR soft req WITH ARGOT query
+.EX
+The progeny process index completion is awaited.
+
+.SH SOFTWARE CATALOG
+.EX
+By  software catalog maintainers
+the required and
+the optional content
+is  maintained.
+
+.SH SOFTWARE SELECTION
+.EX
+By  system   administrators
+the optional software
+is  selected.
+
+.SH STALE SELECTIONS MIGHT EXIST
+.EX
+The previously optional software
+can become required
+can become unrelated.
+
+.SH AUTO PRUNE
+.EX
+A   selected yet
+not optional software project name
+as  selected is       not     regarded.
+
+.SH EXAMPLE to be written
+.EX
+.ta T 8n
+.in -8
+\fB
+\fR
+.in
+
+.SH plan/moil/ plan/down/
+.EX
+In plan dir the software project named files are empty.
+
+.SH *.ready.load
+.EX
+When accessed from plan/down/
+a    software project name  is  selected.
+The                   order is  applied.
+
+.SH *.ready.moil
+.EX
+When accessed from plan/moil/
+a    software project name  is  selected.
+The  blockers and     order are applied.
+
+.SH LITE CONTENT
+.EX
+For  download and moil lite content is preferred.
+Thus queues reduce faster.
+
+.SH LIGHT DIR
+.EX
+In lite/ software project named empty files exist.
+
+.SH WHAT IS LITE?
+.EX
+The GNU   C Library
+the GNU   C Compiler Collection are NOT lite!
+The ascript software project    is      lite!
+
+.SH CONCURRENT COMPILATION
+.EX
+Unlike the ascript      software project
+on     16  cores   most software projects
+will   not concurrently compile.
+
+.SH .topic.list
+.EX
+The software projects
+by  requirements
+by  optionals top sorted list is provided.
+
+.SH LOADING CAVEAT
+.EX
+The soft req var once only can be loaded.
+The required/ content
+the optional/ content
+the selected/ content
+if  changed   a
+new soft req var is required.
+
+.SH RECURSIVE CAVEAT
+.EX
+The software  project        gcc should require itself,
+but recursive requirements   are not    allowed.
+To  dub 2     error messages are sent.
+
+.SH 64-bit 32-bit
+.EX
+In the same          realFS
+32-bit software and
+64-bit software when installed
+extra  compile       problems become!
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2019; by Kyle Sallee; argot   soft req was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript soft req
+man 3 ascript top
+man 5 ascript
+man 7 ascript
+\fR

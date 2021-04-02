@@ -1,0 +1,115 @@
+.TH "ascript cap" 3
+.SH NAME
+.EX
+ascript cap
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH ARGOT CAP MADE VAR
+.EX
+.TS
+lll.
+\fBargot	from	task\fR
+cap ambient add	direct	To   set capability add    and skip.
+cap ambient nay	direct	In   set capability        or  skip.
+cap ambient sub	direct	From set capability remove and skip
+cap ambient yay	direct	In   set capability        and skip.
+
+cap effect add	direct	To   set capability add    and skip.
+cap effect nay	direct	In   set capability        or  skip.
+cap effect sub	direct	From set capability remove and skip.
+cap effect yay	direct	In   set capability        and skip.
+
+cap inherit add	direct	To   set capability add    and skip.
+cap inherit nay	direct	In   set capability        or  skip.
+cap inherit sub	direct	From set capability remove and skip.
+cap inherit yay	direct	In   set capability        and skip.
+
+cap permit add	direct	To   set capability add    and skip.
+cap permit nay	direct	In   set capability        or  skip.
+cap permit sub	direct	From set capability remove and skip.
+cap permit yay	direct	In   set capability        and skip.
+.TE
+
+.TS
+ll.
+\fBvar	use\fR
+cap.pid			The PID.
+
+CAP_AUDIT_CONTROL	Capability constant value
+CAP_AUDIT_READ
+CAP_AUDIT_WRITE
+CAP_BLOCK_SUSPEND
+CAP_CHOWN
+CAP_DAC_OVERRIDE
+CAP_DAC_READ_SEARCH
+CAP_FOWNER
+CAP_FSETID
+CAP_IPC_LOCK
+CAP_IPC_OWNER
+CAP_KILL
+CAP_LEASE
+CAP_LINUX_IMMUTABLE
+CAP_MAC_ADMIN
+CAP_MAC_OVERRIDE
+CAP_MKNOD
+CAP_NET_ADMIN
+CAP_NET_BIND_SERVICE
+CAP_NET_BROADCAST
+CAP_NET_RAW
+CAP_SETGID
+CAP_SETFCAP
+CAP_SETPCAP
+CAP_SETUID
+CAP_SYS_ADMIN
+CAP_SYS_BOOT
+CAP_SYS_CHROOT
+CAP_SYS_MODULE
+CAP_SYS_NICE
+CAP_SYS_PACCT
+CAP_SYS_PTRACE
+CAP_SYS_RAWIO
+CAP_SYS_RESOURCE
+CAP_SYS_TIME
+CAP_SYS_TTY_CONFIG
+CAP_SYSLOG
+CAP_WAKE_ALARM
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+cap
+cap effect sub	SYS_ADMIN
+go	'fail'
+\fR
+.in
+
+.SH CAVEAT
+.EX
+Because Tomoyo    is  superior
+the     argot cap was never checked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2018; by Kyle Sallee; cap     was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 ascript
+man 7 capabilities
+\fR

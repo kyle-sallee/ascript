@@ -1,0 +1,115 @@
+.TH "ascript power" 3
+
+.SH NAME
+.EX
+ascript power
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lll.
+\fB
+argot		task\fR
+power halt		Shutdown.
+power reboot		Reboot.
+power suspend disk		Deep  sleep.
+power suspend ram		Short sleep.
+
+\fBargot	from	parameter\fR
+power resume	target	`/dev/swap_block_device_node_name`
+power image size	target	In bytes
+.TE
+.ta T 8n
+.in
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+power
+power reboot
+\fR
+.in
+
+.SH SKIP
+.EX
+The  argot power halt
+the  argot power reboot
+the  argot power resume
+when successful
+the  entire      following script is skipped.
+
+.SH UNCERTAIN
+.EX
+The argot power suspend disk
+the argot power suspend ram
+the success can not     be ascertained.
+
+.SH ORDER
+.EX
+The  sysfs                 aft   mount
+the  modules               aft   coldplug
+the  encrypted device key  aft   activation
+the  filesystems           afore checking
+                           afore mounting
+the  swap                  afore activation
+from swap the suspend image
+can  be       resumed.
+
+.SH FROM SWAP FILE RESUME
+.EX
+From swap  file resume      is not impossible, but
+by   argot power            is not supported.
+
+.SH SWAP
+.EX
+A    swap  file             is not encrypted.
+The  swap  partition should be     encrypted.
+
+.SH CAVEAT
+.EX
+While suspended
+the   attached  hardware should not be changed.
+Even  USB devices        must   not be unplugged.
+
+.SH SWAP
+.EX
+For    the swap system    1 gigabyte should suffice.
+Afore  suspend  unessential processes
+should be       terminated.
+
+.SH GUI DISPLAY CAVEAT
+.EX
+Afore suspend    the graphics mode is not saved.
+Afore suspend to a   text console please change.
+Aft   suspend to the GUI          please resume.
+
+.SH MEMORY CAVEAT
+.EX
+For the image size no more than half installed RAM is possible.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2018; by Kyle Sallee; power   was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+less /usr/src/linux/Documentation/power/interface.txt
+less /usr/src/linux/Documentation/power/swsusp.txt
+man 1 ascript
+man 3 ascript power
+man 5 ascript
+man 7 ascript
+\fR

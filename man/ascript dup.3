@@ -1,0 +1,126 @@
+.TH "ascript dup" 3
+
+.SH NAME
+.EX
+ascript dup
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	make		task\fR
+dup	*.dup		For dub dup request sub var make.
+
+\fBargot	target	origin	task\fR
+
+dup above	*.dup	value	At or above the value the dup acquire.
+dup exact	*.dup	value	At          the value the dup acquire.
+
+dup end late	*.dup		The opcode ret when executed
+			The dup    is       closed/released.
+dup end 	*.dup		The dup    is       closed/released.
+
+dup on exe copy	*.dup		From host the O_CLOEXEC flag is copied.
+dup on exe give	*.dup		The           O_CLOEXEC flag is unset.
+dup on exe keep	*.dup		The           O_CLOEXEC flag is   set.
+
+dup save	*.dub		The opcode ret until executed
+        	*.dup		the dub reference and flags
+        			are saved.
+.TE
+
+.SH HOSTED VAR
+.EX
+.TS
+llll.
+\fBvar	compat	default	use
+\fR
+dup.above	int	100 x	For dup save the dup is >= dup.above.
+.TE
+.ta T 8n
+
+.SH WHEN SUCCESSFUL SKIP
+.EX
+dup above
+dup exact
+
+.SH FAILURE
+.EX
+The errno value is set.
+
+.SH HOST VAR
+.EX
+A type dub while ideal a type int 4 compat suffices.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+# Var A's existence is postulated.
+target		A.dub,		dup
+target origin	A.dub.dup	dup.above
+dup above,	go		'fail'
+dup on exe keep
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+# Var A's existence is postulated.
+target		A.dub,		dup
+target origin	A.dub.dup	1 d
+dup exact,	go		'fail'
+dup on exe give
+target		A.dub
+dub end
+\fR
+.in
+
+.SH WHAT IS DUP?
+.EX
+With same offset
+with same reference
+a          different dub number is acquired.
+
+.SH TRADITION
+.EX
+On dub 0 the process  inputs.
+On dub 1 the process outputs.
+On dub 2 the process errputs.
+
+.SH dub 100 x
+.EX
+The 100 x reference when changed argot loading fails.
+
+.SH VAR RELEASE
+.EX
+The host var   when released
+the sub  var   is   released.
+The dup  value when above 2 is tacitly closed.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2018; by Kyle Sallee; argot   dup was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript dub
+man 5 ascript
+man 7 ascript
+\fR

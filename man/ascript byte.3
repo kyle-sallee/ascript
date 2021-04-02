@@ -1,0 +1,286 @@
+.TH "ascript byte" 3
+.SH NAME
+.EX
+ascript byte
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot   	make		task\fR
+byte    	*		Type byte var make.
+byte huge	*
+byte io	*
+byte page	*
+byte size	*
+
+\fBargot	target	origin	task\fR
+byte clear	byte		The length to 0 set.
+byte have	byte	byte	In  target and  skip.
+byte have head	byte	byte	At  target head compare.
+byte have tail	byte	byte	At  target tail compare.
+byte have word	byte	byte	In  target and  skip.
+
+byte lack	byte	byte	In  target or   skip.
+byte lack head	byte	byte	At  target head compare.
+byte lack tail	byte	byte	At  target tail compare.
+byte lack word	byte	byte	In  target or   skip.
+
+byte line	byte	byte	Content and line feed append.
+byte string	byte	byte	Content and byte 0    append.
+
+\fBargot	target		task\fR
+0toa	byte		Strings to line    convert.
+ato0	byte		Lines   to strings convert.
+.TE
+.ta T 8n
+
+.SH TO TARGET FROM ORIGIN DATA APPEND OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	from var
+and	&	from var sans target capacity increase
+at	@	from dub
+at	@	from pathname
+.TE
+.in
+
+.SH TO TARGET FROM DIRECT DATA APPEND OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+set		from many var
+.TE
+.in
+
+.SH TO TARGET FROM ORIGIN DATA ASSIGN OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	from var
+.TE
+.in
+
+.SH TARGET ORIGIN DATA COMPARISON OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal equal	==	When         equal skip.
+less    	<	When less          skip.
+less  equal	<=	When less or equal skip.
+more    	>	When more          skip.
+more  equal	>=	When more or equal skip.
+not   equal	!=	When not     equal skip.
+.TE
+.in
+
+.SH FROM TARGET FINAL BYTE REMOVE OPERATOR
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+ll.
+sub sub	--
+.TE
+.in
+
+.SH STRING CAVEAT
+.EX
+All pathnames are strings.
+Strings are not tacitly created.
+By  the parser `\\0` to byte value 0 is translated.
+
+.SH REMOVAL
+.EX
+A byte sequence for discovery and removal
+a type trim     var suffices.
+
+.SH INSERTION
+.EX
+Into a type byte var data insertion   is not supported.
+By   a type view var data overwriting is     possible.
+
+.SH DATA ACQUISITION AND COMPOSITION
+.EX
+with type part  var
+with type pcre2 var
+With type view  var desired content can be selected.
+In   a    new   var the     content can be composed.
+
+.SH DATA SAVE
+.EX
+To   a dub
+to   a pathname
+from a type byte var
+the  data to send   the argot io save can be invoked.
+
+.SH DATA LOAD
+.EX
+From a dub
+from a pathname
+to   a type bye var
+the  data to append the argot io load can be invoked.
+
+.SH OPERATOR ARGOT AT
+.EX
+By       origin  a  pathname   or  a dub can be referenced.
+From the origin  to the target all data      is appended.
+In   the                target metadata
+the      success is stored.
+
+.SH LOG ENHANCED
+.EX
+A    type byte    var    when log    enhanced
+the  data afore   assignment  afore  appending
+the  available    space           is checked.
+When insufficient existing data   is flushed.
+If   required     more     memory is mapped.
+
+.SH SIP ENHANCED
+.EX
+A    type byte    var    when sip    enhanced
+the  data afore   access
+from a    dub     more   data     is acquired.
+
+.SH OPERATOR AND
+.EX
+The   argot     operand and when invoked
+sans  available size    checking data can be  appended.
+While faster    Linux   page     faults   are slow.
+
+.SH ARGOT byte clear
+.EX
+To 0 the text length is set.
+
+.SH ARGOT byte clear CAVEAT
+.EX
+.ta T 8n
+.in -8
+\fB
+target origin	A	``,=
+byte clear
+\fR
+.in
+The argot equal      invocation and
+the argot byte clear invocation
+entirely  differ!
+
+.SH ARGOT byte line
+.EX
+The argot byte line when invoked
+to  the   target address var data
+the       origin address var data and
+a   line  feed   are     appended.
+
+.SH ARGOT byte string
+.EX
+The argot byte line when invoked
+to  the   target address var data
+the       origin address var data and byte value 0 are appended.
+
+.SH TRIM
+.EX
+Type byte content to trim the argot trim is useful.
+
+.SH UTF-8 TRANSLITERATION
+.EX
+For UTF-8 transliteration the argot lens is useful.
+
+.SH LINE TO STRING CONVERSION
+.EX
+The argot ato0 invocation suffices.
+
+.SH STRING TO LINE CONVERSION
+.EX
+The argot 0toa invocation suffices.
+
+.SH TYPE BYTE VAR INITIAL CAPACITY
+.EX
+For argot byte       made var 20 x    bytes  exist.
+For argot byte page  made var  1      page   exists.
+For argot byte io    made var 20 x    pages  exist.
+For argot byte huge  made var  1 huge page   exists.
+For argot byte size  made var as a    direct parameter
+the       byte size           is             specified.
+
+.SH TACIT EXPANSION
+.EX
+The argot add
+the argot equal when invoked as required
+the capacity    can  tacitly expand.
+
+.SH THE ARGOT byte have
+.SH THE ARGOT byte lack
+.EX
+A   case      sensitive search is   performed.
+The expected  outcome          when attained
+the following argot            is   skipped.
+
+.SH WORD TERMINUS
+.EX
+By  line feed
+by  space
+by  tab  a word terminus is recognized.
+
+.SH THE ARGOT byte have word
+.SH THE ARGOT byte lack word
+.EX
+The expected search   is performed.
+At  start    and
+at  end
+the word     terminus is required.
+
+.SH SIZE CAVEAT
+.EX
+For a     type byte var    the      initial capacity is 32 bytes
+and when  required  only   tacitly  expands.
+For a     file      output buffer   10240   bytes    is ideal.
+32  bytes if   used by     frequent system  calls
+the performance     tanks.
+
+The type  byte var text capacity by
+the argot byte size
+the argot var  size
+can be    set.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   byte was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript io
+man 3 ascript part
+man 3 ascript pcre2
+man 3 ascript sort
+man 3 ascript trim
+man 3 ascript view
+man 5 ascript
+man 7 ascript
+\fR

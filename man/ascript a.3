@@ -1,0 +1,169 @@
+.TH "ascript a" 3
+.SH NAME
+.EX
+ascript a
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH HOSTED ARGOT HOSTS
+.EX
+.in -8
+.TS
+l.
+keep cite
+re
+.TE
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+ll.
+\fBargot	task\fR
+
+origin	Parameter to var address origin set.
+target	Parameter to var address target set.
+
+origin none	NULL address set.
+target none	NULL address set.
+
+origin push	The  opcode ret when executed restore.
+target push	The  opcode ret when executed restore.
+
+name	Parameter to var reference target set.
+
+exist	Target name to var translate.  Pass and skip.
+resolve	Target name to var translate.  Fail and segfault.
+
+scope\
+	The target var is   saved.
+	The opcode ret when executed
+	the saved  var is   recycled.
+scope same\
+	The origin var when recycled
+	the target var is   recycled.
+
+target host	For target var the host select.
+origin host	For origin var the host select.
+
+target copy	By origin the target address copy.
+origin copy	By target the origin address copy.
+target origin swap	Addresses exchange.
+
+to origin	To origin the target address is copied.
+to target	To target the origin address is copied.
+
+yay origin	Not null and skip.
+nay origin	Is  null and skip.
+yay target	Not null and skip.
+nay target	is  null and skip.
+
+skip	Next   argot skip.
+call	Opcode call  execute.
+	Next   argot interpret.
+next	Next   argot interpret.
+ret	Opcode ret   execute.
+
+lax	The next argot unoptimize.
+
+success	The target var success byte is 0 and skip.
+failure	The target var success byte is 0 or  skip.
+
+success set	The target var success byte to 0 set.
+failure set	The target var success byte to 1 set.
+
+chdir	As  a        direct     parameter
+	the pathname or
+	the pathname containing byte compat var is required.
+	The current  dir                        is changed.
+	Or  the      errno      value           is set.
+.TE
+
+.TS
+lll.
+\fBargot	direct	task\fR
+
+go	"far"	The label reach.
+go	'near'	The label reach.
+
+pin	"far"	The label visit.
+pin	'near'	The label visit.
+
+loop	var	On ret repeat.
+
+zygote parse	pathname	The zygote parse     and skip.
+zygote parse pin	pathname	The zygote parse pin and skip.
+.TE
+
+.TS
+l.
+\fBHOSTED OPERATOR ARGOT\fR
+add
+add add
+and
+at
+div
+equal
+equal equal
+less
+less equal
+mod
+more
+more equal
+mul
+not
+not equal
+or
+query
+set
+sub
+sub sub
+xor
+.TE
+.in
+.ta T 8n
+
+.SH OPERATOR ARGOT
+.EX
+An  operator argot when invoked
+the target   var   type appropriate opcode sequence executes.
+
+.SH UNCERTAIN VAR ADDRESS DISCOVERY
+.EX
+A   var   name      when surmised
+the var   existence when uncertain
+the argot exist     when invoked
+the var   address   is   attained and
+the next  argot     is   skipped.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript   was created.
+In 2017; by Kyle Sallee; argot   a was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 3 ascript go
+man 3 ascript keep cite
+man 3 ascript lax
+man 3 ascript loop
+man 3 ascript pin
+man 3 ascript re
+man 3 ascript scope
+man 3 ascript success
+man 3 ascript trek
+man 3 ascript yay
+man 3 ascript zygote parse
+man 5 ascript
+man 5 ascript tutorial 1
+man 7 ascript
+\fR

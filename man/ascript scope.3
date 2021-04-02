@@ -1,0 +1,73 @@
+.TH "ascript scope" 3
+
+.SH NAME
+.EX
+ascript scope
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+ll.
+\fB
+argot	task
+\fR
+scope\
+	The target var is   saved.
+	The opcode ret when executed
+	the saved  var is   recycled.
+scope same\
+	The origin var when recycled
+	the target var is   recycled.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.in -8
+\fB
+a
+int
+name		X,	int 4,	scope
+name		Y,	int 4,	scope
+name		Z,	int 4,	scope
+\&...
+ret,	X Y Z are unmade.
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.in -8
+\fB
+a
+int
+name		X,	int 4,	scope,		target copy
+name		Y,	int 4,	scope same
+name		Z,	int 4,	scope same
+\&...
+ret,	X Y Z are unmade.
+\fR
+.in
+
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2018; by Kyle Sallee; argot   scope was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,353 @@
+.TH "ascript pcre2" 3
+.SH NAME
+.EX
+ascript pcre2
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+pcre2           		Type pcre2 var with sub var make.
+pcre2 flag compile	pcre2	From direct parameters the options set.
+pcre2 flag jit  	pcre2	From direct parameters the options set.
+pcre2 flag match	pcre2	From direct parameters the options set.
+
+pcre2 compile   	pcre2	The regular expression compile and skip
+pcre2 input     	pcre2	For *.input other var use.
+pcre2 line match	pcre2	To  *.output matched lines append.
+pcre2 line differ	pcre2	To  *.output other   lines append.
+pcre2 match     	pcre2	Sub match var update and skip.
+pcre2 next string	pcre2	To  next string offset adjust and skip
+.TE
+
+.SH SKIPPERS
+.EX
+.TS
+ll.
+\fBargot	when\fR
+pcre2 compile	Sans error             and skip.
+pcre2 match	Sans error             and skip.
+pcre2 next string	More input data exists and skip.
+.TE
+
+.SH VAR MADE
+.EX
+.in -8
+.TS
+lll.
+\fBsub var	type	use\fR
+*       	pcre2	sub      var        host.
+*.errno 	den4	error    number     provide.
+*.errtext	byte	error    message    provide.
+*.rx    	byte	regular  expression contain.
+*.input 	byte	input    text       contain.
+*.from  	den4	input    byte       offset   contain.
+*.output	byte	selected lines      provide.
+*.refer 	den4	match    count      integer  provide.
+*.refer 0	byte	entire   expression reference.
+ ...
+*.refer 255	byte	Sub      expression reference.
+.TE
+.in
+.ta T 8n
+
+.SH REGULAR EXPRESSION COMPILE OPTIONS
+.EX
+.in -8
+.TS
+box;
+ll.
+\fBFLAG	DESCRIPTION\fR
+ALLOW_EMPTY_CLASS\
+	[] does not match any characters
+ALT_BSUX\
+	Alternative handling of \\u, \\U, and \\x
+ALT_CIRCUMFLEX\
+	Alternative handling of ^ in multiline mode
+ALT_VERBNAMES\
+	verb names can contain closing parenthesis
+ANCHORED\
+	At the first position only match
+CASELESS\
+	Do caseless matching
+DOLLAR_ENDONLY\
+	$ matches string end and not line end
+DOTALL\
+	. matches anything including NL
+DUPNAMES\
+	Allow duplicate names for subpatterns
+EXTENDED\
+	Ignore white space and # comments
+FIRSTLINE\
+	Force matching to be before newline
+MATCH_UNSET_BACKREF\
+	Match unset back references
+MULTILINE\
+	^ and $ match newlines within data
+NEVER_BACKSLASH_C\
+	Lock out the use of \\C in patterns
+NEVER_UCP\
+	Lock out UCP, e.g. via (*UCP)
+NEVER_UTF\
+	Lock out UTF, e.g. via (*UTF)
+NO_AUTO_CAPTURE\
+	Disable numbered capturing parentheses
+	Named capturing remains available.
+
+NO_AUTO_POSSESS\
+	Disable auto-possessification
+NO_DOTSTAR_ANCHOR\
+	Disable automatic anchoring for .*
+NO_START_OPTIMIZE\
+	Disable match-time start optimizations
+NO_UTF_CHECK\
+	Do not check the pattern for UTF validity
+UCP\
+	Use Unicode properties for \\d, \\w, etc.
+UNGREEDY\
+	Invert greediness of quantifiers
+UTF\
+	Treat pattern and subjects as UTF strings
+.TE
+.in
+
+For UTF for UCP
+by  the pcre2 library configuration
+Unicode support
+must be included.
+
+The following compile options are unavailable:
+AUTO_CALLOUT
+
+.SH JIT COMPILE OPTIONS
+.EX
+.in -8
+.TS
+box;
+ll.
+\fBvar	task\fR
+JIT_COMPLETE	For full         matching compile code.
+JIT_PARTIAL_SOFT	For      partial matching compile code.
+JIT_PARTIAL_HARD	For hard partial matching compile code.
+.TE
+.in
+
+.SH MATCH OPTIONS
+.EX
+.in -8
+.TS
+box;
+ll.
+\fBvar	use\fR
+ANCHORED\
+	At   the   first position only match
+NO_JIT\
+	Just in    time  compilation   omit
+NOTBOL\
+	Line begin is not the subject string
+NOTEOL\
+	Line end   is not the subject string
+NOTEMPTY\
+	An empty string is not a valid match
+NOTEMPTY_ATSTART\
+	At subject start
+	an empty string is not a valid match
+
+NO_UTF_CHECK\
+	UTF validity is not checked
+
+PARTIAL_SOFT\
+	Partial matches only when found
+	PCRE2_ERROR_PARTIAL is returned
+
+PARTIAL_HARD\
+	Before full match
+	a partial match if found
+	PCRE2_ERROR_PARTIAL is returned
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+name		R0,	pcre2,	scope
+name		R1,	pcre2,	scope
+name		R2,	pcre2,	scope
+target origin	R1	R0.output,@
+target origin	R2	R1.output,@
+\fR
+.in
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name	A,	pcre2,	scope
+pcre2 flag compile		`MULTILINE`
+target origin	A.input		`A dog is an animal.\\nA doggy is a mammal.\\n`,=
+target origin	A.rx		`^.*(d.g).*(...mal.)$`,=
+target host
+pcre2 compile,	go	'fail'
+pcre2 match,	go	'fail',	pin	'display'
+pcre2 match,	go	'fail',	pin	'display',	ret
+
+\&'fail',	err now		`failed: `	A.errtext	`\\n`,	ret
+
+\&'display'
+err now		`A.refer=`	A.refer		`\\n`	\\
+		`A.refer 0=`	A.refer 0	`\\n`	\\
+		`A.refer 1=`	A.refer 1	`\\n`	\\
+		`A.refer 2=`	A.refer 2	`\\n\\n`,	ret
+\fR
+.in
+
+.SH EXAMPLE OUTPUT
+.EX
+A.refer=3
+A.refer 0=A dog is an animal.
+A.refer 1=dog
+A.refer 2=animal.
+
+A.refer=3
+A.refer 0=A doggy is a mammal.
+A.refer 1=dog
+A.refer 2=mammal.
+
+.SH TERSE
+.EX
+To the pcre2 library the regular expression parsing is delegated.
+The    pcre2 library and
+the    pcre2 argot   differ!
+
+.SH SUB MATCH
+.EX
+A       regular expression when performed
+the     *.refer 0
+through *.refer 255
+as      required
+are     created.
+
+.SH NAMED SUB MATCH
+.EX
+For   (?<name>...)
+For   (?'name'...)
+For   (?P<name>...)
+named reference var are created.
+
+.SH MATCH REFERENCE
+.EX
+The numeric sub match references
+the named   sub match references overlap.
+
+.SH ARGOT pcre2 flag compile
+.SH ARGOT pcre2 flag jit
+.SH ARGOT pcre2 flag match
+.EX
+From target the type pcre2 var address is acquired.
+From one    or  more direct    parameters
+the  flag   names    are       acquired.
+
+.SH PCRE2 ERRORS
+.EX
+Different codes    and
+different messages by pcre2 are used.
+The     C library
+error     numbers  and
+error     messages differ.
+
+.SH JIT?
+.EX
+JIT   use is  optional.
+Afore use a   regular expression must be compiled.
+For   JIT     compilation more opcodes must execute.
+The   regular expression  when applied less opcodes might execute.
+
+.SH *.output
+.EX
+For line match
+for line differ
+to  *.output
+the selected lines are appended.
+are       appended.
+
+.SH THE ARGOT pcre2 input
+.EX
+To      *.input a large byte    copy to mitigate
+another type byte var   address can  be associated.
+
+.SH THE ARGOT pcre2 line differ
+.SH THE ARGOT pcre2 line match
+.EX
+For argot pcre2 line differ
+for argot pcre2 line match
+the argot pcre2 compile afore invocation
+the flag  MULTILINE           invocation is recommended.
+The flag  DOTALL        flag  should     be excluded.
+When      properly configured
+in  the   regular  expression the ^ and $ can be used.
+
+.SH SANS FLAG MULTILINE
+.EX
+By  ^ the .input start is matched
+By  $ the .input end   is matched.
+
+.SH WITH FLAG DOTALL
+.EX
+By  .* from many lines the data can be matched.
+
+.SH .from START OFFSET
+.EX
+From *.input more than once a match can be attempted.
+The  *.from  to   0                 can be set.
+
+.SH CONSECUTIVE PATTERN MATCHING
+.EX
+The current pattern aft    position
+the next    pattern search begins.
+
+.SH STRING MATCHING
+.EX
+By  libpcre2 the byte value 0 is not crossed.
+The argot pcre2 next string when invoked
+to  the   offset beyond byte value 0
+the start offset advances.
+
+.SH INIT SCRIPT USE
+.SH TERM SCRIPT USE
+.EX
+On  the InitRAMFS in /lib64 or in /lib
+the libpcre2 library when not included
+the dir /+/boot/usr/lib   to /usr/lib   afore binding
+the dir /+/boot/usr/lib64 to /usr/lib64 afore binding
+the argot pcre2 should not be invoked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2017; by Kyle Sallee; argot   pcre2 was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 pcre2api
+man 3 pcre2_compile
+man 3 pcre2pattern
+man 5 ascript
+man 7 ascript
+man 7 regex
+\fR

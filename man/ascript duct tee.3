@@ -1,0 +1,61 @@
+.TH "ascript duct tee" 3
+
+.SH NAME
+.EX
+ascript duct tee
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	type	task\fR
+
+duct tee	byte	To pathname the data is sent.
+duct tee	dub	To dub      the data is sent.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct mem
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret,					# dub 1 to dub 0 changed and rewound.
+target		`/tmp/dog_names.txt`
+duct tee
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH ARGOT duct tee ERRORS
+.EX
+An error when encountered the errno value is set.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2020; by Kyle Sallee; argot   duct tee was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript duct
+man 5 ascript
+man 7 ascript
+\fR

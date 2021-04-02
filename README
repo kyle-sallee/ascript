@@ -1,0 +1,234 @@
+README  by Kyle Sallee
+2017-05-04 11:00 Thu written
+2020-08-03 09:30 Tue revised
+2021-03-31 15:52 Wed revised
+
+In    file man/ascript.7 the license is provided.
+Afore compilation the license compliance is required.
+
+In the freedom remaining   ascript  remaining if unpalatable
+do not use;    some other  computer language  use.
+The    ascript performance is often excessively fast, anyway.
+
+Ascript is   faster than what I can  typically produce with asm,
+faster  than any  C program   I have run.
+But     performance if not desired easier computer languages exist.
+
+For compilation the following installed software is required.
+
+For the   compiler gcc               version 6.3.0  suffices.
+For the C library  glibc             version 2.24   suffices.
+For the   regex    library pcre2     version 10.23  suffices.
+For the   program  make GNU make     version 4.1    suffices.
+For the   linker        GNU binutils version 2.27   suffices.
+For the   kernel   Linux             version 4.4.45 suffices.
+
+Newer versions also also should suffice, but are not tested.
+
+pcre2 and Linux-PAM are optional.
+If   not installed the optional  argot which require pcre2 and Linux-PAM
+will not compile,  and a compile error will  NOT become.
+
+From     directory argot.optional by sub directory removal
+optional argot     compilation    is     omitted.
+
+The  make file fragments
+from directory make.optional
+to   directory make.enable
+by   copying   additional ability can be enabled.
+However,       files are contrary.    Be careful.
+
+By  the    compiler
+the opcode call rather than emit
+the opcode jmp              emission if unable
+ascript
+might     not   work
+might     stack underflow.
+In  testing this problem was never encountered!
+
+The tail jump ability
+the tail call ability
+the function  jump ability
+or  whatever  named
+is  required.
+
+A   statically  linked ascript while not impossible
+is  not easily  accomplished.
+A   performance boon   would not become.
+The performance        would     tank.
+
+For ascript argot loading dynamic linking is required.
+
+ascript is NOT POSIX compliant.
+ascript is           faster!
+
+The C library provided function malloc does NOT suffice.
+The   kernel  provided syscall  mmap   is       required!
+
+The  MAC, mandatory  access control,
+when not  properly   configured
+by   MAC;
+memory    descriptor creation can be blocked.
+In   file man/ascript\ tomoyo.3
+the  provided rules suffice.
+
+For 64 byte cache lines
+for 64-bit  CPUs  ascript was honed.
+
+On  32-bit  CPUs compilation and execution while possible
+reduced     performance results.
+
+For -O3 gcc compiler optimization and close approximations
+the ascript source   code was honed.
+
+If   it compiles do not     change  the  compile optimizations,
+because faster   or smaller ascript will NOT     result.
+
+From ascript and argot files can be stripped and will still work.
+
+To   other kernels ascript  could be ported, however
+upon Linux kernel  provided syscalls ascript heavily relies.
+
+In file man/ascript.7 the license is provided.
+
+Afore compilation
+the   directory make.optional/    content
+the   directory ascript.optional/ content should  be read.
+
+For    debugging, stripping, architecture selection and more
+make   file       fragments  and
+source file       fragments
+are    used.
+The    compilation method is not fancy, is plenty fast, and on nearly
+any Linux kernel based POSIX the compilation should be possible.
+
+
+By      the       command   make      install
+ascript is        installed.
+As      make      parameters
+the     variable  DESTDIR
+the     variable  SUFFIX
+the     variable  bindir
+the     variable  libdir
+the     variable  mandir
+can     be        provided.
+
+For     variable  DESTDIR a         default is not provided.
+For     variable  SUFFIX  a         default is not provided.
+For     variable  bindir  /bin$(SUFFIX)     is     default
+For     variable  libdir  /lib$(SUFFIX)     is     default.
+For     variable  mandir  /usr/share/man    is     default.
+
+During  make      install
+to      bindir
+to      libdir
+to      mandir
+the     DESTDIR
+is      prepended.
+
+The     file ascript/ascript is installed.
+The     dir  lib             is installed.
+The     dir  man             is installed.
+
+Aft     make     all
+afore   make install
+the     environment variable LD_LIBRARY_PATH
+to      $PWD/lib
+if      set
+by      ascript/ascript
+scripts can be run.
+For     the script first line
+rather    than
+#!ascript/ascript
+#!/bin/ascript
+if        present
+with      the      following command
+a         script
+can       be       run.   
+./ascript/ascript  script_name         parameters
+
+The  directory head
+the  directory lib.static
+must NOT       be installed.
+
+For installation from
+the lib/ascript.2020.01/ dir
+to /lib/ascript.2020.01/
+to /lib64/ascript.2020.01/
+or /lib32/ascript.2020.01/ would be moved.
+The correct choice depends upon the architecture and POSIX.
+
+An  argot file when loading
+a   similarly named ELF library file load is attempted.
+For different ascript version in different library directories
+the ascript argot exist.
+Old and newer ascript can be concurrently installed,
+but probably  should  not be.
+
+Argot and ELF library provided functions differ!
+By ascript argot can be used, but nothing else which loads them can use them.
+For code fragments the final opcode is often jmp and not ret!
+
+Ascript argot ELF are     PIC compatible.
+Ascript       ELF is  NOT PIE compatible.
+The POSIX compilation policy if different if forced ascript will not work!
+
+The  ascript ELF
+aft  compilation
+by   ascript argot
+the  Gz      address
+must be      known
+will be      known
+and  if      PIE
+will         segfault!
+
+As  a complimentary gift my latest 3 books also are included!
+Wow, yeah, yes, 3 free books!  But they will not be found in a library!
+
+"Delta Paradigm," one of my earlier books was misplaced, sorry.
+
+"Freedom Paydom" "The Great Creator Emulators" and "A DIVERT"
+are the titles.
+
+They       are not religious or  political,     because
+to enslave persons religion  and politics   are inflicted.
+But the    freedom idea from 3   distinct       view points is described.
+
+For  one   book only "A DIVERT" ogg audio files are provided.
+Thus sans  reading   by listen  can             be  enjoyed.
+
+Why I   always  SANS     payment demand totally  FREEly  give      my artwork
+if      curious then the books   explain.
+In  the paydom  although born    my     from     freedom proclivities persisted.
+Afore   where I lived    every   person gives and every  person       receives.
+To  the freedom to   go  if      desired      the books  will help.
+
+On Earth   manifest     destiny if completed
+on Earth   the          freedom no longer exists.
+Frankly    from    what was seen,  disappointment was solicited.
+
+But        playing with computers  on   Earth     was fun, thanks.
+To all who played       cordially  with me                 thanks.
+
+As    stupid or unstable or if any person again about me carelessly asserts
+afore foolishly posturing oneself, think first.
+I accomplished Sorcerer, sdelta 3, xlaunch 2, many other programs,
+ascript, 4 books,  an unreleased Pellucid POSIX,
+without any money,
+without any grants,
+without a   computer science degree.
+Sans enslavement infliction
+sans enslavement compliance
+on   Earth     I became a total success.
+Why? To what   I accorded importance  I  succeeded in     doing and making!
+How unstable and stupid does that seem?  More like 99.98% excellence!
+
+To  all my   detractors, Ha Ha I win!
+In  this     life I will not remain  a slave
+in  next     life I will not be      enslaved.
+The paydom   atrocity    inflicting, confining, cheating, lying, murdering,
+retributing, sadistic,   thieving,   minds      suck.
+I   really   had         to  live it to believe it!  Incredibly irrational!  Ha!
+I   will     not be      returning.
+
+In 5 to 10 years if not again publishing I have departed.  Bye bye.  :)

@@ -1,0 +1,69 @@
+.TH "ascript enclosure" 5
+
+.SH NAME
+.EX
+ascript enclosure
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH SINGLE QUOTES
+.EX
+In single quotes near labels are always enclosed.
+
+.SH DOUBLE QUOTES
+.EX
+In double quotes far  labels are always enclosed.
+
+.SH GRAVE
+.EX
+By grave text is always enclosed.
+
+.SH NOT ENCLOSED
+.EX
+Var names and values are never enclosed.
+
+.SH BASE SUFFIX
+.EX
+Every value with space and a base suffix byte is appended.
+
+.ta T 8n
+.SH VALUE WITH BASE SUFFIX EXAMPLES
+.EX
+1 b	binary
+1 d	denary
+1 o	octal
+1 x	denhex
+1.1 f	fixed
+
+.SH NEAR LABEL EXAMPLE
+.EX
+\&'again',	...,	go	'again'
+
+.SH FAR LABEL EXAMPLE AND TEXT ENCLOSURE
+.EX
+pin	"galaxy",		ret
+"galaxy"
+out	`Hello galaxy!`,	ret
+
+.SH VAR EXAMPLE
+.EX
+a
+name	A,	byte,	scope,	set	`Ayeee`
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 ascript
+\fR

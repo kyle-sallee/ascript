@@ -1,0 +1,71 @@
+.TH "ascript exe yield" 3
+
+.SH NAME
+.EX
+ascript exe yield
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+ll.
+\fBargot	direct  parameters\fR
+exe yield	program pathname string program parameter strings
+exe yield end	program pathname string program parameter strings
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+exe fast
+exe yield	`echo\\0one\\0two\\0three\\0`
+err now		`Program echo execution failed.\\n`
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+exe fast
+exe yield	`echo`		`\\0`	\\
+		`one`		`\\0`	\\
+		`two`		`\\0`	\\
+		`three`		`\\0`
+err now		`Program echo execution failed.\\n`
+\fR
+.in
+
+.SH EXE YIELD
+.EX
+The  argot exe fast
+the  argot exe yield are similar.
+By   argot exe yield a   progeny process is not created.
+When successful the script is no longer being interpreted.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript           was created.
+In 2016; by Kyle Sallee; argot   exe yield was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript exe fast
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,52 @@
+To provide accurate measurement
+this simple 5 minute hack,
+program timer.c,
+was written.
+Simple, small, no tricks, easily understood,
+timer.c will suffice.
+
+By ascript
+a considerable ELF library plethora
+is loaded.
+In memory
+where loaded
+the performance
+seems effected.
+
+For comparison
+from 20 tries
+the lowest duration
+should be used.
+
+By
+echo 0 > /proc/sys/kernel/randomize_va_space
+the duration fluctation
+is somewhat mitigated.
+However, not entirely eliminated.
+
+With the BASH shell,
+the performance
+can not be measured.
+
+By  the  BASH syntax builtin time
+the sys  duration and
+the real duration seem inaccurate.
+
+By   "seem"
+the  duration
+when differently measured
+different lower values become.
+By   BASH
+when measured
+the  values are inflated.
+Why?
+
+The reason could be
+a system specific problem,
+a BASH bug,
+or something entirely different.
+
+Trust BASH or
+trust function clock_gettime and
+trust function getrusage?
+Easy choice, yes?

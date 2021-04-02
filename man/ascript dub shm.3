@@ -1,0 +1,60 @@
+.TH "ascript dub shm" 3
+.SH NAME
+.EX
+ascript dub shm
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lllll.
+\fBargot	host	make	type	task\fR
+dub shm	byte	*.dub	dub shm	A sub var make.
+.TE
+.TA
+.ta T 8n
+
+.SH SKIP
+.EX
+The argot at when successful the next argot is skipped.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	dub
+name		A,	byte,	scope,	dub shm
+target origin	A.dub,		`/name.txt\\0`
+O_CREAT,	O_WRONLY,	O_TRUNC,
+@
+go 		'fail'
+\fR
+.in
+
+.SH REQUIRED
+.EX
+On /dev/shm/ a    TMPFS should be mounted.
+On /dev/shm/ the  filename     is created.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2018; by Kyle Sallee; argot   dub shm was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript dub
+man 3 shm_open
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,34 @@
+To   enable
+from make.optional/
+to   make.enable/
+a    Makefile fragment files
+can  be copied.
+
+Be   careful,
+all  makefile fragments
+must NOT be   enabled.
+
+Ascript       compilation
+and  a        supreme   pizza
+entirely      differ!
+
+By   the       ascript  author
+the  file gz_no_got
+is   used
+is   highly recommended!
+
+On   the same computer
+when compiled
+when executed
+the  file     native
+is   recommended!
+
+On   64-bit architecture
+the  32-bit ELFs
+when required
+the  file ia32
+can  be   enabled.
+
+For  smaller ELF files
+the  file strip
+can  be   enabled.

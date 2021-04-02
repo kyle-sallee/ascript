@@ -1,0 +1,78 @@
+.TH "ascript trim pare" 3
+.SH NAME
+.EX
+ascript trim pare
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot   	host	make	use\fR
+trim pare	byte	*.pare	Repeat sequence removal sub var is created.
+.TE
+.in
+.ta T 8n
+
+.SH .pare OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	Into the sub var the host var data is pared.
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE EMPTY LINE REMOVAL
+.EX
+.in -8
+\fB
+a,	io,	trim
+
+name		a,	byte,	scope,	trim pare
+set		`double\\n\\nspaced\\n\\nlines\\n\\n`
+
+target origin	a.pare	`\\n`,=
+out now		a.pare
+\fR
+.in
+
+.SH TERSE
+.EX
+By   argot equal invocation
+to   target var  *.pare
+the  origin byte sequence
+when assigned
+from the    var  *.pare    host var
+to   the    var  *.pare
+the  content  is copied, but
+the  origin byte sequences
+when discovered
+when adjacent
+to   one    byte sequence is reduced.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript           was created.
+In 2020; by Kyle Sallee; argot   trim pare was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript trim
+man 5 ascript
+man 7 ascript
+\fR

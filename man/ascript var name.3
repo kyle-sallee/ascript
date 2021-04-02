@@ -1,0 +1,53 @@
+.TH "ascript var name" 3
+
+.SH NAME
+.EX
+ascript var name
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+llll.
+\fBargot	target	origin	task\fR
+var name	byte	any	To  target var content
+			the origin var name
+			is  copied.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	var
+name		A,	byte,	scope
+name		B,	byte,	scope
+
+target origin	A	B
+var name
+out		`The var name is `	A	`\\n`
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2018; by Kyle Sallee; argot   var name was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript var
+man 5 ascript
+man 7 ascript
+\fR

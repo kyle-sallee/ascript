@@ -1,0 +1,124 @@
+.TH "ascript LC" 3
+.SH NAME
+.EX
+ascript LC
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+ll.
+\fBargot	from	task\fR
+LC	direct parameter	In var LC the translation store.
+.TE
+
+.SH HOSTED VAR
+.EX
+.TS
+ll.
+\fBvar	type\fR
+LC	byte
+LC_ALL	byte
+LC_ADDRESS	byte
+LC_COLLATE	byte
+LC_CTYPE	byte
+LC_DOMAIN_DIR	byte
+LC_DOMAIN_NAME	byte
+LC_IDENTIFICATION	byte
+LC_MEASUREMENT	byte
+LC_MESSAGES	byte
+LC_MONETARY	byte
+LC_NAME	byte
+LC_NUMERIC	byte
+LC_PAPER	byte
+LC_TELEPHONE	byte
+LC_TIME	byte
+.TE
+
+.SH VAR DEFAULTS
+.EX
+.in -8
+.TS
+box;
+ll.
+LC_DOMAIN_DIR	The directory /usr/share/locale is set.
+LC_DOMAIN_NAME	The script    file name         is set.
+.TE
+.ta T 8n
+.in
+
+.ta T 8n
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io,
+LC		``
+target origin	LC_DOMAIN_DIR	`/tmp/local-test\\0`,=
+#target origin	LC_DOMAIN_NAME	`hello\\0`,=
+#target origin	LC_ALL		`de_DE.utf8\\0`,=
+target origin	LC_ALL		`es_ES.utf8\\0`,=
+
+LC		`Hello world\\0`
+out		LC
+\fR
+.in
+
+.SH COMPILED MESSAGE CATALOGS
+.EX
+The  file   /tmp/locale-test/de/LC_MESSAGES/hello.mo
+the  file   /tmp/locale-test/es/LC_MESSAGES/hello.mo
+the  proper compiled message object
+must exist.
+
+.SH XGETTEXT
+.EX
+The  software project gettext   program  xgettext when    installed
+from ascript  the     back tick enclosed     text can  be extracted.
+
+.SH MSGFMT
+.EX
+The software project gettext program msgfmt    when    installed
+the PO      files,   the     message catalogs, can  be generated.
+
+.SH PO GENERATION METHOD
+.EX
+By program xgettext the  text extract.
+By program whatever the  *.po file edit.
+By program msgfmt   the  *.mo file generated.
+Somewhere  useful   such as   /usr/share/locale/*/LC_MESSAGES/
+the *.mo   file     store.
+
+.SH SUCCESS
+.EX
+In var LC metadata success    byte 0  is stored.
+In var LC the      translated message is provided.
+
+.SH FAILURE
+.EX
+In var LC metadata success      byte ENOMSG is stored.
+In var LC the      untranslated message     is provided.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript  was created.
+In 2018; by Kyle Sallee; get text was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 bindtextdomain
+man 3 gettext
+man 3 setlocale
+man 3 textdomain
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,192 @@
+.TH "ascript duct pipe" 3
+
+.SH NAME
+.EX
+ascript duct pipe
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	when	task\fR
+
+duct pipe	init	To  dub 1 the pipe      is attached.
+        	ret	To  dub 0 the pipe      is attached.
+
+duct pipe 1	init	The dub 1     reference is saved.
+        		To  dub 1 a   pipe      is attached.
+        	ret	To  dub 0 the pipe      is attached.
+        	ret	The dub 1     reference is restored.
+
+duct pipe 0 1	init	The dub 0     reference is saved.
+        		The dub 1     reference is saved.
+        		To  dub 1 a   pipe      is attached.
+        	ret	To  dub 0 the pipe      is attached.
+        	ret	The dub 1     reference is restored.
+        	ret	The dub 0     reference is restored.
+.TE
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBvar	compat	task\fR
+pipe.cap	int	Pipe byte capacity acquire/save.
+.TE
+.ta T 8n
+
+.SH VAR pipe.cap ASSIGNMENT OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	 +	By the byte amount the duct pipe size increase
+equal	 =	By the byte amount the duct pipe size is set.
+add	 +	By the byte amount the duct pipe size decrease.
+.TE
+.in
+
+The var pipe.cap value when not zero
+the     pipe           when created
+the     size           is   set.
+
+.SH SKIP
+.EX
+Failure while possible
+the     next  argot     is not skipped.
+The     errno value can be     checked.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct pipe
+exe fast	`./dog\\0`
+go		'fail'
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct pipe 1
+exe fast	`./dog\\0`
+go		'fail'
+ret
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH EXAMPLE 2
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct pipe 0 1
+exe fast	`./dog\\0`
+go		'fail'
+ret
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+ret
+\fR
+.in
+
+.SH EXAMPLE 3
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct pipe 0 1
+exe fast	`./dog\\0`
+go		'fail'
+ret,					# dub 1 to dub 0 changed.
+duct pipe
+exe fast	`./van\\0`
+go		'fail'
+ret,					# dub 1 to dub 0 changed.
+ret,					# dub 1 restored.
+exe fast	`./park\\0./park\\0`
+go		'fail'
+\&.
+ret,					# dub 0 restored.
+\fR
+.in
+
+.SH duct pipe SIMPLIFIED DIAGRAM 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct pipe 0 1,	...,ret,# part 0.
+duct pipe,	...,ret,# part 1.
+duct pipe,	...,ret,# part 2.
+duct pipe,	...,ret,# part 3.
+duct pipe,	...,ret,# part 4.
+duct pipe,	...,ret,# part 5.
+duct pipe,	...,ret,# part 6.
+ret,# 1 restored
+ ...,
+ret,# 0 restored
+\fR
+.in
+
+.SH WHY WAIT?
+.EX
+The argot duct mem
+the argot duct tmp  when used all output must be collected.
+The argot duct pipe when used the output wait is incorrect.
+The final progeny   process       output wait is possible.
+
+.SH WASTE THE RAM?
+.EX
+The  file /proc/sys/fs/pipe-max-size
+contained     value unless  adjusted
+for  pipe.cap value 2097152 or greater can fail.
+Data drip is  NOT   mitigated!
+
+.SH SMP BOON OR NOT?
+.EX
+For  mastication all data when required,
+such as  sorting,
+a    SMP boon    is  precluded.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript           was created.
+In 2018; by Kyle Sallee; argot   duct pipe was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript duct
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,10 @@
+System    log     or log system?
+By   a    process a      socket               is      created.
+By   any  process to the socket a message can be      sent.
+Somewhere somehow    the          message     is      transcribed.
+By        ascript a      socket   based
+system    log     daemon                      is      provided.
+System    log     via    UDP      and     TCP are not supported.
+
+System    logs    sent    when  a
+system    log     daemon  does    not exist   are     lost.

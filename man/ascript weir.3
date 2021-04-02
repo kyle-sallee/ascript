@@ -1,0 +1,91 @@
+.TH "ascript weir" 3
+
+.SH NAME
+.EX
+ascript weir
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBname	from	require	task\fR
+
+weir	direct	'near'	The label visit.
+weir	direct	"far"	The label visit.
+
+weir next			Aft ret the next argot interpret.
+weir skip			Aft ret the next argot skip.
+
+weir next ret			Ret and the next argot interpret.
+weir skip ret			Ret and the next argot skip.
+.TE
+.ta T 8n
+
+.SH THE ARGOT weir
+.EX
+The argot pin  and
+The argot weir are similar.
+For argot weir aft argot
+the invocation or skip can be    selected.
+
+.SH SKIP DEFAULT
+.EX
+The argot weir next
+the argot weir next ret   if not invoked on ret
+the argot weir aft  argot is     skipped.
+
+.SH SKIP DECISION PRESERVED
+.EX
+The argot   weir when invoked
+the current weir skip decision
+is  preserved    and  upon ret
+is  restored.
+
+.SH WEIR NESTING WORKS
+.EX
+The skip  decision since preserved
+the argot weir     invocations
+can be    nested.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	trek
+name	It,	byte,	scope
+set		`so`
+#set		`nay`
+origin		`so`
+
+weir	'check'
+go	'differ',	out	`It is     so.\\n`,	ret
+	\&'differ',	out	`It is not so.\\n`,	ret
+
+	'check',	!=,	weir next,	ret
+#	'check',	!=,	weir next ret,	ret
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2019; by Kyle Sallee; argot   weir was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript tag
+man 3 ascript trek
+man 5 ascript
+man 7 ascript
+\fR

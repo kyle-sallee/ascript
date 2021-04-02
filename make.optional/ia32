@@ -1,0 +1,3 @@
+# On x86_64 architecture the ia32 version can be created.
+
+export	CFLAGS	+=	-march=i686 -m32

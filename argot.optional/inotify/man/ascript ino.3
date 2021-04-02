@@ -1,0 +1,169 @@
+.TH "ascript ino" 3
+
+.SH NAME
+.EX
+ascript ino
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+ll.
+\fBargot	task\fR
+ino far 	The    event  far label is  selected.
+ino to  	Target origin addresses are selected.
+ino watch	The    target node      is  watched and skip
+ino ignore	The    target node      is  ignored and skip
+
+ino do  	The    use    counter       increment.
+ino done	The    use    counter       decrement.
+	If   0 all    watches   are ignored;
+	the    RAM              is  released.
+.TE
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBvar	type	use\fR
+ino.move	int 4	Rename  events   connect.
+ino.name	byte	From    dir node name.
+ino.watch	byte	Watched pathname receive.
+.TE
+.ta T 8n
+
+.SH OVERFLOW
+.EX
+An  event handling  overflow     when detected
+in  the   ino.watch var metadata as   success
+the value E2BIG     is  set.
+
+.SH INOTIFY EVENT NEAR LABELS
+.EX
+.TS
+l.
+\&'IN_ACCESS'
+\&'IN_ATTRIB'
+\&'IN_CLOSE_WRITE'
+\&'IN_CLOSE_NOWRITE'
+\&'IN_CREATE'
+\&'IN_DELETE'
+\&'IN_DELETE_SELF'
+\&'IN_MODIFY'
+\&'IN_MOVE_SELF'
+\&'IN_MOVED_FROM'
+\&'IN_MOVED_TO'
+\&'IN_OPEN'
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	err,	ino,	io,	self
+target		"action",		ino far
+target		`/tmp/ino/a.txt\\0`,	ino watch,	go	'fail'
+target		`/tmp/ino/b.txt\\0`,	ino watch,	go	'fail'
+target		`/tmp/ino/c.txt\\0`,	ino watch,	go	'fail'
+target		`/tmp/ino/d.txt\\0`,	ino watch,	go	'fail'
+\&'again',	self pause,				go	'again'
+\&'fail',			err now	errtext,ret
+"action"
+\&'IN_ACCESS',		err now	`acc	`	ino.watch	`\\n\\n`,ret
+\&'IN_ATTRIB',		err now	`att	`	ino.watch	`\\n\\n`,ret
+\&'IN_CLOSE_WRITE',	err now	`cwr	`	ino.watch	`\\n\\n`,ret
+\&'IN_CLOSE_NOWRITE',	err now	`cnwr	`	ino.watch	`\\n\\n`,ret
+\&'IN_CREATE',		err now	`cre	`	ino.watch	`\\n\\n`,ret
+\&'IN_DELETE',		err now	`del	`	ino.watch	`\\n\\n`,ret
+\&'IN_DELETE_SELF',	err now	`dels	`	ino.watch	`\\n\\n`,ret
+\&'IN_MODIFY',		err now	`mod	`	ino.watch	`\\n\\n`,ret
+\&'IN_MOVE_SELF',		err now	`movs	`	ino.watch	`\\n\\n`,ret
+\&'IN_OPEN',		err now	`open	`	ino.watch	`\\n\\n`,ret
+\&'IN_MOVED_FROM',	err now	`movf	`	ino.watch	`\\n`	\\
+						ino.name	`\\n`	\\
+						ino.move	`\\n\\n`,ret
+
+\&'IN_MOVED_TO',		err now	`movt	`	ino.watch	`\\n`	\\
+						ino.name	`\\n`	\\
+						ino.move	`\\n\\n`,ret
+\fR
+.in
+
+.SH THE ARGOT ino far NEAR LABELS
+.EX
+At the far group for each salient event a near label can exist.
+
+.SH THE ARGOT ino far
+.EX
+Per each watched node    the argot ino far
+selected far     label   can differ.
+
+.SH THE ARGOT ino to
+.EX
+Per each watched node    the argot ino to
+selected target  address
+selected origin  address can differ.
+
+.SH THE ARGOT ino to
+.EX
+The argot ino to when invoked the       target origin addresses save.
+The event        when handled the saved target origin addresses load.
+
+.SH EVENT ALWAYS
+.EX
+The signal        is received.
+The var ino.watch is set.
+
+.SH EVENT SPECIAL
+.EX
+When IN_MOVED_FROM
+when IN_MOVED_TO
+the  var ino.name
+the  var ino.move are set.
+
+.SH EVENT NEAR LABEL SELECTION
+.EX
+For each event bit when set
+a   near label is  visited.
+
+.SH LINUX PROBABLE DEFAULTS
+.EX
+/proc/sys/fs/inotify/max_queued_events  16384
+/proc/sys/fs/inotify/max_user_instances 128
+/proc/sys/fs/inotify/max_user_watches   8192
+
+.SH THE ARGOT ino done
+.EX
+The use counter   if 0 or negative the following becomes.
+The RAM           is freed.
+The signal        is released.
+The address space is kept
+The dub           is reacquired.
+
+.SH VIRTUAL CAVEAT
+.EX
+On /dev/ /proc/ sys/ and other virtual file systems
+for watched nodes the events do not trigger.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2018; by Kyle Sallee; argot   ino was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript sig
+man 5 ascript
+man 7 ascript
+man 7 inotify
+\fR

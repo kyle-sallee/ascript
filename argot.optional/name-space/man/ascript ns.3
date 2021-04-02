@@ -1,0 +1,131 @@
+.TH "ascript ns" 3
+
+.SH NAME
+.EX
+ascript ns
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot		namespace unshare\fR
+ns new cgroup		cgroup
+ns new files		file descriptor table
+ns new fs		filesystem attributes, root dir
+ns new ipc		IPC
+ns new mnt		mounts
+ns new net		network
+ns new pid		PIDs
+ns new sem		System V semaphore
+ns new user		user
+ns new uts		UTS
+
+\fBargot	target types	namespace enter\fR
+ns old cgroup	byte dub	cgroup
+ns old ipc	byte dub	IPC
+ns old mnt	byte dub	mounts
+ns old net	byte dub	network
+ns old pid	byte dub	PIDs
+ns old sem	byte dub	System V semaphore
+ns old user	byte dub	user
+ns old uts	byte dub	UTS
+
+\fBargot		current namespace save\fR
+ns save cgroup		cgroup
+ns save ipc		IPC
+ns save mnt		mounts
+ns save net		network
+ns save pid		PIDs
+ns save sem		System V semaphore
+ns save user		user
+ns save uts		UTS
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+The hosted argot when invoked when successful
+the next   argot is   skipped.
+
+.SH ARGOT ns * save *
+.EX
+For the current namespace a dub is   acquired.
+The     opcode  call            is   executed.
+The             interpretation       continues.
+The     opcode  ret             when executed
+the     saved   namespace       is   entered.
+
+.SH REALFS
+.EX
+For   each realFS the IPC NET NS UTS PID must be unshared.
+Other name space,
+such as cgroup
+such as semaphore, can be unshared.
+
+.SH WHERE ARE NAMESPACES?
+.EX
+For each process in the procfs
+the name space   files  exist.
+/proc/*/ns/ipc
+/proc/*/ns/mnt
+/proc/*/ns/net
+/proc/*/ns/pid
+/proc/*/ns/uts
+By the PID the * replace.
+
+.SH MOUNT BIND
+.EX
+A   namespace file when mount bind; aft process completion
+the namespace persists.
+
+.SH VETH
+.EX
+VETH   pairs   aft     creating
+in the network hub net namespace and
+in a   realFS      net namespace one part exists.
+
+.SH VIRTUAL COMPUTERS
+.EX
+Unshared name      spaces    and
+virtual  computers differ.
+Unshared name      spaces
+when     used
+some     virtual   computing boons become
+while    memory    use       is    conserved.
+
+.SH NAME SPACE INHERITENCE
+.EX
+From a progenitor process
+by   a progeny    process
+the    namespace  are inherited.
+
+.SH ROOT DIR
+.EX
+A    process  when   chrooted
+from /proc/*/root
+the  root dir can be acquired.
+By   the  PID the *  replace.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2018; by Kyle Sallee; ns      was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 setns
+man 2 unshare
+man 5 ascript
+man 7 ascript
+man 7 namespaces
+\fR

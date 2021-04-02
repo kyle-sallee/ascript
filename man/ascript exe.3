@@ -1,0 +1,203 @@
+.TH "ascript exe" 3
+.SH NAME
+.EX
+ascript exe
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot   		make	use\fR
+exe     		*	Program execution var make.
+
+\fBargot   	host	make	use\fR
+exe env 	exe	*.env	Environment  var                    set.
+exe name	exe	*.name	Pathname                            set.
+exe para	exe	*.para	Filename     and program parameters set.
+exe err 	exe	*.err	Progeny  process dub 2   output capture.
+exe out 	exe	*.out	Progeny  process dub 1   output capture.
+
+\fBargot   	target	origin	use\fR
+exe cute 	exe		Execute; success set.
+exe name use	exe	byte	This file   name use.
+exe env  use	exe	env	This type env    use.
+exe para use	exe	para	This type para   use.
+exe pin 	exe	label	On SIGCHLD label pin.
+exe target	exe	any	On SIGCHLD when  pin target set.
+exe origin	exe	any	On SIGCHLD when  pin origin set.
+.TE
+.in
+.TA
+
+.SH TYPE EXE OPERATORS
+.EX
+.in -8
+.TS
+box;
+lll.
+at	@	Var     associate.
+query	?	Program execute.
+.TE
+.in
+
+.SH THE ARGOT exe cute
+.EX
+The program execution is attempted
+In  the     type exe     metadata as success
+the errno   value     is stored.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		run,			exe,	scope,	sire done
+origin		`printenv\\0`,	@,	exe cute
+go		'fail'
+target		run.done
+sire done wait
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		run,	exe,	scope,	exe para
+target origin	run.para	`echo\\0one\\0two\\0three\\0`
+para add
+target		run,	exe cute
+go		'fail'
+\fR
+.in
+
+.SH EXAMPLE 2
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+err
+io
+
+name		run,				exe,	scope,	sire exit
+errno
+target origin	run	`./important\\0`,@,	exe cute
+go		'fail'
+ret
+
+\&'fail'
+target origin	run.exit	0 x,==,	go	'error'
+
+err now		`The process exit value : `	run.exit	`\\n`
+ret
+
+\&'error'
+err now		`The program execution failed.\\n`	errtext
+ret
+\fR
+.in
+
+.SH EXAMPLE 3
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+
+name		run,	exe,	scope
+exe err
+exe out
+
+target origin	run		`kicker\\0`,@,?
+next
+out		`Program dub 1 output follows.\\n`	run.out	`\\n`
+out		`Program dub 2 output follows.\\n`	run.err	`\\n`
+target origin	run.err		`Kyle`
+byte have
+ret
+
+out		`In the  dub 2 output\\n`
+out		`the word   Kyle because discovered\\n`
+out		`the person Kyle must be blamed.\\n`
+\fR
+.in
+
+A   terminal   when     connected
+the dub output when not captured
+tacitly display.
+
+.SH CHOICE
+.EX
+The argot exe type exe  var creation if  not preferred
+the argot exe fast sans var creation can be  invoked.
+
+.SH REUSE
+.EX
+A     type exe var if    reused
+the        sub var *.err content
+the        sub var *.out content
+would be   appended.
+
+.SH *.err ACCESS
+.SH *.out ACCESS
+.EX
+The  var *.err
+the  var *.out
+when accessed the  progeny process completion is tacitly awaited.
+The  captured data is      mapped.
+
+.SH RATHER THAN SUB VAR
+.EX
+A   sub         var rather than make
+a   compatible  var can be associated.
+The argot exe * use when   invoked
+the alternate   var     is associated.
+
+.SH exe target; exe origin; *.pin COMBO!
+.EX
+The argot exe pin    when  invoked
+the argot exe target
+the argot exe origin might also be useful.
+
+.SH RELEASE
+.EX
+The host    var if freed early
+the SIGCHLD pin is precluded.
+
+.SH *.name OR *.para
+.EX
+By *.para or by *.name the program name can be provided.
+
+.SH MISSING PARAMETER?
+.EX
+In parameters the program name should be first.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2016; by Kyle Sallee; argot   exe was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript env
+man 3 ascript exe fast
+man 3 ascript para
+man 3 ascript sire
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,328 @@
+.TH "ascript view" 3
+
+.SH NAME
+.EX
+ascript view
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fB
+argot	make    	compat	use
+\fR
+char	*.char  	byte	The UTF-8 character value provide.
+	*.char.from	int	The host  offset          provide.
+	*.char.size	int	The length                provide.
+.TE
+.ta T 8n
+.in
+
+.SH *.char OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add add	++	The next  UTF-8 character select or skip.
+sub sub	--	The afore UTF-8 character select or skip.
+.TE
+.ta T 8n
+.in
+
+.SH SKIP
+.EX
+The       argot     add add
+the       argot     sub sub
+when      invoked
+when      successful
+the       following argot
+is        skipped.
+
+For       argot     add add
+the       host      length
+when      reached
+the       following argot
+is        interpreted.
+
+For       argot     sub sub
+the       host      var       start
+when      already   selected
+the       following argot
+is        interpreted.
+
+.SH *.char COMPARISON OPERATORS
+.EX
+.in -8
+.TS
+box;
+lll.
+equal equal	==	When         equal skip.
+less    	<	When less          skip.
+less  equal	<=	When less or equal skip.
+more    	>	When more          skip.
+more  equal	>=	When more or equal skip.
+not   equal	!=	When not     equal skip.
+.TE
+.ta T 8n
+.in
+
+.SH *.char COMPARISON CAVEAT
+.EX
+More      than      one
+UTF-8     character
+can       be        compared.
+From      the       compare   value
+the                 compare   length
+is        acquired.
+
+.SH HOST VAR
+.EX
+For       the       host      var
+a         type      byte      compat
+suffices.
+
+.SH MODIFY CAVEAT
+.EX
+The       character value
+when      modified
+the       host      var
+is        modified.
+However,
+the       host      var
+content   length
+is        not       adjusted.
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+io
+
+name		body
+byte
+scope
+char
+set		`junk <start>This text please.</start> more junk`
+
+name		start
+int
+scope
+
+target origin	body.char	`<start>`
+\&'again start'
+!=
+go		'at start'
+++
+go		'start not found'
+go		'again start'
+
+\&'at start'
+target origin			body.char.from	7 d,+
+target origin	start		body.char.from,=
+target origin	body.char	`</start>`
+\&'again end'
+!=
+go		'at end'
+++
+go		'end not found'
+go		'again end'
+
+\&'at end'
+target origin	body.char.size	body.char.from,=
+target origin	body.char.size	start,-
+target origin	body.char.from	start,=
+out		`Discovered: `	body.char
+\fR
+.in
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+io
+var
+
+name		body
+byte
+scope
+char
+var len
+set		`junk <start>This text please.</start> more junk`
+
+name		end
+int
+scope
+
+target origin	body.char.from	body.len,=
+target origin	body.char	`</start>`
+\&'again end'
+!=
+go		'at end'
+--
+go		'end not found'
+go		'again end'
+
+\&'at end'
+target origin	end		body.char.from,=
+target origin	body.char	`<start>`
+\&'again start'
+!=
+go		'at start'
+--
+go		'start not found'
+go		'again start'
+
+\&'at start'
+target origin	body.char.size	end,=
+target origin	body.char.size	body.char.from,-
+target origin	body.char.size	7 d,-
+target origin	body.char.from	7 d,+
+
+out now		`Discovered: `	body.char
+\fR
+.in
+
+.SH EXAMPLE COMMENTS
+.EX
+For       text      location
+the       type      view
+sub       var
+is        superior.
+
+.SH PERFORMANCE
+.EX
+The       type      char      sub       var
+are       effective,
+but       not       fast.
+
+The       type      byte      host      var
+text      address   change
+since     possible
+the       type      char      sub       var
+on        each      use
+the                           host      var
+text      address   and
+the       offset
+must      be        acquired.
+
+By        type      char      sub       var
+for       comparison
+the       C         library   provided  memcmp    or
+the       C         compiler  provided  memcmp
+is        not       invoked.
+Thus      the       performance
+is        sustained.
+
+A                   library   provided  memcmp
+to        invoke
+the       opcode    call
+the       opcode    jmp
+the       opcode    ret
+would     execute.
+The       opcodes   push
+the       opcodes   pop
+might     execute.
+The       address   location  CPU       registers
+if        changed
+some      opcode    mov
+could     execute.
+
+That      considered
+a         similar   performance
+should    become.
+
+A         pure      byte
+implementation
+would     be        faster.
+The       UTF-8     encoding
+is        often     useful.
+For       argot     char
+the       performance
+is        not       paramount.
+
+.SH VERBOSE
+.EX
+For       UTF-8     character
+selection and       identification
+the       argot     char
+is        useful.
+
+.SH RELEASE
+.EX
+The       host      var
+when      freed
+the       sub       var
+are       freed.
+
+.SH REGULAR EXPRESSION
+.EX
+By        argot     char
+regular   expression
+is        not       supported.
+
+The       argot     pcre2
+if        used
+greater   convenience
+might     become.
+
+Regular   expression
+is        not       fast.
+
+For       sub       content   matching
+the       type      view      var
+is        superior.
+
+.SH CAVEAT
+.EX
+The       *.char.from         value
+must      not       be        negative;
+the       host      var       length
+must      NOT       be        exceeded.
+
+The       *.char.size         value
+must      not       be        negative;
+the       host      var       text      content
+must      NOT       be        exceeded.
+
+.SH COMPARISON SEGFAULT
+.EX
+By        a         near      var       end       comparison
+a         segfault
+if        solicited
+by        the       script    hacker
+the       host      var
+was       not       properly  sized.
+
+To        the       host      var
+a         page
+when      added
+should    suffice.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2020; by Kyle Sallee; argot   char was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript part
+man 3 ascript view
+man 5 ascript
+man 7 ascript
+\fR

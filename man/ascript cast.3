@@ -1,0 +1,66 @@
+.TH "ascript cast" 3
+
+.SH NAME
+.EX
+ascript cast
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	from	task\fR
+cast		The associate addresses save.
+		On  ret       restore.
+cast amount     	target	The byte   amount var address acquire.
+cast origin     	target	The source        var address acquire.
+cast origin from	target	The source offset var address acquire.
+
+cast target     	target	The target        var address acquire.
+cast target from	target	The target offset var address acquire.
+
+cast convey     		The bytes copy.
+cast insert     		The bytes insert.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io
+name		A,	byte,	scope,	set	`This is the sample.`
+						cast
+						cast target
+target		0 d,				cast target from
+						cast origin from
+target		12 x,				cast amount
+target		`This is now first.`,		cast origin
+						cast insert
+out		A
+\fR
+.in
+.ta T 8n
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2020; by Kyle Sallee; argot   cast was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript var len
+man 3 ascript var size
+man 5 ascript
+man 7 ascript
+\fR

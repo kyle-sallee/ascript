@@ -1,0 +1,192 @@
+.TH "ascript stat" 3
+.SH NAME
+.EX
+ascript stat
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llllll.
+\fBargot   	host	make    	out	sub var task	set\fR
+
+stat dub    	dub	*.statdub     		fstat
+stat reg    	byte	*.statreg     		stat
+stat sym    	byte	*.statsym     		lstat
+stat get				Data acquire.
+
+stat dev  	stat	*.dev    	dex8	dev_t
+stat dev major	stat	*.dev.major	dex4	dev_t
+stat dev minor	stat	*.dev.minor	dex4	dev_t
+stat gid  	stat	*.gid    	den8	GID     	set
+stat blksize	stat	*.blksize	dex4	block size
+stat blocks	stat	*.blocks 	den8	block amount
+stat ino  	stat	*.ino    	dex8	ino
+stat mode  	stat	*.mode   	oct4	mode    	set
+stat nlink	stat	*.nlink  	den4	link  amount
+stat rdev  	stat	*.rdev   	dex8	dev_t
+stat rdev major	stat	*.rdev.major	dex4	dev_t
+stat rdev minor	stat	*.rdev.minor	dex4	dev_t
+stat size 	stat	*.size   	den8	file  size	set
+stat type 	stat	*.type       	byte	node type
+stat uid  	stat	*.uid   	den8	UID     	set
+
+stat atim sec	stat	*.atim.sec	den8	access time	set
+stat atim nano	stat	*.atim.nano	nano	access time	set
+stat mtim sec	stat	*.mtim.sec	den8	modify time	set
+stat mtim nano	stat	*.mtim.nano	nano	modify time	set
+stat ctim sec	stat	*.ctim.secd	den8	change time
+stat ctim nano	stat	*.ctim.nano	nano	change time
+
+\fBargot   		require\fR
+UTIME_NOW		*.nano		current time use
+UTIME_OMIT		*.nano		old     time keep
+.TE
+.in
+.ta T 8n
+
+In   the host  column the word stat when specified
+from the argot stat dub
+from the argot stat reg
+from the argot stat sym
+the  made var suffices.
+
+.SH FAILURE
+.EX
+The argot stat  get  when invoked
+in  the   type  stat var  metadata as success
+the errno value is   stored.
+
+.SH *.type POSSIBLE VALUES
+.EX
+.TS
+l.
+block
+char
+dir
+fifo
+file
+link
+sock
+.TE
+.ta T 8n
+
+.SH var *.?tim.* MODIFICATION
+.EX
+For *.atim.sec for *.atim.nano for *.mtim.sec for *.mtim.nano
+the value to change the argot  equal please invoke.
+The node  to change the argot  set   please invoke.
+For nodes    access and modify times are    concurrently updated.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+stat
+
+name		A
+byte
+scope
+set		`/tmp/file.txt\\0`
+stat reg
+target		A.statreg
+stat size
+stat get
+success
+go		'failed'
+io
+out now		`For pathname `		A		\\
+		` the size is `		A.statreg.size	`\\n`
+\fR
+.in
+
+.SH HOST VAR
+.EX
+For stat dub              a type dub  host var suffices.
+For stat reg for stat sym a type byte host var suffices.
+
+.SH PRIMARY SUB VAR NAME
+.EX
+The primary sub  var name since varied.
+for the     host var
+the         stat and
+the        lstat data can be acquired.
+
+.SH SECONDARY SUB VAR
+.EX
+By  the primary   sub var all the      stat information is acquired.
+By  the secondary sub var the specific stat information is provided.
+
+.SH WHICH ONE?
+.EX
+For symbolic link        stat information the argot stat sym invoke.
+For symbolic link object stat information the argot stat reg invoke.
+For a        dub         stat information the argot stat dub invoke.
+
+.SH RATIONALE
+.EX
+The  C paradigm is visible.
+The  stat provided information
+when individually  acquired
+more opcodes must  execute.
+
+.SH .rdev
+.EX
+For block special node
+for char  special node
+by .rdev  a       kernel device is referenced.
+
+.SH SPECIAL NODE STORAGE
+.EX
+In  /dev/ special nodes most often exist.
+By  the   file    /usr/src/linux/Documentation/devices.txt
+the       special node  names are described.
+
+.SH NODE REVISION
+.EX
+*.gid *.mode *.size *.uid when revised
+the referenced node       is   modified.
+
+.SH ARGOT NODE LIST CAVEAT
+.EX
+From argot node list a pathname when acquired
+the  .most or .full often suffice.
+
+.SH NODE TYPE CHECK
+.EX
+For node  type  check to  a  composite label go or pin is recommended.
+By  argot tag a label can be composited.
+
+.SH COMPARISON
+.EX
+Among nodes node for stat information comparison
+the   argot yay  might be useful.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   stat was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 stat
+man 3 ascript node
+man 3 ascript node sub
+man 3 ascript statvfs
+man 3 ascript yay
+man 3 utimensat
+man 5 ascript
+man 7 ascript
+\fR

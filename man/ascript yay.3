@@ -1,0 +1,251 @@
+.TH "ascript yay" 3
+
+.SH NAME
+.EX
+ascript yay
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.ta T 8n
+.in -8
+.TS
+lllll.
+\fB
+argot   	target	origin	require	test
+\fR
+
+target fstat				fstat and skip.
+target lstat				lstat and skip.
+target stat				 stat and skip.
+
+origin fstat				fstat and skip.
+origin lstat				lstat and skip.
+origin stat				 stat and skip.
+
+yay block	target		fls 	type block
+yay char 	target		fls	type char
+yay dir  	target		fls	type dir
+yay empty	target		fls	size zero
+yay exe  	target			can       be  executed
+yay fifo 	target		fls	type fifo
+yay file 	target		fls 	type file
+yay gid  	target	origin	fls	gid  match
+yay link 	target		fls	st_nlink  >   1
+yay modified	target		fls 	st_mtim   >   st_atim
+yay newer	target	origin	fls	st_mtim   >   st_mtim
+yay node	target			node exists
+yay older	target	origin	fls 	st_mtim   <   st_mtim
+yay read 	target			can       be  read
+yay same 	target	origin	fls	st_ino    ==  st_ino
+        				st_dev    ==  st_dev
+yay sgid 	target		fls	sgid      set
+yay size less	target	origin	fls	st_size   <   st_size
+yay size more	target	origin	fls	st_size   >   st_size
+yay size same	target	origin	fls	st_size   ==  st_size
+yay sticky	target		fls	sticky    set
+yay suid 	target		fls	suid      set
+yay socket	target		fls	type socket
+yay symlink	target		fls	type symlink
+yay tty  	target			type tty
+yay uid  	target	origin	fls 	uid  match
+yay write	target			can       be  written
+
+yay exe give	target			O_CLOEXEC    is not set
+yay exe keep	target			O_CLOEXEC    is     set
+yay use rush	target			O_NONBLOCK   is     set
+yay use wait	target			O_NONBLOCK   is not set
+
+nay block	target		fls 	not  type block
+nay char	target		fls 	not  type char
+nay dir 	target		fls 	not  type dir
+nay empty	target		fls	not  size zero
+nay exe 	target			can  not  be  executed
+nay fifo	target		fls	not  type fifo
+nay file	target		fls	not  type file
+nay gid 	target	origin	fls	gid  does not match
+nay link	target		fls	st_nlink  ==  1
+nay modified	target		fls	st_mtim   <=  st_atim
+nay newer	target	origin	fls	st_mtim   <=  st_mtim
+nay node	target			node does not exists
+nay node	target		fls	does not      exist
+nay older	target	origin	fls	st_mtim   >=  st_mtim
+nay read	target		fls	can  not  be  read
+nay same	target	origin	fls	st_ino    !=  st_ino or
+        				st_dev    !=  st_dev
+nay sgid	target		fls	sgid      not set
+nay size less	target	origin	fls	st_size   >=  st_size
+nay size more	target	origin	fls	st_size   <=  st_size
+nay size same	target	origin	fls	st_size   !=  st_size
+nay sticky	target		fls	sticky    not set
+nay suid	target		fls	suid      not set
+nay socket	target		fls	not  type socket
+nay symlink	target		fls	not  type symlink
+nay tty 	target			not  type tty
+nay uid 	target	origin	fls	uid  does not match
+nay write	target		fls	can  not  be  written
+
+node type go	target		fls	To label go.
+node type pin	target		fls	At label pin.
+.TE
+.in
+
+.SH fls
+.EX
+In  the   require column the  value   fls when present
+the fstat lstat   or     stat information is   required.
+
+.SH TERSE
+.EX
+File system   node stat   information                     is compared.
+When required the  target address the origin address must be set.
+When required the  stat   information                must be acquired.
+
+.SH FSTAT WHEN?
+.EX
+For a     dub     stat information
+the argot target fstat
+the argot origin fstat
+can be    invoked.
+
+.SH LSTAT WHEN?
+.EX
+A   symlink       stat information when required
+the argot target lstat
+the argot origin lstat
+can be    invoked.
+
+.SH STAT WHEN?
+.EX
+A   pathname     stat information when required
+the argot target stat
+the argot origin stat
+can be    invoked.
+
+.SH IMMEDIATE VALUE
+.EX
+By the target address
+by the origin address
+an immediate value address is never compared.
+
+.SH SKIP
+.EX
+The expected outcome when attained the following argot is skipped.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+byte
+io
+yay
+
+target		`/bin/bash\\0`
+target stat
+go		'miss'
+out now		`/bin/bash is present.\\n`
+ret
+
+\&'miss'
+out now		`/bin/bash is missing.\\n`
+ret
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+int
+io
+yay
+
+target		0 x
+target fstat,	skip
+yay tty,	go	'not'
+out now		`By dub 0 a terminal is     referenced.\\n`
+ret
+
+\&'not'
+out now		`By dub 0 a terminal is not referenced.\\n`
+ret
+\fR
+.in
+
+.SH EXAMPLE 2
+.EX
+.ta T 8n
+.in -8
+\fB
+target		what_am_i
+target lstat,	go	'miss'
+nay file,		go	'file'
+nay dir,		go	'dir'
+nay symlink,		go	'sym'
+nay fifo,		go	'fifo'
+ ...
+# The argot node type pin is faster.
+# the argot node type go  is faster.
+\fR
+.in
+
+.SH EXAMPLE 3
+.EX
+.ta T 8n
+.in -8
+\fB
+target		`/bin/bash\\0`
+target lstat
+go		'miss'
+yay node
+ret
+pin		"nodetype"
+out		`node type pin completed\\n`
+ret
+
+"nodetype"
+node type go
+\&'block',	out	`block\\n`,	ret
+\&'char',		out	`char\\n`,	ret
+\&'dir',		out	`dir\\n`,	ret
+\&'fifo',		out	`fifo\\n`,	ret
+\&'file',		out	`file\\n`,	ret
+\&'link',		out	`symlink\\n`,	ret
+\&'sock',		out	`sock\\n`,	ret
+\fR
+.in
+
+.SH THE ARGOT node type go
+.SH THE ARGOT node type pin
+.EX
+A   near label with the same node type name is pinned.
+The near label name possibilities follow:
+'block'  'char'  'dir'  'fifo'  'file'  'link'  'sock'
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2019; by Kyle Sallee; argot   yay was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 stat
+man 3 ascript node
+man 3 ascript node sub
+man 3 ascript stat
+man 5 ascript
+man 7 ascript
+\fR

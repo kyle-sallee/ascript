@@ -1,0 +1,73 @@
+.TH "ascript term no echo" 3
+
+.SH NAME
+.EX
+ascript term no echo
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+term no echo	dub or int	The opcode ret
+		until executed
+		by the terminal
+		input is not echoed.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+call
+target		0 x
+term no echo,	go	'fail'
+out now		`The pass phrase please? `
+\fR
+.in
+
+.SH SUCCESS
+.EX
+The next argot is skipped.
+
+.SH FAILURE
+.EX
+The errno value is set.
+
+.SH CAVEAT
+.EX
+Aft     invocation afore opcode ret
+the dub reference  must  not change.
+
+.SH SILENT TERMINALS
+.EX
+The process if crashed
+the terminal   echo
+to  enable
+the software project ncurses provided program reset
+can be       executed.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript              was created.
+In 2017; by Kyle Sallee; argot   term no echo was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

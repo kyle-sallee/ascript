@@ -1,0 +1,180 @@
+.TH "ascript tutorial 6" 5
+
+.SH NAME
+.EX
+ascript tutorial 6
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH NOMENCLATURE: BIT
+.EX
+By a bit the value 0 or the value 1 is possible.
+
+.SH NOMENCLATURE: NIBBLE
+.EX
+4 bits when grouped a nibble exists.
+
+.SH NOMENCLATURE: BYTE
+.EX
+8 bits when grouped a byte exists.
+
+.SH NOMENCLATURE: STRING
+.EX
+By value 0 a byte sequence when terminated a string exists.
+
+.SH NOMENCLATURE: MEMORY ADDRESS
+.EX
+In bytes, not bits, memory is addressed.
+About RAM for every byte a numeric address exists.
+
+.SH SUFFIX SPACE AND x
+.EX
+To a value   a space  and  x   when appended
+a  hexadecimal value, base 16, exists.
+
+.SH NOMENCLATURE: PARAGRAPH
+.EX
+At  a divisible by 10 x sans  remainder memory address
+the                10 x bytes are       called a paragraph.
+
+.SH NOMENCLATURE: CACHE LINE
+.EX
+At  a divisible by 40 x sans  remainder memory address
+the                40 x bytes are       called a cache line.
+
+.SH NOMENCLATURE: PAGE
+.EX
+At  a divisible by 1000 x sans  remainder memory address
+the                1000 x bytes are       called a PAGE.
+
+.SH NOMENCLATURE: HUGE PAGE
+.EX
+At  a divisible by 200000 x sans  remainder memory address
+the                200000 x bytes are       called a huge page.
+
+.SH NOMENCLATURE: MEMORY REQUEST
+.EX
+From the kernel memory when requested pages are provided.
+
+.SH NOMENCLATURE: RANDOM ACCESS MEMORY
+.EX
+A   memory address and a street address if similar
+the RAM and a building are similar.
+
+.SH NOMENCLATURE: PAGE FAULT
+.EX
+A requested memory area when accessed
+a page fault becomes and the RAM is mapped.
+
+.SH DELAYED RAM PROVISIONING
+.EX
+Sufficient memory address  is    requested.
+The actual memory address  space as used
+the RAM pages  as required are   mapped.
+
+.SH NOMENCLATURE: INTEGER
+.EX
+By 1, 2, 4, 8, 16 bytes an integer value is stored.
+A number sans fractional portion is an integer.
+
+.SH THE ARGOT int 4
+.EX
+The argot int 4 when invoked a  4 byte value int var is created.
+
+.SH THE ARGOT int 8
+.EX
+The argot int 8 when invoked an 8 byte value int var is created.
+
+.SH THE ARGOT fix 8
+.EX
+The argot fix 8 when invoked an 8 byte value int var is created.
+
+.SH THE ARGOT SCOPE
+.EX
+The argot scope when invoked
+the target address for later recycling is saved.
+
+.SH THE ARGOT scope PART 1
+.EX
+The  argot          scope when invoked on the stack
+the  target         address and
+the  instruction    pointer register content are stored
+the  interpretation continues.
+
+.SH THE ARGOT scope PART 2
+.EX
+The  opcode   ret   when executed
+by   argot    scope the  CPU     is regained.
+When regained the   var  address is recycled.
+
+.SH SCOPE EXAMPLE
+.EX
+\fB
+a,	io
+name	whoami,	byte,	scope,	set	`Kyle`
+out	`whoami=`	whoami	`\\n`,	...
+ret
+\fR
+
+.SH SCOPE EXAMPLE EXPLAINED
+.EX
+The argot scope
+aft invocation
+the var whoami value
+was set and output.
+
+.SH THE ARGOT RET
+.EX
+The  argot scope since already invoked
+the  argot ret   when          invoked
+by   argot scope the   CPU     was regained.
+Then the   var   whoami        was recycled.
+
+.SH WITH RAM WHAT DOES ASCRIPT DO?
+.EX
+For var metadata           the RAM is recycled.
+For var data to the kernel the RAM is returned.
+
+.SH NOMENCLATURE: VIRTUAL MEMORY
+.EX
+By virtual memory requested address space is measured.
+
+.SH NOMENCLATURE: SHARED MEMORY
+.EX
+By shared memory file and library shared RAM usage is measured.
+
+.SH NOMENCLATURE: RESIDENT MEMORY
+.EX
+By the process the actual RAM usage is measured.
+
+.SH ASCRIPT HUGE VIRTUAL, TINY RESIDENT?
+.EX
+By  ascript about half a gigabyte virtual memory is requested,
+but often a megabyte or less RAM is mapped.
+
+.SH HALF A GIG VIRTUAL MEMORY WHY REQUEST?
+.EX
+Ambiguity to mitigate more opcodes must execute.
+For important data the address when known less opcodes must execute.
+Less opcodes when executed less duration becomes.
+Less duration when required better performance results.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2017; by Kyle Sallee; ascript tutorial 6.5 was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 5 ascript tutorial 7
+man 7 ascript
+\fR

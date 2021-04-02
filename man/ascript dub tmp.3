@@ -1,0 +1,59 @@
+.TH "ascript dub tmp" 3
+.SH NAME
+.EX
+ascript dub tmp
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lllll.
+\fBargot	host	make	type	task\fR
+dub tmp	byte	*.dub	dub tmp	A sub var make.
+.TE
+.TA
+.ta T 8n
+
+.SH SKIP
+.EX
+The argot at when successful the next argot is skipped.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	dub,	io
+name		A,	byte,	scope,	dub tmp,	io log
+
+target origin	A.dub	`/tmp\\0`,	@,	go	'fail open'
+target origin	A.log	A.dub,		=
+target		A,	success,		go	'fail dup'
+\fR
+.in
+
+.SH PATH NOT PATHNAME
+.EX
+For the dub origin a dir name is expected.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2018; by Kyle Sallee; argot   dub tmp was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 open
+man 3 ascript dub
+man 5 ascript
+man 7 ascript
+\fR

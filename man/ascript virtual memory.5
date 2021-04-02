@@ -1,0 +1,201 @@
+.TH "ascript virtual memory" 5
+
+.SH NAME
+.EX
+ascript virtual memory
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH RAM
+.EX
+Random access memory.
+
+.SH VIRTUAL MEMORY
+.EX
+Address space and RAM differ.
+
+.SH ADDRESS SPACE ACQUISITION
+.EX
+From the kernel a memory map is     requested.
+For  the space an address    is     provided.
+The  RAM                     is not provided.
+
+.SH PAGE
+.EX
+A    4096 d byte    at
+a    4096 d byte    aligned address,
+such as     1000 x  2000 x  1234000 x,
+a    page   can     exists.
+
+.SH PAGE FAULT
+.EX
+A   page when  first used
+a   page fault becomes.
+The RAM  is    provided.
+
+.SH FILE BACKED ADDRESSES
+.EX
+By  a         file an address when backed
+the page when faulted
+the RAM  with file    content is   provided.
+
+.SH ASCRIPT VIRTUAL MEMORY USAGE
+.EX
+Half a     gigabyte  address space is  mapped.
+The  pages when      faulted
+some RAM   kilobytes               are provided.
+
+.SH MORE THAN REQUIRED WHY MAP?
+.EX
+A    massive memory map  to request a tiny    duration becomes.
+Many tiny    memory maps to request a massive duration becomes.
+
+.SH SYSCALL
+.EX
+The mmap   syscall
+the munmap syscall
+for each   invocation a duration becomes.
+
+.SH THE KNOWN ADDRESS
+.EX
+At   process   start a known address when mapped
+much ambiguity is      lost.
+When used      fewer opcodes         must execute.
+
+.SH ELOQUENT APPROACH
+.EX
+Eloquence is opinion.
+To asm hackers
+an asm hacker's approach seems eloquent.
+To C   hackers  ascript  seems unfathomable.
+
+.SH ELOQUENT OR NOT
+.EX
+Ascript's initialization,
+ script   parsing    and
+ script   interpretation is  fast.
+
+.SH BY ASCRIPT IS RAM WASTED?
+.EX
+Per RAM page a few bytes only might           be used.
+By  the GNU  C library   an   entire megabyte is being consumed.
+
+.SH PER ASCRIPT PROCESS LIMITS
+.EX
+.TS
+ll.
+Script and zyote text	Full  content
+Argot registered	Unlimited
+Argot invocations	1     million script parts
+Argot parameters	1     million total
+Script and zygotes	1/4th million parsed
+Labels	1/4th million total
+Var	1/4th million concurrently named
+.TE
+.ta T 8n
+
+.SH RECYCLED VAR
+.EX
+The  1/4th million possible var addresses are recycled.
+Some argot hosted           var addresses are separate.
+The                metadata               is  recycled.
+
+.SH RETURNED MAPS
+.EX
+A   var  when   scoped
+the text maps   and data maps
+to  the  kernel are returned.
+
+.SH HOG
+.EX
+The  ascript process  until     terminated
+the  1/2     gigabyte address   space
+with RAM     when     populated
+is   not     relinquished.
+
+.SH DON'T WHINE LIKE SWINE
+.EX
+As a progeny process a RAM glutton can be created.  When complete
+the  progeny process               can be ended.
+
+.SH FUNCTION MALLOC WHY NOT INVOKE?
+.EX
+Trashy C library provided functions unless used
+the    C library provided functions malloc and free
+are      not      invoked.
+
+.SH LEGACY
+.EX
+For 8086 CPUs with 640 kilobytes installed RAM
+and 1    megabyte address space
+the C    function malloc  and free were designed.
+
+.SH MODERN
+.EX
+On  the modern microcomputer the memory  master is the kernel.
+The syscall mmap  by invocation  address space  is requested.
+
+.SH MEMORY MANAGEMENT
+.EX
+For     memory management  the most    efficient approach follows.
+Nothing when   done opcode execution   is not required.
+Nothing when   done the    performance is     preserved.
+
+.SH WHY RECYCLE?
+.EX
+Var when   not recycled seem fast.
+But page       faults   are  slow.
+Var when       recycled and  doing nothing differs.
+But page       faults   are  precluded.
+To  accomplish nothing       something must be done.
+
+.SH HUGE PAGES
+.EX
+2      megabyte aligned
+2      megabyte sized pages
+are an awesome  idea.
+But an awesome  implementation is lacking.
+
+.SH HUGE PAGE DENIED
+.EX
+For    the  initial 1/2 gigabyte mapped address space
+huge   page use is  denied.
+Better performance  results.
+
+.SH SCRIPT UNLOADING
+.EX
+In   the past, but  not  the   present, script unloading was possible.
+Many zygote    when indexing a better   method exists.
+When complete  the  progeny    process  can    terminate.
+
+.SH SUMMARY
+.EX
+The    ascript memory use by C hackers  might not be comprehended.
+Better algorithm and      by C goto use small gains become.
+Inane  function repeated execution when abstained,
+by     doing NOTHING quite frequently,
+the    performance is preserved.
+
+.SH NOTHING IMPORTANCE REALIZATION
+.EX
+Nothing     is faster  than nothing when realized
+nothing can be accomplished and
+pride   and    performance  can result.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 ascript
+\fR

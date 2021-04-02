@@ -1,0 +1,210 @@
+.TH "ascript sem" 3
+.SH NAME
+.EX
+ascript sem
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	make	task\fR
+sem		*	Named semaphore var make.
+
+\fBargot	require	want	task\fR
+sem with	target	sem	The   current semaphore save.
+			The   opcode ret
+			until executed
+			as    current semaphore use.
+.TE
+
+.TS
+lllll.
+\fBargot	require	from	type	task\fR
+sem close	<sem with>			The pathname  close.
+sem init	<sem with>	direct	int	The initial   value set.
+sem name	<sem with>	direct	byte	The pathname  associate.
+sem open	<sem name>			The pathname  open.
+sem post	<sem with>			The semaphore unlock.
+sem try 	<sem with>			The semaphore   lock try.
+sem unlink	<sem with>			The pathname  unlink.
+sem wait	<sem with>			The semaphore   lock.
+.TE
+.ta T 8n
+
+.SH ON SUCCESS SKIP
+.EX
+sem open
+sem wait
+sem try
+
+.SH ON FAILURE ERRNO IN METADATA STORE
+.EX
+sem close
+sem open
+sem post
+sem try
+sem unlink
+sem wait
+
+.SH EXAMPLE SEMAPHORE CREATE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		S0
+sem,		O_CREAT,	O_EXCL
+sem with
+sem name	`/sem.a.001\\0`
+sem open,	go	'fail open'
+sem post
+\fR
+.in
+
+.SH EXAMPLE SEMAPHORE CREATE MULTIBALL
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		S0,
+sem,		O_CREAT,	O_EXCL
+sem with
+sem init	3 x
+sem name	`/sem.a.001\\0`
+sem open,	go	'fail open'
+\fR
+.in
+
+.SH EXAMPLE SEMAPHORE LAUNCH
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		S0
+sem
+sem with
+sem name	`/sem.a.001\\0`
+sem open,	go	'fail open'
+\fR
+.in
+
+.SH EXAMPLE SEMAPHORE VALUE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		S0
+sem
+sem with
+sem name	`/sem.a.001\\0`
+sem open,	go	'fail open'
+out		`S0=`	S0	`\\n`
+\fR
+.in
+
+.SH EXAMPLE SEMAPHORE WAIT
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		S0
+sem
+sem with
+sem name	`/sem.a.001\\0`
+sem open,	go	'fail open'
+sem wait,	go	'fail wait'
+ ...
+\fR
+.in
+
+.SH NAME REQUIREMENTS
+.EX
+Afore name start  only    a   slash must exist.
+For   name length maximum 251 bytes can  exist.
+The   name with   value   0   byte  must terminate.
+
+.SH VAR SCOPE
+.EX
+The     type sem  var  when scoped the semaphore is closed,
+however the  semaphore file remains.
+
+.SH SEMAPHORE DEFAULT VALUE
+.EX
+0
+
+.SH ARGOT sem init
+.EX
+0
+The argot sem open afore invocation
+the argot O_CREAT  and
+the argot sem init when  invoked
+a   different initial    value can be set.
+
+.SH ARGOT sem post
+.EX
+The argot sem post  when invoked
+the semaphore value increments.
+
+.SH ARGOT sem wait
+.SH ARGOT sem check
+.EX
+The semaphore value when not 0
+the semaphore value is   decremented
+and success   becomes.
+
+.SH PERSISTENCE
+.EX
+Until unlinked or
+until shutdown
+a     POSIX named semaphore file persists.
+
+.SH THE POSIX NAMED SEMAPHORE NAME
+.EX
+The  /dev/shm semaphore name
+is   /dev/shm/sem.
+sans the slash
+with the remainder appended.
+
+.SH OWNERSHIP MODE PERMISSION
+.EX
+With process   UID
+with process   GID
+with mode      0600
+the  semaphore is initially created.
+
+.SH .sem CONTENT
+.EX
+The content must not be directly changed.
+The value   must not be negative.
+
+.SH NAMED SEMAPHORE VS FUTEX
+.EX
+FUTEX while faster a common progenitor is required.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2018; by Kyle Sallee; argot   sem was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript sem
+man 3 sem_wait
+man 5 ascript
+man 7 ascript
+man 7 sem_overview
+\fR

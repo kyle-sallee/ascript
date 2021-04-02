@@ -1,0 +1,60 @@
+.TH "ascript endian" 3
+.SH NAME
+.EX
+ascript endian
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	host	make\fR
+be16	int 4 int 8	*.be16
+be32	int 4 int 8	*.be32
+be64	      int 8	*.be64
+le16	int 4 int 8	*.le16
+le32	int 4 int 8	*.le32
+le64	      int 8	*.le64
+.TE
+.ta T 8n
+
+.SH OPERATORS
+.EX
+.in -8
+.TS
+box;
+lll.
+equal	\&=	assign
+.TE
+.in
+.ta T 8n
+
+.SH SET
+.EX
+The sub var value when set    the host var value is revised.
+
+.SH GET
+.EX
+The sub var value when copied the host var value is translated.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2018; by Kyle Sallee; ascript endian was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript int
+man 3 endian
+man 5 ascript
+man 7 ascript
+\fR

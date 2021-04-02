@@ -1,0 +1,62 @@
+.TH "ascript call" 3
+
+.SH NAME
+.EX
+ascript call
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH ARGOT call
+.EX
+The argot  call when invoked
+the opcode call is   executed
+the interpretation   continues.
+
+.SH ARGOT ret
+.EX
+The argot  ret  when invoked
+the opcode ret  is   executed
+the interpretation   continues.
+
+.SH RIP
+.EX
+RIP and instruction pointer register are tantamount.
+
+.SH CALL & RET
+.EX
+The opcode call when executed to   the stack the  RIP content is sent.
+The opcode ret  when executed from the stack the  RIP content is set.
+
+.SH EXAMPLE 0
+.EX
+.in -8
+\fB
+a,	io,	int
+call
+name		x,	int 4,	scope
+name		y,	int 4,	scope
+\&...
+ret,	x and y were recycled.
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   call was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript call
+man 3 ascript ret
+man 5 ascript
+man 7 ascript
+\fR

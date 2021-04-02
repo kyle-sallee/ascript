@@ -1,0 +1,126 @@
+.TH "ascript rusage" 3
+.SH NAME
+.EX
+ascript rusage
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+ll.
+\fBargot	task\fR
+rusage	The hosted var make.
+.TE
+
+.SH HOSTED VAR
+.EX
+.TS
+ll.
+\fBvar	use\fR
+self.utime.tv_sec	user   CPU duration
+self.utime.tv_usec
+
+self.stime.tv_sec	system CPU duration
+self.stime.tv_usec
+
+self.maxrss	KB max       resident size
+
+self.minflt	page  faults
+self.majflt	page  faults with I/O
+
+self.inblock	block input  operation
+self.outblock	block output operation
+
+self.nvcsw	  voluntary  context switch
+self.nivcsw	involuntary  context switch
+
+kids.utime.tv_sec	user   CPU duration
+kids.utime.tv_usec
+
+kids.stime.tv_sec	system CPU duration
+kids.stime.tv_usec
+
+kids.maxrss	KB max       resident size
+
+kids.minflt	page  faults
+kids.majflt	page  faults with I/O
+
+kids.inblock	block input  operation
+kids.outblock	block output operation
+
+kids.nvcsw	  voluntary  context switch
+kids.nivcsw	involuntary  context switch
+.TE
+
+.SH ON LINUX UNAVAILABLE VAR
+.EX
+.TS
+ll.
+\fBvar	use\fR
+self.ixrss	KB shared    mem   size
+self.idrss	KB unshared  data  size
+self.isrss	KB unshared  stack size
+self.nswap	swaps
+self.msgsnd	IPC messages sent
+self.msgrcv	IPC messages received
+self.nsignals	signals      received
+
+kids.ixrss	KB shared    mem   size
+kids.idrss	KB unshared  data  size
+kids.isrss	KB unshared  stack size
+kids.nswap	swaps
+kids.msgsnd	IPC messages sent
+kids.msgrcv	IPC messages received
+kids.nsignals	signals      received
+.TE
+
+.ta T 8n
+.SH EXAMPLE 0
+.EX
+.in -8
+\fB
+a,	int,	io,	rusage,	segfault
+name		self.minflt.old,	int 8
+origin		self.minflt,=
+
+out		`self.minflt	`	self.minflt.old	`\\n`	\\
+		`self.minflt	`	self.minflt	`\\n`
+
+target origin	self.minflt.old		-1 d,*
+origin		self.minflt,+
+out		`difference	`	self.minflt.old	`\\n`
+\fR
+.in
+
+.SH VALUE
+.EX
+The var when accessed the value is acquired.
+
+.SH VAR *.tv_usec
+.EX
+For proper pairing
+the var    *time.tv_usec afore  copying
+the var    *time.tv_sec  please copy.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2018; by Kyle Sallee; argot   rusage was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript rlimit
+man 2 clock_getres
+man 3 getrusage
+man 5 ascript
+man 7 ascript
+\fR

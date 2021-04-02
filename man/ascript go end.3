@@ -1,0 +1,80 @@
+.TH "ascript go end" 3
+
+.SH NAME
+.EX
+ascript go end
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	direct parameter	task\fR
+
+go end	"far label"	The  script interpretation
+	        	when complete
+	        	at   the    far     label
+	        	the  interpretation resumes.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	trek
+target origin	out	'Line one.',	go end	"say"
+       origin		'Line two.',	go end	"say"
+       origin		'Line three.',	go end	"say"
+       origin		'Line four.'
+	byte line,	ret
+"say",	byte line,	ret
+\fR
+.in
+
+.SH EXAMPLE OUTPUT
+.EX
+Line four.
+Line three.
+Line two.
+Line one.
+
+.SH ARGOT go end FIRST PART
+.EX
+The target address,
+the origin address
+the far    address    are memorized.
+The script interpretation continues.
+
+.SH SCRIPT COMPLETION
+.EX
+The target address
+the origin address are restored.
+The far    address is  reached.
+
+.SH ABORT IMPOSSIBLE!
+.EX
+The argot go end when invocation
+the liberty      is   preserved.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2019; by Kyle Sallee; argot   go end was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript trek
+man 5 ascript
+man 7 ascript
+\fR

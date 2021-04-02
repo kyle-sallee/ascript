@@ -1,0 +1,391 @@
+.TH "ascript view" 3
+
+.SH NAME
+.EX
+ascript view
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot	from	make 	compat	use\fR
+view	target	*.view  	byte	The view                   provide.
+	target	*.view.head	byte	The view start byte match  select.
+	target	*.view.tail	byte	The view end   byte match  select.
+	target	*.view.from	den4	The view start byte offset select.
+	target	*.view.size	den4	The view total byte size   select.
+.TE
+
+.TS
+ll.
+\fBargot	task\fR
+view with\
+	The   current  view var save.
+	The   opcode   ret
+	Until executed
+	The   current  view var replace.
+.TE
+
+
+For       the       following
+from      argot     view with
+the       type      view      var       address
+is        acquired.
+.TS
+ll.
+\fBargot	task\fR
+view byte back\
+	By 1 the view address decrement.
+
+view byte back safe\
+	By 1 the view address decrement.
+	The view start if valid the next argot skip.
+
+view byte next\
+	By 1 the view address increment.
+
+view byte next safe\
+	By 1 the view address increment.
+	The view start if valid the next argot skip.
+
+
+view char\
+	For the  current view
+	to  the  first   UTF-8 character
+	the view is      constricted.
+
+view char back\
+	A     UTF-8 start byte
+	until found
+	by    1 to  4     bytes
+	the   view  is    decremented.
+
+view char back safe\
+	A     UTF-8 start byte
+	until found
+	by    1 to  4     bytes
+	the   view  is    decremented.
+	The   view  start
+	if    valid the   next argot skip.
+
+view char next\
+	By   the   current view           length
+	the  view  address is   increased.
+	To   the   UTF-8        character length
+	the  view  length  is   set.
+
+view char next safe\
+	By   the   current view           length
+	the  view  address is   increased.
+	To   the   UTF-8        character length
+	the  view  length  is   set.
+	The  view  start
+	if   valid the     next argot skip.
+
+
+view full\
+	The host var   full view   select.
+
+view save\
+	The view                   save.
+	The opcode     ret  when   executed
+	the view                   restore.
+
+
+view head add\
+	The             byte    sequence                  append.
+view head back\
+	At  *.view.head earlier sequence match the *.view begins.
+view head equal\
+	The             byte    sequence                  set.
+view head next\
+	At  *.view.head next    sequence match the *.view begins.
+
+
+view tail add\
+	The             byte    sequence                  append.
+view tail back\
+	At  *.view.tail earlier sequence match the *.view ends.
+view tail equal\
+	The             byte    sequence                  set.
+view tail next\
+	At  *.view.tail next    sequence match the *.view ends.
+.TE
+.ta T 8n
+.in
+
+.SH *.view.head OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	The             byte    sequence                  append.
+equal	\&=	The             byte    sequence                  set.
+add add	++	At  *.view.head next    sequence match the *.view begins.
+sub sub	--	At  *.view.head earlier sequence match the *.view begins.
+.TE
+.ta T 8n
+.in
+
+.SH *.view.tail OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	The             byte    sequence                  append.
+equal	\&=	The             byte    sequence                  set.
+add add	++	At  *.view.tail next    sequence match the *.view ends.
+sub sub	--	At  *.view.tail earlier sequence match the *.view ends.
+.TE
+.ta T 8n
+.in
+
+.SH HOST VAR
+.EX
+For the host var a type byte compat suffices.
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+io
+
+name		body
+byte
+scope
+view
+set		`junk <start>This text please.</start> more junk`
+target		body.view
+view with
+
+target origin	body.view.head	`<start>`,	=,++,next
+target origin	body.view.tail	`</start>`,	=,++,next
+
+out		body.view	`\\n`
+
+target origin	body	`line one\\nline two\\nline three\\nline four\\n`,=
+view full
+
+out		`\\nfull monty\\n`	body.view	`\\n`
+out		`\\nfore walking\\n`
+
+target origin	body.view.head	``,=
+target origin	body.view.tail	`\\n`,=
+target origin	body.view.size	0/x,=
+
+\&'again'
+target		body.view.tail,++
+go		'next'
+out		body.view	`.\\n`
+target origin	body.view.from	body.view.size,+,++
+target origin	body.view.size	1,=
+go		'again'
+
+\&'next'
+out		`\\nback walking\\n`
+target		body.view
+view full
+target				body.view.size,--
+target origin	body.view.from	body.view.size,=
+target origin	body.view.size	0/x,=
+target origin	body.view.head	`\\n`,=
+target origin	body.view.tail	`\\n`,=
+
+\&'again2'
+target		body.view.head,--,	go	'done'
+target		body.view.tail,--,	next
+out		body.view	`.\\n`
+target		body.view.size,--
+go		'again2'
+
+\&'done'
+target origin	body.view.from	0/x,=
+target origin	body.view.size	0/x,=
+target		body.view.tail,++,	next
+out		body.view	`.\\n`
+\fR
+.in
+
+.SH EXAMPLE COMMENTS
+.EX
+For line walking a type line var is superior.
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+io
+
+name            A,      byte,   scope,  set     `byte by byte`
+view
+target          A.view
+view with
+
+target origin   A.view.size     1/x,=
+next
+
+\&'again'
+out             A.view  `\\n`
+view byte next safe
+ret
+go              'again'
+\fR
+.in
+
+.SH THE ARGOT view with
+.EX
+From argot view with by  the following argot
+the  type  view var  address is acquired.
+view full
+view save
+view head add
+view head back
+view head equal
+view head next
+view tail add
+view tail back
+view tail equal
+view tail next
+
+.SH THE ARGOT view head add
+.SH THE ARGOT view head equal
+.SH THE ARGOT view tail add
+.SH THE ARGOT view tail equal
+.EX
+The argot view head add
+the argot view head equal
+the argot view tail add
+the argot view tail equal     when invoked
+as  a     direct    parameter the  text is acquired.
+
+.SH TERSE
+.EX
+Within the host var a view is selected.
+
+.SH BYTE SEQUENCE
+.EX
+By  var *.view.head
+by  var *.view.tail byte  sequences are contained.
+One or  more        bytes even UTF-8    characters suffice.
+
+.SH REGULAR EXPRESSION
+.EX
+By *.view.head
+by *.view.tail regular expression is not supported.
+By argot pcre2 regular expression is     supported.
+
+.SH PART VS VIEW
+.EX
+Type part var and
+type view var are similar.
+Type part is  faster.
+Type view is  flexible.
+
+.SH CAVEAT
+.EX
+For *.view.from a   negative value    must not be exist.
+For *.view.size the host var capacity must not be exceeded.
+
+.SH THE *.view.size TO 0 IS TACITLY SET.
+The argot add add   with the  var *.view.head
+the argot view head next when invoked
+to 0 the *.view.size is set.
+
+.SH THE *.view.size IS TACITLY INCREASED.
+.EX
+The argot sub sub with *.view.head
+the argot view head back when invoked the distance regressed
+to *.view.size is added.
+
+.SH TAIL MOVES INDEPENDENTLY.
+.EX
+The *.view.tail           when adjusted
+the argot view tail back
+the argot view tail next  when invoked
+the *.view.from     value does not change.
+
+.SH CAVEAT TEXT SIZE
+.EX
+For *.view.head text
+for *.view.tail text 1 page, 4096 bytes, is mapped.
+With either the  argot add add when invoked
+the  map    size can   tacitly expand.
+
+.SH PERSISTENT
+.EX
+The *.view.head value
+the *.view.tail value until changed persist.
+
+.SH REFLECTIVE
+.EX
+By the *.view.size value the view     length is provided.
+By the *.view.from value the host var offset is provided.
+
+.SH COMPARISON OPERATORS
+.EX
+Type byte comparison operators are inherited.
+
+.SH THE ARGOT view byte back
+.SH THE ARGOT view byte next
+.EX
+The argot view byte back when invoked the view address is decremented.
+The argot view byte next when invoked the view address is incremented.
+Boundary  checking  is   not  provided.
+
+.SH THE ARGOT view * safe
+.EX
+Boundary  checking  is        provided.
+
+.SH THE ARGOT view char *
+.EX
+Rather than byte a mere byte
+by a UTF-8 character the view can advance and retreat.
+
+.SH SKIP
+.EX
+The  var *.view   is   type byte compat.
+Type byte compare operators are  inherited.
+The  expected     outcome   when attained
+the  next argot   is   skipped.
+
+.SH WITH *.view THE ARGOT add add CAVEAT
+.EX
+The var *.view  if   modified text is      overwritten.
+Data append and data insert        are not supported.
+
+.SH *.view DOES NOT INCLUDE ...
+.EX
+In  var *.view
+the var *.view.head
+the var *.view.tail
+are not included.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   view was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript part
+man 5 ascript
+man 7 ascript
+\fR

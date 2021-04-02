@@ -1,0 +1,249 @@
+.TH "ascript node list" 3
+
+.SH NAME
+.EX
+ascript node list
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	make	compat	task\fR
+
+node list	*   	node list	Host    var    make.
+node list deep	*.deep	int	Dir     depth  provide.
+node list link	*.link	byte	Symlink object provide.
+
+\fBargot	make	compat	possible content\fR
+
+node list type	*.type	byte	block, char, dir,  fifo
+        			file,  link, sock, sym
+.TE
+
+.TS
+lllll.
+\fBargot	make	compat	path    	node name\fR
+
+node list full	*.full	byte	absolute	with
+node list lean	*.lean	byte	interior	with
+node list less	*.less	byte	interior	sans
+node list most	*.most	byte	relative	with
+node list name	*.name	byte	sans    	with
+node list path	*.path	byte	relative	sans
+.TE
+.ta T 8n
+
+.TS
+lll.
+\fBargot	require	use\fR
+
+node list with	node list	The   current node list var save.
+		The   opcode  ret
+		until executed
+		the   current node list var replace.
+.TE
+
+.TS
+lll.
+\fBargot	require	task\fR
+
+node list path name	<node list with>	To    list  pathname provide.
+node list dir  head	<node list with>	Dir   name     first show.
+node list dir  tail	<node list with>	Dir   name     last  show.
+
+node list dir  done	<node list with>	The   current  dir   depart.
+node list dir  skip	<node list with>	The   content        skip.
+node list next  	<node list with>	The   next     node  select.
+node list sym  list	<node list with>	The   content        list.
+
+node list stat  	<node list with>	The   target   type  stat
+		var   associate.
+.TE
+
+.SH SKIP
+.EX
+For  argot node list next
+when invoked    another node
+when obtained   the     next argot is skipped.
+
+.SH EXAMPLE 0 SIMPLE LISTING
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+err
+io
+
+name		A
+node list
+scope
+node list with
+node list full,		target	`/usr/share/man/man3`
+node list path name
+
+target origin	out	A.full
+
+\&'again'
+node list next
+go		'done'
+byte line
+go		'again'
+
+\&'done'
+!
+err now		errtext
+\fR
+.in
+
+.SH EXAMPLE 1 RECURSIVELY REMOVE /tmp/gone
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+err
+io
+node
+
+name		A
+node list
+scope
+node list with
+node list full
+node list dir tail
+# Aft content the name is provided.
+
+target		`/tmp/gone\\0`
+node list path name
+
+target		A.full
+node target at
+
+\&'again'
+node list next,	go	'done'
+node del,	go	'fail'
+		go	'again'
+
+\&'done',	out	errtext		`\\n`,	ret
+\&'fail',	out	errtext		`\\n`,	ret
+\fR
+.in
+
+.SH EXAMPLE 2 VERBOSE LISTING
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+stat
+
+name		A
+node list
+scope
+node list with
+node list full
+origin		`/bin256`,@
+
+target		A.full,			stat sym
+target		A.full.statsym
+stat size
+node list stat
+
+\&'again'
+node list next,	go	'done'
+out		A.full.statsym.size	`	`	\\
+		A.full			`\\n`
+go		'again'
+\&'done'
+\fR
+.in
+
+.SH EXAMPLE 3 TYPE HANDLING
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+tag
+
+name		A
+node list
+scope
+node list with
+node list most
+node list type
+target		`/bin256`
+node list path name
+
+\&'again'
+node list next
+go		'done'
+tag pin		'is '		A.type
+go		'again'
+go		'again'
+
+\&'done'
+ret
+
+\&'is block',	out	A.most	` is a `	A.type	`\\n`,ret
+\&'is char',	out	A.most	` is a `	A.type	`\\n`,ret
+\&'is dir',	out	A.most	` is a `	A.type	`\\n`,ret
+\&'is fifo',	out	A.most	` is a `	A.type	`\\n`,ret
+\&'is link',	out	A.most	` is a `	A.type	`\\n`,ret
+\&'is sock',	out	A.most	` is a `	A.type	`\\n`,ret
+\&'is sym',	out	A.most	` is a `	A.type	`\\n`,ret
+
+# For different types
+# a   different actions
+# is  possible.
+\fR
+.in
+
+.SH STAT BUFFER ASSOCIATION
+.EX
+The  argot node list stat when invoked
+a    type  stat var  can  be   associated.
+
+.SH PATHNAME ACQUISITION
+.EX
+The  argot node list path name when invoked
+the  pathname providing   var  is   associated.
+
+.SH DEFAULTS
+.EX
+A type dir node  when    discovered is explored.
+A type dir afore content the   name is provided.
+
+.SH PRESENT WORK DIRECTORY CAVEAT
+.EX
+By argot node list the present work dir is not changed.
+
+.SH SUB VAR CONTENT
+.EX
+A sub var when accessed the content is generated.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript           was created.
+In 2018; by Kyle Sallee; argot   node list was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript node
+man 3 ascript stat
+man 5 ascript
+man 7 ascript
+\fR

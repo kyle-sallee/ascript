@@ -1,0 +1,87 @@
+.TH "ascript unicode" 5
+
+.SH NAME
+.EX
+ascript unicode
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH CHARACTER
+.EX
+A human readable symbol.
+
+.SH UTF-8
+.EX
+UTF-8 is a multi byte character set.
+
+.SH UNICODE
+.EX
+Unicode is an integer representation for a UTF-8 value.
+
+.SH UNICODE EXAMPLES
+.EX
+A	`\\U+000041`
+a	`\\U+000061`
+
+.SH 7-BIT ASCII
+.EX
+With 7-bit ASCII UTF-8 and Unicode are backward compatible.
+
+.SH UTF-8
+.EX
+Per character encoding 1 to 4 bytes exist.
+
+.SH UNICODE TO UTF-8 TRANSLATION
+.EX
+By  the     text  editor
+the desired UTF-8 value   input  when unable
+by  `\\U+`  and a 6 digit denhex value
+the Unicode value   can   be     provided.
+
+.SH PARSING
+.EX
+By  the parser  from Unicode values to UTF-8 characters
+the translation is   provided.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+out now		`\\U+00304a\\U+00306f\\U+003088\\U+003046`
+\fR
+.in
+
+.SH EXAMPLE OUTPUT
+.EX
+In  hiragana script using UTF-8 characters
+the phrase   ohayou is    output.
+
+.SH 6 HEXDEN DIGITS
+.EX
+The six  hexden digits to    achieve
+the left side   with   ASCII byte value 30 x is padded.
+
+.SH UNICODE MAX
+.EX
+`U+10FFFF` or 1114111 denary is maximum.
+For most human languages symbols/characters UTF-8 values are assigned.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 ascript
+\fR

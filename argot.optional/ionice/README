@@ -1,0 +1,5 @@
+On        disk      based     computers
+for       data      acquisition         bottle    neck      mitigation
+the       Linux     kernel    CFQ       scheduler provided
+ioprio,   also      called    ionice,
+is        useful.

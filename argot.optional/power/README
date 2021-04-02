@@ -1,0 +1,6 @@
+The  power off   method,
+the  reboot      method,
+the  hibernation methods are
+all        Linux kernel          specific.
+If   a     Linux kernel  is  not being used
+then these       argot   are     optional.

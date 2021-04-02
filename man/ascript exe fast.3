@@ -1,0 +1,91 @@
+.TH "ascript exe fast" 3
+
+.SH NAME
+.EX
+ascript exe fast
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	direct	use
+	parameters\fR
+exe fast	PPP	Sans completion  wait execute.
+
+exe must	int	Last completion await.
+		Exit code   and value when same skip.
+
+exe yield	PPP	In   process          execute.
+
+\&.		Last completion await.
+\&..		All  completion await.
+.TE
+.TA
+
+By   PPP  as direct       parameters
+the  program pathname and parameters
+must      be provided.
+
+An argot  . is actually provided.
+An argot .. is actually provided.
+
+.SH SKIP
+.EX
+The  argot exe fast
+the  argot exe must
+when successful the next argot is skipped.
+
+.SH PROGRAM END
+.EX
+The  argot      exe yield
+when successful in  the current process
+the  ascript    program is      replaced.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+io
+out now		`one two three\\n`
+exe fast	`echo\\0one\\0two\\0three\\0`,	go	'failed'
+exe must	0 d,				go	'nonzeroexit'
+\fR
+.in
+
+.SH CAVEAT
+.EX
+From parameters
+more than   1000 x strings are too many;
+more than 1f8000 x bytes   are too many!
+
+.SH ARGOT exe OR ARGOT exe fast?
+.EX
+The argot exe fast is    fast.
+The argot exe      is    flexible.
+500 init  scripts  when  editing
+the argot exe      seems easy.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2019; by Kyle Sallee; argot   exe fast was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript exe
+man 3 ascript exe yield
+man 3 ascript sire
+man 5 ascript
+man 7 ascript
+\fR

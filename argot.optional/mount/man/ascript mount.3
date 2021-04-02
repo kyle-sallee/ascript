@@ -1,0 +1,180 @@
+.TH "ascript mount" 3
+
+.SH NAME
+.EX
+ascript mount
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED VAR
+.EX
+.TS
+ll.
+\fBvar	type\fR
+mount.data	byte
+mount.filesystem	byte
+mount.partlabel	byte
+mount.source	byte
+mount.target	byte
+.TE
+.ta T 8n
+
+.SH HOSTED ARGOT
+.EX
+.TS
+ll.
+\fBargot	task\fR
+mounted 	If  mounted             skip.
+mount   	The mount   attempt and skip.
+umount   	The unmount attempt and skip.
+
+MS_RDONLY	Mount flag request.
+MS_NOSUID
+MS_NODEV
+MS_NOEXEC
+MS_SYNCHRONOUS
+MS_REMOUNT
+MS_MANDLOCK
+MS_DIRSYNC
+MS_NOATIME
+MS_NODIRATIME
+MS_BIND
+MS_MOVE
+MS_REC
+MS_SILENT
+MS_POSIXACL
+MS_UNBINDABLE
+MS_PRIVATE
+MS_SLAVE
+MS_SHARED
+MS_RELATIME
+MS_KERNMOUNT
+MS_I_VERSION
+MS_STRICTATIME
+MS_LAZYTIME
+MS_ZERO 	Mount flags zero.
+
+MNT_FORCE	Unmount flag request.
+MNT_DETACH
+MNT_EXPIRE
+MNT_NONE
+MNT_ZERO	Umount flags zero.
+UMOUNT_NO_FOLLOW
+.TE
+.ta T 8n
+
+.SH ARGOT mounted EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	mount
+
+target origin	mount.target	`/+/boot`,=
+mounted,	go		'not'
+	out add	mount.target	` is     mounted.\\n`,	ret
+\&'not',	out add	mount.target	` is not mounted.\\n`,	ret
+\fR
+.in
+
+.SH ARGOT mount EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	err,	io,	mount
+
+target origin	mount.partlabel		`boot`,		=
+target origin	mount.target		`/+/boot`,	=
+target origin	mount.filesystem	`ext4`,		=
+MS_NOATIME
+
+mount,	go	'not'
+	out add	mount.source	` is     mounted.\\n`,			ret
+\&'not',	out add	mount.source	` is not mounted.\\n`	errtext,	ret
+\fR
+.in
+
+.SH ARGOT umount EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	err,	io,	mount
+
+target origin	mount.target	`/+/boot`,=
+umount,	go	'not'
+	out add	mount.target	` umount.\\n`,				ret
+\&'not'	out add	mount.target	` did not umount.\\n`	errtext,	ret
+\fR
+.in
+
+.SH MOUNT POINTS
+.EX
+On dir  nodes file systems can be mounted.
+On file nodes files        can be mount bind.
+
+.SH VAR mount.partlabel
+.EX
+When set the var mount.partlabel hosting device name is discovered
+and  in  the var mount.source                        is saved
+and      the var mount.partlabel                     is cleared.
+
+.SH ARGOT mounted
+.EX
+For the var mount.target content
+the file /proc/mounts is searched.
+
+.SH ARGOT mount CAVEAT
+.EX
+When loaded from /sys/class/block the content is read.
+From each   non  partition block      device
+from 400 x
+to   b80 x
+the  bytes  are  read.
+The  first 15 GPT partition entries are expected.
+
+.SH CONVERTED FROM DOS LEGACY PARTITIONS
+.EX
+After 2 decades are not supported.
+
+.SH CAVEAT
+.EX
+By the GPT   partition design 128             partitions are allowed.
+By the Linux design    per    block device 15 partitions are recognized.
+
+.SH PARTUUID
+.EX
+From UUID to device name translation is not currently implemented.
+
+.SH SOURCE CAVEAT
+.EX
+By  UUID  reference and
+by  label reference      are  NOT supported.
+A         partlabel or
+a         device    name can  be used.
+In        UTF-8     the  name is expected.
+To        UTF-16LE  the  name is converted.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2018; by Kyle Sallee; argot   mount was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+lynx https://en.wikipedia.org/wiki/GUID_Partition_Table
+man 1 ascript
+man 2 mount
+man 2 umount
+man 5 ascript
+man 7 ascript
+man 8 mount
+\fR

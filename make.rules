@@ -1,0 +1,38 @@
+#	By Kyle Sallee in 2019 copyrighted.
+#	From other projects source code was not copied.
+#	In the ascript manual page; the license is provided.
+
+CFLAGS		+=	-iquote$(above)head -iquote$(above)argot
+CFLAGS		+=	-fpic
+LDFLAGS		+=	-shared -nodefaultlibs -L.
+libdir		=	/lib$(SUFFIX)
+source		=	$(wildcard *.c)
+
+AMM		=	ascript.$(major).$(minor)/
+LP		=	$(above)lib/$(AMM)
+#ALT		=	$(above)lib/$(AMM)alt/
+REQ		=	$(above)lib/$(AMM)req/
+#FAKE		=	$(above)lib.fake/
+LS		=	$(above)lib.static/
+
+fast		=	$(addprefix $(LP),$(source:.c=))
+#fake		=	$(addprefix $(FAKE),$(source:.c=))
+req		=	$(addprefix $(REQ),$(source:.c=))
+
+$(LP)%		:	%.c
+	$(CC)	$(CFLAGS) $(LDFLAGS) -Wl,-soname,$(subst $(above)lib/,,$@) $< -o $@
+
+#$(FAKE)%	:	%.c
+#	$(CC)	$(CFLAGS) $(LDFLAGS) -Wl,-soname,$(AMM)$* -o $@
+
+$(LS)%.o	:	%.c
+	$(CC)	$(CFLAGS) -c -static $< -o $@
+
+$(REQ)%		:	%.c;
+
+.PHONY		:	all install	LP	LS	REQ
+#.PHONY		:	all install	LP	LS	REQ	ALT
+#.PHONY		:	all install	LP	FAKE	LS	REQ	ALT
+#all		:	$(fake)	$(fast)	$(req)
+all		:	$(fast)	$(req)
+install		:	all

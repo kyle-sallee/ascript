@@ -1,0 +1,182 @@
+.TH "ascript dub" 3
+.SH NAME
+.EX
+ascript dub
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	host	make  	task\fR
+dub file	byte	*.dub	For node sub var make.
+dub mem 	byte	*.dub	For mem  sub var make.
+dub shm 	byte	*.dub	For shm  sub var make.
+dub tmp 	byte	*.dub	For temp sub var make.
+dub name	.dub	*.name	/proc/self/fd/... sub var make
+
+\fBargot	target	origin	task\fR
+dub lock free   	.dub		Sans wait the lock free.
+dub lock free late	.dub		On   ret  the lock free.
+dub lock        	.dub		With wait the lock make.
+dub lock now    	.dub		Sans wait the lock make.
+
+dub sig         	.dub	sig	Signal I/O enable.
+
+dub use         	.dub/		The dub  value when valid
+                	int		the next argot skip.
+.TE
+
+.TS
+lll.
+\fBargot   	target	task\fR
+dub end late	.dub	The opcode ret when   executed
+        		the dub    is  closed/released.
+dub end 	.dub	The dub    is  closed/released.
+
+dub on exe give	.dub	O_CLOEXEC  unset and skip.
+dub on exe keep	.dub	O_CLOEXEC    set and skip.
+dub on use rush	.dub	O_NONBLOCK   set and skip.
+dub on use wait	.dub	O_NONBLOCK unset and skip.
+
+dub poll	.dub	The dub  events when received
+        		the next argot  skip.
+
+dub unlink	.dub	The dub  pathname    unlink.
+
+\fBargot   	target	task\fR
+O_APPEND	.dub	Logical or.
+O_ASYNC 	.dub	Logical or.
+O_CLOEXEC	.dub	Logical or.
+O_CREAT 	.dub	Logical or.
+O_DIRECT	.dub	Logical or.
+O_DIRECTORY	.dub	Logical or.
+O_DSYNC 	.dub	Logical or.
+O_EXCL  	.dub	Logical or.
+O_NOATIME	.dub	Logical or.
+O_NOCTTY	.dub	Logical or.
+O_NOFOLLOW	.dub	Logical or.
+O_NONBLOCK	.dub	Logical or.
+O_PATH  	.dub	Logical or.
+O_RDONLY	.dub	Logical or.
+O_RDWR  	.dub	Logical or.
+O_SYNC  	.dub	Logical or.
+O_TMPFILE	.dub	Logical or.
+O_TRUNC 	.dub	Logical or.
+O_WRONLY	.dub	Logical or.
+.TE
+
+.SH .dub OPERATORS
+.EX
+.in -8
+.TS
+box;
+lll.
+at	@	The dub is acquired.
+.TE
+.in
+
+.SH WHAT IS A DUB?
+.EX
+A dub is a pathname node use permission approved numeric nickname.
+
+.SH THE ARGOT dub poll DIRECT PARAMETERS
+.EX
+The millisecond timeout is  first acquired.
+The events              are next  acquired.
+
+.TS
+ll.
+\fBevent	task\fR
+`POLLIN`	can be read.
+`POLLPRI`	out-of-band can be read.
+`POLLOUT`	can be written.
+`POLLRDHUP`	half-open disconnected.
+`POLLERR`	error exists.
+`POLLHUP`	disconnected.
+`POLLNVAL`	The dub reference is invalid or not open.
+.TE
+
+.SH SKIP
+.EX
+The  argot at
+the  argot dub poll
+when successful
+the  next  argot is skipped.
+
+.ta T 8n
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	dub,	err,	io
+name		A,	byte,	scope,	dub file
+target origin	A.dub	`/tmp/count.txt\\0`,	O_RDONLY,@,	go	'fail'
+target origin	A	A.dub,			io load,	go	'fail'
+out		A,				ret
+\&'fail', 	err now		errtext,	ret
+\fR
+.in
+
+.SH INPUT POLL EXAMPLE
+.EX
+.in -8
+\fB
+a,	dub,	io
+target		sip
+dub poll	5000 d	`POLLIN`,	go	'slowpoke'
+		out now		`Received: `	sip,	ret
+\&'slowpoke',	out now		`Too slow.\\n`,		ret
+\fR
+.in
+
+.SH ARGOT OPERATOR at
+.EX
+For argot dub file made *.dub
+for argot dub shm  made *.dub
+for argot dub tmp  made *.dub
+the argot at       when invoked the pathname is provided.
+
+.SH ARGOT dub unlink
+.EX
+The  pathname aft acquisition
+by   argot    dub unlink
+can  be           unlinked.
+The  argot    node del could be used.
+
+.SH ARGOT O_*
+.EX
+The dub afore acquisition
+by  argot O_* invocation
+the function open flags are requested.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2018; by Kyle Sallee; argot   dub was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 open
+man 2 poll
+man 3 ascript dub
+man 3 ascript dub file
+man 3 ascript dub lock
+man 3 ascript dub mem
+man 3 ascript dub shm
+man 3 ascript dub tmp
+man 3 ascript io
+man 3 memfd_create
+man 5 ascript
+man 7 ascript
+\fR

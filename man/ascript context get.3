@@ -1,0 +1,82 @@
+.TH "ascript context get" 3
+.SH NAME
+.EX
+ascript context get
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH ARGOT SYNOPSIS
+.EX
+.in -8
+.TS
+ll.
+\fBargot	task\fR
+context free	The saved     context  release.
+context get	CPU registers save and skip.
+context set	CPU registers load and skipped argot interpret.
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	re,	trek
+
+name		A,	byte,	scope,	set	`Hello World!`
+
+context get
+go		'done'
+
+re 10
+byte line
+context set
+ret
+ret
+
+\&'done'
+out		`Done.\\n`	A
+\fR
+.in
+
+.SH EXAMPLE OUTPUT
+.EX
+Hello World!
+Done.
+Hello World!
+
+.SH NESTING
+.EX
+For argot context get
+for argot context set
+the invocations   can be    nested.
+
+.SH CAVEAT
+.EX
+The   context
+when  restored
+any   rule         can be broken;
+the   stack unwind can be precluded.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2019; by Kyle Sallee; context get was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript context get
+man 3 getcontext
+man 5 ascript
+man 7 ascript
+\fR

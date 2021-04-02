@@ -1,0 +1,57 @@
+.TH "ascript klog" 3
+
+.SH NAME
+.EX
+ascript klog
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+ll.
+\fBargot	task\fR
+klog	A kernel log daemon start.
+.TE
+.ta T 8n
+.in
+
+.SH DEFAULT PATHNAME
+.EX
+As a direct        parameter
+a    strftime      compatible pathname
+can  optionally be provided or
+`/+/boot/var/log/kernel/%Y%m%d` is assumed.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+klog	`/+/boot/var/log/kernel/%Y%m`
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   klog was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 syslog
+man 3 ascript klog
+man 3 ascript syslog
+man 3 strftime
+man 5 ascript
+man 7 ascript
+\fR

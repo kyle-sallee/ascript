@@ -1,0 +1,162 @@
+.TH "ascript init root" 3
+.SH NAME
+.EX
+ascript init root
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	target 	task\fR
+init real	realFS name	To realFS name chroot.
+		        	Namespace unshare.
+		        	/sbin/initreal execute.
+init root		/sbin/initroot execute.
+.TE
+.ta T 8n
+
+
+.SH ARGOT init real
+.EX
+A        progeny process is created.
+In  the  progeny process
+the name   space         is unshared
+the realFS               is chrooted and
+/sbin/initreal           is executed.
+
+.SH ARGOT init root
+.EX
+a      progeny    process is created.
+In the progenitor process
+/sbin/initroot            is executed.
+In the progeny    process
+the    ascript    process    continues.
+
+.SH PROGRAM initreal
+.EX
+Zombies are slain.
+The     unshared namespaces existence is maintained.
+In      unshared namespace  as PID 1 the initreal process remains.
+
+.SH PROGRAM initroot
+.EX
+Zombies are slain.
+From a Linux virtual console
+the Alt Ctrl Delete key sequence when pressed
+By  PID 1 SIGINT is received.
+
+.SH SIGINT AND PID 1
+.EX
+By  PID 1,
+the initroot process,
+the SIGINT   when received
+a   progeny  process is created and in
+the progeny  process program /sbin/cad is executed.
+
+.SH WHAT LAUNCHES INIT SCRIPTS?
+.EX
+By   the     initroot process
+by   the     initreal process
+init scripts are  NOT launched.
+
+dir       /+/boot
+aft       mounting
+to        /usr
+is        typically mount     bind.
+
+When      booting
+from      initRAMFS
+minimal   content
+is        required.
+
+.SH rootFS
+.EX
+The real / is the rootFS.
+
+.SH realFS
+.EX
+On /+/boot
+   /+/play32 /+/play64 /+/serf
+   /+/test32 /+/test64 /+/work32 /+/work64
+realFS are mounted.
+From the names the roles should seem obvious.
+
+.SH INIT PROCESS
+.EX
+To  catch   signals such as SIGCHLD SIGINT
+an  init    process configures;
+the control terminal     is relinquished;
+an  eternal sleep   becomes.
+
+.SH INIT SCRIPTS
+.EX
+For boot completion by init-scripts programs are run.
+
+.SH TERM SCRIPTS
+.EX
+For shutdown and reboot preparation by term-scripts programs are run.
+
+.SH GETTY
+.EX
+By a getty RAM and a PID are wasted!
+
+.SH CAD
+.EX
+By /sbin/cad a new terminal can be acquired and selected;
+a  login selection  menu    can be provided.
+
+.SH WHO PROVIDES CAD?
+.EX
+By the POSIX designer/implementer the CAD script is written.
+
+.SH CLUELESS?
+.EX
+The "Linux from Scratch" online free publication might help.
+
+.SH REALFS PID HINT
+.EX
+For active realFS in /-/ symbolic links could be created.
+lrwxrwxrwx 1 root root 9 Dec 10 16:41 /-/boot -> /proc/704
+lrwxrwxrwx 1 root root 7 Dec 10 16:41 /-/root -> /proc/1
+lrwxrwxrwx 1 root root 9 Dec 10 16:41 /-/test -> /proc/897
+lrwxrwxrwx 1 root root 9 Dec 10 16:41 /-/work -> /proc/809
+
+.SH HIERARCHY
+.EX
+In   the rootFS the   bare           minimum runs.
+From the rootFS all   realFS are     accessible.
+From any realFS the   rootFS is  not accessible
+From any realFS other realFS are not accessible
+
+.SH MAC
+.EX
+Mandatory Access Control.    Tomoyo!
+By  a MAC with   good rules
+in   an          impregnable shield
+each realFS is   encased.
+For  server      processes
+the  required    file system locations only can be modified.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2017; by Kyle Sallee; init    was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 namespaces
+man 7 ascript
+man 8 initreal
+man 8 initroot
+\fR

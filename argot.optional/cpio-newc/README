@@ -1,0 +1,87 @@
+A      computer   boot and
+a      present    unwrapping are  similar.
+While  required   parts      are  provided
+some              assembly   is   required.
+
+From   mass       storage devices
+the    partition  tables  must be  read
+the    file       systems must be  mounted, and
+some   programs           must be  executed.
+
+Sounds simple,    right?
+Hardly.
+From   a single   omission or
+from   a single   mistake
+the    computer   boot can fail.
+
+The    computer   hardware     is  diverse.
+For    mass       storage devices  alone
+many              drivers exist.
+Into   the        kernel
+if     all        drivers      are compiled;
+an     obese      kernel           becomes.
+An     obese      kernel  does not load.
+
+In  a  cpio       image
+the    required   kernel  objects  can be placed.
+The    cpio       image            can be compressed.
+Into   the        kernel
+if     linked;
+an     obese      kernel  might    become.
+
+The    above      obvious methods  are   least used.
+
+The               kernel  objects  alone
+do     not        suffice.
+Some   programs,  a       C        library
+and    scripts    also             are   useful.
+
+Into   a          cpio    file
+the    required   kernel  objects
+the    required   file    system   files
+can    be         aggregated.
+
+By     the        kernel  boot     loader    program
+the               kernel  image    and
+the               cpio    file
+can    be         loaded.
+
+Into   the        kernel
+if     a          decompression driver was compiled
+then   the        cpio    file
+can    be         compressed.
+
+For    the        most    frequent method used
+the    external   cpio    file            suffices.
+Rather than       kernel  compilation     time
+at     any                                time
+the               cpio    file
+can    be         created.
+
+For               kernel  object    storage
+the    linked in  cpio    file
+can    be         used.
+For    file       system  programs  and data
+the    external   cpio    file
+can    be         used.
+
+By     the        above   paragraphs
+an     initramfs,
+an     initial    random  access memory file system was discussed.
+For    Linux      kernel
+for    most       boots
+an     initramfs  is      required.
+
+The  initramfs is a    cpio newc    format  file.
+It   can       be      compressed   or
+it   can       be sans compressed.
+If   a         Linux   kernel       is  not used;
+cpio newc      code                 is  not required.
+
+cpio, copy     input   output,      was possibly intended?
+From  several  formats
+by    the      Linux   kernel
+the   newc     format               is  required.
+By    the      following shell command
+the   cpio     formats   are   explained.
+man 5 cpio

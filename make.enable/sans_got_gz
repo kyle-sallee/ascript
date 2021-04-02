@@ -1,0 +1,63 @@
+# Rather than through GOT
+# by the argot
+# Gz's   address
+# can be known
+# The Gz address when known
+# from most argot
+# 1 opcode  is   removed or
+# 3 opcodes are  removed or
+# 1 opcode  is   added.
+
+# The following possibilities become.
+# From the GOT
+# the Gz address
+# is not acquired.
+# Thus one opcode is shaved.
+
+# For Gz's address stroage
+# when not used
+# better code
+# can be solicited.
+
+# However,
+# on AMD64
+# to maintain the required 16-byte stack alignment
+# an add and sub opcode might be emitted.
+# But
+# if previously emitted
+# then the add and sub
+# might not be required.
+# However, sub and add with register sp is faster
+# than push and pop.
+# If no longer required
+# from the argot those opcodes
+# are shaved.
+
+# "Do I want this?"
+# if wondering
+# the answer is
+# "YES, Yes, oh yes!"
+
+# By ascript design
+# by argot address
+# the PLT is defied.
+# For argot addresses
+# the plt is not used.
+# Thus one jump opcode is shaved.
+
+# sans_got_gz when enabled
+# even more opcodes are shaved.
+# thus a better optimal performance approximation becomes.
+
+# sans_got_gz
+# when enabled
+# for ascript compilation
+# the program nm  installation
+# the program sed installation
+# are required.
+# By  program nm and sed
+# from the ascript ELF executable file
+# the Gz address is extracted and
+# into a header file written.
+
+export	CFLAGS	+=	-DSANS_GOT_GZ

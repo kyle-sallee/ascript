@@ -1,0 +1,17 @@
+For  a   Linux kernel based POSIX
+a        Linux kernel log   daemon   is      useful.
+The      Linux kernel log            is   a  ring buffer.
+When     capacity                    is      exceeded
+then     by    newer  data
+the            oldest data           is      replaced.
+
+By   a   Linux kernel log   daemon
+to       files the    data           is      sent.
+Thus     the   oldest data           is  not lost.
+
+Yet  at  boot
+for  the Linux kernel log   capacity
+if       insufficient
+then     before
+     a   Linux kernel log   daemon   is      started
+the            oldest data           is      lost.

@@ -1,0 +1,106 @@
+.TH "ascript io map" 3
+
+.SH NAME
+.EX
+ascript io map
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	host	make	use\fR
+
+io map	byte	*.map	Mapped I/O perform.
+.TE
+.TA
+.ta T 8n
+
+.SH IO MAP EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+dub
+io
+
+name		A
+byte
+scope
+io  map
+dub file
+mdk
+
+target origin	A.dub	`/tmp/count.txt\\0`,
+O_RDONLY,@					go	'fail open'
+target origin	A.map	A.dub,=
+target		A,	success,		go	'fail dup or mmap'
+out		A.mdk	`\\n`
+\fR
+.in
+
+.SH TYPE IO MAP OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	The          dub          is duped.
+		The host var text address is replaced.
+.TE
+.in
+
+.SH MODE CAVEAT
+.EX
+O_RDONLY  works.
+O_RDWR    works.
+O_WRONLY  FAILS!
+
+.SH DUB ASSIGNMENT
+.EX
+To the io map var a dub value when assigned a dup is acquired.
+
+.SH HOST VAR TEXT ADDRESS LENGTH AND SIZE
+.EX
+The host var text size
+the host var text length
+the dub  var file size   often concur.
+But 1        page min    is    mapped.
+
+.SH FILE MAP CAVEAT
+.EX
+From virtual file systems
+such as /proc/
+such as /sys/
+the  files do not map.
+
+.SH SHARED MAP
+.EX
+The map changes
+to  the file system
+to  propagate
+a   shared   map is requested.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2018; by Kyle Sallee; argot   io map was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 mmap
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

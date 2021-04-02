@@ -1,0 +1,178 @@
+.TH "ascript syslog" 3
+
+.SH NAME
+.EX
+ascript syslog
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	make	type	use\fR
+syslog	syslog	byte	message output var make.
+syslog pathname	syslog.pathname	byte	var make
+syslog pipe	syslog.pipe	dub	var make.
+syslog self	syslog.self	byte	var make.
+syslog init			syslog daemon start.
+.TE
+.in
+
+.SH FACILITY SELECTION ARGOT
+.EX
+.in -8
+.TS
+l.
+LOG_AUTH
+LOG_AUTHPRIV
+LOG_CRON
+LOG_DAEMON
+LOG_FTP
+LOG_KERN
+LOG_LPR
+LOG_MAIL
+LOG_NEWS
+LOG_SYSLOG
+LOG_USER
+LOG_UUCP
+.TE
+.in
+
+.SH URGENCY SELECTION ARGOT
+.EX
+.in -8
+.TS
+l.
+LOG_EMERG
+LOG_ALERT
+LOG_CRIT
+LOG_ERR
+LOG_WARNING
+LOG_NOTICE
+LOG_INFO
+LOG_DEBUG
+.TE
+.in
+.ta T 8n
+
+.SH DEFAULTS
+.EX
+LOG_INFO
+LOG_USER
+
+.SH VAR
+.EX
+.in -8
+.TS
+llll.
+\fBvar	type	default	use\fR
+syslog	byte		message buffer
+syslog.pathname	byte	/+/boot/var/log/system/%Y%m%d	message log pathname
+syslog.pipe	dub		message pipe dub
+syslog.self	byte	script name	message author
+.TE
+.ta T 8n
+.in
+
+.SH EXAMPLE syslogd
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+syslog
+syslog init
+LOG_SYSLOG
+LOG_NOTICE
+target origin	syslog		`syslog started`,=,!
+\fR
+.in
+
+.SH VAR syslog OPERATORS
+.EX
+All type byte operators are supported.
+.in -8
+.TS
+box;
+lll.
+not	!	The message    is sent.
+		The syslog var is emptied.
+.TE
+.ta T 8n
+.in
+
+.SH TERSE
+.EX
+A fully RFC compliant system message log program is NOT provided.
+A  semi     compliant to     file    log method  is     provided.
+
+.SH ARGOT syslog init
+.EX
+A       terminal disconnected
+progeny process  called  syslogd is created.
+
+.SH ARGOT syslog pathname
+.EX
+The var   syslog.pathname is created.
+By  argot syslog init
+the var   syslog.pathname is used.
+
+.SH ARGOT syslog pipe
+.EX
+The var syslog.pipe is created.
+By  var syslog.pipe a  pipe write dub is provided.
+
+.SH KERNEL LOGGER
+.EX
+The kernel ring buffer is read.
+
+.SH SYSTEM LOGGER
+.EX
+The  socket /dev/log is  created.
+From socket /dev/log the messages are received.
+
+.SH WHEN
+.EX
+A   POSIX during boot
+the file  system aft mounting
+the       system log daemon   is  typically started.
+Until     start  log messages are lost.
+
+.SH PID
+.EX
+The  argot syslog init aft invocation
+from argot sire
+the        syslogd PID
+can  be    acquired.
+
+.SH ERRORS
+.EX
+A   message when   sent
+an  error   when   present
+in  var     syslog metadata as success
+the errno   value           is stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2018; by Kyle Sallee; argot   syslog was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript klog
+man 3 ascript syslog
+man 3 strftime
+man 3 syslog
+man 5 ascript
+man 7 ascript
+\fR

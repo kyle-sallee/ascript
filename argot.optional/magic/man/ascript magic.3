@@ -1,0 +1,100 @@
+.TH "ascript magic" 3
+.SH NAME
+.EX
+ascript magic
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	host	make	host reference\fR
+magic byte	byte	*.magic	file content
+magic dub	dub	*.magic	node reference
+magic name	byte	*.magic	path name
+
+\fBargot	host	make	provides\fR
+magic all	*.magic	*.all	text  description all matches
+magic apple	*.magic	*.apple	apple creator     and type
+magic error	*.magic	*.error	error text
+magic mime	*.magic	*.mime	mime  type
+magic text	*.magic	*.text	text  description
+.TE
+.ta T 8n
+
+.TS
+llll.
+\fBargot	target	origin	use\fR
+magic load	*.magic	pathnames	Colon separated pathnames
+			for   compiled  databases
+			are   loaded.
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+The       argot     magic load
+when      invoked
+the       database  load
+when      successful
+the       next      argot
+is        skipped.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	magic
+
+name		A,	byte,	scope,	set	`/bin/bash\0`
+magic name,	target		A.magic
+magic all
+magic mime
+magic text
+magic error
+out now		A		`\\n\\n`	\\
+		A.magic.all	`\\n\\n`	\\
+		A.magic.mime	`\\n\\n`	\\
+		A.magic.text	`\\n\\n`	\\
+		A.magic.error	`\\n\\n`
+\fR
+.in
+
+
+.SH ERRORS
+.EX
+From *.magic.all
+from *.magic.mime
+from *.magic.text
+the  acquired description if ``
+by   *.magic.error the error is described.
+
+.SH LIBMAGIC FLAGS
+.EX
+The flag MAGIC_SYMLINK
+the flag MAGIC_PRESERVE_ATIME            are tacitly set.
+For *.magic.all  the flag MAGIC_CONTINUE is  tacitly set.
+For *.magic.mime the flag MAGIC_MIME     is  tacitly set.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2019; by Kyle Sallee; argot   magic was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript magic
+man 3 libmagic
+man 5 ascript
+man 7 ascript
+\fR

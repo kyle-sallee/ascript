@@ -1,0 +1,12 @@
+Without polling
+for     file   system   modification notification reception
+the     kernel provided inotify      system   can be used.
+
+Virtual file systems,
+such    as   cgroupfs, procfs, sysfs
+can     not  be        watched.
+
+By      the  Linux kernel
+inotify is   provided.
+inotify      script    use is  rare.
+inotify      argots        are optional.

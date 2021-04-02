@@ -1,0 +1,324 @@
+.TH "ascript node" 3
+.SH NAME
+.EX
+ascript node
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	target	default	use\fR
+node gid at	int  compat	-1	Group   identifier      int
+node mode at	int  compat	-1	Mode                    int
+node object at	byte compat	NULL	Symlink object          bytes
+node origin at	byte compat	NULL	Origin  pathname        bytes
+node rmajor at	int  compat	-1	The     reference major int
+node rminor at	int  compat	-1	The     reference minor int
+node target at	byte compat	NULL	Target  pathname        bytes
+node uid at	int  compat	-1	User    identifier      int
+.TE
+
+.TS
+ll.
+\fBargot	task\fR
+node	The  current node * at var addresses
+	are  saved.
+	The  defaults
+	are  set.
+	The  opcode  ret
+	when executed
+	the  saved   node * at var addresses
+	are  loaded.
+
+node block	Block device node make.
+node char	Char  device node make.
+node dir	Dir          node make.
+node fifo	The   fifo   node make.
+node file	The   file   node make.
+node path	The   lead   dirs make.
+
+node del	The          node remove.
+node gid	The   GID         assign.
+node mode	The   mode        assign.
+node uid	The   UID         assign.
+
+node sym  link	A     sym    link make.
+node      link	The          node link.
+
+node copy	The          node copy.
+node copy attr	The   attr        copy.  EXT2 flags
+node copy gid	The   gid         copy.
+node copy mode	The   mode        copy.
+node copy time	The   atim mtim   copy.
+node copy xattr	The   xattr       copy.  name:value pairs
+node copy uid	The   uid         copy.
+
+node copy link  	The   dev+ino if seen link.
+node copy link free	The   dev+ino    RAM  free.
+
+node move	The   node move or rename.
+
+node same	The   node dev+ino or
+	the   file data
+	when  same skip.
+.TE
+.ta T 8n
+
+.SH ARGOT node * at
+.EX
+A    node    afore            creation
+from argot   node * at      invocation
+the  salient information is acquired.
+
+.SH SKIP
+.EX
+The    hosted  argot
+except the     argot node * at
+when   invoked when  successful
+the    next    argot is skipped.
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBname 	compat	task\fR
+nc.byte.all     	int	Bytes cached amount.
+nc.byte.last    	int	Bytes cached recently.
+nc.byte.cache.total	int	Bytes cached since tacit drop.
+nc.byte.cache.limit	int	Bytes cached limit.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	err,	io
+
+name			C,	byte,	scope,	set	`/tmp/target/`
+name			A,	byte,	scope
+
+name			B
+node list
+node list with
+node list lean
+node list most
+scope
+target			`/tmp/source/`
+node list path name
+
+node
+target			A,	node target at
+target			B.most,	node origin at
+
+\&'again'
+node list next
+go			'done'
+target origin		A	C,=
+origin				B.lean
+byte string
+
+node copy link,		skip
+node copy gid,		skip,	# the gid if set
+node copy uid,		skip,	# the uid if set
+node copy mode,		skip,	# the gid the uid aft set the mode set.
+node copy xattr,	skip
+node copy attr,		skip
+node copy time,		skip
+go			'fail'
+go			'again'
+
+\&'fail'
+err now		A	`	`	B.most	`	`	errtext	`\\n`
+ret
+.in
+\fR
+
+.SH EXAMPLE EXPLAINED
+.EX
+From /tmp/source/
+to   /tmp/target/
+the  content is copied the dir hierarchy is preserved.
+
+.SH THE ARGOT node
+.EX
+On  the   stack the  current * at associate addresses are stored.
+The defaults    are  set.    The  opcode    call      is  executed.
+The interpretation   continues.
+The opcode      ret  when    executed saved addresses are restored.
+
+.SH ARGOT node copy link free
+.EX
+For the inode  dev pathname memorization
+to  the kernel the RAM   is released.
+
+.SH ARGOT node copy link
+.EX
+The argot node copy
+the argot node copy link are similar.
+By  argot node copy link the hard links are preserved.
+
+.SH ARGOT node copy or ARGOT node copy link
+.SH WHICH ONE?
+.EX
+With file system backups the argot node copy link is better.
+For  regular     copying the argot node copy      is faster.
+
+.SH INODE
+.EX
+For each inode a number exists.
+By  each inode   file   system data is described.
+
+.SH HARD LINK
+.EX
+The same inode is shared but different pathnames exist.
+The filesystem boundary  can not    be crossed.
+
+.SH SYM LINK
+.EX
+The inode differs.
+By  the   symlink node content a  different pathname is provided.
+The       symlink node content is often     followed.
+
+.SH node copy attr
+.EX
+The ext2 node attributes, the ext2 flags, are copied.
+
+.SH node copy xattr
+.EX
+The extended  attributes, such as access control lists, are copied.
+
+.SH ARGOT node move
+.EX
+The node is renamed.
+
+.SH RENAME CAVEATS
+.EX
+Across file  system boundaries
+across mount --bind boundaries or a dir at any sub level
+with   mount --bind content
+with   errno value  EXDEV      fails.
+
+.SH ARGOT node dir
+.EX
+The  dir   is    created.
+
+.SH NODE CREATION CAVEAT
+.EX
+A    node  with  the same name    if present
+with errno value EEXIST   failure    becomes.
+
+.SH ARGOT node fifo
+.EX
+A fifo is created.
+
+.SH ARGOT node file
+.EX
+An empty file is created.
+
+.SH ARGOT node path
+.EX
+The lead dir components when missing are created.
+
+.SH ARGOT node link
+.EX
+A hard link is created.
+
+.SH ARGOT node sym link
+.EX
+A symbolic link is created.
+
+.SH ARGOT node same
+.EX
+The  st_ino  the st_dev;
+the  file    content;
+the  the     st_rdev;
+the  symlink objects; when identical success becomes.
+
+.SH ARGOT node same CAVEAT
+.EX
+By both pathnames a dir when referenced success becomes.
+
+.SH OTHER COMPARISONS
+.EX
+The st_uid, st_gid, st_mode to compare
+the argot yay hosted argot can be useful.
+
+.SH ARGOT node del
+.EX
+The argot node target at provided pathname is unlinked.
+
+.SH ARGOT node del CAVEAT
+.EX
+A non empty dir will not be unlink.
+
+.SH THE ARGOT NODE * IS FASTER
+.EX
+The program cp      performance is similar.
+The argot   node *  for    invocation
+a   progeny process is not created
+a   program         is not executed.
+
+.SH KERNEL PERFORMANCE
+.EX
+All available   RAM to the kernel cache when delegated
+the performance tanks.
+
+.SH VAR nc.byte.cache.limit
+.EX
+The limit  when     surpassed
+the kernel cache is discarded.
+
+.SH VAR nc.byte.cache.limit initial value.
+.EX
+40000000 x, 1 gigabyte, is set.
+
+.SH VAR nc.byte.cache.limit disable value.
+.EX
+1000000000000000 x if set will not be surpassed.
+
+.SH UNLINK CAVEAT 1
+.EX
+The   argot  node copy
+the   argot  node copy link
+afore             copy
+the   target node is   unlinked.
+
+.SH UNLINK CAVEAT 2
+.EX
+A non empty dir is not unlinked.
+
+.SH FILE NODES AND DIR NODE CAVEAT
+.EX
+Into a dir node a file content can not be copied.
+
+.SH SEGFAULT
+.EX
+The salient  pathnames when not provided
+the intended segfault  will     become.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   node was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript id
+man 3 ascript node sub
+man 3 ascript node want
+man 3 ascript yay
+man 5 ascript
+man 7 ascript
+\fR

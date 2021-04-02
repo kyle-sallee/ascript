@@ -1,0 +1,57 @@
+.TH "ascript tomoy" 5
+.SH NAME
+.EX
+ascript tmp
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH VERBOSE
+.EX
+By        Mandatory Access    Control   rules,
+such      as        by        TOMOYO,
+/memfd:   virtual   file      system    access
+can       be        blocked.
+
+By        the       following TOMOYO    exception rules
+the       problem
+is        circumvented.
+
+# The /memfd: virtual file system is weird.
+# To slashes no special meaning is granted.
+# None or any amount of slashes can occur.
+# By Kyle Sallee in 2016 these rules were provided.
+
+acl_group	0	file	getattr/read	/memfd:
+acl_group	0	file	getattr/read	/memfd:\*
+acl_group	0	file	append/write	/memfd:\*
+acl_group	0	file	truncate/unlink	/memfd:\*
+acl_group	0	file	getattr/read	/memfd:\*/\{\*\}/
+acl_group	0	file	append/write	/memfd:\*/\{\*\}/
+acl_group	0	file	truncate/unlink	/memfd:\*/\{\*\}/
+acl_group	0	file	getattr/read	/memfd:\*/\{\*\}/\*
+acl_group	0	file	append/write	/memfd:\*/\{\*\}/\*
+acl_group	0	file	truncate/unlink	/memfd:\*/\{\*\}/\*
+
+acl_group	0	file	chown/chgrp	/memfd:\*		0-0xffffffff
+acl_group	0	file	chmod/create	/memfd:\*		0-0xfff
+acl_group	0	file	chown/chgrp	/memfd:\*/\{\*\}/	0-0xffffffff
+acl_group	0	file	chmod/create	/memfd:\*/\{\*\}/	0-0xfff
+acl_group	0	file	chown/chgrp	/memfd:\*/\{\*\}/\*	0-0xffffffff
+acl_group	0	file	chmod/create	/memfd:\*/\{\*\}/\*	0-0xfff
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript               was created.
+In 2016; by Kyle Sallee; file ascript tomoyo.5 was created.
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,63 @@
+.TH "ascript node sub" 3
+.SH NAME
+.EX
+ascript node sub
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llllllll.
+\fBargot	host compat	make	out	use	get	set\fR
+node sub aim	byte    	*.aim	byte	sym   aim	get	set
+node sub attr	byte dub	*.attr	dex8	ext2  flags	get	set
+node sub fill	byte dub	*.fill	den8	block amount	get	set
+node sub gid	byte dub	*.gid	den8	GID     	get	set
+node sub mode	byte dub	*.mode	oct4	mode    	get	set
+node sub real	byte    	*.real	byte	real  path name	get
+node sub size	byte dub	*.size	den8	byte  amount	get	set
+node sub uid	byte dub	*.uid	den8	UID     	get	set
+.TE
+.ta T 8n
+.in
+
+.SH REVISION
+.EX
+Except sub  var *.real
+the    sub  var value     when revised
+the    host var reference is   revised.
+As     sub  var metadata  success
+the    errno    value     is   stored.
+
+.SH SUCCESS
+.EX
+The value when  revised in the var metadata as success
+the errno value is stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2017; by Kyle Sallee; argot   node sub was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript id
+man 3 ascript node
+man 3 ascript node sub attr
+man 3 ascript node sub gid
+man 3 ascript node sub mode
+man 3 ascript node sub size
+man 3 ascript node sub uid
+man 5 ascript
+man 7 ascript
+\fR

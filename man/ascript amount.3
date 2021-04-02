@@ -1,0 +1,110 @@
+.TH "ascript amount" 3
+
+.SH NAME
+.EX
+ascript amount
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot	host	sub var make	compat	task\fR
+amount byte	byte	*.amount.byte	int 4	Byte  value amount.
+amount utf8	byte	*.amount.utf8	int 4	UTF-8 value amount.
+amount word	byte	*.amount.word	int 4	Word        amount.
+.TE
+
+.TS
+lll.
+\fBargot	target	origin\fR
+amount byte count	*.amount.byte
+amount byte reset	*.amount.byte
+amount byte select	*.amount.byte	``
+
+amount utf8 count	*.amount.utf8
+amount utf8 reset	*.amount.utf8
+amount utf8 select	*.amount.utf8	``
+
+amount word count	*.amount.word
+amount word reset	*.amount.word
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	amount,	io
+name			A,	byte
+set			`Example text.\\nCould be anything.\\nBut is this.\\n`
+amount byte
+amount word
+
+target object					A.amount.byte	`\\n`
+amount byte count
+amount byte select
+out			`The line  amount is `	A.amount.byte	`.\\n`
+
+target object					A.amount.byte	` `
+amount byte select
+out			`The space amount is `	A.amount.byte	`.\\n`
+
+target						A.amount.word
+amount word count
+out			`The word  amount is `	A.amount.word	`.\\n`
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.in -8
+\fB
+a,	amount,	dub,	err,	io
+
+name		A,	byte,	scope,	amount byte,	dub file,	io map
+
+target object	A.dub	`/tmp/data.txt\\0`,O_RDONLY,@,	go	'fail'
+target object	A.map	A.dub,=
+target		A,	success,			go	'fail dub'
+target object	A.amount.byte	`\\n`
+
+amount byte count
+amount byte select
+
+out	`The line amount is `	A.amount.byte	`.\\n`,	ret
+
+\&'fail',	err now		errtext,	ret
+\fR
+.in
+
+.SH ARGOT amount byte select
+.EX
+In target the    *.amount.byte exists.
+in origin the `` enclosed byte exists.
+
+.SH ARGOT amount utf8 select.
+.EX
+In target the    *.amount.byte       exists.
+in origin the `` enclosed UTF-8 char exists.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2019; by Kyle Sallee; argot   amount was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 7 ascript
+\fR

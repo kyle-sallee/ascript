@@ -1,0 +1,135 @@
+.TH "ascript timer" 3
+.SH NAME
+.EX
+ascript timer
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	from	make	task\fR
+timer	target	*       	The timer     var make.
+		*.once.nano	The timer sub var make.
+		*.once.sec
+		*.lull.nano
+		*.lull.sec
+		*.overrun
+		*.sig
+
+\fBargot	target		clock select\fR
+timer real	timer		CLOCK_REALTIME
+timer mono	timer		CLOCK_MONOTONIC
+timer process	timer		CLOCK_PROCESS_CPUTIME_ID
+timer thread	timer		CLOCK_THREAD_CPUTIME_ID
+
+\fBargot	target		task\fR
+timer init	timer		Begin.
+timer fini	timer		End.
+timer absolute	timer		For *.once.sec
+			for *.once.nano
+			an  absolute time exists.
+.TE
+.ta T 8n
+.in
+
+.SH VAR SUMMARY
+.EX
+.TS
+lll.
+\fBname	type	stores\fR
+*.once.nano  	int 4	first    duration nano second
+*.once.sec   	int 8	first    duration      second
+*.lull.nano 	int 4	interval duration nano second
+*.lull.sec  	int 8	interval duration      second
+*.overrun	int 4	overrun  amount
+*.sig	sig	event    handling
+.TE
+
+.ta T 8n
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io,	self
+name		t,		timer,	scope
+target		t.sig,			sig restart
+					sig sum
+origin		"action",		sig pin
+origin		t.sig.sum,		sig target
+origin		1 x,			sig origin
+					sig init
+target origin	t.lull.sec	1 x,	=
+target host,				timer init
+		'again',	self pause,
+go		'again'
+
+"action",	test,	go	'tock'
+	err now		t.sig.sum	`	tick\\n`,	ret
+\&'tock',	err now		t.sig.sum	`	tock\\n`,	ret
+\fR
+.in
+
+.ta T 8n
+.SH EXAMPLE CONTRAST
+.EX
+.in -8
+\fB
+a,	int,	io,	self,	self nap
+name		c,	int 4,	scope
+\&'again'
+++,out now	c	`	tick\\n`,self nap set	1 x	0 x
+++,out now	c	`	tock\\n`,self nap set	1 x	0 x
+go	'again'
+\fR
+.in
+
+.SH WHICH ONE?
+.EX
+A  drift        when not important
+an interruption when not important
+a  timer        is   not required.
+
+.SH VERBOSE
+.EX
+The timer var   aft creation a clock if not selected
+CLOCK_MONOTONIC is  tacitly                 selected.
+
+.SH CRASH CAVEAT
+.EX
+The  argot  timer init afore invocation
+the  *.sig  configuration    complete.
+A    signal when    missed
+a    crash  becomes.
+
+.SH OVERRUN CAVEAT
+.EX
+The     *.overrun     var value when accessed is acquired.
+Between test and copy the value can  change.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2018; by Kyle Sallee; argot   timer was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 timer_create
+man 2 timer_delete
+man 2 timer_gettime
+man 3 ascript sig
+man 3 ascript timer
+man 5 ascript
+man 7 ascript
+man 7 signal
+\fR

@@ -1,0 +1,96 @@
+.TH "ascript zygote parse" 3
+.SH NAME
+.EX
+ascript zygote parse
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lll.
+\fBargot	direct	task\fR
+
+zygote parse	pathname	The zygote parse     and skip.
+zygote parse pin	pathname	The zygote parse pin and skip.
+.TE
+.ta T 8n
+
+.SH ZYGOTE
+.EX
+Among scripts a   far label when often pinned
+in a zygote   the far group can  be    stored.
+
+.SH THE ARGOT zygote parse
+.EX
+The zygote                     is parsed.
+When successful the next argot is skipped.
+
+.SH THE ARGOT zygote parse pin
+.EX
+The  zygote                    is parsed.
+The  zygote              start is pinned.
+When successful the next argot is skipped.
+
+.SH FILE ./zygote/a
+.EX
+.ta T 8n
+.in -8
+out now		`a parsed\\n`
+.in
+
+.SH FILE ./zygote/b
+.EX
+.ta T 8n
+.in -8
+out now		`b parsed\\n`
+ret
+
+"Howdy"
+out now		`Howdy\\n`
+.in
+
+.SH EXAMPLE 0 FILE zygotetest
+.EX
+.ta T 8n
+.in -8
+#!/bin/ascript
+a
+io
+
+zygote parse pin	`./zygote/a\\0`,	go	'fail a'
+zygote parse pin	`./zygote/b\\0`,	go	'fail b'
+
+out now		`Afore Howdy\\n`
+pin		"Howdy"
+out now		`Aft   Howdy\\n`
+.in
+
+.SH EXAMPLE 0 EXECUTION OUTPUT
+.EX
+a parsed
+b parsed
+Afore Howdy
+Howdy
+All done
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript              was created.
+In 2017; by Kyle Sallee; argot   zygote parse was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 5 ascript
+man 7 ascript
+\fR

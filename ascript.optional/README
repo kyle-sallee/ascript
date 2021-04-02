@@ -1,0 +1,38 @@
+To   enable
+from ascript.optional/
+to   ascript.enable/
+a    C source file
+can  be copied.
+
+The  file bliss.c
+the  file bold.c
+are  recommended.
+
+The  file stack.c
+is   merely
+for  testing.
+The  stack rubbish buildup
+when testing
+the  stack size
+when reduced
+from underflow
+a    segfault
+is   more  rapidly solicited.
+
+Unlike most C programs
+by     ascript
+by     ascript argot
+the    stack   buildup
+should not     become.
+
+Temporary      data,
+such   as      input,
+for    storage
+the    stack
+is     not     used.
+Data   addresses
+code   addresses
+on     the     stack
+can    be      temporarily  stored.
+Stack  overflow exploit opportunities
+do     not     exist.

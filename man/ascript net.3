@@ -1,0 +1,206 @@
+.TH "ascript net" 3
+
+.SH NAME
+.EX
+ascript net
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	target	origin	task\fR
+net hub make			The network hub
+			unshared    net namespace
+			make        and bind.
+
+net hub move	`interface`		To   network   hub
+			the  interface move.
+
+net interface	type byte		By byte value 0 separated
+			network interface names
+			are listed.
+
+net ns move	`pathname`	`interface`	To   network   namespace
+			the  interface move.
+
+net lower	`interface`		The interface lower.
+net raise	`interface`		The interface raise.
+
+net route default	`interface`		The default route replace.
+
+net veth        	`name`	`peer name`	VETH pair  make.
+.TE
+.in
+.ta T 8n
+
+.TS
+lll.
+\fBargot	skip	errno set\fR
+net hub make	on success	always
+net hub move	on success	always
+net ns  move	on success	always
+net veth	on success	on error
+net lower	on success	on error
+net raise	on success	on error
+net route default	on success	always
+.TE
+.ta T 8n
+
+.SH HOSTED VAR
+.EX
+.TS
+llll.
+\fBvar	type	default	task\fR
+net.hub	byte	`/var/run/netns/hub\\0`	The      network hub
+			unshared net     namespace
+			pathname specify.
+
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	err,	io,	net,	ipv4,	ns
+
+target origin	net.hub		`/var/run/netns/hub.test\\0`,=
+net hub make
+go		'hub make fail'
+
+## An actual net hub if used the eth0 interface is moved.
+#target		`eth0`
+#net  hub move
+#go		'eth0 move fail'
+
+target origin	`vetha`		`vethb`
+net veth
+go		'veth make fail'
+
+target		`vethb`
+net hub move
+go		'vethb move fail'
+
+target origin	`vetha`		`192.168.10.79/16`
+ipv4 local set
+go		'vetha local fail'
+
+target		`vetha`
+net raise
+go		'vetha raise fail'
+
+## The inane tacitly created route explicitly delete.
+target		`192.168.0.0/16`
+ipv4 route del
+next
+
+## The vethb's address to reach vetha follow.
+target origin	`192.168.10.80`	`vetha`
+ipv4 route set
+go		'vetha route fail'
+
+call
+ns save net
+target		`/var/run/netns/hub.spare`
+ns old  net
+go		'hub entry fail'
+
+target origin	`vethb`		`192.168.10.80/16`
+ipv4 local set
+go		'vethb local fail'
+
+target		`vethb`
+net  raise
+go		'vethb raise fail'
+
+## The inane tacitly created route explicitly delete.
+target		`192.168.0.0/16`
+ipv4 route del
+next
+
+## The vetha's address to reach vethb follow.
+target		`192.168.10.79`	`vethb`
+ipv4 route set
+go		'vethb route fail'
+
+target		`192.168.10.79`
+ipv4 route default
+go		'gateway fail'
+
+#target		`eth0`
+#net route default
+#go		'gateway fail'
+
+ret
+# The saved net name space is restored.
+\fR
+.in
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io,	net,	ns
+name		IF,		byte
+origin		`/etc/net/host/interface`
+io load,						go	'IF load fail'
+net hub make,						next
+call,		ns save net
+target		IF,		net hub   move,		go	'IF move fail'
+target		net.hub,	ns  old   net,		go	'hub entry fail'
+target		IF,		net route default,	go	'gateway fail'
+ret
+# The saved net name space is restored.
+\fR
+.in
+
+.SH INTERFACE NAMES
+.EX
+2   to  16    bytes exist.
+For the final byte
+the value   0 must  exist.
+
+.SH THE DEFAULT ROUTE
+.EX
+An  interface name  when    sufficient
+the argot net route default suffices.
+
+An  Internet protocol address when required
+the argot ipv4 route default
+the argot ipv6 route default suffice.
+
+.SH REALFS
+.EX
+For each realFS  a   VETH pair should exist.
+In  the  realFS  one VETH      should exist.
+In  the  net hub one VETH      should exist.
+In  the  net hub one interface should exist.
+A        spoked      wheel     imagine.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2020; by Kyle Sallee; argot   net was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 1 ip
+man 3 ascript ipv4
+man 3 ascript net hub make
+man 3 ascript net hub move
+man 3 ascript net ns move
+man 3 ascript net veth
+man 5 ascript
+man 7 ascript
+\fR

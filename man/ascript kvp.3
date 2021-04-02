@@ -1,0 +1,150 @@
+.TH "ascript kvp" 3
+
+.SH NAME
+.EX
+ascript kvp
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH ARGOT kvp SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	make	task\fR
+kvp	*	Key value pair storage var make.
+	*.ambit
+	*.key
+	*.key.all
+	*.val
+	*.val.all
+.TE
+
+.TS
+llll.
+\fBargot	target	origin	task\fR
+kvp with	type kvp		The type kvp var select.
+kvp del	key		The key          delete.
+kvp inv			The key      val invert.
+kvp new	key	val	New key      val create.
+kvp set	key	val	For key  the val replace.
+
+.TE
+.ta T 8n
+
+.SH VAR TABLE
+.EX
+.in -8
+.TS
+box;
+llll.
+\fBvar	compat	byte size	use\fR
+*.ambit 	byte	   1000 x  	Key  and val separator  sequence set.
+*.key   	byte	 200000 x	When assigned *.val is  updated.
+*.key.all	byte	2000000 x	All  key sequences  are provided.
+*.val   	byte	 200000 x	When assigned *.key is  updated.
+*.val.all	byte	2000000 x	All  val sequences  are provided.
+.TE
+.in
+.ta T 8n
+
+.SH *.key and *.val OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	*.key if set *.val is updated.
+		*.val if set *.key is updated.
+.TE
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name		A,	kvp,	scope,		kvp with
+target origin	`Ichigo`	`son`,		kvp new
+target origin	`Yuzu`		`daughter`,	kvp new
+target origin	`Karin`		`daughter`,	kvp new
+target origin	`Isshin`	`father`,	kvp new
+target origin	`Masaki`	`mother`,	kvp new
+target origin	A.ambit		`\\n`,=
+out		A.key.all	`\\n`
+out		A.val.all	`\\n`
+target origin	A.val	`son`,=,	out	`son=`		A.key	`\\n`
+target origin	A.key	`Isshin`,=,	out	`Isshin=`	A.val	`\\n`
+\fR
+.in
+
+.SH AMBIT DEFAULT
+.EX
+1 value 0 byte
+
+.SH VAR *.key.all
+.EX
+To each key the *.ambit byte sequence is appended.
+
+.SH VAR *.valall
+.EX
+To each val the *.ambit byte sequence is appended.
+
+.SH ARGOT kvp with
+.EX
+The current kvp var  address is saved.
+The new     kvp var  address is selected.
+The opcode  ret when executed
+the saved   kvp var  address is selected.
+
+.SH KVP SYSTEMS
+.EX
+The file  system is slow and persistent.
+The argot kvp    is fast and temporary.
+The argot link   is fast and temporary.
+
+.SH APPEND
+.EX
+An existing val when appending the *.ambit sequence
+is not      tacitly  appended.
+
+.SH VAR *.key WITH ARGOT equal
+.EX
+The key if not located in *.key metadata for success ENOENT is set.
+
+.SH VAR *.val WITH ARGOT equal
+.EX
+The val if not located in *.val metadata for success ENOENT is set.
+
+.SH VAR *.val EDITING
+.EX
+To a type  byte var the *.val content copy.
+The  type  byte var edit.
+The  argot kvp set  invoke.
+
+.SH CAVEAT
+.EX
+Same named keys do    not become.
+Same named vals could     become.
+Inversion  is   inane.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2019; by Kyle Sallee; argot   kvp was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript kvp
+man 3 ascript link
+man 5 ascript
+man 7 ascript
+\fR

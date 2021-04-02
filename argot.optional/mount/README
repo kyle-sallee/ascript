@@ -1,0 +1,102 @@
+For   every   POSIX and
+for   every   UNIX
+a     mount   and
+an    umount  program seem to exist.
+Yet,
+in    the     manual pages
+for   the     kernel provided
+C     wrapped functions
+for   mount   and
+for   umount
+the   wrapped function is Linux    specific and not  portable.
+Thus  the     mount       variable support  was made optional.
+
+For   computer boot at least a mount method  is   required.
+While the      program mount   can           be   used
+by    it's     runtime library requirements' byte total
+more  than     half    a       megabyte      is   required.
+
+Yet   the      program mount's boons are not insignificant.
+For   contrast
+by    the      ascript implementation
+the   /etc/fstab       is  not read
+thus  source   names   are not automatically acquired.
+EUID  0        
+and   CAP_SYS_ADMIN    are     required.
+
+On    some     file    systems
+a     root     owned
+mode  SUID     program mount   exists.
+Thus  for      some    file    systems
+such  as       CDROM   and     removable
+by    a        user
+the   mount    and     umount
+are   possible.
+
+By    the      ascript implementation
+for   a        source
+by    UUID     reference and
+by    label    reference is   not supported.
+Yet   a        device    node     reference
+such  as       /dev/sda1 is       supported.
+
+In   both the  partition table and
+in   the  file system    metadata:
+two  separate  UUID      can  be stored;
+two  separate  labels    can  be stored.
+For            UUID      and
+for            label     exhume
+a    kernel    provided  interface is not provided.
+
+Thus,
+by   UUID      reference and
+by   label     reference
+a    candy     store     trip, ioctl, does not suffice,
+a    safari,   /dev/sda  /dev/sda1
+               /dev/sda2 ...   read,  is       required.
+Yet,
+for   virtual file system mount and
+for   mount   bind
+for   source  acquisition
+a     safari  is   not    required.
+
+Thus  the ascript implementation is not useless.
+
+By   /dev/sda1 a file system can be referenced,
+however, in rare circumstances,
+such as hardware add/removal,
+what /dev/sda1 references could change.
+Thus /dev/sda1 is considered a deprecated and unsafe
+file system reference method.
+By   UUID and by label reference is preferred.
+But  by ascript
+the  partition      data and
+file system    meta data are not known, not understood, not read
+From the       kernel
+such                data should be accessible.
+
+Otherwise  if it was implemented and a new file system became
+then for ascript new code to read the new file system is required.
+That is  absurd.
+
+The        kernel
+as   the   hardware gate keeper
+as   the   protocol master,
+as   the   hardware mediator
+by   the   kernel   such data should be acquired and provided.
+By   file  system   support
+such lore  should   be   provided.
+
+
+Last for   PARTLABEL= support
+from the   C          library
+an   iconv function   must  be required.
+A    GUID  partition  table is required.
+
+In   the   character  set called ASCII or
+in   the   character  set called UTF-8
+an         ascript    script     is    written.
+In   GUID  partition  tables
+for  the   partition  lable
+     the   character  set called UTF-16LE is used.
+Thus       character  set conversion      is required.

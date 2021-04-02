@@ -1,0 +1,12 @@
+Pluggable                  Authentication Method.
+A    user      can     be  authenticated.
+To   the       process
+the                        authentication method is not known.
+A    pass      phrase      might be verified.
+By   the       process
+the  Linux-PAM library is linked.
+To   Linux-PAM library
+the                        authentication        is     delegated.
+
+Sans Linux-PAM installation
+a    Linux-PAM type variable is not possible.

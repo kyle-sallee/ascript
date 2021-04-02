@@ -1,0 +1,70 @@
+#!ascript/ascript
+segfault
+a
+dub
+err
+int
+io
+node
+
+#self
+#self cpu affine
+#target origin	self.cpu.affine	8,=
+#self cpu affine set	8
+#next
+
+name	x
+int 4
+scope
+set		10001000 d,	#denary
+#set		46115150 o,	#octal
+#set		989A68 x,	#dex
+#bin
+
+#var
+#var verbose
+#out now		var.verbose
+#out now		`x=`	x	`\n`
+
+name		file
+#byte
+byte size	10000 x
+scope
+dub file
+io log
+#var
+#var size
+#target origin	file.size	10000 x,=
+
+target		`/tmp/count.txt\0`
+node target at
+node del
+next
+
+target		file.dub,	O_CREAT,	O_WRONLY
+origin		`/tmp/count.txt\0`
+@
+go		'open fail'
+
+target origin	file.log	file.dub
+=
+success
+go		'open fail'
+
+#target		x
+#format
+#format fullX
+
+target origin	file	x
+loop		x
+byte line
+#byte line rr
+ret
+
+origin		`The 10,001,000 loop is complete.\n`
++
+
+ret
+
+'open fail'
+err now		`open fail `	errtext	`	`	file	`\n`

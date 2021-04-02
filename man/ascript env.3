@@ -1,0 +1,150 @@
+.TH "ascript env" 3
+
+.SH NAME
+.EX
+ascript env
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	make	task\fR
+env	*	Var container make.
+env byte	*	Environment string suitable var make.
+.TE
+.ta T 8n
+
+.SH OPERATORS
+.EX
+.in -8
+.TS
+box;
+lll.
+add     	+	To   the type  env var
+        		the  var text  address is     appended.
+
+sub     	-	From the type  env var
+        		the  var text  address is     removed.
+
+equal equal	==	The  var text  address if     contained
+        		then the next  argot   is     skipped.
+
+not equal	!=	The  var text  address if not contained
+        		then the next  argot   is     skipped.
+.TE
+.in
+.ta T 8n
+
+.SH SKIP
+.EX
+The  argot  ==
+the  argot  !=
+the  argot  -
+when successful the next argot is skipped.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+env
+target copy
+
+name		env.SHLVL,	exist,	skip,pin	'remove'
+name		env.LS_COLORS,	exist,	skip,pin	'remove'
+name		env.PWD,	exist,	skip,pin	'remove'
+name		env.OLDPWD,	exist,	skip,pin	'remove'
+
+name		env.banana
+env byte
+set		`banana=cavendish\\0`
+target origin	env	env.banana,+
+ret
+
+'remove'
+target origin swap,-
+target origin swap
+ret
+\fR
+.in
+
+.SH FIND AND REMOVE CAVEAT
+.EX
+From an   environment a   string can not be removed.
+In a type env         var
+a    type env byte    var address
+can  be   discovered  and removed
+
+.SH VERBOSE
+.EX
+The argot env when      invoked type env  var are created.
+The argot env byte when invoked type byte var are created.
+For argot env byte the  proper  map  size     is  selected.
+
+.SH TACIT CREATION
+.EX
+The argot env     when loaded the following becomes.
+the       environ is   imported.
+The var   env     is   created.
+For each  environ a    env.   prefixed var is created.
+
+.SH IMPORT CAVEAT
+.EX
+For ff x environment  strings memory       is mapped.
+If       insufficient the     system admin is broke.
+
+.ta T 8n
+.SH ENV PRINT EXAMPLE
+.EX
+.in -8
+\fB
+io
+out		env
+\fR
+.in
+
+.ta T 8n
+.SH ENVWALK EXAMPLE
+.EX
+.in -8
+\fB
+segfault
+env
+io
+link
+
+target origin	out	env	`\\n`
+
+\&'again'
+link next origin
+go		'done'
++
+go		'again'
+
+\&'done'
+ret
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2017; by Kyle Sallee; argot   env was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript exe
+man 5 ascript
+man 7 ascript
+\fR

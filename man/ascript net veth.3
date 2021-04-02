@@ -1,0 +1,67 @@
+.TH "ascript net veth" 3
+
+.SH NAME
+.EX
+ascript net veth
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	target	origin 	task\fR
+net veth	name	peer name	Linked veth make.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+#!ascript/ascript
+net
+taret origin	`vetha\\0`	`vethb\\0`
+net veth
+\fR
+.in
+
+.SH WHAT?
+.EX
+The     argot   net veth when invoked
+the     VETH    pair     is   created.
+
+.SH WHY?
+.EX
+Through network unshared namespace
+for     network packet   routing
+the     VETH,   virtual  Ethernet interface,
+is      used.
+
+.SH HOW?
+.EX
+The     argot   net hub move
+the     argot   net ns move
+when    invoked into another network namespace
+the     network interface    is      moved.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2020; by Kyle Sallee; argot   net veth was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript net
+man 5 ascript
+man 7 ascript
+\fR

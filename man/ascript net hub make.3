@@ -1,0 +1,56 @@
+.TH "ascript net hub make" 3
+
+.SH NAME
+.EX
+ascript net hub make
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+ll.
+\fBargot	task\fR
+net hub make\
+	An unshared net namespace make.
+	At var net.hub  mount     bind.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+net
+## The network hub pathname can be optionally changed.
+#target origin		net.hub	`/var/run/netns/hub`,=
+net hub make
+go		'fail'
+\fR
+.in
+
+.SH TERSE
+.EX
+The unshared net namespace is made and mount bind.
+The unshared net namespace lo interface   is raised.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript              was created.
+In 2020; by Kyle Sallee; argot   net hub make was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript net
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,81 @@
+.TH "ascript sire" 3
+.SH NAME
+.EX
+ascript sire
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lllll.
+\fBargot	host	make	compat	use\fR
+sire		*	int	PID         var make.
+		*.done	int	completion  var make.
+		*.exit	int	exit   byte var make.
+		*.stop	int	stop        var make.
+
+sire done	int	*.done	int	Completion indicate.
+sire exit	int	*.exit	int	Exit byte  provide.
+sire stop	int	*.stop	int	Stop       indicate.
+.TE
+
+.TS
+lll.
+\fBargot	target	use\fR
+sire cont	*.done or *.stop or *.wait	SIGCONT      send.
+sire stop	*.done or *.stop or *.wait	SIGSTOP      send.
+sire cont wait	*.done or *.stop or *.wait	Continuation await.
+sire stop wait	*.done or *.stop or *.wait	Stop         await.
+sire done wait	*.done or *.stop or *.wait	Completion   await.
+.TE
+.ta T 8n
+
+.SH TACIT LOAD
+.EX
+The argot exe      when loaded
+the argot exe fast when loaded
+the argot sire     is   loads.
+
+.SH DEFAULT PID VALUE
+.EX
+The argot sire when invoked
+the most  recently  created process identifier
+is  selected.
+
+.SH PROCESS 0
+.EX
+The PID     when      0
+the current process   or
+all progeny processes are selected.
+
+.SH TACITLY UPDATED
+.EX
+The *.done *.exit *.stop when accessed the value is acquired.
+
+.SH EXISTENCE CHECK
+.EX
+For process   existence    checking
+to  the       PID signal 0 can be sent.
+The dir /proc/PID also     can be checked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   sire was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript exe
+man 3 ascript exe fast
+man 3 ascript sig
+man 5 ascript
+man 7 ascript\fR

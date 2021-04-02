@@ -1,0 +1,77 @@
+.TH "ascript io recv" 3
+
+.SH NAME
+.EX
+ascript io recv
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	target	origin	direct\fR
+io recv	byte	dub	flags
+.TE
+.in
+.ta T 8n
+
+.SH FLAGS
+.EX
+.TS
+ll.
+MSG_CMSG_CLOEXEC	On exe close flag is set.
+MSG_ERRQUEUE	Use error queue.  not supported.
+MSG_PEEK	Sans dequeue the received data receive.
+MSG_TRUNC	not supported.
+MSG_WAITALL	Until the buffer fills block.
+MSG_OOB 	out-of-band data receive.
+.TE
+
+.SH SKIP
+.EX
+An error when not encountered the next  argot is skipped.
+An error if       encountered the errno value is set.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+
+name		A,		byte,		scope
+name			B,	io sock,	scope
+ ...
+
+target origin	A	B
+io recv
+go		'fail'
+\fR
+.in
+
+.SH BYTE AMOUNT
+.EX
+The var    available byte capacity is requested.
+The kernel provided  syscall  recv is once invoked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2020; by Kyle Sallee; argot   io recv was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

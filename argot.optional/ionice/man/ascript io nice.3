@@ -1,0 +1,66 @@
+.TH "ascript io nice" 3
+.SH NAME
+.EX
+ascript io nice
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT TABLE
+.EX
+.TS
+ll.
+\fBargot	direct parameter type\fR
+io nice pid     	int 4
+io nice pid group	int 4
+io nice uid     	int 4
+
+io nice level 0
+io nice level 1
+io nice level 2
+io nice level 3
+io nice level 4
+io nice level 5
+io nice level 6
+io nice level 7
+
+io nice class best
+io nice class idle
+io nice class real
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+io nice
+io nice class idle
+\fR
+.in
+
+.SH CAVEAT
+.EX
+By iosched cfq when selected the ionice is applied.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2019; by Kyle Sallee; io nice was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+less /usr/src/linux/Documentation/block/ioprio.txt
+man 1 ascript
+man 1 io nice
+man 2 ioprio_set
+man 3 ascript node want
+man 5 ascript
+man 7 ascript
+\fR

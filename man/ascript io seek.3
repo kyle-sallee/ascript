@@ -1,0 +1,62 @@
+.TH "ascript io seek" 3
+
+.SH NAME
+.EX
+ascript io seek
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	host	make	use\fR
+io seek	dub	*.seek	The dub offset sub var make.
+
+\fBargot   	target		use\fR
+io seek tail	dub		The dub end offset set.
+.TE
+.TA
+.ta T 8n
+
+.SH OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add     	+	To   current offset the integer is added.
+equal   	\&=	From start          the integer is added.
+sub     	-	From current offset the integer is subtracted.
+.TE
+
+.SH ARGOT IO SEEK TAIL
+.EX
+When   successful the following argot is skipped.
+If   unsuccessful the errno     value is set.
+
+.SH VAR *.seek REVISION
+.EX
+In *.seek metadata as success the errno value is stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2018; by Kyle Sallee; argot   io seek was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 lseek
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

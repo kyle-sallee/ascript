@@ -1,0 +1,17 @@
+#!ascript/ascript
+segfault
+a
+err
+io
+ko
+ko hark
+go	'fail'
+ko cold
+
+ret
+ret
+ret
+
+'fail'
+err now		`kod start failed `	errno	`	`	errtext	`\n`
+ret

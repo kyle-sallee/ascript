@@ -1,0 +1,159 @@
+.TH "ascript duct tmp" 3
+
+.SH NAME
+.EX
+ascript duct tmp
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	when	task\fR
+
+duct tmp	init	To  dub 1     tmp  file is attached.
+        	ret	The           tmp  file is rewound.
+        		To  dub 0 the tmp  file is changed.
+
+duct tmp 1	init	The dub 1     reference is saved.
+        		To  dub 1 a   tmp  file is attached.
+        	ret	The           tmp  file is rewound.
+        		To  dub 0 the tmp  file is changed.
+        	ret	The dub 1     reference is restored.
+
+duct tmp 0 1	init	The dub 0     reference is saved.
+        		The dub 1     reference is saved.
+        		To  dub 1 a   tmp  file is attached.
+        	ret	The           tmp  file is rewound.
+        		To  dub 0 the tmp  file is changed.
+        	ret	The dub 1     reference is restored.
+        	ret	The dub 0     reference is restored.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct tmp
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct tmp 1
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH EXAMPLE 2
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct tmp 0 1
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+ret
+\fR
+.in
+
+.SH EXAMPLE 3
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct tmp 0 1
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret,					# dub 1 to dub 0 changed and rewound.
+duct tmp
+exe fast	`./van\\0`
+go		'fail'
+\&.
+ret,					# dub 1 to dub 0 changed and rewound.
+ret,					# dub 1 restored.
+exe fast	`./park\\0./park\\0`
+go		'fail'
+\&.
+ret,					# dub 0 restored.
+\fR
+.in
+
+.SH duct tmp SIMPLIFIED DIAGRAM 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct tmp 0 1,	...,ret,# part 0.
+duct tmp,	...,ret,# part 1.
+duct tmp,	...,ret,# part 2.
+duct tmp,	...,ret,# part 3.
+duct tmp,	...,ret,# part 4.
+duct tmp,	...,ret,# part 5.
+duct tmp,	...,ret,# part 6.
+ret,# 1 restored
+ ...,
+ret,# 0 restored
+\fR
+.in
+
+.SH CAPACITY CAVEAT
+.EX
+By       file system capacity or
+by  user file system quotas
+the capacity  is     limited.
+
+.SH WAIT CAVEAT
+.EX
+The data afore read all data must be acquired.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2018; by Kyle Sallee; argot   duct tmp was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript duct
+man 5 ascript
+man 7 ascript
+\fR

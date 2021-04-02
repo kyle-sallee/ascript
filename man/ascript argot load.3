@@ -1,0 +1,68 @@
+.TH "ascript argot load" 3
+
+.SH NAME
+.EX
+ascript argot load
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+lll.
+\fBargot	from	task\fR
+argot load	direct parameter	The argot ELF file is loaded.
+.TE
+.ta T 8n
+
+.SH SUCCESS
+.EX
+The next argot is skipped.
+
+.SH FAIL
+.EX
+The errno value is set.
+
+.SH EXAMPLE 0
+.EX
+.in -8
+\fB
+argot load	`io`
+go		'fail'
+out now		`The argot io loaded.\\n`
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.in -8
+\fB
+a
+name		A,	byte,	set	`io`
+argot load	A
+go		'fail'
+out now		`The argot io loaded.\\n`
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2016; by Kyle Sallee; argot argot load was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript argot alias
+man 3 ascript argot info
+man 3 ascript argot load
+man 5 ascript
+man 7 ascript
+\fR

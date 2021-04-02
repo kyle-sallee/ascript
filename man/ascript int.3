@@ -1,0 +1,275 @@
+.TH "ascript int" 3
+.SH NAME
+.EX
+ascript int
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	make	type\fR
+int 4	*	4-byte	integer
+int 8	*	8-byte	integer
+fix 8	*	8-byte	fixed point
+.TE
+
+.TS
+llll.
+\fBargot	signed	base	As text digits display\fR
+bin	unsigned	binary  	0 1
+den	  signed	denary  	0 1 2 3 4 5 6 7 8 9
+dex	unsigned	hexadecimal	0 1 2 3 4 5 6 7 8 9 a b c d e f
+Dex	unsigned	hexadecimal	0 1 2 3 4 5 6 7 8 9 A B C D E F
+nano	unsigned	denary  	0 1 2 3 4 5 6 7 8 9
+oct	unsigned	octal   	0 1 2 3 4 5 6 7
+time	  signed	denary  	0 1 2 3 4 5 6 7 8 9
+.TE
+
+.TS
+llll.
+\fBargot	make	type	input format\fR
+as bin	*.bin	8-byte	unsigned binary      format
+as den	*.den	8-byte	  signed denary      format
+as dex	*.dex	8-byte	unsigned hexadecimal format
+as fix	*.fix	8-byte	  signed fixed point format
+as oct	*.oct	8-byte	unsigned octal       format
+.TE
+.ta T 8n
+
+The sub var value when copied from the host var text format
+to  8-byte  value is          translated.
+The converse      is   not    provided.
+
+.TS
+ll.
+\fBargot	task\fR
+reval origin	For the origin address the value is set.
+reval target	For the target address the value is set.
+.TE
+.ta T 8n
+
+.SH VALUE MODIFYING OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	Add.
+add add	++	Increase.
+and	&	Bit and.
+div	/	Divide.
+equal	\&=	Assign.
+mod		Division   remainder.
+mul	*	Multiply.
+not	!	Bit flip.
+not and		Bit flip   bit and.
+or	|	Bit or.
+rcl		Bit rotate left.
+rcr		Bit rotate right.
+shl		Bit shift  left.
+shr		Bit shift  right.
+sub	-	Subtract.
+sub sub	--	Decrease.
+xor		Bit xor.
+.TE
+.in
+
+.SH COMPARISON OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal equal\
+	==	If          equal then skip.
+less	<	If  less          then skip.
+less  equal\
+	<=	If  less or equal then skip.
+more	>	If  more          then skip.
+more  equal\
+	>=	If  more or equal then skip.
+not   equal\
+	!=	If  not     equal then skip.
+test		Bit and
+		if  not     0     then skip.
+.TE
+.in
+
+.SH DEFAULT NUMERIC TEXT
+.EX
+Denary is default.
+
+.SH DENARY
+.EX
+With denary   prepended 0 are omitted and
+when negative a hyphen    is  prepended.
+
+.SH FIXED POINT NUMBERS
+.EX
+For  the fractional amount by 16384 1 is divided.
+For  the whole      value
+from -2^49-1     to +2^49  is possible.
+
+.SH ABBREVIATIONS
+.EX
+.TS
+lll.
+binary		bin
+octal		oct
+decimal	denary	den
+fixed point denary		fix
+hexadecimal	denhex	dex
+.TE
+.ta T 8n
+
+.SH FIXED POINT EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+int
+io
+name	PI
+fix
+set	3.1416 f
+out	`PI=`	PI	`\\n`
+\fR
+.in
+
+.SH FROM TYPE BYTE VALUE EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+byte
+int
+io
+name	A,	int 4,	scope,	set	5 d
+name	B,	byte,	scope,	set	`4`,	in den
+target origin	A	B.den
++
+out	`A=`	A	`\\n`
+\fR
+.in
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+int
+
+name		x,	int 4,	scope,	set	5 d
+name		y,	int 4,	scope,	set	6 d
+
+target origin	x	y
++
+out now		x	`\\n`
+\fR
+.in
+
+.SH OPERATOR CODE SELECTION
+.EX
+By the target address var type the opcodes are selected.
+
+.SH MIX CAVEAT
+.EX
+In arithmetic and comparison int4 int8 fix8 should not be mixed.
+
+.SH SINGLE OPERAND OPERATOR ARGOT
+.EX
+For argot add add for argot sub sub the target address suffices.
+
+.SH FUN
+.EX
+For faster repetitive arithmetic
+the file ascript\ fun.3 please read.
+
+.SH THE DIR /var/tmp/
+.EX
+/var/tmp/ content across boots is retained or as required is generated.
+
+.SH TABLES
+.EX
+From   endian native values to text output for translation
+tables are used.
+File   /var/tmp/ascript.int.0 when available is mapped or
+file   /var/tmp/ascript.int.EUID             is generated.
+
+.SH THE ARGOT nano
+.EX
+9 denary digits display.
+A dot if prefixed the second fraction amount becomes.
+
+.SH THE ARGOT time
+.EX
+At least 2 denary digits display.
+Rather than 8:0; 08:00 can be displayed.
+
+.SH REVALUATION
+.EX
+For many var the value when required is acquired.
+If  not   acquired
+the argot reval target
+the argot reval origin can be invoked.
+
+.SH FROM TEXT TO VALUE ACQUISITION
+.EX
+For  the host var a  type byte compat suffices.
+For  the sub  var an type int8        suffices.
+*.bin *.den *.dex *.fix *.oct  when   copied
+from the host var text a native value becomes.
+
+.SH VALUE ACQUISITION FAILURE
+.EX
+From the host var the value generation if failed
+in   the sub  var metadata
+the  success  value to EINVAL is set.
+
+.SH GUESS WHAT?
+.EX
+2a as denary if decoded the value 2 d  is acquired.
+2a as denhex if decoded the value 2a x is acquired.
+
+.SH FROM TEXT TO VALUE TRANSLATION PERFORMANCE
+.EX
+From text a value when decoding the performance
+from fastest to slowest follows:
+dex; oct; bin; den; fix.
+
+.SH ARGOT int 4
+.SH ARGOT int 8
+.SH WHICH ONE?
+.EX
+int 4: faster; from -2^31 to 2^31.
+int 8: slower; from -2^63 to 2^63.
+A 4 byte int when sufficient why not use?
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2017; by Kyle Sallee; argot   int was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript endian
+man 3 ascript fun
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,158 @@
+.TH "ascript value" 5
+.SH NAME
+.EX
+ascript value
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH VALUE 01234567
+.EX
+In denary  what is value   01234567
+Or is      that    already denary?
+Or it      that    value   denhex?
+Or is      an      octal   value       provided?
+By ascript as   a  var     01234567 is assumed.
+
+.SH AMBIGUITY
+.EX
+In human    languages ambiguity          exists.
+In computer languages ambiguity must not exist.
+
+.SH AMBIGUITY SOLUTION
+.EX
+More opcodes by execution ambiguity can be solved.
+
+.SH TRANSLATION
+.EX
+From a byte sequence
+to   a CPU  native endian integer value
+for  translation   the    type    must be known.
+
+.SH SUFFIX TABLE
+.EX
+.TS
+box;
+lll.
+\fBsuffix	base	assert\fR
+ b	2	binary
+ o	8	octal
+ d	10	denary
+ f	10.0000	fixed point denary
+ x	16	dex
+.TE
+.ta T 8n
+
+.SH EXAMPLES
+.EX
+target origin	A	1111 b,+	# denary  15      in binary
+target origin	A	f x,+		# denary  15      in dex
+target origin	A	17 o,+		# denary  15      in octal
+target origin	A	-15 d,+		# denary -15      in denary
+target origin	A	-15.1234 f,+	# denary -15.1234 in fixed point
+
+.SH PARSING METHOD
+.EX
+By  the    parser a     var name when surmised
+the final  two    bytes are examined.
+A   space  and    a     digit    when encountered
+to  native endian value
+the value  is     translated.
+
+.SH FIXED POINT DENARY
+.EX
+Fixed point denary
+and   2's   complement      64-bit  integer are similar.
+For   the   whole      part 48-bits exist.
+For   the   fraction   part 16-bits exist.
+
+.SH WHOLE VALUE
+.EX
+From 2^47-1 to 2^47 the whole value can range.
+
+.SH PARTIAL VALUE
+.EX
+Into 65536 denary parts or
+into 10000 denhex parts
+a    whole is     divided.
+
+.SH ENGINEERING PRECISION
+.EX
+For engineers 1 divided into 100 parts suffices.
+
+.SH ROUNDING ERRORS
+.EX
+The 4 / 10 *    10 is     4
+    4 / 10 * 65536 is 26214.4
+Rounding errors will    become.
+Even  in denary 1/3  is irrational.
+By computers fractional values are approximated.
+
+.SH INACCURACY BECOMES
+.EX
+Arithmetic      with     fractional values
+when repeatedly performed
+a    noticeable rounding error  can become.
+
+.SH PERFORMANCE
+.EX
+On   64-bit CPUs 4-byte and 8-byte value arithmetic perform  similar.
+On   32-bit CPUs 4-byte            value arithmetic performs faster.
+For any-bit CPU  fixed      point  value arithmetic performs slow.
+For any-bit CPU  floating   point  value arithmetic performs slowest.
+
+.SH FLOATING POINT FORMAT NOT SUPPORTED
+.EX
+To   sell     8087  math   coprocessors
+the  floating point format was  created.
+Even with     SSE,  still  solicits embarrassment,
+the  floating point format is   too slow!
+
+.SH UNIT CHANGE
+.EX
+Meters when too large millimeters why not use?
+Meters when too small kilometers  why not use?
+The  unit   when       changed    all 64-bits
+can  be     wielded.
+
+.SH INVENT A UNIT
+.EX
+For the  fractional amount 16-bits always suffices.
+The unit type       is             arbitrary!
+By  an   65536 or   1000   or any  arbitrary amount
+why not  multiply?
+
+.SH ASM HACKERS
+.EX
+By        any    average asm   hacker
+arbitrary length fixed   point arithmetic  was wielded.
+By        argot  int
+the       denary conversion    convenience and
+enhanced         performance               is  provided.
+
+.SH ENTIRELY ARBITRARY
+.EX
+Do   not try to place   the point.   That's  impossible.
+Only try     to realize the truth.   There   is  no point.
+Then the        realization becomes. An idea was empowered.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 5 ascript argot
+man 5 ascript operator
+man 5 ascript tutorial 1
+man 5 ascript var
+man 7 ascript
+\fR

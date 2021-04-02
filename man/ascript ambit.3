@@ -1,0 +1,78 @@
+.TH "ascript ambit" 3
+
+.SH NAME
+.EX
+ascript ambit
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+lll.
+\fBargot	make	use\fR
+ambit	*	UTF-8 characters   are selected.
+		For   partitioning     tasks
+		type  ambit var    are used.
+.TE
+.ta T 8n
+
+.SH AMBIT OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	The UTF-8 values are   selected.
+equal	\&=	All UTF-8 values are deselected.
+		The UTF-8 values are   selected.
+set		The UTF-8 values are   selected.
+sub	-	The UTF-8 values are dselected.
+.TE
+.in
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	name	amy,	ambit,	set	`\\0\\n`
+\fR
+.in
+
+.SH UNICODE
+.EX
+By    the ascript  parser
+backslash prefixed Unicode hexadecimal values
+to        UTF-8    characters
+are       translated.
+
+.SH UNICODE SAMPLE TRANSLATION
+.EX
+`\\0\\n\\U+00304a`
+The hiragana お  is selected.
+By  the text editor program
+a   UTF-8    character input when     possible
+the Unicode  expression      is   not required.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2017; by Kyle Sallee; argot   ambit was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript ambit
+man 3 ascript part
+man 5 ascript
+man 7 ascript
+\fR

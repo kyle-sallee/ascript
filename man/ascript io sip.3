@@ -1,0 +1,92 @@
+.TH "ascript io sip" 3
+
+.SH NAME
+.EX
+ascript io sip
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	host	make	use\fR
+
+io sip	byte	*.sip	Buffered input is selected.
+.TE
+.TA
+.ta T 8n
+
+.SH TYPE SIP OPERATOR
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	A dub is dupped and sip value set.
+.TE
+.in
+
+.SH FAILURE
+.EX
+The dub dup  acquisition  and assignment when failed
+in  the host var metadata as  success    the  errno is stored.
+
+.SH sip EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+self
+name		a,		byte,	scope,	io sip
+name			b,	byte,	scope
+\&'again'
+out now		`Are we there yet? `
+self due set	5 d	0 d
+
+target origin	a	``,=
+target copy
+target			b,=
+origin		``,		!=,		go	'ignore'
+origin		`Yes`,		byte lack,	go	'done'
+origin		`yes`,		byte lack,	go	'done'
+origin		`YES`,		byte lack,	go	'done'
+						go	'again'
+\&'done'
+out		`Finally!\\n`,	ret
+
+\&'ignore'
+self due ere,					go	'elapsed'
+						go	'again'
+\&'elapsed'
+out now		`Please do not ignore me.\\n`,	go	'again'
+\fR
+.in
+
+.SH COOKED RAW TERMINALS
+.EX
+From cooked terminals lines are acquired.
+From raw    terminals bytes are acquired.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2017; by Kyle Sallee; argot   sip was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

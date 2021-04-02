@@ -1,0 +1,1693 @@
+.TH ascript 5
+
+.SH NAME
+.EX
+ascript
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH ARGOT SYNOPSIS
+.EX
+.in -8
+.TS
+llll.
+\fBargot	host type	var make	task\fR
+a			Argot host.
+chdir			The current dir set.
+go			Label   reach.
+pin			Label   visit.
+
+name			target name place.
+exist			target name to address.
+resolve			target name to address.
+
+lax			argot is unoptimized.
+loop			On      ret   repeat.
+next			Next argot interpret.
+
+scope			The  opcode ret
+			when executed
+			the  var unmake.
+
+failure			Failure and skip.
+success			Sucess  and skip.
+
+scope same\
+			var fates' link.
+
+origin			origin      address set.
+origin host\
+			origin host address set.
+origin none\
+			origin      address 0
+origin push\
+			origin      address push.
+
+target			target      address set.
+target host\
+			target host address set.
+target none\
+			target      address 0
+target push\
+			target      address push.
+
+target origin\
+			both        set.
+target origin swap\
+			exchange.
+
+target cite 0\
+			...
+target cite 7\
+			address recall.
+
+origin cite 0\
+			...
+origin cite 7\
+			address recall.
+
+target keep 0\
+			...
+target keep 7\
+			address store.
+
+origin keep 0\
+			...
+origin keep 7\
+			address store.
+
+yay origin			Not null and skip.
+nay origin			Is  null and skip.
+yay target			Not null and skip.
+nay target			Is  null and skip.
+
+call			Opcode   call  execute.
+			Next     argot invoke.
+skip			Next     argot skip.
+ret			Opcode   ret   execute.
+
+add			Operator provide.
+add add			Operator provide.
+and			Operator provide.
+at			Operator provide.
+div			Operator provide.
+equal			Operator provide.
+equal equal\
+			Operator provide.
+less			Operator provide.
+less equal\
+			Operator provide.
+more			Operator provide.
+more equal\
+			Operator provide.
+mul			Operator provide.
+not			Operator provide.
+not equal\
+			Operator provide.
+or			Operator provide.
+query			Operator provide.
+set			Operator provide.
+sub			Operator provide.
+sub sub			Operator provide.
+xor			Operator provide.
+zygote parse			Parse     and skip.
+zygote parse pin			Parse pin and skip.
+
+ambit			Argot host.
+ambit		*	Type ambit var make.
+			UTF-8 partition
+			characters select.
+
+amount			Argot host.
+amount byte     	byte	*.amount.byte
+amount byte count			Count provide.
+amount byte reset			Zero  set.
+amount byte select			Value select.
+amount utf8     	byte	*.amount.utf8
+amount utf8 count			Count provide.
+amount utf8 reset			Zero  set.
+amount utf8 select			Value select.
+amount word     	byte	*.amount.word
+amount word count			Count provide.
+amount word reset			Zero  set.
+
+ansi			Var host.
+
+argot alias			For the argot
+        			A   new name give.
+
+argot load			Argot host.
+argot load			ELF   load.
+
+fun			Argot host.
+fun add			Function make.
+fun and			Function make.
+fun div			Function make.
+fun less less			Function make.
+fun mod			Function make.
+fun more more			Function make.
+fun neg			Function make.
+fun not			Function make.
+fun or			Function make.
+fun sub			Function make.
+fun xor			Function make.
+
+byte    			Argot host.
+byte    		*	Type byte make.
+byte page		*
+byte huge		*
+byte size		*
+byte have			In var  find and skip.
+byte have head			At head find and skip.
+byte have tail			At tail find and skip.
+byte have word			In var  find and skip.
+byte lack			In var  find or  skip.
+byte lack head			At head find or  skip.
+byte lack tail			At tail find or  skip.
+byte lack word			In var  find or  skip.
+byte line			Copy and a/x append.
+byte string			Copy and 0/x append.
+0toa			All 0/x to a/x convert.
+ato0			All a/x to 0/x convert.
+
+cap			Var host.
+		cap.ambient
+		cap.effective
+		cap.inherited
+		cap.permitted
+
+cast			Argot host.
+cast amount     			All    var address get.
+cast origin     			Origin var address get.
+cast origin from			Offset var address get.
+cast target     			Target var address get.
+cast target from			Offset var address get.
+cast convey     			Bytes copy.
+cast insert     			Bytes insert.
+
+char			Argot host.
+char	byte compat	*.char	Some host   content.
+		*.char.from	The  offset get set.
+		*.char.size	The  amount get set.
+
+clock			Var host.
+clock		boot.nano
+clock		boot.sec
+clock		mono.nano
+clock		mono.sec
+clock		nano.pad
+clock		process.nano
+clock		process.sec
+clock		real.nano
+clock		real.sec
+clock		thread.nano
+clock		thread.sec
+
+cpio newc			Argot host.
+cpio newc		*   	Newc   data store.
+cpio newc data	newc	*.data	File   data provide.
+cpio newc head	newc	*.head	Header data provide.
+cpio newc name	newc	*.name	Path   name provide.
+cpio newc stat	newc	*.stat	Stat        provide.
+cpio newc add			Entry add
+cpio newc load			CPIO  data     load.
+cpio newc make			Entry pathname make.
+cpio newc next			Next  entry    select.
+cpio newc push			Var   address  save.
+cpio newc save			CPIO  data     save.
+cpio newc with			Var   address  select.
+
+dec			Argot host.
+dec		*	Type dec make.
+
+
+dub			Argot host.
+dub file	byte	*	Dub var make.
+dub mem 	byte	*	Dub var make.
+dub shm 	byte	*	Dub var make.
+dub tmp 	byte	*	Dub var make.
+dub flock free			Unflock.
+dub flock free late			Unflock on ret.
+dub flock			With wait flock.
+dub flock now			Sans wait flock.
+dub lock free			Unlock.
+dub lock free late			Unlock on ret.
+dub lock			With wait lock.
+dub lock now			Sans wait lock.
+
+dub name	dub	*.name	/proc/self/fd/val
+dub poll			The dub status check.
+dub sig			signal I/O enable.
+dub use			The dub  when  used
+			the next argot skip.
+dub end			Close now.
+dub end late			Close on ret.
+dub on exe give			O_CLOEXEC  unset.
+dub on exe keep			O_CLOEXEC    set.
+dub on use rush			O_NONBLOCK   set
+dub on use wait			O_NONBLOCK unset.
+O_APPEND			Flag val or.
+O_ASYNC 			Flag val or.
+O_CLOEXEC			Flag val or.
+O_CREAT 			Flag val or.
+O_DIRECT			Flag val or.
+O_DIRECTORY			Flag val or.
+O_DSYNC 			Flag val or.
+O_EXCL  			Flag val or.
+O_NOATIME			Flag val or.
+O_NOCTTY			Flag val or.
+O_NOFOLLOW			Flag val or.
+O_NONBLOCK			Flag val or.
+O_PATH  			Flag val or.
+O_RDONLY			Flag val or.
+O_RDWR  			Flag val or.
+O_SYNC  			Flag val or.
+O_TMPFILE			Flag val or.
+O_TRUNC 			Flag val or.
+O_WRONLY			Flag val or.
+
+dup			Argot host.
+dup		dup.above	Min dup val set.
+dup     	dub	*.dup	dub dup acquire.
+dup above			At or above dup.
+dup exact			At          dup.
+dup end 			At   now  close.
+dup end late			On   ret  close.
+dup on exe copy			From host flag copy
+dup on exe give			O_CLOEXEC flag unset.
+dup on exe keep			O_CLOEXEC flag set
+dup save			Reference and
+        			flags     save.
+
+duct			Argot host.
+duct map			In     var
+        			the    duct content
+        			is     provided.
+duct mem			Memory duct init.
+duct mem   1			And    dub  save.
+duct mem 0 1			And    dub  save.
+duct pipe			Pipe   duct init.
+duct pipe   1			And    dub  save.
+duct pipe 0 1			And    dub  save.
+
+duct tee			To    pathname
+        			the   duct content
+        			send.
+duct tmp			File  duct init.
+duct tmp   1			And   dub  save.
+duct tmp 0 1			And   dub  save.
+
+endian			Argot host.
+be16	int	*.be16	Int reformat.
+be32	int	*.be32	Int reformat.
+be64	int	*.be64	Int reformat.
+le16	int	*.le16	Int reformat.
+le32	int	*.le32	Int reformat.
+le64	int	*.le64	Int reformat.
+
+env		*	Var bag make.
+env byte		*	Var     make.
+
+err			Argot host.
+err		errno	int   var   make.
+err		errtext	byte  var   make.
+err no			To    zero  set.
+err no from success			The   value set.
+err go			To    label reach.
+err pin			To    label visit.
+err sans			Sans  error skip.
+err var			Errno const var make.
+err with			With  error skip.
+success from err no			The   value copy.
+
+exe			Argot host.
+exe			*   	Var make.
+exe env 		*.env	Environment set.
+exe name		*.name	Pathname    set.
+exe para		*.para	Parameters  set.
+exe err 		*.err	Dub 2       capture.
+exe out 		*.out	Dub 1       capture.
+exe cute			Run.
+exe name use			Alternate pathname.
+exe env  use			Alternate environment.
+exe para use			Alternate parameters.
+exe origin			At SIGCHLD  set.
+exe taget			At SIGCHLD  set.
+exe pin 			at SIGCHLD  pin.
+
+exe fast			Argot host.
+exe fast			Program execute.
+exe must			Exit code check.
+exe yield			Program execute.
+\&.			Process wait.
+\&..			Process wait.
+
+glob			Argot host.
+glob    	byte	*.glob	Match  provide.
+glob brace			Braces expands.
+glob dir only			Dir  only   provide.
+glob dot match			Dot  prefix match.
+glob no escape			Back slash  literal.
+glob push			On   stack  save.
+glob slash			Dir  name   append.
+glob sort			Byte value  sort.
+glob tilde			Home dir    select.
+glob with			Glob var    select.
+
+per_linux32			Personality set.
+
+iconv			Character sets select.
+iconv recode			Text recode.
+
+id			Argot host.
+gid	byte	*.gid	gid/group name get.
+group	int	*.group	gid/group name get.
+uid	byte	*.uid	uid/user  name get.
+user	int	*.user	uid/user  name get.
+
+init			Argot host.
+init real			realFS init.
+init root			rootFS init.
+
+ino			Var host.
+ino			Inotify provide.
+ino		ino.move	Renames  connect.
+ino		ino.name	From dir node name.
+ino		ino.watch	Watched  pathname.
+ino far			Far    label  specify.
+ino to			Target origin specify.
+ino watch			Node   watch.
+ino ignore			Node   ignore.
+ino do			Ino use begin.
+ino done			Ino use end.
+
+int			Argot host.
+int 4		*	4-byte int make.
+int 8		*	8-byte int make.
+bin			display select.
+den			display select.
+dex			display select.
+Dex			display select.
+nano			display select.
+oct			display select.
+time			display select.
+as bin		*.bin	From host value.
+as den		*.den	From host value.
+as dex		*.dex	From host value.
+as fix		*.fix	From host value.
+as oct		*.oct	From host value.
+not and			Operator provide.
+rcl			Rotate carry left.
+rcr			Rotate carry right.
+shl			Shift        left.
+shr			Shift        right.
+test			Bit and if not 0 skip.
+
+io			Argot host.
+io		err	Dub 2 buffer.
+io		out	Dub 1 buffer.
+io		sip	Dub 0 buffer.
+io log  	byte	*.log	Buffered output var.
+io map  	byte	*.map	Mapped   I/O    var.
+io sip  	byte	*.sip	Buffered  input var.
+io seek 	dub	*.seek	Dub      offset set.
+io seek end	dub		The file end    seek.
+io load			Node to var  copy.
+io recv			From socket to   var copy.
+io save			Var  to node copy.
+io send			To   socket from var copy.
+err now			Direct   errput.
+out			Buffered output.
+out now			Direct   output.
+term no canon			Byte input enable.
+term no echo			Echo input disable.
+
+
+io nice			Argot host.
+io nice pid			PID       select
+io nice pid group			PID group select.
+io nice uid			UID       select.
+io nice level 0			Level select.
+io nice level 1			Level select.
+io nice level 2			Level select.
+io nice level 3			Level select.
+io nice level 4			Level select.
+io nice level 5			Level select.
+io nice level 6			Level select.
+io nice level 7			Level select.
+io nice class best			Class select.
+io nice class idle			Class select.
+io nice class real			Class select.
+
+ipv4			Argot host.
+ipv4 addr with
+ipv4 face with
+ipv4 name with
+ipv4 port with
+ipv4 sock with
+ipv4 accept
+ipv4 addr  from name
+ipv4 any   cast del
+ipv4 any   cast get
+ipv4 any   cast set
+ipv4 bind
+ipv4 broad cast del
+ipv4 broad cast get
+ipv4 broad cast set
+ipv4 connect
+ipv4 listen
+ipv4 local      del
+ipv4 local      get
+ipv4 local      set
+ipv4 multi cast del
+ipv4 multi cast get
+ipv4 multi cast set
+ipv4 route default
+ipv4 route del
+ipv4 route set
+ipv4 tcp sock			Socket make.
+ipv4 udp sock			Socket make.
+yay  ipv4  address
+
+ipv6			Argot host.
+ipv6 addr with
+ipv6 face with
+ipv6 name with
+ipv6 port with
+ipv6 sock with
+ipv6 accept
+ipv6 addr  from name
+ipv6 any   cast del
+ipv6 any   cast get
+ipv6 any   cast set
+ipv6 bind
+ipv6 broad cast del
+ipv6 broad cast get
+ipv6 broad cast set
+ipv6 connect
+ipv6 listen
+ipv6 local      del
+ipv6 local      get
+ipv6 local      set
+ipv6 multi cast del
+ipv6 multi cast get
+ipv6 multi cast set
+ipv6 route default
+ipv6 route del
+ipv6 route set
+ipv6 tcp sock			Socket make.
+ipv6 udp sock			Socket make.
+yay  ipv6  address
+
+klog			Kernel log daemon.
+
+ko			Var Host.
+ko      		ko	Kernel object handling.
+
+kvp			Argot host.
+kvp del				key val pair delete.
+kvp inv				key val invert.
+kvp new				key val pair make.
+kvp set				key val update.
+kvp with			kvp var select.
+
+lens			Argot host.
+lens data			Sets acquire.
+lens render			Transliterate.
+
+link			Argot host.
+link			Two var  link.
+link back			The rear link  select.
+link make			A        link  add.
+link next			The next link  select.
+link head			The link start select.
+link head set			The link start set.
+link join			Two list link.
+link omit			The link remove.
+link omit back			The link remove.
+			The rear var   select.
+link omit next			The link remove.
+			The next var   select.
+link sans			Not in list.
+link tail			The link end   select.
+link with			Is  in list.
+
+list			Argot host.
+list    	byte	*.list	Type list make.
+list    	.top	*.list	Type list make.
+list entire	.list	*.entire	Sub  topics order.
+list single	.list	*.single	Sub  topics order.
+list unique	.list	*.unique	New  topics provide.
+
+mdk	byte	*.mdk	Message digest make.
+
+mount			Argot host.
+mount		mount.data	type byte
+mount		mount.filesystem	type byte
+mount		mount.partlabel	type byte
+mount		mount.source	type byte
+mount		mount.target	type byte
+mount			   Mount & skip.
+mounted			if mounted skip.
+umount			Un-mount & skip.
+
+MS_RDONLY			Flag request.
+MS_NOSUI			Flag request.
+MS_NODEV			Flag request.
+MS_NOEXEC			Flag request.
+MS_SYNCHRONOUS			Flag request.
+MS_REMOUNT			Flag request.
+MS_MANDLOCK			Flag request.
+MS_DIRSYNC			Flag request.
+MS_NOATIME			Flag request.
+MS_NODIRATIME			Flag request.
+MS_BIND			Flag request.
+MS_MOVE			Flag request.
+MS_REC			Flag request.
+MS_SILENT			Flag request.
+MS_POSIXACL			Flag request.
+MS_UNBINDABLE			Flag request.
+MS_PRIVATE			Flag request.
+MS_SLAVE			Flag request.
+MS_SHARED			Flag request.
+MS_RELATIME			Flag request.
+MS_KERNMOUNT			Flag request.
+MS_I_VERSION			Flag request.
+MS_STRICTATIME			Flag request.
+MS_LAYTIME			Flag request.
+MS_ZERO			Flag zero.
+MNT_FORCE			Flag request.
+MNT_DETACH			Flag request.
+MNT_EXPIRE			Flag request.
+MNT_NONE			Flag request.
+MNT_ZERO			Flag zero.
+UMOUNT_NO_FOLLOW			Flag request.
+
+net			Argot host.
+net hub make			Network hub make.
+net hub move			Network interface move.
+net ns  move			Network interface move.
+net lower			Interface unready.
+net raise			Interface   ready.
+net veth			VETH pair make.
+
+nice			Argot host.
+nice pgrp	int	*.nice	Priority get set.
+nice pid	int	*.nice	Priority get set.
+nice user	int	*.nice	Priority get set.
+
+node			Argot host.
+node		*	the pathname
+		*.gid
+		*.mode
+		*.rmajor
+		*.rminor
+		*.uid
+node gid at			Var address acquire.
+node mode at			Var address acquire.
+node object at			Var address acquire.
+node origin at			Var address acquire.
+node rmajor at			Var address acquire.
+node rminor at			Var address acquire.
+node target at			Var address acquire.
+node uid at			Var address acquire.
+node block			Block dev node make.
+node char			Char  dev node make.
+node del			Node           del.
+node copy			Node           copy.
+node copy attr			Node  attr     copy.
+node copy gid			Node  gid      copy.
+node copy link			Node  link or  copy.
+node copy link free			Link  RAM      free.
+node copy mode			Node  mode     copy.
+node copy time			Node  a/m tim  copy.
+node copy uid			Node  uid      copy.
+node copy xattr			Node  xattr    copy.
+node fifo			FIFO      node make.
+node file			File      node make.
+node gid			Node  gid      set.
+node link			Nodes     hard link.
+node mode			Node      mode set.
+node move			Node      rename.
+node path			Node      path make.
+node same			Node      compare.
+node sym link			Symlink   node make.
+node uid			Node  uid      set.
+node uid gid			Node  uid gid  set.
+
+node sub			Argot host
+node sub aim	byte    	*.aim	Sym target set get.
+node sub attr	byte/dub	*.attr	Ext2 flags set get.
+node sub fill	byte/dub	*.fill	Blocks     set get.
+node sub gid	byte/dub	*.gid	Gid        set get.
+node sub mode	byte/dub	*.mode	Mode       set get.
+node sub real	byte/dub	*.real	Real  pathname get.
+node sub size	byte/dub	*.size	Size       set get.
+node sub uid	byte/dub	*.uid	Uid        set get.
+
+node list			Argot host.
+node list		*	Host var make.
+node list deep	list	*.deep	Dir     depth  get.
+node list link	list	*.link	Symlink object get.
+node list type	list	*.type	dir file etc...
+node list full	list	*.full	absolute with name.
+node list lean	list	*.lean	interior with name.
+node list less	list	*.less	interior sans name.
+node list most	list	*.most	relative with name.
+node list name	list	*.name	         with name.
+node list path	list	*.path	relative sans name.
+node list dir  done			Current dir depart.
+node list dir  head			Afore content dir.
+node list dir  tail			Aft   content dir.
+node list next			Next node discover.
+node list path name			The pathname associate.
+node list stat			Stat var associate.
+node list sym  list			Content list.
+node list with			Var activate.
+
+node want			Argot host
+node want	byte	*.want	Sub var make.
+node want amount	*.want	*.amount	Sub var make.
+node want offset	*want	*.offset	Sub var make.
+node want dont need			Advise.
+node want no reuse			Advise.
+node want normal			Advise.
+node want random			Advise.
+node want sequent			Advise.
+node want will need			Advise
+node want give			Now     advise.
+node want give late			Aft ret advise.
+node want drop			Now     cache drop.
+node want drop late			Aft ret cache drop.
+node want cache			Data cache.
+
+ns			Argot host
+ns new cgroup			Namespace Unshare.
+ns new files			Namespace Unshare.
+ns new fs			Namespace Unshare.
+ns new ipc			Namespace Unshare.
+ns new mnt			Namespace Unshare.
+ns new net			Namespace Unshare.
+ns new pid			Namespace Unshare.
+ns new sem			Namespace Unshare.
+ns new user			Namespace Unshare.
+ns new uts			Namespace Unshare.
+
+ns old cgroup			Namespace enter.
+ns old files			Namespace enter.
+ns old fs			Namespace enter.
+ns old ipc			Namespace enter.
+ns old mnt			Namespace enter.
+ns old net			Namespace enter.
+ns old pid			Namespace enter.
+ns old sem			Namespace enter.
+ns old user			Namespace enter.
+ns old uts			Namespace enter.
+
+pam			Argot host
+pam authneticate			PAM lib invoke.
+pam close session			PAM lib invoke.
+pam end			PAM lib invoke.
+pam open  session			PAM lib invoke.
+pam start			PAM lib invoke.
+pam str error			PAM lib invoke.
+
+para			Argot host
+para		*	Prog parameter var.
+para bare			Empty.
+para copy			Append.
+para copy link			Append.
+para omit			Remove.
+para have			Verify.
+para lack			Verify.
+para with			Var select.
+para zero			Zero byte append.
+
+part			Argot host
+part	byte	*.part	Sub var create
+		*.part.ambit	Ambit UTF-8 select.
+		*.part.max	Part        amounts.
+		*.part.now	Part        selected.
+part back			Prior part  select.
+part find			Host  parts discover.
+part next			Next  part  select.
+
+pcre2			Argot host.
+pcre2		*.errno 	Error  int   get.
+pcre2		*.errtext	Error  text  get.
+pcre2		*.rx    	Regex        set.
+pcre2		*.input 	Input  text  set.
+pcre2		*.from  	Input  text  offset.
+pcre2		*.output	Output text  get.
+pcre2		*.refer 	Match  count get.
+pcre2		*.refer 0	Match        get.
+
+pcre2 flag compile			Compile flags set.
+pcre2 flag jit				Jit     flags set.
+pcre2 flag match			Match   flags set.
+
+pcre2 compile			*.rx     compile.
+pcre2 input			*.input  alternate.
+pcre2 line match			*.output append.
+pcre2 line differ			*.output append.
+pcre2 match			*.refer* update.
+pcre2 next string			*.from advance.
+
+power			Argot host
+power halt			Power off.
+power image size			Image size set.
+power reboot			Reboot.
+power suspend disk			With swap suspend.
+power suspend ram			In   RAM  suspend.
+power resume			Resume attempt.
+
+pts			Argot host.
+pts	int	*.host.0	Dub 0 or set.
+pts	int	*.host.1	Dub 1 or set.
+pts	int	*.host.2	Dub 2 or set.
+pts	int	*.host.1.log	-1    or set.
+pts	int	*.host.2.log	-1    or set.
+pts	int	*.fake.0	0     or set.
+pts	int	*.fake.1	1     or set.
+pts	int	*.fake.2	2     or set.
+
+pts fini			pts end.
+pts fix 			Terminal cook.
+pts init			pts start.
+
+ray			Argot host
+ray		*	Address bag make.
+ray max 	ray	*.max	Element amount get.
+ray name	ray	*.name	Element name   get.
+ray now 	ray	*.now	Index   set    get.
+ray cat 			Ray content merge.
+ray origin			Indexed address copy.
+ray target			Indexed address copy.
+ray nay 			If  not ray skip.
+ray yay 			If      ray skip.
+
+re			Argot host
+re 2			On ret repeat.
+re 3			On ret repeat.
+re 4			On ret repeat.
+re 5			On ret repeat.
+re 6			On ret repeat.
+re 7			On ret repeat.
+re 8			On ret repeat.
+re 9			On ret repeat.
+re a			On ret repeat.
+re b			On ret repeat.
+re c			On ret repeat.
+re d			On ret repeat.
+re e			On ret repeat.
+re f			On ret repeat.
+re 10			On ret repeat.
+re 100			On ret repeat.
+
+rlimit			Var host.
+
+rusage			Var host.
+
+
+segfault			Segfault handler set.
+
+self			Argot host.
+self argv		self.argv	Make.
+self cpu affine set
+self dir set			The pwd      set.
+self due set			Timer set.
+self due done			Timer unset.
+self due ere			Timer test.
+self egid set
+self euid set
+self kill set			Timer set.
+self nap set			Sleep.
+self nap full			Sleep continue.
+self pgid set
+self pgid tc set
+self root set			The root dir set.
+self sgid set
+self sid new			New session acquire.
+self tty vt set
+self tty vt free			RAM release.
+self end			Self terminate.
+self pause			Until signal wait.
+
+sem			Argot host
+sem		*	Var make.
+sem close			Semaphore close.
+sem init			Initial value set.
+sem name			Pathname set.
+sem open			Pathname make.
+sem post			Semaphore increment.
+sem try			Semaphore decrement.
+sem unlink			Pathname  unlink
+sem wait			Semaphore decrement.
+sem with			Var select.
+
+sig			Argot host.
+sig     		*   	sig     var make.
+sig     		*.cfg	acfg    var make.
+sig pid 	sig	*.pid	int     var make.
+sig sum 	sig	*.sum	int     var make.
+sig uid 	sig	*.uid	int     var make.
+sig val 	sig	*.val	int     var make.
+sig pin 			The pin label assign.
+sig restart			Flag enable.
+sig no defer			Flag enable
+sig queue			Signal send.
+sig block			Signal block.
+sig name			Named const make.
+sig unblock			Signal unblock.
+sig winch key			SIGWINCH request.
+
+sked			Var host.
+sked	int	*.sked	Scheduling var make.
+		*.sked.give
+		*.sked.nice
+		*.sked.policy
+		*.sked.priority
+		*.sked.deadline
+		*.sked.period
+		*.sked.runtime
+
+sire			Argot host.
+sire		*	PID int  make.
+		*.done	PID info make
+		*.exit	PID info make.
+		*.stop	PID info make.
+sire done	int	*.done	PID info make.
+sire exit	int	*.exit	PID info make.
+sire stop	int	*.stop	PID info make.
+sire cont			Signal send.
+sire stop			Signal send.
+sire cont wait			Await.
+sire stop wait			Await.
+sire done wait			Await.
+
+sort			Argot host.
+sort byte less	byte	*.less	Small byte first.
+sort byte more	byte	*.more	Small byte last.
+sort len  less	byte	*.less	Small part first.
+sort len  more	byte	*.more	Small part last.
+sort part back	byte	*.back	Last  part first.
+sort part same	byte	*.same	First part first.
+sort want entire	sort	*.entire	all      parts
+sort want repeat	sort	*.repeat	repeated parts once
+sort want single	sort	*.single	all      parts once
+sort want unique	sort	*.unique	repeated parts never
+sort want ambit 	sort	*.ambit	One ambit value set.
+sort want free  	sort	*.free	Unsorted RAM free?
+sort want pre   	sort	*.pre	Presort?
+sort want smp   	sort	*.smp	Affine cores use?
+
+stat			Argot host.
+stat dub   	dub	*.statdub
+stat reg    	byte	*.statreg
+stat sym   	byte	*.statsym
+stat blksize	stat	*.blksize
+stat blocks	stat	*.blocks
+stat dev  	stat	*.dev
+stat gid  	stat	*.gid
+stat ino  	stat	*.ino
+stat mode 	stat	*.mode
+stat nlink	stat	*.nlink
+stat rdev 	stat	*.rdev
+stat size 	stat	*.size
+stat type	stat	*.type
+stat uid  	stat	*.uid
+stat get			The buffer update.
+stat atim sec	stat	*.atim.sec
+stat atim nano	stat	*.atim.nano
+stat mtim sec	stat	*.mtim.sec
+stat mtim nano	stat	*.mtim.nano
+stat ctim sec	stat	*.ctim.sec
+stat ctim nano	stat	*.ctim.nano
+UTIME_NOW
+UTIME_OMIT
+
+statvfs			Argot host.
+statvfs 	byte	*.statvfs	Sub var make.
+statvfs 	dub	*.statvfs
+statvfs get			Data acquire.
+f_bavail	statvfs	*.f_bavail
+f_bfree 	statvfs	*.f_bfree
+f_blocks	statvfs	*.f_blocks
+f_bsize 	statvfs	*.f_bsize
+f_favail	statvfs	*.f_favail
+f_ffree 	statvfs	*.f_ffree
+f_files 	statvfs	*.f_files
+f_flags 	statvfs	*.f_flags
+f_frsize	statvfs	*.f_frsize
+f_fsid  	statvfs	*.f_fsid
+f_namemax	statvfs	*.f_namemax
+
+sock			Argot host
+sock dgram		*	Var make.
+sock stream		*	Var make.
+sock accept			Prepare.
+sock bind			Prepare.
+sock connect			Prepare.
+sock listen			Prepare.
+sock recv			Data recive.
+sock send			Data send.
+
+swap			Argot host.
+swap		swap.label	Var make.
+swap		swap.pathname
+swap		swap.priority
+swap		swap.size
+swap		swap.uuid
+swap init			Swap system init.
+swap on 			Swap system on.
+swap off			Swap system off.
+swap prefer			Swap system prefer.
+
+syslog			Argot host.
+syslog	        	syslog  	Log output   make.
+syslog init		        	TSR start.
+syslog pathname		syslog.pathname	Log pathname make.
+syslog pipe		syslog.pipe	Log dub      make.
+syslog self		syslog.self	Log writer   make.
+LOG_AUTH			Facility select.
+LOG_AUTHPRIV
+LOG_CRON
+LOG_DAEMON
+LOG_FTP
+LOG_KERN
+LOG_LPR
+LOG_MAIL
+LOG_NEWS
+LOG_SYSLOG
+LOG_USER
+LOG_UUCP
+LOG_EMERG			Urgency select.
+LOG_ALERT
+LOG_CRIT
+LOG_ERR
+LOG_WARNING
+LOG_NOTICE
+LOG_INFO
+LOG_DEBUG
+
+tag			Argot host.
+tag go			Label reach.
+tag nay			Label verify.
+tag pin			Label visit.
+tag yay			Label verify.
+
+tm      		*	Argot host.
+tm am pm 	tm	*.ampm	am or pm
+tm form 	tm	*.format	strftime compat.
+tm hour 	tm	*.hour	[0-23]
+tm hours	tm	*.hours	[1-12]
+tm isdst	tm	*.isdst	[-1/0/1]
+tm mday 	tm	*.mday	[1-31]
+tm min  	tm	*.min	[0-59]
+tm mon  	tm	*.mon	[0-11]
+tm mons 	tm	*.mons	[1-12]
+tm sec  	tm	*.sec	[0-60]
+tm utc  	tm	*.utc	[0/1]
+tm wday 	tm	*.wday	[0-6]
+tm yday 	tm	*.yday	[0-365]
+tm year 	tm	*.year	[YEAR-1900]
+tm years	tm	*.years	[YEAR-0]
+
+trek			Argot host.
+context free			Context released.
+context get			Context save.
+context set			Context load.
+far equal			Label   change.
+go 2    			Labels  reach.
+go end  			On  end reach.
+go late 			On  ret reach.
+pin 2   			Labels  visit.
+weir    			Label   visit.
+weir next			Sans    skip set.
+weir next ret			Ret.
+weir skip			With    skip set.
+weir skip ret			Ret     then skip.
+
+tm			Var host
+tm convert
+
+top			Var host.
+top	byte	*.top	Ordered output.
+top	byte	*.top.ambit	Input   ambit.
+top	byte	*.top.fail	Error   report.
+top	byte	*.top.part	Output  ambit.
+
+trim			Argot host.
+trim full	byte	*.full	All     sequent del.
+trim head	byte	*.head	At head sequent del.
+trim pare	byte	*.pare	Sequent minimize.
+trim tail	byte	*.tail	At end  sequent del,
+trim tail host	byte	*.tail	   and  host    set.
+
+trace			Argot host.
+trace			Info select.
+tron			Trace on.
+troff			Trace off.
+
+uname			Var host.
+uname		uname.domainname
+uname		uname.machine
+uname		uname.nodename
+uname		uname.release
+uname		uname.sysname
+uname		uname.version
+
+utmpx			Var host
+utmpx		*.type	Log  type
+utmpx		*.pid	PID
+utmpx		*.line	TTY  name
+utmpx		*.id	TTY  number
+utmpx		*.user	user name
+utmpx		*.host	Host name
+
+var			Argot host.
+var call			Var name   set.
+var name			Var name   get.
+var len 		*.len	Var length set.
+var size		*.size	Var size   set.
+
+view			Var host.
+view	byte	*.view  	View provide.
+view	byte	*.view.head	Start sequent.
+view	byte	*.view.tail	End   sequent.
+view	byte	*.view.from	Byte  offset.
+view	byte	*.view.size	Byte  size.
+view byte back			View regress.
+view byte back safe			& if valid skip.
+view byte next			View progress.
+view byte next safe			& if avlid skip.
+view char			To UTF-8 char resize.
+view char back			View regress.
+view char back safe			& if valid skip.
+view char next			View progress.
+view char next safe			& if avlid skip.
+view full			Full view select.
+view save			Current view save.
+view head add			Head append.
+view head back			View regress.
+view head equal			Head set.
+view head next			View progress.
+view tail add			Tail append.
+view tail back			View regress.
+view tail equal			Tail set.
+view tail next			View progress.
+
+yay			Argot host.
+origin fstat			Info acquire and skip.
+origin lstat			Info acquire and skip.
+origin  stat			Info acquire and skip.
+target fstat			Info acquire and skip.
+target lstat			Info acquire and skip.
+target  stat			Info acquire and skip.
+yay block			If so skip.
+yay char 			If so skip.
+yay dir  			If so skip.
+yay empty			If so skip.
+yay exe  			If so skip.
+yay fifo 			If so skip.
+yay file 			If so skip.
+yay gid  			If so skip.
+yay link 			If so skip.
+yay modified			If so skip.
+yay newer			If so skip.
+yay node 			If so skip.
+yay older			If so skip.
+yay read 			If so skip.
+yay same 			If so skip.
+yay sgid 			If so skip.
+yay size less			If so skip.
+yay size more			If so skip.
+yay size same			If so skip.
+yay sticky			If so skip.
+yay suid 			If so skip.
+yay socket			If so skip.
+yay symlink			If so skip.
+yay tty  			If so skip.
+yay uid  			If so skip.
+yay write			If so skip.
+yay exe give			If so skip.
+yay exe keep			If so skip.
+yay use rush			If so skip.
+yay use wait			If so skip.
+nay block			If so skip.
+nay char			If so skip.
+nay dir 			If so skip.
+nay empty			If so skip.
+nay exe 			If so skip.
+nay fifo			If so skip.
+nay file			If so skip.
+nay gid 			If so skip.
+nay link			If so skip.
+nay modified			If so skip.
+nay newer			If so skip.
+nay node			If so skip.
+nay older			If so skip.
+nay read			If so skip.
+nay same			If so skip.
+nay sgid			If so skip.
+nay size less			If so skip.
+nay size more			If so skip.
+nay size same			If so skip.
+nay sticky			If so skip.
+nay suid			If so skip.
+nay socket			If so skip.
+nay symlink			If so skip.
+nay tty 			If so skip.
+nay uid 			If so skip.
+nay write			If so skip.
+node type go			File type near go.
+node type pin			File type near pin.
+.TE
+
+.SH KEY
+.EX
+Most                 var
+when      created
+a         name
+is        required.
+
+Most      sub        var
+when      created
+a         name       prefix
+is        required.
+
+By        *
+from      target
+the       name      or
+the       name      prefix
+is        typically acquired.
+
+A                   var
+a         sub       var
+when      created
+by        many      argot
+as        many      names
+as        provided
+are       created.
+
+The       direct    parameter use
+is        rare.
+
+.SH SUB VAR NAMES
+.EX
+A         sub       var
+when      created
+the       name
+is        composited.
+The       host      var       name                with
+a         dot                           appended  with
+the       sub       var       name      appended
+is        typical.
+
+.SH ARGOT CHARACTERISTICS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lllllll.
+\fBArgot/Type	Operator	call	errno	ret	skip	success\fR
+byte	@		errno
+byte	-				skip
+byte	==				skip
+byte	!=				skip
+byte	<				skip
+byte	<=				skip
+byte	>				skip
+byte	>=				skip
+byte have					skip
+byte have head					skip
+byte have tail					skip
+byte have word					skip
+byte lack					skip
+byte lack head					skip
+byte lack tail					skip
+byte lack word					skip
+
+call		call
+
+char	++				skip
+char	--				skip
+char	==				skip
+char	!=				skip
+char	<				skip
+char	<=				skip
+char	>				skip
+char	>=				skip
+
+cpio newc load			errno		skip
+cpio newc make			errno		skip
+cpio newc next					skip
+cpio newc save			errno		skip
+
+dec	==				skip
+dec	<=				skip
+dec	<				skip
+dec	>=				skip
+dec	>				skip
+dec	!=				skip
+
+dub end			errno
+dub end late			errno
+dub file	@		errno		skip
+dub file	!		errno
+dub flock			errno		skip
+dub flock now			errno		skip
+dub lock			errno		skip
+dub lock now			errno		skip
+dub mem	@		errno		skip
+dub shm	@		errno		skip
+dub shm	!		errno
+dub tmp	@		errno		skip
+dub tmp	!		errno
+dub use			errno		skip
+
+dub on exe give			errno		skip
+dub on exe keep			errno		skip
+dub on use rush			errno		skip
+dub on use wait			errno		skip
+
+dub poll			errno		skip
+
+duct map			errno		skip
+
+dup above			errno		skip
+dup exact			errno		skip
+dup end			errno
+dup save		call		ret
+
+env	==				skip
+env	!=				skip
+env	-				skip
+
+err pin		call
+err sans					skip
+err with					skip
+
+exe cute			errno			success
+exe must			errno		skip
+exe fast			errno		skip
+
+failure					skip
+glob	+		errno		skip
+glob	\&=		errno		skip
+
+per_linux32		call	errno	ret	skip
+
+iconv recode  			errno		skip
+
+ino	+				skip
+ino	 =				skip
+ino	!=				skip
+ino	-				skip
+
+io load			errno		skip
+io log	\&=		errno		skip
+io map	\&=		errno		skip
+io recv			errno		skip
+io save			errno		skip
+io seek	+		errno		skip
+io seek	\&=		errno		skip
+io seek	<<		errno		skip
+io seek	>>		errno		skip
+io seek	-		errno		skip
+io send			errno		skip
+io sip	\&=		errno		skip
+
+int	==				skip
+int	<=				skip
+int	<				skip
+int	>=				skip
+int	>				skip
+int	!=				skip
+int	?&				skip
+int	?|				skip
+int	?^				skip
+
+ipv4 addr with					skip
+ipv4 face with			errno		skip
+ipv4 name with			errno		skip
+ipv4 port with					skip
+ipv4 sock with					skip
+ipv4 accept			errno		skip
+ipv4 addr from name			errno		skip
+ipv4 any cast del			errno		skip
+ipv4 any cast set			errno		skip
+ipv4 bind			errno		skip
+ipv4 broad cast del			errno		skip
+ipv4 broad cast set			errno		skip
+ipv4 connect			errno		skip
+ipv4 listen			errno		skip
+ipv4 local del			errno		skip
+ipv4 local set			errno		skip
+ipv4 multi cast set			errno		skip
+ipv4 route del			errno		skip
+ipv4 route set			errno		skip
+ipv4 route default			errno		skip
+ipv4 tcp sock			errno		skip
+ipv4 udp sock			errno		skip
+
+ipv6 addr with					skip
+ipv6 face with			errno		skip
+ipv6 name with			errno		skip
+ipv6 port with					skip
+ipv6 sock with					skip
+ipv6 accept			errno		skip
+ipv6 addr from name			errno		skip
+ipv6 any cast del			errno		skip
+ipv6 any cast set			errno		skip
+ipv6 bind			errno		skip
+ipv6 broad cast del			errno		skip
+ipv6 broad cast set			errno		skip
+ipv6 connect			errno		skip
+ipv6 listen			errno		skip
+ipv6 local del			errno		skip
+ipv6 local set			errno		skip
+ipv6 multi cast set			errno		skip
+ipv6 route del			errno		skip
+ipv6 route set			errno		skip
+ipv6 route default			errno		skip
+ipv6 tcp sock			errno		skip
+ipv6 udp sock			errno		skip
+
+is block			errno		skip
+is char			errno		skip
+is dir			errno		skip
+is empty			errno		skip
+is exe			errno		skip
+is exe give			errno		skip
+is exe keep			errno		skip
+is fifo			errno		skip
+is file			errno		skip
+is gid			errno		skip
+is link			errno		skip
+is miss			errno		skip
+is modified			errno		skip
+is newer			errno		skip
+is node			errno		skip
+is older			errno		skip
+is read			errno		skip
+is same			errno		skip
+is sgid			errno		skip
+is sticky			errno		skip
+is suid			errno		skip
+is socket			errno		skip
+is symlink			errno		skip
+is tty			errno		skip
+is uid			errno		skip
+is use rush			errno		skip
+is use wait			errno		skip
+is write			errno		skip
+
+ko	+				skip
+ko	 =				skip
+ko	==				skip
+ko	>=				skip
+ko	!=				skip
+ko	-				skip
+ko	?				skip
+
+link back					skip
+link next					skip
+link omit					skip
+link omit back					skip
+link omit next					skip
+link sans					skip
+link with					skip
+
+mount			errno		skip
+mounted			errno		skip
+
+nay *					skip
+nay origin					skip
+nay target					skip
+
+nice pgrp	++		errno		success
+nice pgrp	\&=		errno		success
+nice pgrp	--		errno		success
+nice pid	++		errno		success
+nice pid	\&=		errno		success
+nice pid	--		errno		success
+nice user	++		errno		success
+nice user	\&=		errno		success
+nice user	--		errno		success
+
+node attr	 		errno		skip
+node block	 		errno		skip
+node char	 		errno		skip
+node copy			errno		skip
+node copy attr			errno		skip
+node copy gid			errno		skip
+node copy link			errno		skip
+node copy mode			errno		skip
+node copy time			errno		skip
+node copy uid			errno		skip
+node copy xattr			errno		skip
+node del			errno		skip
+node dir			errno		skip
+node fifo			errno		skip
+node file			errno		skip
+node link			errno		skip
+node list next			errno		skip
+node list	?				skip
+node move			errno		skip
+node own	\&=		errno		skip
+node path			errno		skip
+node same			errno		skip
+node sym link			errno		skip
+node sym			errno
+
+node sub aim	\&=		errno		skip
+node sub attr	&		errno		skip
+node sub attr	|		errno		skip
+node sub attr	\&=		errno		skip
+node sub fill	\&=		errno		skip
+node sub gid	\&=		errno		skip
+node sub mode	&		errno		skip
+node sub mode	|		errno		skip
+node sub mode	\&=		errno		skip
+node sub size	\&=		errno		skip
+node sub uid	\&=		errno		skip
+
+ns	==		errno		skip
+ns	!=		errno		skip
+
+origin fstat			errno		skip
+origin lstat			errno		skip
+origin  stat			errno		skip
+
+pam authenticate					skip
+pam close session					skip
+pam end					skip
+pam open  session					skip
+pam start					skip
+
+para have					skip
+para lack					skip
+
+part back					skip
+part next					skip
+
+pcre2 compile					skip
+pcre2 match					skip
+pcre2 next string					skip
+
+pin		call
+pin 2		call
+
+ray	++				skip
+ray	-				skip
+ray	--				skip
+ray back					skip
+ray nay					skip
+ray next					skip
+ray sub					skip
+ray yay					skip
+
+ret				ret
+
+self	\&=		errno		skip
+self	!		errno	ret
+
+sem open			errno		skip
+sem wait			errno		skip
+sem try			errno		skip
+
+sig queue	?		errno		skip
+sig winch key			errno		skip
+
+sked			errno
+
+stat get			errno		skip
+stat	\&=		errno			success
+
+statvfs	get		errno			success
+
+success					skip
+
+swap init			errno		skip
+swap off			errno		skip
+swap on			errno		skip
+
+tag nay					skip
+tag pin		call			skip
+tag yay					skip
+
+target fstat			errno		skip
+target lstat			errno		skip
+target  stat			errno		skip
+
+term no canon		call		ret	skip
+term no echo		call		ret	skip
+
+timer	\&=	call		ret
+
+top			errno		skip
+
+umount			errno		skip
+
+sock dgram			errno
+sock accept			errno			success
+sock bind			errno		skip	success
+sock connect			errno		skip	success
+sock listen			errno		skip	success
+sock recv			errno		skip	success
+sock send			errno		skip	succsss
+sock stream			errno			success
+
+scope		call		ret
+
+view	&	call
+view.head	++				skip
+view.head	--				skip
+view.tail	++				skip
+view.tail	--				skip
+
+weir		call			skip
+weir next ret				ret
+weir skip ret				ret
+
+yay origin					skip
+yay target					skip
+
+yay *					skip
+
+zygote parse					skip
+zygote parse pin					skip
+.TE
+
+.SH ARGOT CHARACTERISTICS EXPLAINED
+.EX
+In the   first      column  the argot name exists.
+By argot invocation a var   if  created
+in the   second     column  the operator        is  provided.
+In the   following  columns the characteristics are listed.
+
+.SH OPCODE RET
+.EX
+When indicated the argot
+when complete  the opcode ret is executed.
+
+.SH WHEN NOT RET
+.EX
+By most argot when complete the opcode jmp is executed.
+
+.SH OPCODE CALL
+.EX
+The  opcode  call    when executed
+on   the     stack   the  IP address is saved.
+At   another address the  process       continues.
+
+.SH OPCODE RET
+.EX
+The  opcode  ret     when executed
+from the     stack   the  IP address is restored.
+At   former  address the  process       continues.
+
+.SH ARGOT SCOPE
+.EX
+The argot  scope when executed the opcode call is executed.
+The opcode ret   when executed the CPU         is regained.
+The CPU          when regained the var         is ended.
+
+.SH THE ERRNO
+.EX
+From the   C language    the var  errno was inherited.
+In   ascript the   errno use differs.
+The  errno   value when  set
+in   the     column      the word errno exists.
+
+.SH ARGOT SKIP
+.EX
+A  failed     outcome             when possible
+a  successful outcome             when attained
+on success    the      next argot when skipped
+in the  table the word skip exists.
+
+.SH ARGOT SKIP WHEN?
+.EX
+The  successful outcome   when     attained
+the  following  argot     is   not interpreted.
+An   essential  argot     when     accidentally skipped
+bugs and        segfaults can      manifest.
+
+.SH SUCCESS
+.EX
+The task    aft   completion
+In  the     var   metadata as success
+the errorno value is stored.
+
+.SH TABLE VERACITY
+.EX
+The tables can be incomplete or incorrect.
+In  tables unofficial argot are not listed.
+The dedicated argot manual page should be read.
+
+.SH SEGFAULTS
+.EX
+A         segfault when encountered
+the argot segfault if   loaded
+useful information is   provided.
+
+.SH ARGOT MANUAL PAGES
+.EX
+For each argot a manual page might not exist.
+The host argot   manual page will      exist.
+
+.SH ARGOT MANUAL PAGE NAMES WITH SHELL USE
+.EX
+To  the  argot   name
+the word ascript and   space are  prepended.
+For shell use by \\ the space when prefixed
+the shell              space meaning can be escaped.
+
+.SH ARGOT MANUAL PAGE NAMES WITH SHELL USE ALTERNATE METHOD
+.EX
+The  manual   page   name
+by   single   quotes
+by   double   quotes when       enclosed
+the  shell    space  meaning is precluded.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript
+man 5 ascript beg
+man 7 ascript
+\fR

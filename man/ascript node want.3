@@ -1,0 +1,92 @@
+.TH "ascript node want" 3
+.SH NAME
+.EX
+ascript node want
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.SH FROM TARGET VAR ADDRESS ACQUISITION
+.EX
+.TS
+lll.
+\fBargot	target	type\fR
+node want dub	var	dub
+node want name	var	byte
+node want amount	var	int 8
+node want offset	var	int 8
+.TE
+
+.SH ADVICE SELECTION ARGOT
+.EX
+.TS
+l.
+node want dont need
+node want no reuse
+node want normal
+node want random
+node want sequent
+node want will need
+.TE
+
+.SH ACTION ARGOT
+.EX
+.EX
+.TS
+ll.
+\fBargot	task\fR
+node want give	Advice  give.
+node want read	Content read.
+node want drop	Cache   drop.
+.TE
+.ta T 8n
+
+.SH ARGOT node want
+.EX
+The  current  associate addresses are  saved.
+The  defaults assocaite addresses are  set.
+The  opcode   ret                 when executed
+the  saved    associate addresses are  restored.
+
+.SH MUTUALLY EXCLUSIVE
+.EX
+The argot node want dub
+the argot node want name
+by  one   or   the  other
+the node  is   selected.
+
+.SH CAVEAT
+.EX
+By the kernel the argot node want give is often  ignored.
+By the kernel the argot node want read is always obeyed.
+
+.SH PERFORMANCE
+.EX
+By   the kernel
+for  the cache
+all  available   RAM
+when consumed
+the  performance tanks.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript           was created.
+In 2019; by Kyle Sallee; argot   node want was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+less  /usr/src/linux/Documentation/sysctl/vm.txt
+man 1 ascript
+man 2 open
+man 2 posix_fadvise
+man 3 ascript node
+man 5 ascript
+man 7 ascript
+\fR

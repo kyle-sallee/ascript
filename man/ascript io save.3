@@ -1,0 +1,61 @@
+.TH "ascript io save" 3
+.SH NAME
+.EX
+ascript io save
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	target	origin	direct\fR
+io save	dub     	var	optional byte amount
+io save	pathname	var	optional byte amount
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+target		`/tmp/hello\\0`
+origin		`Hello.\\n`
+io save
+go		'failed'
+\fR
+.in
+
+.SH SKIP
+.EX
+When successful the next  argot is skipped
+if   not        the errno value is set.
+
+.SH AMOUNT
+.EX
+From the    var start
+the  optionally specified amount
+or   all    the data   is written.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   save was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,94 @@
+.TH "ascript glob" 3
+.SH NAME
+.EX
+ascript glob
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	host	make	use\fR
+glob	byte	*.glob	From the host   for globular expression
+			in   the *.glob sub var each match is provided.
+.TE
+
+.TS
+lll.
+\fBargot	target	task\fR
+glob push		Onto stack until ret the current glob var push.
+glob with	*.glob	The                      current glob var select.
+glob next		The  next  pathname      acquire      and skip.
+glob reset		The  var   reset.
+.TE
+
+.TS
+ll.
+\fBargot	flag set description\fR
+glob brace	Brace expansion                 is  enabled.
+glob dir only	The   pathname       when dir   is  reported.
+glob dot match 	Dot   prefixed       node names can match.
+glob no  escape	Back  slash                     is  literal.
+glob slash	With  slash dir           names are appended.
+glob sort	By    byte  value    path names are sorted.
+glob tilde	~     when  prefixed home dir   is  expected.
+.TE
+
+.SH AFFECT REQUIRE THE ARGOT glob with VAR ADDRESS
+.EX
+glob brace
+glob dir only
+glob dot match
+glob no escape
+glob slash
+glob sort
+glob tilde
+glob push
+glob next
+glob reset
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name		A,	byte,	scope,	set	`/usr/share/man/man*/*\\0`
+glob,	target	A.glob
+glob push
+glob with
+glob slash
+target origin	out	A.glob
+\&'again',	glob next,	go	'done',	byte line,	go	'again'
+\fR
+.in
+
+.SH REUSE
+.EX
+The selected glob var   afore  reuse
+the argot    glob reset please invoke.
+To  0        the  flags are    set.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   glob was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 glob
+man 5 ascript
+man 7 ascript
+man 7 glob
+\fR

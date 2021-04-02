@@ -1,0 +1,6 @@
+On   modern   computers swap    area benefits still    exists.
+A    memory   backed    rootFS       content  can   be swapped out.
+A    to       disk      suspend                     is possible.
+
+For  the      Linux     kernel  only
+the  provided swap      methods work.

@@ -1,0 +1,335 @@
+.TH "ascript ipv4" 3
+
+.SH NAME
+.EX
+ascript ipv4
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH HOSTED ARGOT
+.SH SALIENT DATA ACQUISITION
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+ipv4		The   opcode ret
+		until executed
+		on    the    stack
+		argot ipv4 * with
+		data
+		is    stored.
+
+ipv4 addr with	IP        address	Convert and  remember.
+ipv4 face with	interface name  	Convert and  remember.
+ipv4 name with	DNS       name  	Convert and  remember.
+ipv4 port with	port      number	             Remember.
+ipv4 port with	service   name  	Convert and  remember.
+ipv4 sock with	socket    var   	             Remember.
+.TE
+.ta T 8n
+
+.SH INTERFACE CONFIGURATION ARGOT
+.EX
+.TS
+llll.
+\fBargot           	target	require	require\fR
+ipv4 any   cast del		ipv4 face with	ipv4 addr with
+ipv4 broad cast del		ipv4 face with	ipv4 addr with
+ipv4 local      del		ipv4 face with	ipv4 addr with
+ipv4 multi cast del		ipv4 face with	ipv4 addr with
+
+ipv4 any   cast get	byte compat	ipv4 face with
+ipv4 broad cast get	byte compat	ipv4 face with
+ipv4 local      get	byte compat	ipv4 face with
+ipv4 multi cast get	byte compat	ipv4 face with
+
+ipv4 any   cast set		ipv4 face with	ipv4 addr with
+ipv4 broad cast set		ipv4 face with	ipv4 addr with
+ipv4 local      set		ipv4 face with	ipv4 addr with
+ipv4 multi cast set		ipv4 face with	ipv4 addr with
+.TE
+.ta T 8n
+
+.SH ADDRESS VERIFICATION ARGOT
+.EX
+.TS
+lll.
+\fBargot           	target	task\fR
+yay ipv4 address	byte compat	IP address format validate and skip.
+.TE
+.ta T 8n
+
+.SH NAME ADDRESS TRANSLATION ARGOT
+.EX
+.TS
+lll.
+\fBargot           	target  	origin\fR
+ipv4 addr from name	byte compat	`DNS name`
+.TE
+.ta T 8n
+
+.SH SOCKET MAKE
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+ipv4 tcp sock	*	An AF_INET TCP socket make.
+ipv4 udp sock	*	An AF_INET UDP socket make.
+.TE
+.ta T 8n
+
+When made   the O_CLOEXEC flag is set.
+When scoped the are tacitly closed.
+
+.SH BIND CONNECT
+.EX
+.TS
+llll.
+\fBargot	require	require	require\fR
+ipv4 bind	ipv4 sock with	ipv4 addr with	ipv4 port with
+ipv4 bind	ipv4 sock with	ipv4 addr with	ipv4 port with
+ipv4 connect	ipv4 sock with	ipv4 name with	ipv4 port with
+ipv4 connect	ipv4 sock with	ipv4 addr with	ipv4 port with
+.TE
+.ta T 8n
+
+.SH LISTEN AND ACCEPT
+.EX
+.TS
+llll.
+\fBargot	target	require	task\fR
+ipv4 listen	wait amount	ipv4 sock with	Listening mode set.
+
+ipv4 accept	*	ipv4 sock with	From listening socket
+			for  inbound   connections
+			the  named     socket  var
+			make.
+.TE
+.ta T 8n
+
+.SH ROUTE CONFIGURATION ARGOT
+.EX
+.TS
+lll.
+\fBargot           	target  	origin\fR
+ipv4 route default	target address
+ipv4 route del  	target address
+ipv4 route set  	target address	origin address
+ivp4 route set  	target address	origin interface
+.TE
+.ta T 8n
+
+.SH SKIPPERS
+.EX
+.TS
+lll.
+\fBargot	skip	errno set\fR
+
+ipv4 addr with	always  	never
+ipv4 face with	on success	always
+ipv4 name with	on success	always
+ipv4 port with	on success	maybe
+ipv4 sock with	always  	never
+
+ipv4 accept	never   	always
+ipv4 bind	on success	always
+ipv4 connect	on success	always
+ipv4 listen	on success	always
+
+ipv4 any   cast del	on success	always
+ipv4 broad cast del 	on success	always
+ipv4 local      del 	on success	always
+ipv4 multi cast del 	on success	always
+
+ipv4 any   cast get	never	maybe
+ipv4 broad cast get 	never	maybe
+ipv4 local      get 	never	maybe
+ipv4 multi cast get 	never	maybe
+
+ipv4 any   cast set	on success	always
+ipv4 broad cast set 	on success	always
+ipv4 local      set 	on success	always
+ipv4 multi cast set 	on success	always
+
+ipv4 route del	on success	always
+ipv4 route set	on success	always
+ipv4 route default	on success	always
+
+ipv4 addr from name	on success	maybe
+
+ipv4 tcp sock	on success	always
+ipv4 udp sock	on success	always
+
+yay ipv4 address	similar	never
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,			ipv4
+target	`lo`,		ipv4 face with,	go	'fail'
+target	`127.0.0.1/8`,	ipv4 addr with,	go	'fail'
+			ipv4 local set,	go	'fail'
+
+## The lo interface when raised
+## to 127.0.0.1/8 by Linux
+## the IP address is set.
+## But as an example the address can be set/changed.
+\fR
+.in
+
+.SH THE ARGOT ipv4
+.EX
+The argot  ipv4 when   invoked   the  following becomes.
+The argot  ipv4 * with collected data is  stack saved.
+The opcode call is     executed  and  interpretation continues.
+The opcode ret  when   executed  the  saved  data is restored.
+
+.SH ARGOT ipv4 accept CAVEAT
+.EX
+Within  a signal handler
+the argot ipv4 accept afore  invocation
+the argot ipv4        please invoke.
+
+.SH THE ARGOT ipv4 port with
+.EX
+The argot   ipv4 port with when   invoked from target
+the service name such as   `http` or `www` or
+the port    name such as   80 d   is acquired.
+
+.SH THE ARGOT ipv4 addr with
+.EX
+The  argot  ipv4 addr with     when invoked from target
+an   ASCII  numeric IP address is   acquired.
+For  net    configuration with slash
+a    prefix len can be appended.
+
+.SH THE ARGOT ipv4 name with
+.EX
+The  argot ipv4 name with when invoked from target
+a    DNS   name is expected an IP address is acquired.
+By   file /etc/hosts the name if not provided
+from file /etc/resolv.conf the DNS servers are contacted.
+
+.SH THE ARGOT ipv4 connect
+.EX
+The  argot ipv4 connect   when invoked
+from argot ipv4 name with
+from argot ipv4 addr with the  address can be acquired.
+
+.SH THE ARGOT ipv4 name THE ARGOT ipv4 addr with CAVEAT
+.EX
+By  argot ipv4 addr with
+by  argot ipv4 name with
+for address storage the same memory is used.
+
+.SH ipv4*get CAVEAT
+.EX
+As  strings   the  addresses        are provided.
+To  addresses a    slash and prefix is  appended.
+Per interface more than  one local      address can exist.
+
+.SH THE ARGOT ipv4 addr from name
+.EX
+The argot ipv4 addr from name when successful
+the next  argot is  skipped.
+
+.SH THE ARGOT ipv4 tcp sock
+.SH THE ARGOT ipv4 udp sock
+.EX
+The  argot ipv4 tcp sock
+the  argot ipv4 udp sock when invoked
+an   error should not become.
+An   error if     encountered in the metadata as success
+the  errno value  is stored.
+
+.SH THE ARGOT ipv4 bind
+.EX
+Afore   listening to a socket a local address and port must be bind.
+As      described in the ip.7 manual page
+special IP addresses exists.
+
+.SH THE ARGOT ipv4 connect
+.EX
+To a computer's port a connection is established.
+
+.SH IPV4 VETH ADDRESS
+For VETH by the kernel a link local address is NOT tacitly assigned.
+
+.SH IPV6 VETH ADDRESSES
+.EX
+For VETH by the kernel a link local address is     tacitly assigned.
+
+.SH ARGOT ipv6
+.EX
+The argot ipv6 and the argot ipv4 are nearly identical.
+The argot name prefix  from  ipv4 to  ipv6   changes.
+For       IPV6 longer  addresses  are used.
+
+.SH OUTBOUND ORDER
+.EX
+ipv4
+ipv4 tcp  sock
+ipv4 sock with
+ipv4 name with
+ipv4 port with
+ipv4 connect
+
+.SH INBOUND ORDER
+.EX
+ipv4
+ipv4 tcp  sock
+ipv4 sock with
+ipv4 name with
+ipv4 port with
+ipv4 bind
+ipv4 listen
+target
+ipv4 accept
+
+.SH SIGNAL DRIVEN IO
+.EX
+For FIFO for sockets for terminals signal driven IO is possible.
+
+.SH CAVEAT FOR THE ARGOT ipv4 accept
+.EX
+The  argot  ipv4 accept when invoked a var is always created.
+The  socket if  blocked an inbound connection until requested
+the  script interpretation pauses.
+
+.SH WAIT FOR IT?
+.EX
+As the manual page accept.2 suggests
+by function   select
+by function   poll
+by function   epoll
+an inbound    request can be detected.
+
+.SH PAUSE UNTIL SIGNAL
+.EX
+By a time delayed signal blocking functions can be interrupted.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2020; by Kyle Sallee; argot   ipv4 was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript net
+man 5 ascript
+man 7 ascript
+man 7 ip
+man 7 ipv6
+\fR

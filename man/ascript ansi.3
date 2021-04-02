@@ -1,0 +1,130 @@
+.TH "ascript ansi" 3
+
+.SH NAME
+.EX
+ascript ansi
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED VAR
+.SH CURSOR MOVEMENT
+.EX
+.TS
+ll.
+ansi.up 	up.
+ansi.down	down.
+ansi.fore	right.
+ansi.back	left.
+
+ansi.home	Cursor to 0,0 set.
+ansi.save	Cursor position save.
+ansi.load	Cursor position restored.
+.TE
+
+.SH BLANK AND CLEAR
+.TS
+ll.
+ansi.blank	To line end    clear.
+ansi.clear	Entire  screen clear.
+.TE
+
+.SH FONT OR COLOR SELECT
+.EX
+.TS
+l.
+ansi.normal
+ansi.blink
+ansi.bold
+ansi.conceal
+ansi.reverse
+ansi.underscore
+.TE
+
+.SH FOREGROUND COLOR SELECT
+.EX
+.TS
+l.
+ansi.fore.black
+ansi.fore.red
+ansi.fore.green
+ansi.fore.yellow
+ansi.fore.blue
+ansi.fore.magenta
+ansi.fore.cyan
+ansi.fore.white
+.TE
+
+.SH BACKGROUND COLOR SELECT
+.EX
+.TS
+l.
+ansi.back.black
+ansi.back.red
+ansi.back.green
+ansi.back.yellow
+ansi.back.blue
+ansi.back.magenta
+ansi.back.cyan
+ansi.back.white
+.TE
+.TA
+.ta T 8n
+
+.SH CAVEAT
+.EX
+For ANSI codes
+the documentation and
+the implementations
+do  not  concur.
+
+Some codes will not work.
+
+The      ansi.clear var when interpreted
+the      cursor     position to 0,0
+probably does       not change.
+
+.SH ALTERNATIVE
+.EX
+VT-100   terminal escape   codes
+are      ANSI     backward compatible.
+Terminal escape   codes    when known
+can   be directly entered.
+
+.SH ANSI BYTE SEQUENCE EXAMPLES
+.EX
+By `\\U+00001b` the escape byte value is substituted.
+By `\\U+00001b[2J\\U+00001b[H`
+the display
+is  cleared
+the cursor  to 0,0 is set.
+
+.SH ZYGOTE RATHER THAN ARGOT
+.EX
+By  a zygote  the   color code var if created
+fewer opcodes might execute.
+
+.SH THE NCURSES LIBRARY
+.EX
+A   proper  method, if    one ever existed,
+the ncurses library could be       linked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2020; by Kyle Sallee; argot   ansi was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+lynx  http://ascii-table.com/ansi-escape-sequences.php
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

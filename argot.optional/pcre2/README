@@ -1,0 +1,13 @@
+The   GNU C library  regular expression support     is  slow!
+The   pcre2 library  is      awesome    and             fast!
+To    pcre2 library  all     regular    expressions are delegated.
+If    pcre2 library  is      not        installed
+then  pcre2 library  can     not                    be  linked.
+Bummer!
+
+Sans  pcre2 library  dependent          argot
+sans  optional/pcre2 directory
+a     successful     compilation                    is  possible.
+The   ascript        scripts
+where reg *                             argot       are used
+will  fail.

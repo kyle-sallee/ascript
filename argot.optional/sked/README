@@ -1,0 +1,18 @@
+Process    scheduling is a Linux specific task.
+Anorexic   scheduling
+gluttonous scheduling and
+realtime   scheduling
+is         possible.
+The        names      differ,
+but        the        idea
+is         conveyed.
+
+A computer can boot, hibernate, shutdown, reboot
+and everything in between and
+the sked is not required.
+
+For  the  rare instances where scheduling is useful
+sked      is   awesome,  better
+than nice.
+But  nice is simple
+and  sked is complicated.

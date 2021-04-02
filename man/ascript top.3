@@ -1,0 +1,106 @@
+.TH "ascript top" 3
+
+.SH NAME
+.EX
+ascript top
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot	host	make	type	use\fR
+top	byte			Topological sort sub var make.
+top	byte	*.top   	top	Ordered data         request.
+		*.top.ambit	ambit	Ambit   UTF-8 values select.
+		*.top.fail	byte	Errors               report.
+		*.top.part	byte	Output topic parting bytes set.
+.TE
+.in
+
+.in -8
+.TS
+llll.
+\fBargot	target	origin	use\fR
+top ambit	top	ambit	The ambit var associate.
+top new 	top		When next required
+        			the  ordered topic list is regenerated.
+.TE
+.in
+.ta T 8n
+
+.in -8
+.TS
+ll.
+\fBvar	default value\fR
+*.top.ambit	line feed, tab, byte value 0
+*.top.part	line feed
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+The next argot is not skipped.
+
+.SH FAILURE
+.EX
+In  *.top.fail the salient information is  provided.
+The          errno   value and
+the metadata success value to          are set.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+
+name		A,	byte,	scope,	top
+origin		`one	two	`,+
+origin		`two	three	`,+
+origin		`three	four	`,+
+origin		`banana	banana	`,+
+origin		`four	five	five	six	six	seven	`,+
+out now		A.top
+\fR
+.in
+
+.SH EXAMPLE COMMENTS
+.EX
+Since paired,  but not positioned
+into  any position the banana can slip.
+
+.SH TERSE
+.EX
+A topological sort is performed.
+
+.SH LIST GENERATION
+.EX
+The *.top content when copied the ordered list is generated.
+
+.SH COMMON MISTAKE
+.EX
+Recursive requirement is a common mistake:
+A	B	B 	C	C 	A	
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2018; by Kyle Sallee; argot   top sort was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript list
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,184 @@
+.TH "ascript sig" 3
+.SH NAME
+.EX
+ascript sig
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot	from	host	made	task\fR
+sig     	target	none	*	Handling var make.
+sig pid 	target	sig	*.pid	Sending  PID provide.
+sig uid 	target	sig	*.uid	Sending  UID provide.
+sig sum 	target	sig	*.sum	Signal   sum provide.
+sig val 	target	sig	*.val	Sending  int provide.
+
+\fBargot	target	origin		task\fR
+sig pin 	sig	label		When signaled to label pin.
+sig target	sig	any		When pin target set.
+sig origin	sig	any		When pin origin set.
+
+\fBargot	target			task\fR
+sig init	sig			Signal handler install.
+sig fini	sig			Signal handler revoke.
+sig restart	sig			Syscalls   resume.
+sig no defer	sig			Concurrent entry allow.
+
+\fBargot	target	direct		task\fR
+sig queue		pid sig val		Signal send.
+sig block	int			Signal block.
+sig unblock	int			Signal unblock.
+
+sig winch key	keycode			Signal SIGWINCH request.
+
+sig yay 	int			Signal if assigned  skip.
+sig nay 	int			Signal if available skip.
+
+\fBargot				task\fR
+sig name				Named signal int 4 var make.
+.TE
+.ta T 8n
+.in
+
+.SH TYPE SIG OPERATOR
+.EX
+.in -8
+.TS
+box;
+lll.
+equal	\&=	The signal name/number is set.
+.TE
+.ta T 8n
+.in
+
+.SH SKIPPERS
+.EX
+sig block
+sig nay
+sig queue
+sig unblock
+sig yay
+
+.SH SIGNAL SEND EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+# pid's existence is assumed.
+sig
+sig name
+sig queue	pid	SIGUSR1		1 x
+go		'failed'
+\fR
+.in
+
+.SH SIGNAL RECEIVE EXAMPLE
+.EX
+In    ascript\ timer.3
+in    ascript\ sig\ winch\ key.3
+more  examples exist.
+
+.SH ARGOT sig restart
+.EX
+A  flag   is set.
+By signal a  system call when interrupted tacitly resumes.
+
+.SH ARGOT sig no defer
+.EX
+A   flag is set.
+Its own  signal handler while executing
+its own  signal         is    blocked.
+
+.SH TYPE sig VAR
+.EX
+While type int 4 compat
+a     type sig   var      differs.
+For   type sig a data map exists.
+
+.SH AVAILABILITY
+.EX
+64    signals           exist.
+From  value 32
+to    value 64
+the   real-time signals exist.
+
+.SH SIGNAL HANDLING STEP BY STEP
+.EX
+The type  sig var create.
+A   value if  desired assign.
+The pin   label assign.
+The argot sig init afore invocation
+the argot sig restart    and
+the argot sig nodefer
+can be invoked.
+
+.SH SIGNAL DEFAULT
+.EX
+From SIGRTMIN  and    above
+an   available signal when is selected.
+
+.SH SIGNAL CATCH
+.EX
+*.pid *.uid *.val are set.  *.sum is increased.
+The origin and target if specified are set.
+The pin    becomes.
+
+.SH CRASH
+.EX
+Sans handler a signal when received the process crash often follows.
+
+.SH SIGCHLD
+.EX
+The SIGCHLD by argot sire is     already handled.
+The SIGCHLD liberty       is not sustained.
+
+.SH SEGFAULT
+By  argot segfault the SIGSEGV is already handled.
+The argot segfault             if not     loaded
+the       signal               is available.
+
+.SH SIGNAL NAME
+.EX
+For real  time signals
+the names RT32 to RT64
+are were  selected.
+
+.SH GNU C LIBRARY CAVEAT
+.EX
+By  the  GNU C    library
+the RT32 and RT64 signals are annexed.
+
+.SH SECURITY
+.EX
+The permissions when insufficient
+by  the  kernel the  signal
+is  not  delivered.
+
+.SH PID 0
+.EX
+By the sending process the signal is received.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2017; by Kyle Sallee; argot   sig was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 sigaction
+man 3 ascript sig winch key
+man 5 ascript
+man 7 ascript
+\fR

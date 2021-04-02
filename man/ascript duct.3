@@ -1,0 +1,159 @@
+.TH "ascript duct" 3
+
+.SH NAME
+.EX
+ascript duct
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fB
+argot   	require 	task
+        	type\fR
+
+duct map	byte	In     var
+        		the    duct content   is provided.
+
+duct tee	byte	To     pathname; data is copied.
+duct tee	dub	To     dub;      data is copied.
+
+duct mem		Memory duct init.
+duct mem    1		Memory duct init. Dub       1 save.
+duct mem  0 1		Memory duct init. Dub 0 and 1 save.
+
+duct pipe		Pipe   duct init.
+duct pipe   1		Pipe   duct init. Dub       1 save.
+duct pipe 0 1		Pipe   duct init. Dub 0 and 1 save.
+
+duct tee		To     pathname
+        		the    duct content           send.
+
+duct tmp		File   duct init.
+duct tmp    1		File   duct init. Dub       1 save.
+duct tmp  0 1		File   duct init. Dub 0 and 1 save.
+.TE
+.ta T 8n
+
+.SH REQUIRED RET TABLE
+.EX
+.TS
+ll.
+\fBRequired ret	argot\fR
+1	duct mem
+1	duct pipe
+1	duct tmp
+
+2	duct mem    1
+2	duct pipe   1
+2	duct tmp    1
+
+3	duct mem  0 1
+3	duct pipe 0 1
+3	duct tmp  0 1
+.TE
+.ta T 8n
+
+.SH THE ARGOT NAMES
+.EX
+To   the argot duct * name 0 and 1 can be appended.
+When appended    the dub reference and flags are saved.
+A    convenience is  provided.
+
+.SH DUCT AND RET
+.EX
+The  opcode ret when executed   each time  a   different task becomes.
+First,  dub 1 to dub 0 is moved and  rewound.
+Second, dub 1 saved  referenced and  flags are restored.
+Third,  dub 0 saved  references and  flags are restored.
+Each opcode ret aft  execution  the  interpretation continues.
+
+.SH VERBOSE
+.EX
+More than 7 duct types     exist.
+Just      3 duct types are supported:
+mem dub; unnamed pipe; tmp file.
+
+.SH LEAKY PIPES
+.EX
+Pipes leak.  The syscall  read the syscall write   write
+by constant  invocation   a    bit bucket  brigade becomes.
+With  pipes  65536 kernel hosted   bytes  are      typical.
+
+.SH DUB 0
+.EX
+From dub 0 bytes are read.
+
+.SH DUB 1
+.EX
+To   dub 1 bytes are written.
+
+.SH FULL COLLECTION REQUIRED CAVEAT
+.EX
+For    duct mem *
+for    duct tmp *
+any    data afore reading
+all    data must  collected.
+
+.SH THE ARGOT duct pipe * WHEN?
+.EX
+Infinite  data when output to convey
+the argot pipe * is required.
+
+.SH THE ARGOT duct tmp * WHEN?
+.EX
+More data than installed RAM/2 when output to convey
+the  argot tmp * is required.
+
+.SH THE ARGOT duct mem * WHEN?
+.EX
+For ideal performance  and for sorting tasks
+the argot tmp * invocation is  recommended.
+
+.SH EXCEPTIONS
+.EX
+For data decompression
+the program xz
+the program tar when connected
+a   pipe        is   recommended.
+
+.SH USEFULNESS
+.EX
+For  many  utility    programs
+from dub 0 the raw    data    is acquired
+to   dub 1 the cooked data    is sent.
+For  ascript   argot  var use is typical.
+
+.SH DUCT DURATION
+.EX
+For   inter-process communication duct use is common.
+Extra duration becomes.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   duct was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript duct
+man 3 ascript duct map
+man 3 ascript duct mem
+man 3 ascript duct pipe
+man 3 ascript duct tee
+man 3 ascript duct tmp
+man 3 ascript dup
+man 5 ascript duct
+man 5 ascript
+man 7 ascript
+\fR

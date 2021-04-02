@@ -1,0 +1,4 @@
+# Unless doing ia32 compilation or generic architecture compilation
+# ia32 and native are incompatible.
+
+export	CFLAGS	+=	-march=native

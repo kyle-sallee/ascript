@@ -1,0 +1,105 @@
+.TH "ascript io load" 3
+
+.SH NAME
+.EX
+ascript io load
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	target	origin	direct\fR
+io load	var	dub     	optional byte amount
+io load	var	pathname	optional byte amount
+.TE
+.in
+.ta T 8n
+
+.SH SKIP
+.EX
+An error when NOT encountered the next  argot is skipped.
+An error if       encountered the errno value is set.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name	A,	byte,	scope
+target origin	A	`/tmp/a\\0`,	io load,	go	'fail'
+       origin		`/tmp/b\\0`,	io load,	go	'fail'
+out		A	`\\nwas acquired.`
+\fR
+.in
+
+.SH PROGRAM cat SIMILAR EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+target origin	out	`/tmp/a\\0`,	io load,	go	'fail'
+       origin		`/tmp/b\\0`,	io load,	go	'fail'
+!
+\fR
+.in
+
+.SH BYTE AMOUNT
+.EX
+As  an optional parameter
+the    required byte amount
+can be provided.
+
+.SH FILE START NOT REQUIRED?
+.EX
+A    type dub var when provided
+from the  dub current  position
+the  data is  acquired.
+
+.SH BLOCKING CAVEAT
+.EX
+From      FIFO   from pipe from socket from terminal
+blocking  when   enabled
+the       data   until acquired
+the       script interpretation pauses.
+
+.SH TERMINAL CAVEAT
+.EX
+Many lines      when available or
+the  first line when available
+is   acquired.
+
+.SH TERMINAL COOK RAW CAVEAT
+.EX
+From cooked terminals lines are acquired.
+From raw    terminals bytes are acquired.
+
+.SH GROWTH
+.EX
+The available data
+the requested data
+to  contain
+the var       text map tacitly expands.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2019; by Kyle Sallee; argot   io load was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

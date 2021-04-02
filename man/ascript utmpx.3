@@ -1,0 +1,71 @@
+.TH "ascript utmpx" 3
+
+.SH NAME
+.EX
+ascript utmpx
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+llll.
+\fBargot	make	type	default	use\fR
+utmpx	*	utmpx		Control var
+	*.type	int 4	7	Log  type
+	*.pid	int 4		PID
+	*.line	byte	tty  name	TTY  name
+	*.id	byte	tty  number	TTY  number
+	*.user	byte	user name	User name
+	*.host	byte		Host name
+.TE
+.ta T 8n
+
+.SH OPERATORS for type utmpx
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	Functions setutent and pututline are invoked.
+query	?	Function  getutxline             is  invoked.
+.TE
+.in
+
+.SH SKIP
+.EX
+The  argot add
+the  argot query
+when successful the next  argot is skipped.
+When failed     the errno value is set.
+
+.SH LOGOUT
+.EX
+For logout for .type the value 8 is required.
+
+.SH QUERY
+.EX
+When successful the following sub var are set.
+*.uid *.user *.host
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2018; by Kyle Sallee; utmpx   was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 getutent
+man 5 ascript
+man 5 utmpx
+man 7 ascript
+\fR

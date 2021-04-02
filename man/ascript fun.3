@@ -1,0 +1,96 @@
+.TH "ascript fun" 3
+.SH NAME
+.EX
+ascript fun
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+fun op 0	int 8	The first  operand address is acquired.
+fun op 1	int 8	The second operand address is acquired.
+.TE
+
+.TS
+llll.
+\fBargot	direct	fun op 0	fun op 1\fR
+fun add	result name	augend	addend
+fun and	result name	operand	operand
+fun div	result name	dividend	divisor
+fun mod	result name	dividend	divisor
+fun mul	result name	multiplicand	multiplier
+fun neg	result name	operand
+fun not	result name	operand
+fun or	result name	operand	operand
+fun shl	result name	multiplicand	2^exponent
+fun shr	result name	dividend	2^exponent
+fun sub	result name	minuend	subtrahend
+fun xor	result name	operand	operand
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0 COUNTING UP
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	fun,	int,	io
+name		A,	int 8,	scope,	set	10 x,	fun op 0
+name		B,	int 8,	scope,	set	10 x,	fun op 1
+fun sub		`C`
+target origin	out	C
+loop		B
+byte line
+ret
+\fR
+.in
+
+.SH RESULT VAR VALUE
+.EX
+When accessed the result var value is generated.
+
+.SH RESULT VAR SCOPE
+.EX
+The fun op 0 scope is inherited.
+
+.SH NESTING
+.EX
+As  fun op 0
+as  fun op 1
+a   fun result var can be used.
+
+.SH WHY?
+.EX
+By  prior planning an   opcode plethora is precluded.
+For association    many opcodes must execute.
+For value access   few  opcodes must execute.
+
+.SH VALUE SIZE
+.EX
+The arithmetic with 8 byte values is performed.
+In 4 bytes
+in 8 bytes
+a    negative  values differs.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2018; by Kyle Sallee; argot   fun was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 5 ascript fun
+man 5 ascript
+man 7 ascript
+\fR

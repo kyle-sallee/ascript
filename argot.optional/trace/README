@@ -1,0 +1,15 @@
+For experienced script authors trace is useful.
+For noob        script authors trace is essential.
+In  the  traced        process
+after    each   CPU    instruction executes
+the      process       stops.
+The      tracing       process,
+a        clone,
+can      examine       memory
+and      continue
+the      traced        process     execution.
+Current        line    information             can be output.
+The expected   line    interpretation sequence and
+the actual     line    interpretation sequence can be compared.
+The unexpected line    skip
+can be                 discovered.

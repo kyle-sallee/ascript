@@ -1,0 +1,52 @@
+.TH "ascript pin" 3
+.SH NAME
+.EX
+ascript pin
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	direct	task\fR
+pin	'near'	At label visit.
+pin	"far"	At label visit.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io
+
+pin		'first'
+out		`Done.\\n`
+ret
+
+\&'first'
+out		`First, this line outputs.\\n`
+ret
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2019; by Kyle Sallee; argot   pin was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 5 ascript
+man 7 ascript
+\fR

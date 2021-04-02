@@ -1,0 +1,146 @@
+.TH "ascript sig winch key" 3
+.SH NAME
+.EX
+ascript sig winch key
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+sig winch key	integer value	A sig winch key combo is set.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	self,		sig,	sig name
+name		s,	sig,	scope
+target object	s.pin		"action"
+target object	s		SIGWINCH,=
+sig restart
+sig init
+
+target		7d x,	sig winch key,	go	'fail'
+target		7f x,	sig winch key,	go	'fail'
+\&'again',	self pause,		go	'again'
+
+"action"
+ ...
+ret
+\fR
+.in
+
+.SH SUCCESS
+.EX
+The next argot is skipped.
+
+.SH FAILURE
+.EX
+The errno value is set.
+For /dev/console
+the permission when insufficient
+the failure    is   possible.
+
+.SH TERSE
+.EX
+By  a script
+the sigwinch  reception
+can be        requested.
+Key combos can be delegated.
+
+.SH WHEN
+.EX
+At  the console
+the key combo when pressed
+to  the designated process
+the sigwinch       signal is sent.
+
+.SH VERBOSE
+.EX
+In   the Linux  key translation table
+the  K_SAWPNCONSOLE sequence is set.
+When pressed the    SIGWINCH is received.
+
+.SH STATE KEYS
+.EX
+ 100 x	  Shift
+ 200 x	  ALTGR
+ 400 x	  Control
+ 800 x	  Alt
+1000 x	  Shift Left
+2000 x	  Shift Right
+4000 x	  Ctrl  left
+8000 x	  Ctrl  Right
+
+.SH COMBO
+.EX
+The key code value and
+the desired  state keys
+are added.
+
+.SH WINDOZE KEY
+.EX
+125 d
+
+.SH MENU KEY
+.EX
+127 d
+
+.SH KEY CODE VALUES
+.EX
+127 exist.
+
+.SH PROGRAM showkey
+.EX
+the  software  project kbd provided program kbd
+with parameter -k when     invoked
+for  the       current key press
+the                    key code     displays.
+
+.SH NO CONSENSUS
+.EX
+Among boards the keycodes   can   vary.
+The   state      key values do    not.
+the   windoze    key value  and
+the   menu       key value  might not.
+
+.SH CAVEAT
+.EX
+SIGWINCH is   possibly unsafe.
+
+.SH CAD
+.EX
+The CAD, ctrl alt delete, key sequence when pressed
+by  process 1 SIGINT can be received.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript             was created.
+In 2017; by Kyle Sallee; sig winch key argot was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 ioctol_list
+man 2 sigaction
+man 2 sigqueue
+man 3 ascript sig
+man 3 ascript sig winch key
+man 4 console_ioctl
+man 5 ascript
+man 7 ascript
+man 7 signal
+\fR

@@ -1,0 +1,72 @@
+.TH "ascript io send" 3
+.SH NAME
+.EX
+ascript io send
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	target	origin	direct\fR
+io send	dub	byte	flags
+.TE
+.in
+.ta T 8n
+
+.SH FLAGS
+.EX
+.TS
+ll.
+MSG_CONFIRM	Indicat a reply was received.
+MSG_DONTROUTE	Through gateway do not send.
+MSG_DONTWAIT	If unable the errno value to EAGAIN or EWOULDBLOCK set.
+MSG_EOR 	Record terminate.
+MSG_MORE	More data to send exists.
+MSG_NOSIGNAL	For closed connection EPIPE signal is not received.
+MSG_OOB 	out-of-band data send.
+.TE
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+io
+
+name		A
+io sock,	# the argot io sock does not yet exist.
+scope
+ ...
+target		A	`Are we there yet?`
+io send		`MSG_OOB`
+go		'failed'
+\fR
+.in
+
+.SH SKIP
+.EX
+When successful the following argot is skipped.
+If   not        the errno     value is set.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2020; by Kyle Sallee; argot   io send was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

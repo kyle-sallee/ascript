@@ -1,0 +1,70 @@
+.TH "ascript loop" 3
+.SH NAME
+.EX
+ascript loop
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH ARGOT TABLE
+.EX
+.TS
+llll.
+\fBargot	parameter	type	task\fR
+loop	var	int 4	The  opcode  ret
+			when executed
+			the  var     decrements
+			when not     0
+			the  loop    reiterates.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.in -8
+\fB
+a
+int
+name		a
+int 4
+scope
+set		100000 x
+loop		a
+\&...
+ret,	# The loop iterations completed.
+ret,	# The var  called   a was freed.
+\fR
+.in
+
+.SH INITIAL CHECK
+.EX
+.in -8
+\fB
+target origin	cx	0 d
+!=
+go	`loopskip0`
+\fR
+.in
+
+.SH LOOP ABORT CAVEAT
+.EX
+The loop's liberty is preserved!
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2019; by Kyle Sallee; argot   loop was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 5 ascript
+man 7 ascript
+\fR

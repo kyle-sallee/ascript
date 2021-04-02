@@ -1,0 +1,85 @@
+.TH "ascript trim" 3
+.SH NAME
+.EX
+ascript trim
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot   	host	make	use\fR
+trim full	byte	*.full	At all   position the byte sequent remove.
+trim head	byte	*.head	At start only     the byte sequent remove.
+trim pare	byte	*.pare	The      repeated the byte sequent minimize.
+trim tail	byte	*.tail	At end   only     the byte sequent remove,
+trim tail host	byte	*.tail	   and   the      host             modify.
+.TE
+.in
+.ta T 8n
+
+.SH .pare .head. full .tail OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	The trim is performed.
+.TE
+.in
+
+.SH EXAMPLE DOT LINE FEED REMOVAL
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	trim
+name		A,	byte,	scope,	trim tail
+set		`This line.\\n`
+target origin	A.tail	`.\\n`,=
+out now		A.tail	` sans dot line feed`
+\fR
+.in
+
+.SH TERSE
+.EX
+By   argot equal invocation
+to   target sub  var
+the  origin byte sequence
+when assigned
+from the    host var
+to   the    sub  var
+the  content  is copied, but
+the  as     described
+the  origin byte sequence
+is   removed.
+
+.SH HOST VAR CAVEAT
+.EX
+By  argot trim tail host
+the host  var  is   modified.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   trim was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript pcre2
+man 3 ascript trim pare
+man 5 ascript
+man 7 ascript
+\fR

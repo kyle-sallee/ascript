@@ -1,0 +1,68 @@
+.TH "ascript tag" 3
+.SH NAME
+.EX
+ascript tag
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBname	from	task\fR
+tag go	direct 	The label  composite find and reach.
+tag nay	direct 	The label  composite find           or  skip.
+tag pin	direct 	The label  composite find and visit and skip.
+tag yay	direct 	The label  composite find           and skip.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+tag
+
+target origin	acquire		eat
+tag go		'fridge '	fruit
+go		'miss'
+
+\&'fridge apple',	 ...,	ret
+\&'fridge lemon',	 ...,	ret
+\&'fridge lime',	 ...,	ret
+\&'fridge orange',	 ...,	ret
+\&'fridge pineapple',	 ...,	ret
+\&'missing',		 ...,	ret
+\fR
+.in
+
+.SH LABEL COMPOSITING
+.EX
+From direct parameters a 16 byte maximum label name can be composited.
+The  direct parameter  lead
+when ''   a near label is assumed;
+when ""   a far  label is assumed.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2019; by Kyle Sallee; argot   tag was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript err
+man 3 ascript loop
+man 3 ascript trek
+man 5 ascript
+man 7 ascript
+\fR

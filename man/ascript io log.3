@@ -1,0 +1,105 @@
+.TH "ascript io log" 3
+
+.SH NAME
+.EX
+ascript io log
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	host	make	use\fR
+io log	byte	*.log	buffered output
+.TE
+.TA
+.ta T 8n
+
+.SH IO log EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+dub
+io
+
+name	can
+byte
+scope
+dub file
+io log
+target origin	can.dub		`/tmp/throne.txt\\0`
+O_CREAT,	O_TRUNC,	O_WRONLY,@,		go	'fail open'
+target origin	can.log		can.dub,=
+target		can,		success,		go	'fail dup'
+origin		`Down load? Log out?`,+,!
+				success,		go	'fail write'
+ ...
+\fR
+.in
+
+.SH LOG ENHANCED TYPE BYTE ADDITIONAL OPERATOR
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+not	!	Sans delay; write now.
+.TE
+.in
+
+.SH TYPE IO log OPERATOR
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+equal	\&=	The host dub value is duped.
+		The log  dub value is set.
+.TE
+.in
+
+.SH FAILURE
+.EX
+For *.log the value -1 is set  and errno is set and
+in  host  metadata  as success the errno is saved.
+
+.SH ARGOT io log TYPE byte VAR ENHANCEMENT
+.EX
+More space when required
+to   the   dub
+the  var   data
+is   sent.
+
+.SH ERRNO
+.EX
+The function write when invoked an error   if  encountered
+in  the host var   metadata     as success the errno value is saved.
+
+.SH FLUSH
+.EX
+To the dub the data when sent from the host var is removed.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2017; by Kyle Sallee; argot   io log was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript io
+man 5 ascript
+man 7 ascript
+\fR

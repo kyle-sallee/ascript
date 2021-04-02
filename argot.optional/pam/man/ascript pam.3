@@ -1,0 +1,100 @@
+.TH "ascript pam" 3
+.SH NAME
+.EX
+ascript pam
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBvar	compat	default\fR
+pam.name	byte	`root`
+pam.error	byte	``
+pam.service	byte	`system-auth`
+.TE
+.ta T 8n
+
+.SH HOSTED ARGOT
+.EX
+.TS
+ll.
+\fBargot\fR
+pam authenticate
+pam close session
+pam end
+pam open  session
+pam start
+pam str   error
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+Except the    argot pam str error
+the    hosted argot when successful
+the    next   argot is   skipped.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+pam,	target origin	pam.name	`kyle`,=
+pam start, 		skip
+pam authenticate,	skip
+pam open session,	go		'fail'
+&...
+pam close session,	next
+pam end,		next,			ret
+
+\&'fail'
+pam str error
+err now			pam.error	`\\n`,	ret
+\fR
+.in
+
+.SH INVOCATION ORDER
+.EX
+pam start
+pam authenticate
+pam open session
+\&...
+pam close session
+pam end
+
+.SH FUNCTION pam_setcred
+as required  pam_setcred is tacitly invoked.
+
+.SH LOGIN CAVEAT
+.EX
+By  Linux-PAM some       logging while provided
+the program   /bin/login logging       differs.
+
+.SH AUTHENTICATION
+.EX
+For authentication  EUID is required.
+A   SUID program ascript is insane!
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2018; by Kyle Sallee; argot   pam was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript pam
+man 8 pam
+man 5 ascript
+man 7 ascript
+\fR

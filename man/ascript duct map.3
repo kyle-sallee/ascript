@@ -1,0 +1,76 @@
+.TH "ascript duct map" 3
+.SH NAME
+.EX
+ascript duct map
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	type	task\fR
+
+duct map	byte	The  var  text address is changed.
+        		From      dub 0
+        		the  duct data  is acquired.
+        		For       dub 0
+        		the  reference  is replaced.
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+The argot duct map when successful the following argot is skipped.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+duct
+io
+name		names,	byte,	scope
+duct mem 0 1
+exe  fast	`./dog\\0`,	next,	.,	ret,	ret
+duct map,next
+exe  fast	`./walk\\0`,	next,	.,	ret
+out now		`The dog names follow.\\n`	names
+\fR
+.in
+
+.SH EXAMPLE 0 EXPLAINED
+.EX
+By    program walk the program dog produced output is consumed.
+Afore that    to   var names   the duct     data   is mapped.
+
+.SH CAVEAT
+.EX
+The var the text address is replaced.
+The var     text should  no longer be modified.
+
+.SH EXTRA SUPPORT
+.EX
+By   dub 0 any type can be referenced.
+From dub 0 to a "/tmp" hosted tmp file all data is copied.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2020; by Kyle Sallee; argot   duct map was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript duct
+man 5 ascript
+man 7 ascript
+\fR

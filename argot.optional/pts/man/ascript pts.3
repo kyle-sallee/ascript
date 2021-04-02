@@ -1,0 +1,252 @@
+.TH "ascript pts" 3
+
+.SH NAME
+.EX
+ascript pts
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH HOSTED ARGOT TABLE
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+pts	new	Sub   var make.
+pts fini	pts	PTS   relinquish.
+pts fix	none	Dub 0 referenced terminal cook.
+pts init	pts	PTS   acquire.
+.TE
+.ta T 8n
+
+.SH SUB VAR TABLE
+.EX
+.TS
+lll.
+\fBsub var	type	default value\fR
+*.host.0	int 4	 0 d
+*.host.1	int 4	 1 d
+*.host.2	int 4	 2 d
+*.host.1.log	int 4	-1 d
+*.host.2.log	int 4	-1 d
+*.fake.0	int 4	 0 d
+*.fake.1	int 4	 1 d
+*.fake.2	int 4	 2 d
+.TE
+.ta T 8n
+
+.SH SUB VAR ASSIGNMENT
+.EX
+While type int 4
+from  type dub assignment is anticipated.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+name		pts,	pts,	scope
+
+# var type dub name logdub existence is assumed
+
+target origin	pts.host.1.log	logdub,=
+target		pts.host.2.log,=
+target host
+pts init
+exe fast	INIT_SCRIPT_WITH_PARAMETERS
+go	'fail'
+
+# progeny process execution follows
+\fR
+.in
+
+.SH PTS?
+.EX
+In  two  parts  a pseudo   terminal is provided.
+The fake and    a terminal appear      identical.
+The host feeds,   receives and         logs.
+
+.SH RESOURCE USAGE
+.EX
+1 real   time     signal,
+2 pseudo terminal devices,
+6 dups   are      acquired.
+
+.SH PIPE OR TERMINAL REFERENCE
+.EX
+By  *.host.*
+type pipe and
+type terminal
+can  be   referenced.
+
+.SH FILE REFERENCE
+.EX
+By   *.host.*.log
+a    file
+can  be   referenced.
+
+.SH LOG FILES
+.EX
+For *.host.1.log
+for *.host.2.log
+the same file reference dub can be used.
+
+.SH SIGNAL
+.EX
+Data throughput when available
+a    signal     is   generated
+The  signal     when received
+data            is   transmit.
+
+.SH THROUGHPUT
+.EX
+From *.host.0 when acquired to *.fake.0              the data is sent.
+From *.fake.1 when acquired to *.host.1 *.host.1.log the data is sent.
+From *.fake.2 when acquired to *.host.2 *.host.2.log the data is sent.
+
+.SH DEFAULTS
+.EX
+By dub 0
+by dub 1
+by dub 2    a   terminal if  already referenced
+to and from the terminal the data    flows.
+
+.SH ARGOT pts init
+.EX
+The  dub  0 reference
+the  dub  1 reference
+the  dub  2 reference
+with pseudo terminal fake references
+are  replaced.
+
+.SH ARGOT pts init AFT INVOCATION
+.EX
+A  progeny process can be started.
+By argot exe           or
+by argot exe fast
+a  program         can be executed.
+
+.SH RELEASE
+.EX
+The type  pts var  when freed
+the       sub var  are  freed   and
+the argot pts fini is   tacitly invoked.
+
+.SH LOGGING ONLY?
+.EX
+The  input logging
+the output logging when  sufficient
+the *.host.1.log   value
+the *.host.2.log   value can be changed.
+
+.SH A REAL TERMINAL WHEN BACKED
+.EX
+The argot pts init aft invocation
+the *.host.0
+the *.host.1
+the *.host.2  are      uncooked.
+
+.SH RECOOKED
+.EX
+The argot pts fini aft invocation
+for *.host.0
+for *.host.1
+for *.host.2
+the original references flags and terminal attributes are restored.
+
+.SH COOKED
+.EX
+To  all  processes cooked terminals must be provided.
+The                pseudo terminal  fake to feed
+a   pipe or        raw    terminal       is required.
+
+.SH RAW VS COOKED
+.EX
+When raw    a key  when pressed can be read.
+When cooked a line when entered can be read.
+
+.SH USE
+.EX
+For init  script logging
+the argot pts is intended.
+
+.SH TROUBLE SHOOT
+.EX
+On /dev      is devtmpfs mounted?
+On /dev/pts  is devpts   mounted?
+By /dev/ptmx is pts/ptmx symlinked?
+
+.SH MOUNT CHECK
+.EX
+.in -8
+\fBgrep "devtmpfs\|devpts" /proc/mounts\fR
+The above line in a shell when run the following output should display.
+none /dev devtmpfs rw,noexec,noatime,size=1024k,nr_inodes=1024,mode=755 0 0
+none /dev/pts devpts rw,noexec,noatime,mode=600,ptmxmode=666 0 0
+.in
+
+.SH SYM CHECK
+.EX
+.in -8
+\fBstat /dev/ptmx | grep File:\fR
+The above line in a shell when run the following output should display.
+  File: '/dev/ptmx' -> 'pts/ptmx'
+.in
+
+.SH DEV CHECK
+.EX
+.in -8
+\fBls -la /dev/pts/ptmx\fR
+The above line in a shell when run a similar output should display.
+crw-rw-rw- 1 root root 5, 2 Jan 1 00:00 /dev/pts/ptmx
+.in
+
+.SH WHAT IS /dev/ptmx
+.EX
+The /dev/ptmx     when opened
+the /dev/pts/ptmx is   opened
+the next pseudo   terminal host is provided.
+
+.SH WHAT IS /dev/pts/
+.EX
+In /dev/pts/ the pseudo terminal fake devices are dynamically created.
+
+.SH CAVEAT
+.EX
+The argot pts init afore invoke sub var val can      change.
+The argot pts init aft   invoke sub var val must not change.
+
+.SH PTS VARIATIONS
+.EX
+A sub var val when -1 the input/output is omitted.
+
+.SH CRASH RECOVERY
+.EX
+The argot pts fini afore invocation
+the process        when  crashed
+a   raw   terminal could exist.
+The argot pts fix  when  invoked
+the raw   terminal is    cooked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2016; by Kyle Sallee; argot   pts was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript pts
+man 3 openpty
+man 3 termios
+man 4 pts
+man 5 ascript
+man 7 ascript
+\fR

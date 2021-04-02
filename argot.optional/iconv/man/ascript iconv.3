@@ -1,0 +1,81 @@
+.TH "ascript iconv" 3
+.SH NAME
+.EX
+ascript iconv
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	target	origin	use\fR
+iconv   	byte	byte	Character sets select.
+iconv recode	target	origin	Convert   append and skip.
+.TE
+.ta T 8n
+.in
+
+.SH SUCCESS
+.EX
+The argot iconv recode when successful the next argot
+
+.SH FAILURE
+.EX
+The argot iconv recode when failed the errno is set.
+
+.SH EINVAL
+.EX
+The conversion is not supported.
+
+.SH EILSEQ
+.EX
+In input an invalid or
+incomplete multibyte sequence
+was encountered.
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io
+target origin	`UTF-16LE`	`UTF-8`,	iconv
+target origin	out		`hello`,	iconv recode
+go		'failed'
+\fR
+.in
+
+.SH CHARACTER SETS
+.EX
+For GPT partiotion names UTF-16LE is used.
+For     everything else  UTF-8    is used.
+
+.SH MEMORY
+.EX
+Character set    sizes differ.
+For   the target text  capacity
+4*    the origin text  length is mapped.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2018; by Kyle Sallee; argot   iconv was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+lynx  https://www.iana.org/assignments/character-sets/character-sets.xhtml
+man 1 ascript
+man 3 ascript iconv
+man 3 iconv
+man 3 iconv_open
+man 5 ascript
+man 7 ascript
+man 7 unicode
+\fR

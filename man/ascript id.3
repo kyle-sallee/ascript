@@ -1,0 +1,68 @@
+.TH "ascript id" 3
+
+.SH NAME
+.EX
+ascript id
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.SH USER GROUP ID TRANSLATION SUB VAR MAKING ARGOT
+.EX
+.TS
+llll.
+\fBargot	want	make	out\fR
+group	int 4	*.group	byte
+user	int 4	*.user	byte
+gid	byte	*.gid	den8
+uid	byte	*.uid	den8
+.TE
+.TA
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	id,	io
+name		A,	byte,	set	`kyle`,	uid
+out		`The UID is `	A.uid
+\fR
+.in
+
+.SH SUCCESS
+.EX
+In the sub var metadata as success the errno is stored.
+
+.SH GET
+.EX
+The sub  var value when accessed
+the host var value is   consulted
+the sub  var value is   acquired.
+
+.SH SET
+.EX
+The sub  var value when changed
+the host var value is   revised.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript    was created.
+In 2017; by Kyle Sallee; argot   id was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript node
+man 3 ascript node sub
+man 3 ascript self
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,60 @@
+.TH "ascript node sub uid" 3
+.SH NAME
+.EX
+ascript node sub uid
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lllll.
+\fBargot	host	make	compat	task\fR
+node sub uid	byte	*.uid	int 8	For node UID
+        	dub	*.uid	int 8	acquire  and modify
+        				a   sub  var make.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	id,	io,	node sub
+name	A,	byte,	scope,	set	`/tmp/testfile\\0`
+node sub uid
+target	A.uid,	user
+
+out		`The UID       is `	A.uid		`\\n`
+target origin	A.uid	400 x,=
+success,	go	'fail'
+out		`The UID       is `	A.uid		`\\n`
+out		`The user name is `	A.uid.user	`\\n`
+\fR
+.in
+
+.SH SUCCESS
+.EX
+The value when  revised in the var metadata as success
+the errno value is stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript              was created.
+In 2018; by Kyle Sallee; argot   node sub uid was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript node sub
+man 5 ascript
+man 7 ascript
+\fR

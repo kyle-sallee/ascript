@@ -1,0 +1,30 @@
+From argot.contrib/
+     argot.optional/ similar content
+by   command make contrib         can be compiled
+by   command make contrib_install can be installed.
+
+default_content:
+argot.contrib/Makefile
+argot.contrib/README
+
+By   the    same command
+unofficial  argot,
+also called contrib,
+can  not be compiled
+can  not be installed
+can  not be tracked.
+
+While  ascript   licensed
+the    contrib   argot
+are    buggy,
+are    inferior,
+are    separate.
+
+A      contrib   argot
+when   loaded
+when   executed
+the    ascript   process
+when   crashes
+when   segfaulted
+Kyle Sallee
+is     not       interested.

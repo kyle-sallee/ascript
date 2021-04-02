@@ -1,0 +1,112 @@
+.TH "ascript indirect reference" 5
+.SH NAME
+.EX
+ascript indirect reference
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH THE TARGET
+.EX
+A    var  when   created
+from the  target var text address
+the  name is     acquired.
+
+.SH INDIRECT NAME
+.EX
+For   var  name
+a     var  value
+could be   used.
+
+.SH NAME TO ADDRESS RESOLUTION
+.EX
+The argot target when invoked a var name to address is resolved.
+
+.SH VAR VALUE TO VAR ADDRESS RESOLUTION
+.EX
+By  the target address value
+a   var name   if      contained
+the var address
+can be  acquired.
+
+.SH THE ARGOT exist
+.EX
+The argot  exist   when invoked
+as  a var  name    the target address value is regarded.
+The   var  address if  discovered
+the target address is  replaced and the next argot is skipped.
+
+.SH THE ARGOT resolv
+.EX
+The argot exist  and the argot resolv are nearly   identicial.
+The var   adress if  not discovered   a   segfault becomes.
+The argot resolv is  faster.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a,int,io
+name		A,	int4,	scope
+name		B,	byte,	scope,	set	`A`
+resolve,				set	1234 d
+out		`A=`	A	`\\n`
+\fR
+.in
+
+.SH EXAMPLE 0 OUTPUT
+.EX
+.in -8
+A=1234
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+a,int,io
+name		B,	byte,	scope,	set	`A`
+			int4,	scope,	set	4321 d
+out		`A=`	A	`\\n`
+\fR
+.in
+
+.SH EXAMPLE 1 OUTPUT
+.EX
+.in -8
+A=4321
+.in
+
+.SH EXAMPLE COMMENTS
+.EX
+The var B       when created            the value   A was assigned.
+the var B value when resolved to target the address A was assigned.
+The argot set   when invoked            the var     A was set.
+
+.SH WHY
+.EX
+For asm    hackers for C hackers indirect reference use is common.
+For script hackers               indirect reference use is rare.
+For most   tasks   the   target  address  since     used
+the                              indirect reference use is possible.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 5 ascript
+man 5 ascript var
+man 7 ascript
+\fR

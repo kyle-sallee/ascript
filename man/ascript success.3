@@ -1,0 +1,69 @@
+.TH "ascript success" 3
+.SH NAME
+.EX
+ascript success
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.in -8
+.TS
+ll.
+\fBargot	task\fR
+success 	The target var success byte is 0 and the next argot skip.
+failure 	The target var success byte is 0 or  the next argot skip.
+success set	The target var success byte to 0 set.
+failure set	The target var success byte to 1 set.
+.TE
+.ta T 8n
+.in
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+err
+name		A
+exe
+exe para
+target origin	A.para	`./collect\\0produce\\0`
+target host
+exe cute
+success
+go		'failed'
+out now		`The program ./collect executed.\\n`
+ret
+
+'failed'
+err now		`The program ./collect did not execute.`	errtext	`\\n`
+ret
+\fR
+.in
+
+.SH VAR METADATA
+.EX
+A     var   when     accessed
+in    var   metadata success byte
+the   errno value    could   be  stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2020; by Kyle Sallee; argot   success was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 5 ascript
+man 7 ascript
+\fR

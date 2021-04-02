@@ -1,0 +1,103 @@
+.TH "ascript trace" 3
+
+.SH NAME
+.EX
+ascript trace
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	optional	task\fR
+trace	parameters	Desired info request.
+tron		The trace is activated.
+troff		The trace is deactivated.
+.TE
+
+.SH ARGOT trace OPTIONAL DIRECT PARAMETERS
+.TS
+ll.
+\fBparameter	use\fR
+`file`	The file  name     report.
+`line`	The line  number   report.
+`origin`	The target         report.
+`name`	The argot name     report.
+`para`	The argot direct   parameters report.
+`part`	The part  number   report.
+`skip`	Discontinuous      interpretation report.
+`target`	The target         report.
+`toll`	The executed opcode amount report.
+.TE
+.ta T 8n
+
+.SH LIMITED INFO
+.EX
+A  custom trace  is  not provided.
+About the script process during execution
+limited   information is provided.
+
+.SH MAXIMUM INFO
+.EX
+For maximum info    with the program gdb
+and debug   filled  ELFs
+the ascript process can  be  traced.
+
+.SH WHY?
+.EX
+The argot opcode     sequence is  probably correct, but
+the argot invocation sequence might not be correct.
+Stripped  ELFs   can be traced.
+
+.SH EXAMPLE CURRENT
+.EX
+.ta T 8n
+.in -8
+\fB
+trace	`line`	`skip`	`name`	`para`	`target`	`origin`
+tron
+ ...
+\fR
+.in
+
+.SH DURATION CAVEAT
+.EX
+Process tracing is slow!
+
+.SH CAVEAT ARGOT CHANGE
+.EX
+The opcode  ret   aft    execution
+the current argot opcode sequence might change.
+That change is    not    reported.
+
+.SH CAVEAT COMPATIBILITY
+.EX
+Some argot are not trace compatible.
+
+.SH ARGOT troff CAVEAT
+.EX
+The  argot troff probably does not work.
+From trace start until process completion is recommended.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript       was created.
+In 2017; by Kyle Sallee; argot   trace was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 1 gdb
+man 2 ptrace
+man 3 ascript trace
+man 5 ascript
+man 7 ascript
+\fR

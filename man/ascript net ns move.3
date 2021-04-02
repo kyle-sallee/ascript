@@ -1,0 +1,57 @@
+.TH "ascript net ns move" 3
+
+.SH NAME
+.EX
+ascript net ns move
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	target	origin	task\fR
+net ns move	hub pathname	interface name	To the netns the interface move.
+\fR
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+net
+target origin	`vetha\\0`		`vethb\\0`
+net veth
+target origin	`/var/run/netns/hub\\0`	`vethb`
+net ns move
+\fR
+.in
+
+.SH EXAMPLE EXPLAINED
+.EX
+Into the  at file /var/run/netns/hub bound network namespace
+the  network interface called vethb  is    moved.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript             was created.
+In 2020; by Kyle Sallee; argot   net ns move was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript net
+man 5 ascript
+man 7 ascript
+\fR

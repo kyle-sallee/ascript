@@ -1,0 +1,113 @@
+.TH "ascript sort" 3
+
+.SH NAME
+.EX
+ascript sort
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.SH SORT METHOD
+.EX
+.TS
+llll.
+\fBargot	host	make	first\fR
+sort byte less	byte	*.less	small byte values
+sort byte more	byte	*.more	large byte values
+sort len  less	byte	*.less	small part length
+sort len  more	byte	*.more	large part length
+sort part back	byte	*.back	last  part
+sort part same	byte	*.same	first part
+.TE
+
+.SH SELECTION METHOD
+.EX
+.TS
+llll.
+\fBargot	host	make	output\fR
+sort want entire	sort	*.entire	all      parts
+sort want repeat	sort	*.repeat	repeated parts once
+sort want single	sort	*.single	all      parts once
+sort want unique	sort	*.unique	repeated parts never
+.TE
+
+.SH SORT MODIFIER
+.EX
+.TS
+llll.
+\fBargot	host	make	task\fR
+sort ambit	sort	*.ambit	The single ambit value set.
+sort free	sort	*.free	If 1 the unsorted RAM free.
+sort pre	sort	*.pre	If 1 presort.
+sort smp	sort	*.smp	If 1 all affine cores use.
+.TE
+
+.SH SUB VAR DEFAULTS
+.EX
+.TS
+llll.
+\fBmethod	pre default	smp default	free default\fR
+sort byte less	1	1	0
+sort byte more	1	1	0
+sort len  less	0	1	0
+sort len  more	0	1	0
+sort part back	0	0	0
+sort part same	0	0	0
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	sort
+name		A,	byte,	scope
+sort byte less
+origin	A	`/tmp/lines.txt\\0`,	io load
+
+target		A.less
+sort want entire
+
+## For strings
+#sort ambit
+#target origin	A.less.ambit		`\\0`,=
+
+target		A.less.entire
+target origin	`/tmp/sorted.txt`	A.less.entire
+io save
+go		'savefail'
+\fR
+.in
+
+.SH KSORT METHOD
+.EX
+By        Kyle Sallee the sort    method was  created.
+Something similar     if  desired merge  sort suffices.
+The       Kyle Sallee's   sort    method copy liberty
+IS DENIED!
+
+.SH LIMITS
+.EX
+Less      than   1 gigabyte RAM   can be sorted.
+No   more than 256 million  parts can be sorted.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   sort was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript sort
+man 5 ascript
+man 7 ascript
+\fR

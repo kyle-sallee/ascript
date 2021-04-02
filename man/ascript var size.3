@@ -1,0 +1,49 @@
+.TH "ascript var size" 3
+
+.SH NAME
+.EX
+ascript var size
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH ARGOT
+.EX
+.TS
+lllll.
+\fBargot	host	make	compat	use\fR
+var size	byte compat	*.size	int 4	The text map size get/set.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name		ball,	byte,	scope,	size,	set	`Blue`
+out		`The map size is `	ball.size	`.\\n`
+target origin	ball.size	1000 x,=
+out		`The map size is `	ball.size	`.\\n`
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2017; by Kyle Sallee; argot   var size was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript var
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,10 @@
+The   POSIX  defined nice    is seldom useful.
+On  a single core    CPU
+for a long   running data    compression process
+then  nice   is      useful.
+To    hinder a       process cycle greedy user
+then  nice   is      useful.
+
+A computer can boot, hibernate, shutdown, reboot
+and everything in between and
+the nice is not required.

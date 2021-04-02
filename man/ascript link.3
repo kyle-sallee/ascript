@@ -1,0 +1,124 @@
+.TH "ascript link" 3
+.SH NAME
+.EX
+ascript link
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot name	target	origin	skip	task\fR
+link    				The argot   host.
+link join	var	var		Two lists   link.
+link make	var	var		To  list    the  origin link.
+link sans	var	var	skip	Is  member  link and    skip.
+link with	var	var	skip	Is  member  link or     skip.
+
+link back	var		skip	The earlier link select.
+link next	var		skip	The next    link select.
+
+link head	var			The start   link select.
+link head set	var			The start   link set.
+
+link tail	var			The end     link select.
+
+link omit  	var		skip	The         link remove.
+
+link omit back	var		skip	The         link remove.
+        				The earlier link select.
+
+link omit next	var		skip	The         link remove.
+        				The next    link select.
+.TE
+.in
+.ta T 8n
+
+.SH ON SUCCESS THE NEXT ARGOT IS SKIPPED.
+.EX
+link sans
+link with
+
+.SH THE LINK HEAD WHEN NOT SELECTED THE NEXT ARGOT SKIP.
+.EX
+link back
+link next
+
+.SH A SINGLE LINK CHAIN WHEN NOT CREATED THE NEXT ARGOT IS SKIPPED.
+.EX
+link omit
+link omit back
+link omit next
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io,	link
+name		A,	byte,	scope,	set	`apple`
+name		B,	byte,	scope,	set	`banana`
+name		C,	byte,	scope,	set	`cherry`
+name		D,	byte,	scope,	set	`date`
+
+target		A
+origin		D,	link make
+origin		C,	link make
+origin		B,	link make
+
+out			`Yesterday:\\n`,+
+target		out	A
+
+\&'again'
+byte line
+target origin swap,	link next,	ret
+target origin swap,	go	'again'
+\fR
+.in
+
+.SH WHAT IS LINK?
+.EX
+A    thrice linked circular list,
+like a      wheel
+is   possible.
+
+.SH SINGLE MEMBERSHIP ONLY
+.EX
+In more than one linked list
+a  var  can  not concurrently participate.
+
+.SH LIST LIMIT
+.EX
+As many named var as created can be linked.
+
+.SH LINKABLES
+.EX
+A named  var                         can     be linked.
+A value,           such as  0 d,     can NOT be linked.
+A byte   sequence, such as  `Hello`, can not be linked.
+
+.SH HARD AND SYM LINKS
+.EX
+In  file  systems hard and sym links exist.
+The argot link    differs.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2020; by Kyle Sallee; argot   link was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript node
+man 5 ascript
+man 7 ascript
+\fR

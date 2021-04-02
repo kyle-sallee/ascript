@@ -1,0 +1,46 @@
+.TH "ascript err pin" 3
+.SH NAME
+.EX
+ascript err pin
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+err
+io
+\&...
+err pin
+ret
+
+\&'SUCCESS',		err now	`An  error was not encountered.\\n`,	ret
+\&'E2BIG',		err now	`The data was too much.\\n`,		ret
+\&'EACCESS',		err now	`The permission was denied.\\n`, 	ret
+\&'EADDRINUSE',		err now	`The address is already in use.\\n`,	ret
+\&'EADDRNOTAVAIL',	err now	`The address was not available.\\n`,	ret
+\&'EANY', 		err now	`The error was not anticipated.\\n`,	ret
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2019; by Kyle Sallee; argot   err pin was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript err
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,133 @@
+.TH "ascript int ray" 3
+.SH NAME
+.EX
+ascript int ray
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.in -8
+.TS
+lll.
+\fBargot	make	task\fR
+int ray 	*	int ray make.
+.TE
+
+.TS
+llll.
+\fBargot	target	origin	the origin var as ... designate.\fR
+int ray index	int ray	int 4	an index var
+int ray value	index var	int 4	a  value var
+int ray value	index var	int 8	a  value var
+.TE
+
+.TS
+lll.
+\fBargot	require	The index var value ...\fR
+int ray back origin	value var	decrement.
+int ray back target	value var	decrement.
+int ray next origin	value var	increment.
+int ray next target	value var	increment.
+.TE
+.ta T 8n
+.in
+
+.SH SCOPE
+.EX
+For index   var
+for value   var
+the int ray var
+scope is inherited.
+
+.SH INT RAY SIZE
+.EX
+For  value storage
+the  text  map  is used.
+1    page       is  mapped.
+
+.SH SIZE EXPANSION
+.EX
+The argot      var size  when invoked
+a   *.size sub var       is   created.
+By  *.size     var value when changed
+the text map       size  is   changed.
+
+.SH ELEMENT INITIAL VALUE
+.EX
+For int ray element initial values 0 is provided.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	int,	io
+name		R.a,			int 4,		set	0 x
+name		R.b,			int 4,		set	1 x
+name		R.c,			int 4,		set	2 x
+name		R.a.val,		int 4
+name		R.b.val,		int 4
+name		R.c.val,		int 4
+name		R,			int ray,	scope
+origin		R.a,			int ray index
+origin		R.b,			int ray index
+origin		R.c,			int ray index
+target origin	R.a	R.a.val,	int ray value
+target origin	R.b	R.b.val,	int ray value
+target origin	R.c	R.c.val,	int ray value
+
+target		R.a.val,	set	10 x
+target		R.b.val,	set	20 x
+target		R.c.val,	set	30 x
+
+# For each index the value was selected and assigned.
+
+target origin	R.a.val		R.b.val,+
+origin				R.c.val,+
+out		`R.a.val=`	R.a.val	`\\n`
+# The first element value is now 60 x
+\fR
+.in
+
+.SH BALK?
+.EX
+Does the  C   language style indexing seem easier?  Look again!
+The  values   when  accessed
+the  type int ray       var name
+the  type int ray index var name are not required.
+
+.SH CONVENIENCE
+.EX
+Aft    configuration  the  type int   ray value var name suffices.
+Rather than R.a for   for  the  index var name A could be used.
+Rather than R.a.val   for  the  value var name a could be used.
+In the example longer than required   var names  were     used.
+
+.SH THINK AHEAD
+.EX
+For C style parsing  an   opcode plethora would execute.
+The associations     when provided
+by  prior   planning an   opcode plethora is    precluded and
+the performance      is   preserved.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2019; by Kyle Sallee; argot   int ray was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript int
+man 3 ascript ray
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,13 @@
+For   traditional single    user   workstation   deployment
+in    the         Linux     kernel configuration
+the   namespace   support   might  not           be enabled.
+
+For   development computers and
+for   server      computers
+in    the         Linux     kernel configuration
+the   namespace   support          will          be enabled.
+
+By    virtual     computers memory               is wasted.
+By    namespaces            memory               is conserved.
+While virtual     computers differ
+many  similar     boons     become.

@@ -1,0 +1,6 @@
+# For tiny non debuggable ELF file generation.
+# A script for debugging the stripped ELFs suffice.
+# In ascript or in argot for debugging the -g sans -Wl,-s
+# is useful.
+
+export	LDFLAGS	+=	-Wl,-s

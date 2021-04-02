@@ -1,0 +1,100 @@
+.TH "ascript rlimit" 3
+
+.SH NAME
+.EX
+ascript rlimit
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED VAR
+.EX
+.in -8
+.TS
+lll.
+\fBvar	request	use\fR
+max.as   	RLIMIT_AS	address space
+now.as   	RLIMIT_AS
+max.core 	RLIMIT_CORE	core file size
+now.core 	RLIMIT_CORE
+max.cpu  	RLIMIT_CPU	cpu seconds
+now.cpu  	RLIMIT_CPU
+max.data 	RLIMIT_DATA	BSS max
+now.data 	RLIMIT_DATA
+max.fsize	RLIMIT_FSIZE	file size
+now.fsize	RLIMIT_FSIZE
+max.locks	RLIMIT_LOCKS	flocks
+now.locks	RLIMIT_LOCKS
+max.memlock	RLIMIT_MEMLOCK	locked RAM bytes
+now.memlock	RLIMIT_MEMLOCK
+max.msgqueue	RLIMIT_MSGQUEUE	message queue bytes
+now.msgqueue	RLIMIT_MSGQUEUE
+max.nice 	RLIMIT_NICE	priority
+now.nice 	RLIMIT_NICE
+max.nofile	RLIMIT_NOFILE	available dubs
+now.nofile	RLIMIT_NOFILE
+max.nproc	RLIMIT_NPROC	process/threads
+now.nproc	RLIMIT_NPROC
+max.rss  	RLIMIT_RSS	resident size
+now.rss  	RLIMIT_RSS
+max.rtprio	RLIMIT_RTPRIO	real-time priority
+now.rtprio	RLIMIT_RTPRIO
+max.rttime	RLIMIT_RTTIME	real-time microsec
+now.rttime	RLIMIT_RTTIME
+max.sigpending	RLIMIT_SIGPENDING	signal queue
+now.sigpending	RLIMIT_SIGPENDING
+max.stack	RLIMIT_STACK	stack size
+now.stack	RLIMIT_STACK
+.TE
+.in
+.ta T 8n
+
+.SH REVALUE
+.EX
+The var value when accessed the limit is acquired.
+
+.SH REVISION
+.EX
+The var value when revised  the limit is revised.
+
+.SH OUTCOME
+.EX
+In  var   metadata
+as  the   success     byte
+the errno value    is stored.
+
+.SH VALUE -1
+.EX
+Except max.nice
+except now.nice
+by     value -1
+unlimited    is implied.
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+rlimit
+target origin	now.nofile	max.nofile,=
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2018; by Kyle Sallee; argot   rlimit was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 setrlimit
+man 5 ascript
+man 7 ascript
+\fR

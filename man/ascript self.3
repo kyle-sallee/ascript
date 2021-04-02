@@ -1,0 +1,551 @@
+.TH "ascript self" 3
+.SH NAME
+.EX
+ascript self
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+ll.
+\fBargot	task\fR
+self cpu  affine set	affine     CPU       bit-mask   set.
+self dir  set   	present    work      dir        set.
+self egid set   	effective  group     identity   set.
+self euid set   	effective  user      identity   set.
+self gid  set   	current    group     identity   set.
+self groups init	new        groups               load.
+self pid  new   	progeny    process              create.
+self pgid set   	process    group     identity   acquire.
+self pgid tc set	process    group
+                	control    terminal             set.
+self root set   	root                 dir        set.
+self sgid set   	saved      group     identity   set.
+self sid  new   	new        session   identity   acquire.
+self suid set   	saved      user      identity   set.
+self tty  new   	a          virtual   terminal   acquire.
+self tty  vt set	active     virtual   terminal   set.
+self tty  vt free	unused     TTY RAM              release.
+self uid  set   	current    user      identity   set.
+self umask set  	current    umask                set.
+self yield      	current    jiffy                yield.
+.TE
+
+.TS
+lll.
+\fBargot	parameters	use\fR
+self due set	sec nano	When  elapsed signal receive.
+self due done	        	The           timer  cancel.
+self due ere	        	Not   elapsed and    skip.
+self end	int     	The   process        ends.
+self kill set	sec nano	When  elapsed self   kill.
+self nap set	sec nano	When  elapsed        continue.
+self nap full	        	Until elapsed        sleep.
+self pause	        	Until         signal pause.
+.TE
+.in
+
+.TS
+llll.
+\fBargot	var make	compat	value\fR
+self argv	self.argv	ray	process    parameter parse
+
+self	self.argc	int	process    parameter amount
+self	self.cpu	int	currently  active    CPU
+self	self.cpu.affine	int	           affine    CPU
+self	self.cpu.total	int	total      affine    CPU
+self	self.dir	byte	present    work      dir
+self	self.egid	int	effective  group     identity
+self	self.euid	int	effective  user      identity
+self	self.gid	int	current    group     identity
+self	self.groups	byte	current    groups    member
+self	self.home	byte	home       dir
+self	self.pgid	int	process    group     identity
+self	self.pgid.tc	int	terminal   control   pgid
+self	self.pid	int	current    process   identity
+self	self.ppid	int	progenitor process   identity
+self	self.script	byte	current    script    name
+self	self.sgid	int	saved      gid
+self	self.shell	byte	user       shell     program
+self	self.sid	int	session    identifier
+self	self.sigttin	int	SIGTTIN    received  amount
+self	self.sigttou	int	SIGTTOU    received  amount
+self	self.suid	int	saved      UID
+self	self.time	int	seconds    since     epoch
+self	self.tty	int	current    TTY/PTS
+self	self.tty.name	byte	current    TTY/PTS   name
+self	self.tty.vt	int	current    virtual   terminal
+self	self.uid	int	current    user      identity
+self	self.umask	int	current    umask
+.TE
+.in
+.ta T 8n
+
+.SH ARGOT self *
+.EX
+Where specified from direct parameters the values are acquired.
+
+.SH ARGOT self * new
+.EX
+Parameters and target are not required.
+
+.SH ARGOT self * set
+.EX
+From the target address the value is acquired.
+
+.SH ARGOT self pgid tc set
+.EX
+From the target address    the  PID is acquired.
+The  dub 0      referenced terminal is assumed.
+
+.SH OPERATORS
+.EX
+The var value  to  change the argot self * set can be invoked.
+The var values are read only.
+
+.SH VAR ARE READ ONLY
+.EX
+When accessed     the value      is acquired.
+When set          the value      is ignored.
+The  argot self * set invocation is faster.
+
+.SH ARGOT self pid new SKIP
+.EX
+By the progeny    process the next argot is interpreted.
+By the progenitor process the next argot is skipped.
+
+.SH ERRNO
+.EX
+A   failed outcome when attained
+the errno  value   is   set.
+
+.SH TARGET
+.EX
+When  required  from the    target address the data is acquired.
+Where specified from direct parameters     the data is acquired.
+
+.SH DUB 0
+.EX
+To  dub 0    a      terminal
+but not a    pseudo terminal        when attached
+by  self.tty the    terminal number is   provided.
+
+.SH EUID 0
+.EX
+The  EUID when 0 the capability when sufficient
+most changes succeed.
+
+.SH THE ACTIVE VIRTUAL TERMINAL
+.EX
+By        self.tty.vt the  active
+virtual   terminal,   also called
+virtual   console,
+number is provided.
+
+.SH VAR self.home
+.SH VAR self.shell
+.EX
+The var     self.home   the    var self.shell are not changed.
+The files   /etc/passwd /etc/group to modify
+the project shadow      provided   utilities  should suffice.
+
+.SH VAR self.pid EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+io,	self
+out		`The process identifier number is `	self.pid	`.\\n`
+\fR
+.in
+
+.SH ARGOT self uid set EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+err,	id,	io,	self
+name		user,	byte,	set	`pell`,	uid
+
+errno
+self uid set	user.uid
+err sans,	go	'fail'
+\&...
+ret
+
+\&'fail'
+err now		`The UID did not changed.\\n`	errtext	`\\n`,ret
+\fR
+.in
+
+.SH VAR self.argc
+.EX
+By var self.argc the process parameter amount is provided.
+
+.SH ARGOT self argv EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io,	ray
+self,	self argv
+target	self.argv
+ray with
+ray max
+out	`self.argv.max=`	self.argv.max	`\\n`
+out	`self.argc=`		self.argc	`\\n`
+
+target	out
+
+'again'
+ray origin
+byte line
+ray next
+skip
+go		'again'
+\fR
+.in
+.ta T 8n
+
+.SH ARGOT self argv
+.EX
+The argot self argv when invoked the var self.argv is  created.
+By  var   self.argv the  process     parameters    are provided.
+At  index 0         the  interpreter name              exists.
+At  index 1         the  script      name              exists.
+
+.SH VAR self.cpu
+.EX
+By self.cpu the currently active CPU is provided.
+
+.SH AFFINITY ALTERNATIVE
+.EX
+By  /sys/fs/cgroup/ mounted control groups
+a   process  group  affinity
+can easily   be     changed.
+
+.SH ARGOT self cpu affine set
+.EX
+Among the  first 64 CPU or cores the affinity can be selected.
+By    each bit   a  CPU or core                   is represented.
+
+.SH VAR self.cpu.total
+.EX
+The process affine CPU count is provided.
+
+.SH ARGOT self end
+.EX
+The stack is  not  unwound.
+The var   are not  unmade.
+The log   enhanced type byte var are  not  tacitly flushed.
+As  a     direct   parameter the exit code can be  provided.
+
+.SH ARGOT self kill set
+.EX
+The duration when   elapsed the signal 15, SIGTERM, is received.
+The signal   can be caught  and modified            or disregarded.
+
+.SH VAR self.random
+.EX
+A    value between 0 and 16*((2^31)-1)           is generated.
+By   a     type int var  the argot mod           is supported.
+When first accessed with the seconds since epoch is seeded.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	int,	io,	self
+
+target		sip,	as den
+name		x,	int 4,	scope,# By target x's address is contained.
+origin		self.random,=
+origin		2 x
+mod
+out now		`0 or 1? `
+origin		sip.den,==
+go		`wrong`
+out now		`Correct.\\n`,	ret
+\&'wrong'
+out now		`Wrong.\\n`,	ret
+\fR
+.in
+
+.SH VAR self.script
+.EX
+By var self.script   the script name is provided.
+In self.argv index 1 the script name is provided.
+
+.SH ARGOT self uid set CAVEAT
+.EX
+The function    setreuid is executed.
+The manual page setreuid.2  applies.
+
+The self.uid  when changed the self.euid  does NOT tacitly change.
+The self.euid when changed the self.fsuid does     tacitly change.
+
+.SH EUID CAVEAT
+.EX
+The EUID when 0  the CAP_SETUID when effective
+for EGID GID UID a   change     is   possible.
+
+.SH PROCESS START SAVED VALUES
+.EX
+From the  progenitor     process
+the  EGID SGID EUID SUID values    are copied.
+The  EGID when changed to SGID can be  reverted.
+The  EUID when changed to SUID can be  reverted.
+
+.SH SECURITY
+.EX
+To  prevent self.euid 0    assignment
+the         self.euid when changed
+the         self.suid also change.
+
+.SH PROPER IDENTITY CHANGE ORDER
+.EX
+GID SGID EGID groups UID SUID EUID is proper change  order.
+The EUID when not 0  UID  GID and  other     changes fail.
+
+.SH ARGOT self pid new
+.EX
+A      progeny    process                     is  created.
+By the progenitor process the following argot is  skipped.
+
+.SH PROGENY PROCESS UNWIND
+.EX
+To  the ascript  process start
+by  the progeny  the     stack
+can be  unwound.
+
+.SH PROGENY PROCESS CREATION FAILURE
+.EX
+Aft 1 second     progeny    process creation is retried.
+If    failed the progenitor process ends.
+
+.SH ARGOT self sid new
+.EX
+The terminal is detached.
+
+.SH ARGOT self tty new
+.EX
+With /dev/console the process   permission
+when sufficient
+a    TTY          can be        acquired.
+For  dub 0 1 2    the reference changes.
+
+.SH ARGOT self tty new EXAMPLE
+.EX
+.in -8
+\fB
+self pid new
+go      	'progeny'
+\&...
+
+\&'progeny'
+self sid new
+self tty new
+\fR
+.in
+
+.SH /dev/tty CAVEAT
+.EX
+A    controlling terminal when  present
+as   /dev/tty    can      be    referenced.
+The  /dev/tty as dub 0    when  referenced
+the  self.tty    can not  be    acquired
+and  /dev/tty as
+the  self.tty.name        value becomes.
+
+.SH VAR self.tty.vt
+.EX
+64  virtual consoles exist.
+ 1  real    console  exists.
+ 1  virtual console  to
+ 1  real    console
+can be      mapped
+can be      activated.
+
+.SH SOFTWARE SUSPEND CAVEAT
+.EX
+Software   suspend afore   entry
+the active virtual console save;
+a   text   virtual console select; aft wake
+the saved  virtual console restore.
+
+.SH XORG SOFTWARE SUSPEND CAVEAT
+.EX
+Software   suspend when    ended
+the active virtual console graphics mode
+is  not    tacitly restored.
+
+.SH VAR self.pgid
+.EX
+By process groups  the   session   members are further segregated.
+In the     same    pgid, different sid processes can not exist.
+
+.SH PROCESS GROUP SIGNAL RECEPTION
+.EX
+To   a process group a   signal to  send
+with argot sig queue for the    PID value
+the  negative  self.pgid value  is  used.
+
+.SH ARGOT self pgid set
+.EX
+Value 0 if set it's own process group is created and entered.
+
+.SH ARGOT self pgid tc set
+.EX
+For dub 0 terminal reference
+the process group  identifier is set.
+
+.SH BACKGROUND PROCESS
+.EX
+The self.pgid    value
+and self.pgid.tc value differ.
+On  the terminal the read  function if invoked SIGTTIN is received.
+On  the terminal the write function if invoked SIGTTOU is received.
+
+.SH HOW TO BACKGROUND?
+.EX
+With value 0
+the  argot self pgid set can be invoked.
+The        self.pgid    value
+the        self.pgid.tc value if not different
+by   argot self pgid tc set
+the  controlling        terminal PGID can be set.
+
+.SH BACKGROUND REQUIREMENT
+.EX
+At least two process groups  must  exist.
+By the   foreground  process group the terminal is controlled.
+
+.SH TERMINAL NOT REQUIRED?
+.EX
+The   terminal referencing dubs if all closed the terminal is lost.
+A              progeny process aft creation
+in    the      progeny process the
+argot self sid new can be invoked.
+
+.SH VAR self.sigttin
+.SH VAR self.sigttou
+.EX
+Aft one access self.sigttin will tacitly update.
+Aft one access self.sigttou will tacitly update.
+The signal handler is installed.
+The signal when received the value is updated.
+
+.SH VAR self.sigttin use
+.EX
+From terminal     read  if failed
+the  self.sigttin value if not 0
+the  process            is background.
+
+.SH VAR self.sigttou use
+.EX
+To  terminal write     if failed
+the self.sigttou value if not 0
+the process            is background
+
+.SH VAR sigttou sigttin CAVEAT
+.EX
+To    value 0 a tacit reset is not provided.
+Afore I/O the value 0 can   be     assigned.
+
+.SH VAR self.groups
+.EX
+The group supplementary list is  provided.
+The group names              are provided.
+By  value 0 each name        is  terminated.
+
+.SH ARGOT self groups init
+.EX
+The UID when changed the group list is not tacitly loaded.
+
+.SH FILE EXECUTE MODE SUID
+.EX
+A    file when executed
+the  mode.permit SUID bit when contained
+with the  file    UID the process EUID is set.
+
+.SH FILE EXECUTE MODE SUID
+.EX
+A    file when executed
+the  mode.permit SGID bit when contained
+with the  file    UID the process EGID is set.
+
+.SH WHAT IS BLOCKING?
+.EX
+The syscall read, sem_wait, write and many others when invoked
+until complete the process execution can be blocked.
+
+.SH ARGOT self due set
+.EX
+The argot self due set when invoked
+the assigned duration  when elapsed
+a   signal is   received.
+The signal when received a blocking syscall is interrupted.
+
+.SH ARGOT self due done
+.EX
+The signal does not tacitly repeat.
+If  not    required
+the argot  self due done can be invoked.
+
+.SH ARGOT self due ere
+.EX
+The self due set provided signal if not yet sent
+the next argot is skipped.
+
+.SH ARGOT self nap set
+.EX
+As  direct parameters
+the        seconds and
+the nano   seconds are received.
+Until duration elapse or signal interruption the process sleeps.
+
+.SH ARGOT self nap full
+.EX
+Until duration elapse the process sleeps.
+
+.SH VAR self.time
+.EX
+The seconds since epoch value are provided.
+
+.SH ARGOT self root set
+.EX
+For argot  self dir  set
+for argot  self root set
+in  target the  dir  address is expected.
+A   pathname    or   a dub      suffices.
+
+.SH ARGOT chdir
+.EX
+The argot self provided argot self dir set rather than invoke
+the argot a    provided argot chdir    can        be   invoked.
+Either suffices.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   self was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 3 ascript self
+man 5 ascript
+man 7 ascript
+man 7 credentials
+\fR

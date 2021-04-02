@@ -1,0 +1,53 @@
+.TH "ascript dub lock" 3
+
+.SH NAME
+.EX
+ascript dub lock
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	want	task\fR
+dub lock        	.dub	With wait the lock make.
+dub lock now    	.dub	Sans wait the lock make.
+dub lock free   	.dub	Sans wait the lock free.
+dub lock free late	.dub	On   ret  the lock free.
+.TE
+.ta T 8n
+
+.SH SKIP
+.EX
+The  argot dub lock
+the  argot dub lock now
+when successful     the next argot is skipped.
+
+.SH CAVEAT
+.EX
+For  advisory locking
+with O_RDWR   or
+with O_WRONLY
+the  dub must be acquired.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2019; by Kyle Sallee; argot   dub lock was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 fcntl
+man 3 ascript dub
+man 5 ascript
+man 7 ascript
+\fR

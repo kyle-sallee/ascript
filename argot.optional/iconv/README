@@ -1,0 +1,93 @@
+By    the C     library
+if    an  iconv function        is provided
+then  character set translation is possible.
+
+For   every   human language     characters numeric representation
+the   8-bit,  byte  bound, 256   character set called ASCII
+did   not     suffice.
+The   early   solutions    became.
+A     16-bit, word  bound, 65536 character set called UTF-16LE
+did   not     suffice.
+
+The   vogue   solution     followed.
+A     varied  bit   width        character set called UTF-8
+does          suffice and
+with  the     values  0 through 127        is  ASCII compatible.
+
+By    the     UTF-8 character set
+the   with    byte value 0 string termination rule is preserved.
+
+https://en.wikipedia.org/wiki/Japanese_language_and_computers
+According to the above URL,
+"There are several standard methods to encode Japanese characters
+for use on a computer, including JIS, Shift-JIS, EUC, and Unicode."
+
+The Unicode and     UTF-8  are      nearly synonymous.
+In  unicode for     higher than 127 values
+more than   one     byte   is       required.
+For a CPU   integer representation  value 128;
+a           single  byte   is       required.
+Thus  CPU   integer representation
+and   UTF-8 integer representation  methods differ.
+
+In  the above character sets
+the Japanese  character wa exists.
+By  two byte  character set ASCII
+the Japanese  character wa  is represented,
+but it's not  the same  wa.
+
+In  Japanese  character sets
+for Japanese  character wa  value two values exists.
+One value  is for the hiragana representation.
+One value  is for the katakana representation.
+
+The values correspond with items in a font.
+The font   grants a pixel representation, a visual representation.
+For even   character in a set
+for font   representation many bytes are required.
+For a      primitive font, an 8 by 8 pixel matrix,
+8   bytes  are required.
+
+For  either wa value in character set JIS
+to   ASCII  if translated
+then a      match does not become.
+The  above  wa    is   not a character set translation.
+It   is     a     language translation.
+
+By   character set  translation
+a    language       translation is not achieved.
+Thus character sets primarly used for Japanese
+and  character sets primarly used for English
+if a character set  translation becomes
+with font           representation applied
+the  human          language
+was  not            translated.
+
+Thus for non  English langauge character representation
+a    multi-byte character sets,
+non  ASCII      character sets were created.
+
+Does it seem like a mess?
+Of   course.
+It   was or is a mess.
+
+It   is    intolerably complicated.
+Ire  is    solicited.
+
+For  this  reason
+for  legacy data formats and
+for  legacy programs
+a    character set translation is useful.
+
+By   ascript   in    a byte   variable
+the  character set            encoding is not recollected.
+Thus when      strings are    expected
+by   any       byte    0      value
+a    string    interpretation becomes.
+
+When possible this useless mess should be omitted.
+Because UTF-8 is mostly ASCII backward compatibile
+because UTF-8 can contain all unicode  values
+because UTF-8 suffices
+this    iconv variable implementation compilation
+should  probably not be compiled.

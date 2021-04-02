@@ -1,0 +1,93 @@
+.TH "ascript tm" 3
+.SH NAME
+.EX
+ascript tm
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED VAR
+.EX
+.in -8
+.TS
+lll.
+\fBname	compat	task\fR
+tm	int	time management var
+tm.ampm	byte	[`am`,`pm`]
+tm.form	byte	strftime compat format string
+tm.hour	int	[00-23]
+tm.hours	int	[01-12]
+tm.isdst	int	[-1/0/1]
+tm.mday	int	[01-31]
+tm.min	int	[00-59]
+tm.mon	int	[00-11]
+tm.mons	int	[01-12]
+tm.sec	int	[00-60]
+tm.utc	int	[00/1]
+tm.wday	int	[00-6]
+tm.yday	int	[00-365]
+tm.year	int	[YEAR-1900]
+tm.years	int	[YEAR-0000]
+.TE
+.in
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.in -8
+.TS
+ll.
+\fBargot	task\fR
+tm convert	From sub var content to seconds since epoch convert.
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	clock,	io,	tm
+target origin	tm		real.sec,=
+out	`The local time is `	tm.hour	`:`	tm.min	`:`	tm.sec	`\\n`
+
+target oirgin	tm.utc		1 d,=
+out	`The UTC   time is `	tm.hour	`:`	tm.min	`:`	tm.sec	`\\n`
+\fR
+.in
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	clock,	io,	tm
+target origin	tm	real.second,=
+target origin	tm.form	`The weekday is %A.\\n`,=
+out		tm
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript    was created.
+In 2017; by Kyle Sallee; argot   tm was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 time
+man 3 ascript clock
+man 3 ascript tm
+man 3 ctime
+man 3 strftime
+man 5 ascript
+man 7 ascript
+\fR

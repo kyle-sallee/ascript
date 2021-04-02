@@ -1,0 +1,130 @@
+.TH "ascript list" 3
+.SH NAME
+.EX
+ascript list
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	host	make	compat\fR
+list    	byte	*.list	list
+        	top	*.list.ambit
+
+list entire	*.list	*.entire	byte
+list single	*.list	*.single	byte
+list unique	*.list	*.unique	byte
+.TE
+.ta T 8n
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	target	origin	task\fR
+list new	*.list		From the host var
+			the ordered list regenerate.
+list ambit	*.list	ambit	The var associate
+.TE
+.ta T 8n
+
+.SH VAR TABLE
+.EX
+.in -8
+.TS
+lll.
+\fBvar	topics	use\fR
+*.list      		An     ordered            list   is  stored.
+*.list.ambit		Topic  separation Unicode values are stored.
+*.entire    		Topics ordered    sub     list   is  provided.
+*.single	once	Topics ordered    sub     list   is  provided.
+*.unique	once	Topics unknown                   are provided.
+.TE
+.ta T 8n
+
+.TS
+ll.
+\fBvar	default value\fR
+*.list.ambit	byte value 0, tab, line feed
+.TE
+.ta T 8n
+
+.SH WHAT IS ONCE?
+.EX
+By  *.entire
+by  *.single the  ordered topics sub list is provided.
+In  *.single once only  a topic  can exist.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name		B,	byte,	scope
+origin		`five\\n`,+
+origin		`three\\n`,+
+origin		`three\\n`,+
+origin		`one\\n`,+
+origin		`banana\\n`,+
+
+name		A,	byte,	scope,	top
+origin		`one	two	`,+
+origin		`two	three	`,+
+origin		`three	four	`,+
+origin		`banana	banana	`,+
+
+target		A.top,			list
+target		A.top.list,		list single
+
+target origin	A.top.list.single	B,=
+out		A.top.list.single
+\fR
+.in
+
+.SH TERSE
+.EX
+From ordered     lists
+an   ordered sub list
+is   generated.
+
+.SH UNKNOWN TOPICS CAVEAT
+.EX
+For  *.single
+by   unknown topics
+the    known topics amount
+must not  be exceeded.
+
+.SH UNKNOWN TOPIC POSITION
+.EX
+In  *.single
+in  *.entire
+at  list     start
+the unknown  topics appear.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2019; by Kyle Sallee; argot   list was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript ambit
+man 3 ascript kvp
+man 3 ascript link
+man 3 ascript list unique
+man 3 ascript ray
+man 3 ascript top
+man 5 ascript
+man 7 ascript
+\fR

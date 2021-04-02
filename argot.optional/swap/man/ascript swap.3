@@ -1,0 +1,143 @@
+.TH "ascript swap" 3
+.SH NAME
+.EX
+ascript swap
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED VAR
+.EX
+.in -8
+.TS
+lll.
+\fBvar	type	use\fR
+swap.label 	byte	A   16 d  byte   label             specify.
+swap.pathname	byte	The block device node     pathname specify.
+        	byte	The swap         file     pathname specify.
+swap.priority	int 4	The swap  system positive priority specify.
+swap.size  	int 8	The swap  byte   file     size     specify.
+swap.uuid  	byte	The swap  system          UUID  is provided.
+.TE
+.ta T 8n
+.in
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+ll.
+\fBargot	use\fR
+swap init	The swap system initialize and skip.
+swap on 	The swap system activate.  and skip.
+swap off	The swap system deactivate and skip.
+swap prefer	The swap system prefer.
+.TE
+.ta T 8n
+.in
+
+.SH swap init EXAMPLE
+.EX
+.in -8
+\fB
+a,	err,	io,	swap
+target origin	swap.pathname	`./swap.0\\0`,	=
+target origin	swap.size	1000000 x,	=
+target origin	swap.label	`swap10`,	=
+swap init,	go		'fail'
+out		swap.uuid,	ret
+'fail',		err now		errtext,	ret
+\fR
+.in
+
+.SH swap on EXAMPLE
+.EX
+.in -8
+\fB
+a,	swap
+target origin	swap.pathname	`./swap.0\\0`,=
+swap on,	go		'fail'
+\fR
+.in
+
+.SH swap off EXAMPLE
+.EX
+.in -8
+\fB
+a,	swap
+target origin	swap.pathname	`./swap.0\\0`,=
+swap off,	go		'fail'
+\fR
+.in
+
+.SH SWAP FILES
+.EX
+For testing only swap files are useful.
+
+.SH SWAP SYSTEMS
+.EX
+For  production computers on LUKS encrypted device nodes only
+swap systems    should    be      created.
+
+
+.SH ARGOT swap prefer
+.EX
+The argot swap prefer when invoked
+the swap.priority     is   tacitly set.
+
+.SH ARGOT swap init
+.EX
+The swap system is initialized,
+the swap.uuid   is set and
+the next argot  is skipped.
+
+.SH CAVEAT
+.EX
+An active swap system must NOT be initialized.
+
+.SH ARGOT swap on
+.EX
+Afore invocation
+the   argot swap prefer   can be invoked or
+the   var   swap.priority can be set.
+
+.SH VAR *.pathname
+.EX
+A    block device node or
+a    swap  file   node
+can  be    referenced.
+
+.SH VAR swap.size
+.EX
+A   swap file only when creating
+the swap.size      is   used.
+
+.SH SWAP MANAGEMENT CONSUMES RAM
+.EX
+By     the active swap amount
+half   installed  RAM  size
+should not        be   exceeded.
+
+.SH SNOOZE
+.EX
+By the  argot power for software suspend
+a  swap file     is not supported.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   swap was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 swapon
+man 5 ascript
+man 7 ascript
+\fR

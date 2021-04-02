@@ -1,0 +1,17 @@
+To    other   languages
+ASCII strings
+are   translated.
+By    the     GNU     C library gettext       support is provided.
+By    the     gettext software  project also  support is provided.
+For   non     Linux   kernel    based   POSIX support is provided?
+If    this    argot   can       not     link
+then  this    argot
+is    not     provided.
+
+For   script  use
+non   English to  native  translation
+is    not         useful  and
+extra CPU         cycles
+are   consumed.
+But   interactive scripts sometimes exist.
+

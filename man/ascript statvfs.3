@@ -1,0 +1,74 @@
+.TH "ascript statvfs" 3
+
+.SH NAME
+.EX
+ascript statvfs
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lllll.
+\fBargot	host	make	out	task\fR
+statvfs 	byte	*.statvfs		statvfs buffer
+statvfs 	dub	*.statvfs		statvfs buffer
+statvfs get				data    acquire
+f_bavail	statvfs	*.f_bavail	dex8	avail   blocks
+f_bfree 	statvfs	*.f_bfree	dex8	free    blocks
+f_blocks	statvfs	*.f_blocks	dex8	frsize  amount
+f_bsize 	statvfs	*.f_bsize	dex8	block   size
+f_favail	statvfs	*.f_favail	dex8	avail   inodes
+f_ffree 	statvfs	*.f_ffree	dex8	free    inodes
+f_files 	statvfs	*.f_files	dex8	total   inodes
+f_flags 	statvfs	*.f_flags	dex8	mount   flags
+f_frsize	statvfs	*.f_frsize	dex8	frag    size
+f_fsid  	statvfs	*.f_fsid 	dex8	filesys id
+f_namemax	statvfs	*.f_namemax	den4	node    name
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+
+name		a,	byte,	scope,	set	`/`,	statvfs
+target		a.statvfs,				statvfs get
+success,	go	'fail'
+f_ffree
+f_bavail
+
+out now		`The free inode amount is `	a.statvfs.f_ffree	`\\n`
+out now		`The free block amount is `	a.statvfs.f_bavail	`\\n`
+\fR
+.in
+
+.SH FAILURE
+.EX
+In  the var *.statvfs metadata
+in  the     success   byte
+the errno   value     is stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2019; by Kyle Sallee; argot   statvfs was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript stat
+man 3 statvfs
+man 5 ascript
+man 7 ascript
+\fR

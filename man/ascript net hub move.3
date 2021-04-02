@@ -1,0 +1,55 @@
+.TH "ascript net hub move" 3
+
+.SH NAME
+.EX
+ascript net hub move
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2020 copyrighted.
+
+.SH ARGOT
+.EX
+.in -8
+.TS
+lll.
+\fBargot	target	task\fR
+net hub move	interface name	To the network hub the interface move.
+.TE
+.in
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+net
+target		`vethb`
+net hub move
+go		'fail'
+\fR
+.in
+
+.SH CAVEAT
+.EX
+The network interface when moved is  lowered and
+the Internet protocol addresses  are lost.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript              was created.
+In 2020; by Kyle Sallee; argot   net hub move was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript net
+man 5 ascript
+man 7 ascript
+\fR

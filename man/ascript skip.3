@@ -1,0 +1,56 @@
+.TH "ascript skip" 3
+.SH NAME
+.EX
+ascript skip
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	exe fast
+	exe fast	`./configure\\0`	`--prefix=/usr\\0`
+skip,	exe must	0 x
+skip,	exe fast	`make\\0`
+skip,	exe must	0 x
+skip,	exe fast	`make\\0`		`install\\0`
+skip,	exe must	0 x
+go	'fail'
+\&'success'
+\fR
+.in
+
+.SH EXAMPLE EXPLAINED
+.EX
+The     failed      branch
+when    entered  in
+the     success     branch
+further progress is precluded.
+
+.SH SKIP?
+.EX
+The argot skip  when invoked
+the next  argot is   skipped.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2019; by Kyle Sallee; argot   skip was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript a
+man 3 ascript exe fast
+man 5 ascript
+man 7 ascript
+\fR

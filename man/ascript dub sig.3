@@ -1,0 +1,75 @@
+.TH "ascript dub sig" 3
+.SH NAME
+.EX
+ascript dub sig
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	want	want	task\fR
+dub sig	*.dub	sig	Signal I/O enable.
+.TE
+.TA
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	dub,	int,	io,	self,	sig
+
+name		cx,	int 4,	scope
+name		s,	sig,	scope
+sig restart
+sig init
+target origin	s.pin		"action",=
+
+name		a,	byte,	scope,	dub file,	io sip
+
+target origin	a.dub,	`/proc/self/fd/0`
+O_RDONLY
+@
+go		'fail open'
+
+target origin	a.sip	a.dub,=
+target		a,	success,	go	'fail dup'
+
+target origin	a.dub	s
+dub sig
+
+err now		`Pausing...\\n`
+\&'again',	self pause,	go	'again'
+
+"action"
+target		a.dub
+dub poll	0 d	`POLLIN`,	ret
+target		cx,++
+out now		cx	`	Received: `	a
+target origin	a	``,=
+ret
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2020; by Kyle Sallee; argot   dub sig was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript dub
+man 3 ascript sig
+man 5 ascript
+man 7 ascript
+\fR

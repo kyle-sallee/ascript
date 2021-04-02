@@ -1,0 +1,396 @@
+.TH "ascript ko" 3
+
+.SH NAME
+.EX
+ascript ko
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBvar	type	default value\fR
+ko	ko
+
+ko.alias	byte
+ko.name	byte
+ko.info	byte
+ko.pathname	byte
+
+ko.defy.modver	int 4	0
+ko.defy.omit	int 4	0
+ko.defy.vermagic	int 4	0
+
+ko.path.config	byte	`/etc/ko`
+ko.path.dev	byte	`/dev`
+ko.path.log	byte	`/var/log/ko`
+ko.path.object	byte	`/lib/modules/((struct utsname).release)`
+
+ko.uevent.action	byte
+ko.uevent.alias	byte
+ko.uevent.devname	byte
+ko.uevent.major	int
+ko.uevent.minor	int 4
+ko.uevent.pid 	int 4
+ko.uevent.raw	byte
+ko.uevent.syspath	byte
+ko.uevent.subsystem	byte
+.TE
+.ta T 8n
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+lll.
+\fBargot	skip?	target	task\fR
+ko auto	success		The uevent is     automagically  handle.
+ko cold			In  /sys/devices/ and sub dir
+			to  each   uevent file
+			the word   add    write.
+ko cram			The kernel object mod alias      learn.
+ko hark	success		A   kernel object uevent harking progeny process create.
+ko info	success		The kernel object information    acquire.
+ko live	success		The kernel object if loaded the  next argot skip.
+ko load	success		The kernel object    loads.
+ko oust	success		The kernel object  unloads.
+ko pin		"far"	At  the    label  events are     handled.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0 COLD BOOT
+.EX
+.ta T 8n
+.in -8
+\fB
+a
+ko
+ko hark,	go	'fail'
+ko cold
+
+sig name
+sig queue	ko.uevent.pid	SIGUSR1		1 x
+next
+\fR
+.in
+
+.SH EXAMPLE 1 BARE MINIMUM
+.EX
+.ta T 8n
+.in -8
+\fB
+a,		ko
+target origin	ko.name	`serio`,	=,	ko load,	next
+target origin	ko.name	`i8042`,	=,	ko load,	next
+target origin	ko.name	`libps2`,	=,	ko load,	next
+target origin	ko.name	`atkbd`,	=,	ko load,	next
+\fR
+.in
+
+.SH EXAMPLE 2 THE OXYMORONIC LIVE POSIX
+.EX
+.ta T 8n
+.in -8
+\fB
+a,		ko
+target origin	ko.name	`lz4_decompress`,	=,	ko load,	next
+target origin	ko.name	`lz4_compress`,		=,	ko load,	next
+target origin	ko.name	`zsmalloc`,		=,	ko load,	next
+target origin	ko.name	`zram`,			=,	ko load,	next
+\fR
+.in
+
+.SH THE ARGOT ko pin
+.EX
+For uevent handling a label when not      provided
+the uevent handling         is   tacitly  provided.
+
+.SH THE ARGOT ko info
+.EX
+The var   ko.alias
+the var   ko.name
+the var   ko.pathname when set
+the argot ko info     when invoked
+the var   ko.alias
+the var   ko.name
+the var   ko.pathname
+the var   ko.modinfo  are  set.
+
+.SH FLAGS
+.EX
+The var   ko.defy.modver   value  when not 0
+the       symbol version   hashes are  ignored.
+
+The var   ko.defy.vermagic value  when not 0
+the              version   magic  are  ignored.
+
+.SH CRYPTOGRAPHIC SIGNATURES
+.EX
+When enabled the cryptographic signatures are always checked.
+When invalid the kernel object load       is  aborted.
+
+.SH VAR ko.defy.omit /etc/ko/omit/
+.EX
+The var ko.defy.omit when 0
+the /etc/ko/omit/ contained file   names are  checked.
+The kernel                  module name  when discovered
+is  not loaded.
+
+.SH USR1
+.EX
+By   the uevent   daemon the signal SIGUSR1 if received
+with the conveyed sival_int
+the  var ko.defy.omit is set.
+
+.SH USR2
+.EX
+By   the uevent   daemon the signal SIGUSR2 if received
+the  kernel       object modalias   cache   is reloaded.
+
+.SH MODALIAS
+.EX
+Rather than   the  pathname
+rather than   the  file name
+more   often  than not
+the    kernel modalias is provided.
+
+.SH MODALIAS TRANSLATION
+.EX
+Via the   modalias cache
+the first pathname when discovered is used.
+
+.SH THE ARGOT KO CRAM
+.EX
+The /lib/modules/ content by inotify could  be watched, but is not.
+The /lib/modules  content    when              modified
+the modalias      cache              should be updated.
+
+.SH THE ARGOT ko cold
+.EX
+In /sys/devices/ to all uevent files the sequence "add" is sent.
+
+.SH COLDPLUG CAVEAT
+.EX
+Eve on  SMP  systems cold plug request and handling
+can not concurrently run.
+Due to  a kernel bug events    would   be  dropped.
+For this  reason a   tiny      delay   is  implemented.
+
+.SH UEVENT SET VAR
+.EX
+ko.uevent.action
+ko.uevent.alias
+ko.uevent.devname
+ko.uevent.major
+ko.uevent.minor
+ko.uevent.subsystem
+ko.uevent.syspath
+
+.SH VAR ko.uevent.action VALUES
+.EX
+`add` `change` `move` `remove` exists.
+
+.SH VAR ko.uevent.devname
+.EX
+A `/dev/` relative special device node pathname exists.
+
+.SH VAR ko.uevent.syspath
+.EX
+A `/sys/` relative  pathname exists.
+
+.SH VAR ko.uevent.major
+.EX
+The value 255 can be exceeded.
+
+.SH VAR ko.uevent.minor
+.EX
+The value 255 is not exceeded.
+
+.SH VAR ko.uevent.alias
+.EX
+A modalias string exists.
+
+.SH VAR ko.uevent.subsystem
+.EX
+`bdi`   `block` `bsg` `bus`       `class` `driver`
+`input` `media`       `module`
+`scsi`  `scsi_device` `scsi_disk` `scsi_host`
+`slab`  `sound` `usb` `vc`        `video4linux`
+and other sub system names are possible.
+
+.SH VAR ko.path.config
+.EX
+`/etc/ko` is default
+
+.SH `/etc/ko/also`
+.EX
+In module name files the aliases, but not modaliases are provided.
+
+.SH `/etc/ko/omit`
+.EX
+For module  named   files
+the modules are not loaded.
+
+.SH `/etc/ko/para`
+.EX
+From module named files the kernel parameters are acquired.
+By   space              the kernel parameters are separated.
+
+.SH MODULE NAMED FILES
+.EX
+Module named files are not
+module file  names.
+Module file  names have .ko appended.
+Module file  names can contain hyphen.
+Module names names     replace hyphen with underscore.
+
+.SH TACIT RECURSIVE LOAD
+.EX
+A         kernel object   when loaded
+the       kernel object's
+required  kernel objects  also load.
+
+.SH ORDER
+.EX
+The ko.alias    if not empty by alias    the module is located.
+The ko.name     if not empty by name     the module is located.
+The ko.pathname if not empty by pathname the module is located.
+
+.SH `/proc/modules`
+.EX
+By    pathname `/proc/modules`  content
+about loaded kernel objects information is provided.
+
+.SH LOADED OBJECT CHECK
+.EX
+`/proc/module` content is not checked.
+`/sys/module/` content is checked.
+
+.SH THE ARGOT ko hark
+.EX
+The argot ko hark          when invoked
+a         progeny  process is   created.
+By  the   progeny  process
+the       received uevent  are  handled.
+
+.SH FIRMWARE
+.EX
+From /lib/firmware/ by the Linux kernel
+the       firmware files as required are tacitly loaded
+
+.SH UEVENT RECEPTION
+.EX
+In  RAM   the event is stored.
+Aft delay the event is processed.
+For each      event
+a   log       file  is created.
+
+.SH ARGOT ko auto
+.EX
+The event processing if  begun but too menial for completion
+the argot ko auto    can be    invoked.
+
+.SH THE ARGOT ko auto ACTION=add
+.EX
+The MODALIAS                 when provided
+the ko.defy.omit value       when 0 or
+the file `/etc/ko/omit/name` when missing
+the kernel object            is   loaded.
+
+.SH THE ARGOT ko auto ACTION=remove
+.EX
+The MODALIAS                 when provided
+the kernel object    removal when supported
+the kernel object            when not in use
+the kernel object is removed.
+
+.SH THE ARGOT ko auto ACTION=add DEFAULTS
+.EX
+With the MAJOR value DEVNAME node GID  is set.
+To   0660 o    the   DEVNAME node mode is set.
+
+.SH THE ARGOT ko auto ACTION=add SPECIAL CASES
+.EX
+/dev/null /dev/random /dev/urandom /dev/tty /dev/zero
+for the above pathnames mode 0666 o is set
+
+.SH LOGGING
+.EX
+In  the log dir, `/var/log/ko/` with SEQNUM as pathname
+the     log files are created.
+
+.SH LOGGED SUCCESS
+.EX
+In  the kernel log, but not
+in  the uevent log file
+the success or failure is indicated.
+
+.SH `/etc/ko/also/`
+.EX
+The content can be alias or modalias
+The alias sound-slot-0 if requested
+in  file `/etc/ko/also/sda_hda_intel` could be contained.
+
+.SH VAR ko.path.object
+.EX
+The kernel object files to find
+the var ko.path.object provided content pathname is searched.
+
+.SH ko.pathname CAVEAT
+.EX
+By argot ko the modalias cached kernel object files only can load.
+
+.SH COMPRESSED KERNEL OBJECT FILES
+.EX
+The  kernel object files if compressed
+will not be read
+will not be cached
+will not be loaded!
+
+.SH GROUP NAME CAVEATS
+.EX
+For each POSIX
+at  an   arbitrary number
+the user account   names and
+the group          names can begin.
+
+.SH RECOMMENDED NUMBER
+.EX
+Above 400 x   is   recommended.
+For   special node GID the device major since used
+for   user account name          UID values   and
+the   user account default group GID values   and
+the   special node GID               values   should not coincide.
+
+.SH SECURITY CAVEAT
+.EX
+EUID 0 and CAP_SYS_MODULE are probably required.
+
+.SH COMMON MISTAKES
+.EX
+In /etc/ko/*/     file names   hyphen         must not be contained.
+In /etc/ko/also/* file content hyphen and .ko must not be contained.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript    was created.
+In 2018; by Kyle Sallee; argot   ko was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 init_module
+man 2 delete_module
+man 3 ascript ko
+man 3 ascript mount
+man 5 ascript
+man 7 ascript
+\fR

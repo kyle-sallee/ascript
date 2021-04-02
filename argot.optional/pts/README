@@ -1,0 +1,29 @@
+A     tty or
+a     virtual console  are the same idea.
+
+A     pts or
+a     pseudo  terminal     appears to be a tty, but is not.
+By    pts     a            descriptor pair          is provided.
+
+To    a       terminal
+afore         data     is  sent
+for           data         logging
+a     pts              is  used.
+For           terminal     emulation
+via   secure  socket       shell, ssh, or
+via   an      X-server     client
+a     PTS              is  used.
+
+On    the     Linux        kernel    and
+on            other        kernels
+the   PTS     use          method    may differ.
+
+If    init-script          logging
+then  pts     type         variable  is  useful.
+On    a       virtual      console
+if    init-script          scrolling or  interacting
+then  tty     type         variable  is  useful.
+
+If    confused
+then  pts     and
+a     terminal equivalent bidirectional pipe is tantamount.

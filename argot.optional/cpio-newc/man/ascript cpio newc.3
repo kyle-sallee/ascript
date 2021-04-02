@@ -1,0 +1,227 @@
+.TH "ascript cpio newc" 3
+
+.SH NAME
+.EX
+ascript cpio newc
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.SH VAR CREATION ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot name	host	make	type	task\fR
+cpio newc		*   	newc	total  newc storage
+cpio newc data	newc	*.data	byte	file   data provide
+cpio newc head	newc	*.head	byte	header data provide
+cpio newc name	newc	*.name	byte	path   name provide
+cpio newc stat	newc	*.stat	stat	path   name stat
+.TE
+
+.SH ACTIVE VAR SELECTION
+.TS
+llll.
+\fBargot name	target	origin	task\fR
+cpio newc push			The   opcode ret
+			until executed
+			the   active newc addresses push.
+cpio newc with	newc	newc	The   active newc addresses replace.
+.TE
+
+.SH ARCHIVE CREATION ARGOT
+.TS
+lll.
+\fBargot name	target	task\fR
+cpio newc add		From pathname the newc entry   make.
+cpio newc add		The  newc              entry   copy.
+cpio newc save	byte	To   pathname the      archive write and skip
+cpio newc save	dub	To   dub      the      archive write and skip
+.TE
+
+.SH ARCHIVE EXTRACTION ARGOT
+.TS
+lll.
+\fBargot name	target	task\fR
+cpio newc load	byte	From pathname the data loads and skip.
+cpio newc load	int	From dub      the data loads and skip.
+cpio newc make		For  current      newc entry
+		the  pathname     make and skip.
+cpio newc next		The  next         newc entry   select and skip.
+.TE
+.ta T 8n
+.in
+
+.SH ARGOT cpio newc with WHEN EXTRACTING
+.EX
+From origin the cpio newc var address is acquired.
+
+.SH ARGOT cpio newc with WHEN CREATING
+.EX
+From target the cpio newc var address is acquired.
+From origin the pathname      address is acquired.
+
+.SH ARGOT cpio newc with WHEN COPYING
+.EX
+From target the target cpio newc var address is acquired.
+From origin the source cpio newc var address is acquired.
+
+.SH EXAMPLE CREATE
+.EX
+.in -8
+\fB
+a
+self,		target	`/`
+self dir set
+
+name		A,		cpio newc,	scope
+name			B,	node list,	scope
+				node list most
+				node list with
+target 		`lib64`,	node list path name
+
+target origin	A	B.most
+cpio newc push
+cpio newc with
+
+\&'again'
+node list next,		go	'done'
+cpio newc add,		go	'fail'
+			go	'again'
+\&'done'
+target 	`/boot/lib64.cpio`,	cpio newc save,	go	'fail'
+\fR
+.in
+
+.SH EXAMPLE EXTRACT
+.EX
+.in -8
+\fB
+a,	io
+name		B,	scope,		cpio newc
+					cpio newc push
+target copy,				cpio newc with
+target	`/tmp/initramfs.cpio\\0`,	cpio newc load,	go	'fail'
+\&'again'
+cpio newc next,	go	'done'
+cpio newc save,	go	'fail'
+		go	'again'
+\fR
+.in
+
+.SH ERRORS
+.EX
+Error recovery is NOT possible.
+
+.SH THE ARGOT cpio newc with IS SPAMABLE!
+.EX
+In  an     InitRAMFS
+the entire usr/ content would not be included,
+but the    following    would     be included.
+usr
+usr/share
+usr/share/terminfo
+usr/share/terminfo/d
+usr/share/terminfo/d/dumb
+usr/share/terminfo/l
+usr/share/terminfo/l/linux
+However, the entire usr content would not be included.
+
+.SH USE
+.EX
+The cpio newc format while terrible
+by  the  Linux kernel for InitRAMFS loading
+is  compatible.
+
+.SH CAVEAT NO SOCKETS
+.EX
+In cpio files sockets are not stored.
+
+.SH DIR INCLUSION IS REQUIRED
+.EX
+Into a pathname which does not exist
+the             nodes can  not extract.
+
+.SH SECURITY POINT 0
+.EX
+During extracting  on pathnames
+the    prepended / is removed.
+
+.SH SECURITY POINT 1
+.EX
+`/../`   when  contained
+to value EINVAL errno is set
+the pathname is not created.
+
+.SH ARGOT add add
+.EX
+The argot add add when invoked
+the *.data  the *.head  the *.name  the *.stat are populated.
+
+.SH READ ONLY CAVEAT
+.EX
+The *.data  the *.head  the *.stat
+aught not be modified.
+For *.stat by argot stat hosted argot sub var can be created.
+
+.SH FILE END CAVEAT
+.EX
+The file end to 512 bytes is not padded.
+
+.SH CONCATENATED CPIO FILE CAVEAT
+.EX
+Cpio files when concatenated
+all  but   the  last trailer entry must be removed.
+By   argot cpio newc and  by Linux when    extracting
+the                  trailer entry      is ignored.
+
+.SH TUPLE WHAT?
+.EX
+/usr/src/linux/Documentation/early-userspace/buffer-format.txt,
+'When a "TRAILER!!!" end-of-archive marker is seen,
+the tuple buffer is reset.
+This permits archives which are generated independently
+to be concatenated.'
+
+.SH COMPRESSION
+.EX
+When   properly   configured by the Linux kernel
+from   compressed cpio archive
+the    content    can  be  extracted.
+Faster booting    will not result.
+
+.SH NEWC ENTRY DELETE
+.EX
+From a cpio archive  newc     entry deletion when desired
+the  entire content, sans the entry
+must be     copied.
+
+.SH RAM CAVEAT
+.EX
+During creation and  extraction
+in RAM entire   cpio archive  contents,
+all    the      newc entries, are stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript           was created.
+In 2017; by Kyle Sallee; argot   cpio newc was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript cpio newc
+man 5 ascript
+man 5 cpio
+less             /usr/src/linux/Documentation/early-userspace/buffer-format.txt
+lynx https://www.kernel.org/doc/Documentation/early-userspace/buffer-format.txt
+man 7 ascript
+\fR

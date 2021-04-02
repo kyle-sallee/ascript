@@ -1,0 +1,118 @@
+.TH "ascript dub mem" 3
+
+.SH NAME
+.EX
+ascript dub mem
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+llll.
+\fBargot	host	make	task\fR
+dub mem 	byte	*.dub	Memory backed sub var make.
+.TE
+.TA
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a
+dub
+name		output,		byte,	scope,	dub mem
+name		errput,		byte,	scope,	dub mem
+
+target 		output.dub,	dup
+target		errput.dub,	dup
+
+call
+target		1 d,		dup save
+target		2 d,		dup save
+
+target origin	output.dub.dup	1 d,=,		go	'fail'
+target origin	errput.dub.dup	2 d,=,		go	'fail'
+
+exe fast	`awesome\\0sauce\\0`,		go	'fail'
+exe must	0 d,				go	'fail'
+ret
+
+target		output.dub,?
+target		errput.dub,?
+
+out		`awesome output follows\\n`	output
+out		`awesome errput follows\\n`	errput
+ret
+
+'fail',	ret,	ret
+\fR
+.in
+
+.SH EXAMPLE VERBOSE
+.EX
+.ta T 8n
+The example should not    be done.
+The argot   exe    described method please use.
+
+.SH OPERATOR
+.EX
+.TS
+box;
+lll.
+query	?	In  the host var the mem  is  mapped.
+		the length   and the size are set.
+.TE
+.ta T 8n
+
+.SH FLAGS
+.EX
+The syscall SYS_memfd_create when invoked
+the flags   MFD_CLOEXEC MFD_ALLOW_SEALING
+are tacitly granted.
+
+.SH *.dub CONTENT
+.EX
+The memory dub aft creation
+in  *.dub
+the   dub  value   exists.
+The argot  at  is  not required.
+
+.SH FAILURE
+.EX
+The   dub acquisition if failed
+the *.dub value       -1 becomes and
+errno     is set.
+
+.SH CLOSE
+.EX
+The   dub if closed to   -1
+the *.dub    value  must be changed.
+
+.SH LINUX CAVEAT
+.EX
+The  Linux    kernel if unavailable
+with the      flag      O_TMPFILE
+the  function open   is invoked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2018; by Kyle Sallee; argot   dub mem was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 memfd_create
+man 3 ascript dub
+man 5 ascript
+man 7 ascript
+\fR

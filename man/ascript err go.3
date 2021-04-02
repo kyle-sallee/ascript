@@ -1,0 +1,70 @@
+.TH "ascript err go" 3
+
+.SH NAME
+.EX
+ascript err go
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2019 copyrighted.
+
+.SH WHERE
+.EX
+The  appropriate errno named near label
+when available   is    reached.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+err
+io
+
+\&...
+err sans
+go		"oops"
+out now		`No problemo.\\n`
+ret
+
+"oops"
+err go,			err now	`A mysterious error became.\\n`
+ret
+
+\&'E2BIG',		err now	`The data was too much.\\n`,		ret
+\&'EACCESS',		err now	`The permission was denied.\\n`, 	ret
+\&'EADDRINUSE',		err now	`The address is already in use.\\n`,	ret
+\&'EADDRNOTAVAIL',	err now	`The address was not available.\\n`,	ret
+\&'ESUCCESS',		err now	`A problem did not become.\\n`,		ret
+\&'EANY', 		err now	`A mysterious error became.\\n`, 	ret
+\fR
+.in
+
+.SH 'EANY'
+.EX
+The  exact    label
+when not      discovered
+for  non zero errno
+the  label    'EANY' matches.
+
+.SH 'ESUCCESS'
+.EX
+The  errno value 0 and 'ESUCCESS' match.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript        was created.
+In 2019; by Kyle Sallee; argot   err go was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript err
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,135 @@
+.TH "ascript ray" 3
+.SH NAME
+.EX
+ascript ray
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH ARGOT
+.EX
+.in -8
+.TS
+lllll.
+\fBargot	host	make	compat	task\fR
+ray     	none	*   	ray	var     address container
+ray max 	ray	*.max	int	total   element amount
+ray name	ray	*.name	byte	current element name
+ray now 	ray	*.now	int	current element index
+
+\fBargot	to	from	type	task\fR
+ray cat 	target	origin	ray	ray var content append.
+.TE
+
+.TS
+lll.
+\fBargot	require	task\fR
+ray save		On   stack  the ray var address save.
+ray with		From target the ray var address select.
+
+ray add 	<ray with>	To ray the target  address append.
+ray sub 	<ray with>	To ray the indexed address remove.
+ray equal	<ray with>	At ray     indexed address replace.
+
+ray origin	<ray with>	To origin the indexed ray address copy.
+ray target	<ray with>	To target the indexed ray address copy.
+
+ray back	<ray with>	The ray index decrement            and skip.
+ray next	<ray with>	the ray index increment            and skip.
+
+ray yay 	target	The target address type is     ray and skip.
+ray nay 	target	The target address type is not ray and skip.
+.in
+.ta T 8n
+
+.SH TYPE RAY OPERATORS
+.EX
+.ta T 8n
+.in -8
+.TS
+box;
+lll.
+add	+	The             address append.
+equal	\&=	The  indexed    address replace.
+sub	-	The  indexed    address remove.
+add add	++	The  index      value   increment.
+sub sub	--	The  index      value   decrement.
+set		From parameters content append.
+.TE
+.ta T 8n
+
+.SH SUCCESS
+.EX
+add add
+sub
+sub sub
+ray back
+ray nay
+ray next
+ray sub
+ray yay
+when successful the next argot is skipped.
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+a,	io
+name		B,	ray,	scope,	ray max,	ray now
+name		A,	ray,	scope,	ray max,	ray now
+origin		`apple`,+
+origin		`banan`,+
+origin		`cherry`,+
+origin		`date`,+
+
+target		B
+set		`asparagus`	`broccoli`	`carrot`	`daikon`
+
+target origin	A	B
+ray save
+ray with
+ray cat
+target		out
+
+\&'again0',	ray  origin,	byte line,	ray  next,skip,	go	'again0'
+out		`\\nNow in reverse.\\n`,	ray  back,next
+\&'again1',	ray  origin,	byte line,	ray  back,ret,	go	'again1'
+\fR
+.in
+
+.SH TERSE
+.EX
+A type ray is a var address container var.
+
+.SH SUB CAVEAT
+.EX
+An   address when removed
+from the          final   position
+to   the          removed position
+the  address is     moved.
+
+.SH LIMIT
+.EX
+In ascript      40000 x var       can    concurrently exist.
+By type ray var 40000 x addresses can be stored.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2017; by Kyle Sallee; argot   ray was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript ray cat
+man 3 ascript ray max
+man 3 ascript ray now
+man 5 ascript
+man 7 ascript
+\fR

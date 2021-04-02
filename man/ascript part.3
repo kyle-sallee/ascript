@@ -1,0 +1,123 @@
+.TH "ascript part" 3
+
+.SH NAME
+.EX
+ascript part
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2016 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+llll.
+\fBargot	make	compat	task\fR
+part	*.part      	byte	The     part content provide.
+	*.part.ambit	ambit	The     part ambit   select.
+	*.part.max  	int	Total   part amount  provide.
+	*.part.now  	int	Current part index   provide.
+.TE
+
+.TS
+lllll.
+\fBargot	must	task\fR
+part find	*.part	The host  parts discover.
+part next	*.part	The next  part  select.
+part back	*.part	The prior part  select.
+.TE
+.ta T 8n
+
+.SH SKIPPERS
+part back
+part next
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	io
+name		B,	byte,	scope,	part
+set		`Line one\\nLine two\\nLine three\\nLine four\\n`
+target		B.part.ambit,	set	`\\n`
+target		B.part
+part find
+out		`Forward:\\n`
+\&'f',	out	B.part,	part next,	skip,	go	'f'
+
+out		`\\nBackward:\\n`,	part back,	next
+\&'b',	out	B.part,	part back,	skip,	go	'b'
+
+					out	`\\n`
+target origin	B.part.now	0 x,=,	out	`At 0 `	B.part
+target origin	B.part.now	2 x,=,	out	`At 2 `	B.part
+target origin	B.part.now	1 x,=,	out	`At 1 `	B.part
+target origin	B.part.now	3 x,=,	out	`At 3 `	B.part
+\fR
+.in
+
+.SH EXAMPLE OUTPUT
+.EX
+.ta T 8n
+.in -8
+Forward:
+Line one
+Line two
+Line three
+Line four
+
+Backward:
+Line four
+Line three
+Line two
+Line one
+
+At 0 Line one
+At 2 Line three
+At 1 Line two
+At 3 Line four
+.in
+
+.SH *.part CAVEAT
+.EX
+The data can be copied, but not appended.
+
+.SH ARGOT part next
+.EX
+The first partition when not selected the next argot is skipped.
+
+.SH ARGOT part back
+.EX
+The final partition when not selected the next argot is skipped.
+
+.SH CAVEAT
+.EX
+Mass media block device storage partitions differ.
+
+.SH ALTERNATIVE
+.EX
+Rather than partitions in separate var
+the    data can be stored
+the    var  can be linked.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   part was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript byte
+man 3 ascript ambit
+man 3 ascript link
+man 3 ascript view
+man 5 ascript
+man 7 ascript
+\fR

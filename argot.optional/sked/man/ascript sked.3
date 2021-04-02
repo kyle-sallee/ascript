@@ -1,0 +1,114 @@
+.TH "ascript sked" 3
+.SH NAME
+.EX
+ascript sked
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+ll.
+\fBargot	task\fR
+sked get	For the PID the scheduling is acquired and skip.
+sked set	For the PID the scheduling is set      and skip.
+.TE
+
+.SH HOSTED VAR
+.EX
+.in -8
+.TS
+lll.
+\fBvar	type	task\fR
+sked.give	int 4	A   progeny   process     can inherit?
+sked.nice	int 4	the desired   CPU portion is  selected.
+sked.pid	int 4	The process   PID         is  specified.
+sked.policy	byte	the scheduler type        is  selected.
+sked.priority	int 4	the desired   CPU portion is  selected.
+sked.deadline	int 8	the deadline  nanoseconds is  specified.
+sked.period	int 8	the period    nanoseconds is  specified.
+sked.runtime	int 8	the runtime   nanoseconds is  specified.
+.TE
+.ta T 8n
+.in
+
+.SH VAR SALIENCE AND VALUES
+.EX
+.in -8
+.TS
+llllll.
+\fBvar	salient policy	default	min	max	non salient\fR
+sked.give	all	1	0	1
+sked.nice	`batch` `other`	0	-20 d	19 d	0
+sked.pid	all	0	0	400000 x
+sked.policy	all	`other`	`idle`	`rr`
+sked.priority	`fifo` `rr`	0	1	99	0
+sked.deadline	`dead`	0	0	999999999 d	0
+sked.period	`dead`	0	0	999999999 d	0
+sked.runtime	`dead`	0	0	999999999 d	0
+.TE
+.ta T 8n
+.in
+
+.SH AVAILABLE POLICY TYPES
+.EX
+`batch` `dead` `fifo` `idle` `other` `rr`
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+a,	sked
+target origin	sked.policy	`dead`,=
+target origin	sked.period	100000000 d,=
+target origin	sked.deadline	 10000000 d,=
+target origin	sked.runtime	  1000000 d,=
+target origin	sked.give	        0 x,=
+sked set,	go	'fail'
+\fR
+.in
+
+.SH SKED ALTERNATIVE CONTROL GROUPS
+.EX
+When   not   idle
+to     no    more than
+1/64th processing power      to limit
+the    control    groups can be used.
+
+.SH VAR sked.pid
+.EX
+When 0 the current process is indicated.
+
+.SH NICE IS NOT NICE
+.EX
+The   scheduler attribute nice value and
+the   process             nice value
+seems to        entirely  differ.
+
+.SH SECURITY
+.EX
+EUID 0 and proper capability will probably be required.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2018; by Kyle Sallee; argot   sked was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 2 sched_setattr
+man 3 ascript self
+man 5 ascript
+man 7 ascript
+man 7 sched
+man 7 sched
+\fR

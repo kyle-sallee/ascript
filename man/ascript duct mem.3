@@ -1,0 +1,164 @@
+.TH "ascript duct mem" 3
+
+.SH NAME
+.EX
+ascript duct mem
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH SYNOPSIS
+.EX
+.TS
+lll.
+\fBargot	when	task\fR
+
+duct mem	init	To  dub 1 a   memfd     is attached.
+        	ret	The           memfd     is rewound.
+        		To  dub 0 the memfd     is changed.
+
+duct mem 1	init	The dub 1     reference is saved.
+        		To  dub 1 a   memfd     is attached.
+        	ret	The           memfd     is rewound.
+        		To  dub 0 the memfd     is changed.
+        	ret	The dub 1     reference is restored.
+
+duct mem 0 1	init	The dub 0     reference is saved.
+        		The dub 1     reference is saved.
+        		To  dub 1 a   memfd     is attached.
+        	ret	The           memfd     is rewound
+        		To  dub 0 the memfd     is changed.
+        	ret	The dub 1     reference is restored.
+        	ret	The dub 0     reference is restored.
+.TE
+.ta T 8n
+
+.SH EXAMPLE 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct mem
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH EXAMPLE 0 EXPLAINED
+.EX
+By program walk the program dog produced output is consumed.
+
+.SH EXAMPLE 1
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct mem 1
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret
+ret,				# dub 1 restored.
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+\fR
+.in
+
+.SH EXAMPLE 2
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct mem 0 1
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret
+ret,				# dub 1 restored.
+exe fast	`./walk\\0`
+go		'fail'
+\&.
+ret
+\fR
+.in
+
+.SH EXAMPLE 3
+.EX
+.ta T 8n
+.in -8
+\fB
+duct
+duct mem 0 1
+exe fast	`./dog\\0`
+go		'fail'
+\&.
+ret,				# dub 1 to dub 0 changed and rewound.
+duct mem,			# dub 1 replaced.
+exe fast	`./van\\0`
+go		'fail'
+\&.
+ret,				# dub 1 to dub 0 changed and rewound.
+ret,				# dub 1 restored.
+exe fast	`./park\\0`
+go		'fail'
+\&.
+ret,				# dub 0 restored.
+\fR
+.in
+
+.SH duct mem SIMPLIFIED DIAGRAM 0
+.EX
+.ta T 8n
+.in -8
+\fB
+duct mem 0 1,	...,ret,# part 0.
+duct mem,	...,ret,# part 1.
+duct mem,	...,ret,# part 2.
+duct mem,	...,ret,# part 3.
+duct mem,	...,ret,# part 4.
+duct mem,	...,ret,# part 5.
+duct mem,	...,ret,# part 6.
+ret,# 1 restored
+\&...,
+ret,# 0 restored
+\fR
+.in
+
+.SH WAIT CAVEAT
+.EX
+Each part afore start the earlier part must complete.
+
+.SH LINUX CAVEAT
+.EX
+The Linux kernel if unavailable
+as  argot duct mem...
+the argot duct tmp...
+is  silently provided.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript          was created.
+In 2018; by Kyle Sallee; argot   duct mem was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript duct
+man 5 ascript
+man 7 ascript
+\fR

@@ -1,0 +1,44 @@
+.TH "ascript ray max" 3
+.SH NAME
+.EX
+ascript ray max
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH ARGOT
+.TS
+lllll.
+\fBargot	host	make	compat	use\fR
+ray max	ray	*.max	int	Ray address count.
+.TE
+.ta T 8n
+
+.SH EXAMPLE
+.EX
+.in -8
+\fB
+\&...
+target	R0,	ray max
+out	`By R0 `	R0.max	` addresses are contained.\\n`
+\fR
+.in
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript         was created.
+In 2017; by Kyle Sallee; argot   ray max was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript ray
+man 5 ascript
+man 7 ascript
+\fR

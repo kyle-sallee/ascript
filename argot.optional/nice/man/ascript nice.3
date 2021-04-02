@@ -1,0 +1,53 @@
+.TH "ascript nice" 3
+
+.SH NAME
+.EX
+ascript nice
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lllll.
+\fBargot	host	make	compat	task\fR
+nice pgrp	int 4	*.nice	int 4	priority get set
+nice pid	int 4	*.nice	int 4	priority get set
+nice uid	int 4	*.nice	int 4	priority get set
+.TE
+.ta T 8n
+
+.SH SUCCESS
+.EX
+In the var *.nice metadata as success the errno value is stored.
+
+.SH CGROUP
+.EX
+In the same control group PIDs by priority are affected.
+
+.SH GOVERNOR
+.EX
+For some CPU governors to consider raising frequency
+the greater  than 0 nice  load  is not     considered.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript was created.
+In 2018; by Kyle Sallee; nice    was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 1 renice
+man 2 getpriority
+man 3 ascript nice
+man 5 ascript
+man 7 ascript
+\fR

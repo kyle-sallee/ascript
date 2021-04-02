@@ -1,0 +1,113 @@
+.TH "ascript para" 3
+
+.SH NAME
+.EX
+ascript para
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2018 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.in -8
+.TS
+llll.
+\fBargot	make	task\fR
+para	*	Program parameter holding var make.
+.TE
+.ta T 8n
+
+.TS
+ll.
+\fBargot	task\fR
+para with	From target the para var is selected.
+.TE
+
+.TS
+llll.
+\fBargot	with	from	task\fR
+para bare	para with		All     content   remove.
+para copy	para with	direct	The     parameter append.
+para copy link	para with	target	Linked  content   append.
+para omit	para with	direct	The     parameter remove.
+para have	para with	target	Content           verify.
+para lack	para with	target	Content           verify.
+para zero	para with		Zero    byte      append.
+.TE
+.in
+.ta T 8n
+
+.SH SKIP
+.EX
+For argot    para have
+for argot    para lack
+the expected outcome when obtained
+the next     argot   is   skipped.
+
+.SH EXAMPLE
+.EX
+.ta T 8n
+.in -8
+\fB
+name		P
+para
+scope
+para with
+
+para copy	`./configure\\0--prefix=`
+para copy	prefix
+para zero
+\fR
+.in
+
+.SH TYPE BYTE COMPAT
+.EX
+A   type byte
+a   type para are similar.
+The operators are inherited.
+For type para an  address map is provided.
+
+.SH TYPE PARA VS TYPE RAY
+.EX
+By type ray  var    addresses are stored.
+By type para string addresses are stored.
+
+.SH THE BYTE VALUE 0
+.EX
+All  process parameters are strings.
+With byte    value    0 all strings must terminate.
+
+.SH STRING REMOVAL CAVEAT
+.EX
+From type para var an exact string only can be struck.
+
+.SH USE
+.EX
+With type exe var a type para var is used.
+
+.SH LIMITS
+.EX
+  4000 x strings  can be stored.
+400000 x bytes    can be stored.
+More     than     above
+most     programs when   executed balk.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript      was created.
+In 2017; by Kyle Sallee; argot   para was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+man 1 ascript
+man 3 ascript exe
+man 3 ascript link
+man 5 ascript
+man 7 ascript
+\fR

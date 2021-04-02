@@ -1,0 +1,84 @@
+.TH "ascript err" 3
+
+.SH NAME
+.EX
+ascript err
+
+.SH COPYRIGHT
+.EX
+By Kyle Sallee in 2017 copyrighted.
+
+.SH HOSTED ARGOT
+.EX
+.TS
+lll.
+\fBargot	target	task\fR
+err go		At  errno text  near  label resume.
+err pin		At  errno text  near  label visit.
+err no		To  zero  the   errno value set.
+err no from success	var	The errno value set.
+success from err no	var	The errno value store.
+err sans		The errno value is 0 and  skip.
+err with		The errno value is 0 or   skip.
+err var		The named errno var  with value make.
+.TE
+.ta T 8n
+
+.SH HOSTED VAR
+.EX
+.TS
+lll.
+\fBvar	compat	use\fR
+errno	int	The most recent error number value is provided.
+errtext	byte	The most recent error number text  is provided.
+.TE
+.ta T 8n
+
+.SH NAMES
+.EX
+For each valid errno value a name exists.
+0=	'ESUCCESS'
+1=	'EPERM'
+2=	'ENOENT'
+\&...
+0<	'EANY'
+
+.SH RATHER THAN VALUE
+.EX
+Rather than
+the    errno value
+as     a     near label
+the    errno name is used.
+
+.SH THE errno ENUMERATED NAMES ARE NEAR TARGETS
+.EX
+The  argot err go
+the  argot err pin
+when invoked   as a   direct parameter
+a    label     is not provided.
+
+.SH AUTHOR
+.EX
+In 2016; by Kyle Sallee; ascript     was created.
+In 2019; by Kyle Sallee; argot   err was created.
+
+.SH LICENSE
+.EX
+By \fBman 7 ascript\fR the license is provided.
+
+.SH SEE ALSO
+.EX
+\fB
+less /usr/include64/asm-generic/errno.h
+less /usr/include64/asm-generic/errno-base.h
+less /usr/share/man/man3/errno.3
+man 1 ascript
+man 3 ascript a
+man 3 ascript err go
+man 3 ascript err pin
+man 3 ascript io
+man 3 errno
+man 3 ascript trek
+man 5 ascript
+man 7 ascript
+\fR
