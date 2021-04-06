@@ -63,10 +63,10 @@ Apparently, by free software authors to quality and performance not much importa
 I love free.  Let us make free food, free software, free operating systems, free living.
 For one's continued existence payment when required the person is obviously both a hostage and and a slave.
 
-# More from Kyle Sallee 
-(https://github.com/kyle-sallee)
-(https://kyle-sallee.github.io/ascript/)
-(https://kyle-sallee.github.io/A_DIVERT/)
-(https://kyle-sallee.github.io/The_Great_Creator_Emualtors/)
-(https://kyle-sallee.github.io/Freedom_Paydom/)
-(https://kyle-sallee.github.io/xlaunch/)
+# More from Kyle Sallee
+* https://github.com/kyle-sallee
+* https://kyle-sallee.github.io/ascript/
+* https://kyle-sallee.github.io/A_DIVERT/
+* https://kyle-sallee.github.io/The_Great_Creator_Emulators/
+* https://kyle-sallee.github.io/Freedom_Paydom/
+* https://kyle-sallee.github.io/xlaunch/
