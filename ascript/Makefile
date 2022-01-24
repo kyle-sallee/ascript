@@ -22,7 +22,13 @@ $(LP)libascript.so.$(major).$(minor):
 # ../argot.compiled.in/*.c
 ascript		:	*.c
 	rm	-f	../head/ascript.h.gch
-	$(CC)	$(CFLAGS) $(LDFLAGS) 	     $^ -o $@
+# On  Debian 11 with gcc-10
+# The -ldl if not given after the source pathnames
+# the -ldl seems completely ignored.
+# Never had this problem with older gcc versions
+
+	$(CC)	$(CFLAGS)	$^ -o $@	$(LDFLAGS)
+#	$(CC)	$(CFLAGS) $(LDFLAGS) 	     $^ -o $@
 #	$(CC)	$(CFLAGS) $(LDFLAGS) 	-lrt $^ -o $@
 # shm_open if used -lrt is required, but in ascript shm_open is not used.
 # -lrt on ascript is disgusting, but by librt considerable already loaded libs

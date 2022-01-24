@@ -8,6 +8,19 @@ ascript ko
 .EX
 By Kyle Sallee in 2018 copyrighted.
 
+.SH NOTES
+.EX
+With older than gcc version 10 when compiled the argot ko works.
+With            gcc version 10 when compiled the argot ko segfaults.
+An investigation and fix was not attempted.
+
+Rather the argot ko map was authored.
+komap's source and manual pare is under dir kernel-object-map.
+
+The argot ko map is faster and uses less RAM than argot ko,
+and can do everything argot ko can do except
+the two often useless flags during module loading.
+
 .SH HOSTED VAR
 .EX
 .TS

@@ -202,7 +202,7 @@ $(REQ)sort:
 	@echo	-e	"byte\nsire"		>	$(REQ)sort
 
 $(LP)sort:	sort.c			$(LS)sortback.o    $(LS)sortbinc.o    $(LS)sortinc.o     $(LS)sortdec.o    $(LS)sortlong.o    $(LS)sortsame.o    $(LS)sorttiny.o
-	$(CC)	$(CFLAGS) $(LDFLAGS) -l:$(LS)sortback.o -l:$(LS)sortbinc.o -l:$(LS)sortinc.o  -l:$(LS)sortdec.o -l:$(LS)sortlong.o -l:$(LS)sortsame.o -l:$(LS)sorttiny.o -Wl,-soname,$(subst $(above)lib/,,$@) $< -o $@
+	$(CC)	$(CFLAGS) $(LDFLAGS) -l:$(LS)sortback.o -l:$(LS)sortbinc.o -l:$(LS)sortinc.o  -l:$(LS)sortdec.o -l:$(LS)sortlong.o -l:$(LS)sortsame.o -l:$(LS)sorttiny.o -Wl,-soname,$(subst $(above)lib/,,$@) $< -o $@ -Wl,--allow-multiple-definition
 
 $(REQ)stat:
 	@echo	-e	"byte\nint"		>	$(REQ)stat
